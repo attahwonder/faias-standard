@@ -1,0 +1,380 @@
+# FAIAS — Component 5: Testing Playbook — Overview and Index
+
+**Component:** 5 of the FAIAS assurance architecture — the Testing Playbook
+**Procedures:** TP-DAT-001 … TP-GOV-016 (109 procedures, 1:1 with the 109 IRQs in the V2 IRQ Battery)
+**Compiled:** 2026-07
+**Document Custodian:** the maintainer
+**Spelling:** UK throughout
+
+---
+
+## 1. Purpose and Scope
+
+The IRQ Battery (Component 2) tells a reviewer *what question to ask* and *how to interpret the answer*. It does not tell them how to obtain the answer. Component 5 fills that gap: for every Independent Review Question in the battery there is exactly one testing procedure setting out the environment it requires, the artefacts and people it needs, the steps to execute, what to record at each step, the measures and thresholds that apply, the evidence it produces and at what level, the pitfalls that most often invalidate it, and how long it takes.
+
+**In scope.** Execution detail for non-production testing, design review, configuration audit, log reconciliation and structured interview, sufficient that two competent reviewers running the same procedure on the same system would produce comparable working papers.
+
+**Out of scope.** This playbook does not restate the assurance case. It does not define assurance objectives (Component 2), does not catalogue evidence (Component 4), does not map to regulation (the regulatory crosswalk, `V5_Regulatory_Crosswalk/`, does), and does not issue opinions (the Opinion Template). It introduces no new citations: every methodology reference traces to a source already carried in the corresponding Review Canvas.
+
+**Standing rule on honesty of method.** Every procedure is labelled with its method classification per METHODOLOGY_STANDARDS.md §3 — Established Benchmark, Adapted Industry Practice, or Emerging Practice (No Established Benchmark). Where a procedure is bespoke, it says so in its own text rather than borrowing credibility from the mature discipline it sits beside. Where a firm has no capability at all in an area with no established methodology, the correct entry is "none established", not a manufactured measurement.
+
+---
+
+## 2. Relationship to the Review Canvases
+
+The mapping is **1:1 and strict**: TP-`<DOM>`-NNN corresponds to IRQ-`<DOM>`-NNN and to nothing else. There are 109 IRQs and 109 procedures.
+
+**The canvas is authoritative on interpretation.** Each procedure carries an Interpretation section that restates the pass, fail and partial positions, but those positions originate in canvas fields 12, 13 and 14. Where a procedure sheet and its canvas appear to diverge, the canvas governs and the procedure is corrected. A reviewer must not construct a pass condition that the canvas does not support, and must not soften a fail indicator the canvas states categorically.
+
+**★ confidence is carried unchanged.** Each procedure reproduces the confidence rating assigned in canvas field 11, verbatim in substance, with the canvas's own justification. A procedure may not raise a rating because its execution detail is thorough — thoroughness of procedure does not create standardisation of method. A procedure may not lower a rating either; if a reviewer believes a rating is wrong, the route is to raise it against the canvas, not to vary it in the playbook.
+
+**Evidence levels are carried from ASSURANCE_MODEL.md §5.** Each procedure's Evidence Outputs section tags every artefact L1–L5 on the same scale used in canvas field 10. The two lists serve different purposes and are not mirrors: canvas field 10 grades the full ladder of evidence a firm might offer for the claim, including assertion-grade material; a procedure's Evidence Outputs list the artefacts the procedure itself produces or collects. A sheet therefore omits canvas items its procedure does not generate — the absence of an L1 assertion item or an L5 operational item from a sheet is deliberate, not a gap. Where a procedure does record an assertion, it is tagged L1 and explicitly labelled as assertion. Outputs of the reviewer's own execution constitute independent evidence and may be tagged up to L4 under §5; a sheet may grade them L3 as staging demonstration where conservatism is preferred. A sheet must never tag an artefact above the level §5 supports; tagging below it is permitted.
+
+**Operational numerics are canvas-derived or disclosed.** Every operative number in a procedure sheet — sample size, repetition count, threshold, tolerance, duration — either derives from its canvas or from a cited published source, or is a reviewer-set design minimum: a scoping default set from professional judgement, marked "(reviewer-set design minimum, disclosed at scoping)" where it appears, confirmed or adjusted at engagement scoping, and never able to override a figure the canvas does set. Genuinely illustrative values remain marked as such ("e.g."). An operative number with neither derivation nor label is a defect.
+
+**What the procedure adds.** Preconditions, test design, numbered steps with what to record, thresholds with their basis, evidence outputs, pitfalls, and effort. Nothing else.
+
+---
+
+## 3. Universal Preconditions
+
+These apply to every procedure in Component 5 and are not repeated in individual sheets.
+
+### 3.1 The non-production rule
+All testing is performed in development, test or staging environments isolated from production systems, under the non-production rule in METHODOLOGY_STANDARDS.md §3: the reviewer never tests production systems. Two kinds of evidence from production are admissible, and each is identified as such in the report:
+
+- **Read-only retrieval of historical records, logs and monitoring data** is permitted and is often the point of the procedure (TP-GOV-010 and TP-RES-005 depend on it). Retrieval must go through normal channels and must not modify production state.
+- **The firm's own controlled resilience exercises** are admissible for operational resilience procedures only (TP-RES-001). The firm runs the exercise, outside customer-affecting hours, with written sponsoring-executive authorisation recorded in the working papers; the reviewer may observe it and use its results, but does not run it.
+
+**Production-representative staging replicas** are test environments, not exceptions to the rule. They are used for any procedure that must exercise a boundary (TP-GOV-003 Limb C, TP-GOV-012). The replica's fidelity to production must be recorded; conclusions are weakened proportionately where it diverges.
+
+Where a firm has no non-production environment of adequate fidelity, that absence is itself a finding and must be reported. It is not grounds for testing in production.
+
+### 3.2 Benign payloads
+Every input used in testing — prompts, queries, transactions, injection strings, boundary attempts — must be benign. Specifically:
+
+- No live customer data, no live funds, no production credentials.
+- Adversarial and boundary testing establishes whether a control exists; it does not attempt to cause damage. Where a boundary is found to be absent, the reviewer records the finding and stops rather than exploring how far the gap extends.
+- Side-effecting tools are exercised against test endpoints or recording stubs. Where a stub is used, the substitution is recorded, because a stub cannot demonstrate real-world compensating-transaction behaviour.
+- Scope, payload classes and stop conditions are agreed in writing with the system owner before adversarial or failure-injection testing begins.
+
+### 3.3 Data handling for test datasets
+- **Synthetic first.** Where a procedure can be run on synthetic data, it is. Where synthetic data cannot support the conclusion (fairness testing in particular), anonymised held-out data is used and its representativeness is assessed and recorded.
+- **Special category data.** Protected-characteristic labels and vulnerability labels require a confirmed lawful basis and DPIA before any procedure using them begins, held separately from production model inputs, restricted to the review team, and deleted or returned at engagement close. See PLAYBOOK_CON.md domain preamble.
+- **Minimisation on log extraction.** Where a reconciliation can be performed on metadata (task type, timestamp, user role), request metadata rather than prompt content. Where content inspection is unavoidable, sample narrowly, review in situ under the firm's supervision, and do not export.
+- **Labelled substitution.** Where representative data cannot be obtained and a synthetic proxy is used instead, every downstream conclusion is labelled proxy-based, in the opinion and not only in the working papers.
+
+### 3.4 Recording discipline
+- Sample basis, size and weighting are recorded **before** fieldwork.
+- Where a procedure requires independent derivation (a tier, an obligation mapping, an envelope), the reviewer records confirmation that the firm's own answer was not consulted first.
+- Metrics, thresholds, rubrics and scoring criteria are fixed and recorded **before** computation or observation. Selecting a metric or threshold after seeing results invalidates the procedure.
+- Every threshold in every procedure is labelled with its basis: a cited methodology, the firm's own approved value, or "reviewer judgement — no established threshold".
+
+---
+
+## 4. Test-Environment Requirements
+
+| Requirement | Minimum | Notes |
+|---|---|---|
+| **Isolation** | No network path to production data stores or production tool endpoints | Verified before adversarial or failure-injection procedures |
+| **Configuration parity** | Model version, prompt version, retrieval index version and decoding parameters matching production, recorded for both | Procedures measuring behaviour (TP-CON-004, TP-MOD/AGT series) are invalid without this |
+| **Failure injectability** | Ability to disable or degrade each dependency independently (retrieval, tools, provider) | Required for TP-RES-002 |
+| **Instrumentation** | Tool-side transaction ledgers logging every invocation with timestamp and payload | Required for TP-RES-003; agent self-reports are not sufficient evidence |
+| **Version control** | Independent version control over prompts, model version pins, index build configuration and memory stores | Required for TP-RES-004 |
+| **Alerting replica** | The firm's real alerting configuration, replayable against injected series | Required for TP-RES-005 and TP-RES-006; a reviewer-built reimplementation proves nothing |
+| **Scale representativeness** | Capacity ratio to production recorded | Load-related conclusions are indicative where staging is under-scaled |
+| **Boundary-exercise replica** | Staging instance where out-of-scope tasks and unapproved roles can be attempted | Required for TP-GOV-003, TP-GOV-012 and TP-GOV-013 |
+| **Decision-extraction layer in the staging replica** | The parsing, classification and schema-validation layer that converts model output into a discrete decision, reproduced as configured | Required for TP-MOD-014, which tests it as a component; a bare model endpoint cannot run the procedure. Stated as a procedure-specific requirement, not a domain-wide minimum |
+| **Downstream integration paths reproduced** | Every path the system's output reaches — renderer, query engine, shell, automation pipeline, webhook, ticketing integration — each terminating at an instrumented, non-consequential endpoint | Required for TP-SEC-014; a procedure-specific requirement, not a domain-wide minimum |
+
+Where any requirement cannot be met, the procedure still runs and the limitation is recorded as a constraint on the conclusion. A missing environment capability is a finding about the firm's testability, which is itself decision-relevant.
+
+---
+
+## 5. Tier-Based Scoping
+
+Scope follows TIERING_MODEL.md. The playbook does not create a separate scoping model; it maps that model onto procedure selection.
+
+| Tier | Domains in scope | Procedures | Evidence minimum | ★ minimum | Engagement duration |
+|---|---|---|---|---|---|
+| **Tier 0** | GOV only | TP-GOV-001, -002, -005, -009, -014 at documentary depth; design review only, no execution testing | L2 | Not applicable (no testing) | 1–2 weeks |
+| **Tier 1** | GOV, DAT (sourcing), MOD (hallucination, confidence), HUM (escalation, override); RES and CON selectively where relevant | All 16 GOV; priority DAT/MOD/HUM procedures; TP-RES-001 and TP-RES-005; TP-CON-003 and TP-CON-004 where customer-facing; TP-GOV-012 restricted to vectors V2/V3/V4. TP-CON-009 runs at Tier 1 wherever any of its covered channels (customer-facing chat, collections correspondence, staff-facing copilot) is deployed; TP-GOV-014 additionally sits in the Tier 0 documentary subset — see PLAYBOOK_CON.md and PLAYBOOK_GOV.md | L3 | ★3–★4 where available; ★1 and ★2 procedures run with explicit disclosure | 4–6 weeks |
+| **Tier 2** | All nine domains | All 109 | L4 (≥1 L4–L5 per core claim) | ★4 or above on material tests for reasonable assurance; ★3 permitted on lower-risk subdomains; a material procedure rated ★1–★3 runs with disclosure (§8), and the opinion is then given at limited assurance | 8–12 weeks |
+| **Tier 3** | All nine domains, exhaustive | All 109, with multiple tests per IRQ on material claims; additional repetitions for TP-RES-003 and TP-RES-004 | L4–L5; L5 required on critical claims via post-deployment operational validation | ★4 or above on material tests for reasonable assurance; ★3 minimum on secondary controls; a material procedure rated ★1–★3 runs with disclosure (§8), and the opinion is then given at limited assurance | 12–16 weeks |
+
+**Two points of friction that must be handled honestly.** First, TIERING_MODEL.md sets a ★4 minimum on material tests for reasonable assurance at Tiers 2 and 3, yet 107 of the 109 procedures in this playbook are rated ★1–★3 (★1 7, ★2 64, ★3 36, against ★4 2; as at FAIAS v1.2.0, REGISTER_STATS.md), because no ★4-grade methodology exists for the risk they address. The resolution is not to inflate ratings. Where a material claim can only be tested at ★1–★3, the test still runs; the opinion states that the claim rests on the best available methodology, that the methodology is not standardised, and that residual uncertainty is correspondingly higher (the forms of words in §8); and the opinion is given at limited assurance, because no reasonable assurance rests on a material test rated ★1–★3 (ASSURANCE_ARCHITECTURE.md, assurance-level rule). With these ratings, an engagement at any tier will normally conclude at limited assurance. Suppressing the test because its rating is low would leave the risk unexamined, which is worse.
+
+Second, the vulnerable-customer override in TIERING_MODEL.md upgrades any system processing vulnerable-customer requests by one tier, which for most customer-facing systems brings the full CON set into scope. Reviewers should assume CON is in scope for any customer-facing deployment until the override has been positively excluded.
+
+---
+
+## 5A. Calibration: the prescribed procedure is a ceiling, not a floor
+
+Every procedure in this playbook is written in its **most demanding form** — the version a reviewer would run for a Tier 3 deployment where consequence is severe, evidence is contested and the conclusion must survive supervisory challenge. That is deliberate: it is easier to calibrate a maximal procedure downwards against a stated rationale than to defend an inadequate one upwards after the fact.
+
+**No engagement is expected to run every procedure at full depth.** Doing so would exceed what proportionality requires.
+
+### What calibration considers
+
+Depth, sample size, repetition count and the number of procedures in scope are set per engagement against:
+
+- the materiality tier and the consequence of the decision under review;
+- what evidence the institution already holds, and its evidence level;
+- the environment available, and how representative it is;
+- what the named domain expert directs — the expert sets what must be tested and what would change their view;
+- the shape of the engagement: what the firm needs, by when, and the depth commissioned.
+
+### Automation changes the effort, not the confidence
+
+The effort figures carried in each procedure assume **fully manual execution by a reviewer**. That is no longer the operating regime. Deterministic, repeatable and high-volume test classes — adversarial prompt suites, subgroup and intersectional fairness computation, retrieval-corpus probes, canary and extraction batteries, regression across model versions — are executed by automated harnesses at a fraction of the manual cost, with the reviewer directing design and interpreting results.
+
+Two consequences follow:
+
+1. **Reviewer-day figures are an upper bound, not an estimate.** An engagement using automated execution should expect materially lower effort on the mechanical classes, with expert and reviewer time concentrated where judgement is required. Effort figures are therefore stated as manual-equivalent and calibrated at scoping.
+2. **Automation does not raise a ★ rating.** This is the same rule already stated in §8: thoroughness of procedure does not create standardisation of method. Running an unestablished test faster, more often, or across a larger sample produces more evidence of the same confidence class. It does not turn an emerging method into a recognised one.
+
+### Calibration is recorded, not assumed
+
+Every reduction from the prescribed procedure is recorded in the engagement file: what was reduced, why, and what it means for the conclusion. Anything not tested is dispositioned rather than omitted — the risk, the reason it was not tested, and the consequence of not knowing. Silent scope reduction is the failure this rule exists to prevent, because it produces a report that reads as coverage when it was not.
+
+---
+
+## 6. Sequencing Across an Engagement
+
+Testing sits in **Phase 4 (Evidence & Testing)** of ENGAGEMENT_MODEL.md, owned by the Testing Lead, gated on testing completion and evidence-level assignment. Within Phase 4 the 109 procedures do not run in arbitrary order; several produce inputs that others depend on. The sixteen procedures added since this narrative was first written are placed as follows: TP-DAT-014, TP-MOD-014/015/016, TP-AGT-014 and TP-SEC-012/013/014 join Stage 4c with their domain series; TP-TPR-009 joins Stage 4b; TP-CON-009 joins Stage 4d; TP-CON-010 joins Stage 4d with TP-CON-009; where the firm's journey layer can be probed in the test environment, its paired near-identical-profile probe limb (limb (b)) may run in Stage 4c with the TP-MOD/TP-AGT series and feed the Stage 4d comparison; TP-HUM-009 runs with TP-HUM-008 (PLAYBOOK_HUM.md sequencing); TP-GOV-013 runs in Stage 4c, after TP-GOV-010; TP-GOV-014 joins the Stage 4e monitoring chain after TP-RES-006; TP-GOV-015 and TP-GOV-016 run late in Stage 4c, once TP-MOD-001 and TP-MOD-004 have produced the evidence they consume. Each domain playbook records the canvas dependency observations behind these placements.
+
+**Stage 4a — Foundation (week 1).**
+Run **TP-GOV-002 (inventory completeness sweep) first.** Almost every other procedure samples from the AI inventory; an unverified inventory biases every subsequent sample and that dependency must be stated in the report. Run TP-GOV-009 (documentation answerability) alongside it, because a system with no stated operating envelope cannot be reconciled against one in TP-GOV-012.
+
+**Stage 4b — Governance and documentary (weeks 1–3).**
+TP-GOV-001, -003, -004, -005, -006, -007, -010, -011; TP-RES-007; TP-TPR series. These require no environment build and can proceed while the test environment is being prepared. TP-GOV-003 must complete before TP-GOV-012, since its conditions-of-use findings feed the envelope reconciliation.
+
+**Stage 4c — Environment-dependent technical (weeks 2–6).**
+TP-DAT, TP-MOD, TP-AGT, TP-SEC series; TP-RES-002, -003, -004. These require configuration parity, failure injectability and instrumentation, and are the critical path for environment readiness. Begin environment preparation in Phase 3 so that Stage 4c is not blocked.
+
+**Stage 4d — Data-dependent conduct (weeks 2–8).**
+TP-CON series. Longest lead time in the playbook: the labelled dataset acquisition and data-protection clearance for TP-CON-001, -002 and -005, the transcript corpus for TP-CON-003, the multi-cycle data and compute for TP-CON-007, and panel recruitment for TP-CON-008 (2–3 weeks elapsed) all need starting in Phase 3. A CON stream begun in week 4 will not finish.
+
+**Stage 4e — Monitoring chain (weeks 4–7).**
+TP-RES-005 (signal generation and routing), then TP-RES-006 (decay detection), then TP-GOV-008 (governance consumption). This ordering matters: TP-RES-005's signal population supplies TP-GOV-008's sample, and running them out of order produces double-reported findings on the same broken link.
+
+**Stage 4f — Flagship reconciliation (weeks 6–9).**
+TP-RES-001 (fallback exercise, which needs scheduling around business availability) and **TP-GOV-012 (envelope-drift reconciliation)**, which is deliberately last: it consumes the inventory from GOV-002, the envelope declarations from GOV-009, the conditions-of-use findings from GOV-003, and the tiering assessment from GOV-004, and its aggregate drift judgement is best made once the rest of the estate picture exists.
+
+**Gate 4** closes when all in-scope procedures have executed or been formally scoped out with rationale, every evidence item is tagged L1–L5, every test carries its ★ rating, and the QA Lead has confirmed no material claim rests solely on L1–L2 evidence at Tier 2 or above.
+
+---
+
+## 7. Evidence-Retention Standards
+
+Working papers must allow a third party to re-perform the procedure and reach the same conclusion. For every executed procedure the retained record comprises:
+
+1. **The procedure sheet as executed**, with any deviation from the standard steps recorded and reasoned.
+2. **Pre-fieldwork records**: sample basis and size; metric, threshold and rubric selections; confirmation of independent derivation where required. These are dated and must predate the results they govern.
+3. **Raw outputs**: response captures, log extracts, configuration exports, execution timings, interview transcripts or contemporaneous notes.
+4. **Scoring and analysis**: the working paper connecting raw outputs to the recorded measures.
+5. **Evidence register entries**: every artefact tagged L1–L5 and linked to the claim it supports, feeding Component 4.
+6. **The ★ rating as carried from the canvas**, with its justification.
+7. **Limitations**: environment fidelity, data substitutions, procedures scoped out, artefacts unavailable, cells untestable.
+
+**Retention.** Assurance working papers are retained for a period at least matching the firm's retention for the underlying decisions the system makes, and never less than the re-assessment cycle plus one full cycle, so that the previous engagement's papers remain available when the next one begins.
+
+**Handling.** Papers containing customer data, special category data or board-privileged material are retained under the restrictions applied during fieldwork. Special category test data is deleted or returned at engagement close and the deletion recorded — the working paper retains the analysis, not the labels.
+
+**Integrity.** Papers are version-controlled and, once the opinion is issued, frozen. Post-issue corrections are made by dated addendum, never by silent amendment.
+
+---
+
+## 8. The ★ Confidence Disclosure Rule
+
+Per ASSURANCE_MODEL.md §6, every independent test carries a confidence rating on the ★1–★5 scale with defined anchors. No undefined ratings are permitted anywhere in this playbook.
+
+**The rule.** Any conclusion in any assurance report that rests on a procedure rated ★3 or below must state the rating and its consequence in the body of the report, not in an appendix or a general methodology note. The reader must encounter the caveat at the point of the conclusion.
+
+**Required forms of words.**
+
+- **★5 / ★4:** the rating may be stated without additional caveat; the methodology is published and adopted.
+- **★3:** "This conclusion rests on ★3 methodology — credible research methods with no agreed benchmark. Metric selection and threshold-setting reflect reviewer professional judgement and should be read as professional assessment rather than standardised evidence."
+- **★2:** "This conclusion rests on ★2 methodology — research establishes the harm mechanism, but the testing approach is bespoke and professional judgement dominates test design and interpretation. A different reviewer might reasonably design the test differently and reach a different conclusion."
+- **★1:** "This conclusion rests on ★1 methodology — the harm mechanism is theoretically plausible and the testing approach is novel and unvalidated. Result quality depends entirely on assessor expertise. This is expert opinion, not evidence."
+
+**Three additional disclosures.**
+
+- **Blended ratings.** Where a canvas assigns a blended rating because a procedure combines a mature component with a novel one (TP-RES-002, TP-RES-003, TP-RES-004, TP-CON-007, TP-CON-008), the report must not present the mature half's standing as though it covered the whole. Name which half is novel.
+- **FAIAS-native methodology.** Where a procedure's structure derives from FAIAS's own architecture rather than an external published methodology — principally TP-GOV-012's six-vector drift taxonomy — the report must say so explicitly and note that no cross-institution consensus exists on the taxonomy's completeness. A related but distinct case is TP-GOV-016, which applies an external, mature and regulator-mandated standard — BCBS 239 — where its own authors did not apply it. That is reasoned analogy rather than FAIAS-native construction, and the report says which of the two it is.
+- **"None established".** Where a firm has no capability in an area for which no established methodology exists (agent memory rollback being the clearest case), the finding is recorded as "none established" and the report distinguishes an industry-wide immaturity from a firm-specific failure — while still requiring the firm to risk-accept the gap formally. **The same phrase now also carries a second, different meaning:** five procedures — TP-SEC-012, TP-HUM-009, TP-TPR-009, TP-CON-010 and, in substance, TP-MOD-014 — carry "None established" as their **method class**, meaning the field has no test rather than that the firm has no capability. The two senses are distinguished in terms, and the method-class label is unchanged: as a **finding**, "none established" records that the firm has no capability in an area where none is established industry-wide; as a **method class**, it records that the field has no published test for the question. The report states which sense is meant at the point of use. ASSURANCE_MODEL.md §6A.4 states the same distinction against the controls vocabulary ("Emerging Practice").
+- **Rating conditional on a pending adoption decision.** TP-CON-009 carries "★2 pending benchmark adoption" — a rating conditional on an adoption decision not yet taken, which is none of the three disclosures above. Any opinion relying on it must state that the candidate methodology is not FS-certified and has not been formally adopted into FAIAS methodology. This stands as §8's fourth disclosure for as long as the rating carries the qualifier.
+
+**Aggregation.** An opinion covering a domain in which most procedures are rated ★2 (CON, notably) must carry a domain-level disclosure, not only per-conclusion ones. A reader must be able to see that the domain as a whole rests on bespoke method.
+
+---
+
+## 9. Index of All 109 Procedures
+
+Descriptions for TP-DAT, TP-MOD, TP-AGT, TP-SEC, TP-HUM and TP-TPR are drawn from the one-line control objectives in IRQ_REGISTER.md; those domains' full procedure sheets are published in PLAYBOOK_DAT.md, PLAYBOOK_MOD.md, PLAYBOOK_AGT.md, PLAYBOOK_SEC.md, PLAYBOOK_HUM.md and PLAYBOOK_TPR.md.
+
+### DAT — Data (14 procedures)
+| Procedure | IRQ | Tests that… |
+|---|---|---|
+| TP-DAT-001 | IRQ-DAT-001 | complete, versioned, licence-cleared lineage exists for all model-feeding data |
+| TP-DAT-002 | IRQ-DAT-002 | lawful basis, DPIA and minimisation are evidenced for all personal data in corpora |
+| TP-DAT-003 | IRQ-DAT-003 | label quality is quantified and meets documented acceptance thresholds |
+| TP-DAT-004 | IRQ-DAT-004 | synthetic data use is declared, bounded and validated for fidelity including tail and subgroup preservation |
+| TP-DAT-005 | IRQ-DAT-005 | representativeness against the deployed population is assessed and gaps documented |
+| TP-DAT-006 | IRQ-DAT-006 | integrity controls (checksums, anomaly screening, source vetting) cover the data supply chain |
+| TP-DAT-007 | IRQ-DAT-007 | all retrievable content passes controlled ingestion with ownership and review dates |
+| TP-DAT-008 | IRQ-DAT-008 | conflict resolution and retrieval determinism are designed and tested |
+| TP-DAT-009 | IRQ-DAT-009 | document-level ACLs are enforced at retrieval time and tested pre-production |
+| TP-DAT-010 | IRQ-DAT-010 | memory stores have owners, tenant isolation, retention limits and tested deletion |
+| TP-DAT-011 | IRQ-DAT-011 | input drift (statistical, semantic, source) is baselined with detection criteria |
+| TP-DAT-012 | IRQ-DAT-012 | retrieval-layer drift is monitored with re-indexing and re-validation triggers |
+| TP-DAT-013 | IRQ-DAT-013 | feedback-to-training paths are identified, vetted and protected against manipulation before influencing model updates |
+| TP-DAT-014 | IRQ-DAT-014 | construct validity of the modelled target variable against the decision's true objective is assessed and evidenced, including subgroup-level testing for label bias inherited from historical treatment, independent of feature-level accuracy or protected-attribute analysis |
+
+### MOD — Model (16 procedures)
+| Procedure | IRQ | Tests that… |
+|---|---|---|
+| TP-MOD-001 | IRQ-MOD-001 | capability envelope and out-of-boundary failure behaviour are documented and tested |
+| TP-MOD-002 | IRQ-MOD-002 | capability deltas per release are assessed and re-approved before use |
+| TP-MOD-003 | IRQ-MOD-003 | reasoning degradation limits are tested and reflected in usage constraints |
+| TP-MOD-004 | IRQ-MOD-004 | confabulation rates are quantified per use case and sit within approved tolerances |
+| TP-MOD-005 | IRQ-MOD-005 | epistemic-state handling (uncertainty, ambiguity, absence, conflict, impossibility) is tested and safe |
+| TP-MOD-006 | IRQ-MOD-006 | confidence and uncertainty signals are calibrated across expected operating conditions |
+| TP-MOD-007 | IRQ-MOD-007 | metric/intent alignment is analysed and residual mismatch formally accepted |
+| TP-MOD-008 | IRQ-MOD-008 | post-training behaviours are screened for optimisation artefacts before approval |
+| TP-MOD-009 | IRQ-MOD-009 | no control relies on model-stated rationale without documented faithfulness caveats |
+| TP-MOD-010 | IRQ-MOD-010 | shift-type-specific validation exists with defined revalidation triggers |
+| TP-MOD-011 | IRQ-MOD-011 | approval relies on held-out, contamination-checked, firm-relevant evaluations |
+| TP-MOD-012 | IRQ-MOD-012 | output-to-training feedback paths are identified and filtered or blocked |
+| TP-MOD-013 | IRQ-MOD-013 | prompt and config changes follow change control with behavioural regression tests |
+| TP-MOD-014 | IRQ-MOD-014 | run-to-run and near-identical-input decision stability is measured and bounded at a pinned configuration; decision-extraction logic is validated independently of generation quality |
+| TP-MOD-015 | IRQ-MOD-015 | evaluator/judge models are independently validated, version-pinned and screened for correlated error before their output is relied on as the institution's own evaluation evidence |
+| TP-MOD-016 | IRQ-MOD-016 | pre-deployment evaluation evidence relied on for authorisation carries a documented and evidenced external-validity basis: evaluation-to-production divergence is identified, test-awareness indication is measured on the firm's own traces, consequential results are reported split by that indication, and the limits of the evidence are stated in the authorisation record |
+
+### AGT — Agentic (14 procedures)
+| Procedure | IRQ | Tests that… |
+|---|---|---|
+| TP-AGT-001 | IRQ-AGT-001 | end-to-end goal fidelity is evaluated on representative long-horizon tasks |
+| TP-AGT-002 | IRQ-AGT-002 | goal stability is tested and intent changes verifiably re-anchor or halt execution |
+| TP-AGT-003 | IRQ-AGT-003 | tool inventory is least-privilege, justified and periodically recertified |
+| TP-AGT-004 | IRQ-AGT-004 | composite-action risk is analysed and bounded by transaction-level guardrails |
+| TP-AGT-005 | IRQ-AGT-005 | tool-call and tool-output validation rejects malformed, fabricated or untrusted content |
+| TP-AGT-006 | IRQ-AGT-006 | delegation is bounded by enforced depth, scope and budget limits |
+| TP-AGT-007 | IRQ-AGT-007 | multi-agent interactions are tested for error amplification with responsibility mapped per action |
+| TP-AGT-008 | IRQ-AGT-008 | operational memory is validated, attributable and purgeable before influencing decisions |
+| TP-AGT-009 | IRQ-AGT-009 | all behaviour-bearing artefacts (prompts, reasoning scaffolds) are versioned, documented configuration |
+| TP-AGT-010 | IRQ-AGT-010 | actual agent trajectories are reconcilable against the approved process design |
+| TP-AGT-011 | IRQ-AGT-011 | complete, tamper-evident action traces exist for every run |
+| TP-AGT-012 | IRQ-AGT-012 | irreversibility gates are enforced in the orchestration layer, not the prompt |
+| TP-AGT-013 | IRQ-AGT-013 | GUI-action safety (element verification, state checks, confirmation gates) is tested |
+| TP-AGT-014 | IRQ-AGT-014 | evaluation/testing environments for agentic AI are structurally contained against both escape channels, with access justified rather than default and monitored in real time, independent of the task prompt's own assertions |
+
+### SEC — Security (14 procedures)
+| Procedure | IRQ | Tests that… |
+|---|---|---|
+| TP-SEC-001 | IRQ-SEC-001 | injection and jailbreak resistance is red-teamed pre-production per model version |
+| TP-SEC-002 | IRQ-SEC-002 | adversarial testing covers multi-turn and obfuscated attack classes |
+| TP-SEC-003 | IRQ-SEC-003 | retrieved content is treated as untrusted data with tested injection defences |
+| TP-SEC-004 | IRQ-SEC-004 | untrusted-content-to-action paths are constrained and adversarially tested |
+| TP-SEC-005 | IRQ-SEC-005 | write paths into retrievable corpora are access-controlled and integrity-screened |
+| TP-SEC-006 | IRQ-SEC-006 | no secrets reside in extractable context, and extraction attempts are tested and logged |
+| TP-SEC-007 | IRQ-SEC-007 | extraction risk is assessed and mitigations (filtering, differential privacy, access limits) evidenced |
+| TP-SEC-008 | IRQ-SEC-008 | data-flow mapping confirms no uncontrolled egress of confidential content |
+| TP-SEC-009 | IRQ-SEC-009 | artefact integrity (signing, scanning, trusted registries) is enforced |
+| TP-SEC-010 | IRQ-SEC-010 | tool servers are vetted, pinned, permission-scoped and monitored for change |
+| TP-SEC-011 | IRQ-SEC-011 | non-human identity management enforces least privilege and rapid revocation |
+| TP-SEC-012 | IRQ-SEC-012 | foreseeable dual-use pathways for customer-facing generative output are identified, registered and bounded by tested refusal and rate controls, where applicable |
+| TP-SEC-013 | IRQ-SEC-013 | detection efficacy of AI-based controls is tested against adversarially evolved inputs mapped to a recognised threat taxonomy, with a defined re-test cadence, not solely against historical case libraries |
+| TP-SEC-014 | IRQ-SEC-014 | model output crossing a trust boundary into an interpreter, renderer, query engine or executable context is validated and sanitised to the same standard as any other untrusted input, independent of agentic tool-output validation |
+
+### HUM — Human Oversight (9 procedures)
+| Procedure | IRQ | Tests that… |
+|---|---|---|
+| TP-HUM-001 | IRQ-HUM-001 | reviewer error-detection and disagreement rates are measured against defined standards |
+| TP-HUM-002 | IRQ-HUM-002 | review effectiveness metrics evidence substantive, trained, penalty-free challenge |
+| TP-HUM-003 | IRQ-HUM-003 | critical-skill retention is evidenced through periodic AI-free competency assessment |
+| TP-HUM-004 | IRQ-HUM-004 | oversight is pre-commitment, capacity-matched and reconstruction-capable |
+| TP-HUM-005 | IRQ-HUM-005 | named, empowered individuals hold tested suspension authority |
+| TP-HUM-006 | IRQ-HUM-006 | decision-level accountability is named, SMCR-mapped and evidenced in records |
+| TP-HUM-007 | IRQ-HUM-007 | explanation adequacy is validated with real users, not asserted |
+| TP-HUM-008 | IRQ-HUM-008 | a functioning contest-and-override route exists with outcome MI |
+| TP-HUM-009 | IRQ-HUM-009 | a defined, proportionate evidential standard governs AI-triggered adverse action; the affected subject receives disclosure of the evidence and reasoning and is not required to disprove the system before the action takes effect |
+
+### TPR — Third Party (9 procedures)
+| Procedure | IRQ | Tests that… |
+|---|---|---|
+| TP-TPR-001 | IRQ-TPR-001 | documented, risk-based provider due diligence precedes reliance |
+| TP-TPR-002 | IRQ-TPR-002 | contractual and licence rights match the firm's assurance, usage and exit requirements |
+| TP-TPR-003 | IRQ-TPR-003 | embedded vendor AI is discovered and governed, not just directly-procured AI |
+| TP-TPR-004 | IRQ-TPR-004 | version pinning and behavioural canary tests detect provider drift, and changes cannot bypass governance |
+| TP-TPR-005 | IRQ-TPR-005 | open-source intake is gated by provenance and integrity verification |
+| TP-TPR-006 | IRQ-TPR-006 | embedding and vector dependencies are documented with rebuild and exit plans |
+| TP-TPR-007 | IRQ-TPR-007 | provider data handling is verified against the firm's confidentiality obligations |
+| TP-TPR-008 | IRQ-TPR-008 | concentration is measured against appetite with a tested substitution strategy |
+| TP-TPR-009 | IRQ-TPR-009 | vendor due diligence extends to financial standing and continuity risk; contractual and technical provisions secure data, model and configuration retrieval and service continuation on vendor failure |
+
+### RES — Operational Resilience (7 procedures) — see PLAYBOOK_RES.md
+| Procedure | IRQ | ★ | Tests that… |
+|---|---|---|---|
+| TP-RES-001 | IRQ-RES-001 | ★3 | fallback operation is documented, resourced and exercised against impact tolerance for both unavailable and untrusted triggers |
+| TP-RES-002 | IRQ-RES-002 | ★2 | failure and stress modes produce explicit, signalled safe states with no duplicated actions, verified by injection testing |
+| TP-RES-003 | IRQ-RES-003 | ★2 | a tested containment mechanism meets a defined time-to-stop objective with no orphaned mid-plan side effects |
+| TP-RES-004 | IRQ-RES-004 | ★2 | versioned rollback of every behavioural component — model, prompt, index, agent memory — meets RTO/RPO in rehearsal |
+| TP-RES-005 | IRQ-RES-005 | ★3 | monitoring is threshold-driven with alerts that fire and pre-agreed response playbooks that are followed |
+| TP-RES-006 | IRQ-RES-006 | ★2 | alerting detects gradual behavioural decay, evidenced by replaying synthetic decay series through the real configuration |
+| TP-RES-007 | IRQ-RES-007 | ★3 | op-res mapping and the scenario testing library explicitly cover AI dependencies and AI-specific scenario types |
+
+### CON — Conduct & Fairness (10 procedures) — see PLAYBOOK_CON.md
+| Procedure | IRQ | ★ | Tests that… |
+|---|---|---|---|
+| TP-CON-001 | IRQ-CON-001 | ★3 | subgroup and intersectional outcome equity is measured against pre-selected, justified fairness criteria |
+| TP-CON-002 | IRQ-CON-002 | ★2 | proxy discrimination via individual features and feature combinations is analysed and residual risk formally accepted |
+| TP-CON-003 | IRQ-CON-003 | ★2 | vulnerable-customer treatment is detected across every AI channel and routed to an adapted pathway |
+| TP-CON-004 | IRQ-CON-004 | ★2 | customer-facing content accuracy is controlled by a pre-delivery gate that would actually catch material mis-statements |
+| TP-CON-005 | IRQ-CON-005 | ★1 | access and exclusion effects are assessed via matched-risk cohorts differing on data availability |
+| TP-CON-006 | IRQ-CON-006 | ★2 | price decomposition demonstrates fair value by isolating elasticity-driven from risk-driven differentiation |
+| TP-CON-007 | IRQ-CON-007 | ★2 | feedback-loop pathways are mapped and interrupted, tested by multi-cycle retraining simulation |
+| TP-CON-008 | IRQ-CON-008 | ★2 | AI-use disclosure is present at the point of interaction and comprehensible, tested with a representative panel |
+| TP-CON-009 | IRQ-CON-009 | ★2 (pending adoption) | ordinary-use harmful-output risk is tested independently of adversarial red-teaming and controlled to a documented tolerance |
+| TP-CON-010 | IRQ-CON-010 | ★1 | friction in AI-mediated exit, switching, cancellation, claim and complaint paths is measured against the acquisition path and across near-identical customers, with material asymmetry documented and formally accepted or remediated |
+
+### GOV — Governance & Accountability (16 procedures) — see PLAYBOOK_GOV.md
+| Procedure | IRQ | ★ | Tests that… |
+|---|---|---|---|
+| TP-GOV-001 | IRQ-GOV-001 | ★3 | every system has a named, SM&CR-mapped, empowered owner who has genuinely exercised ownership |
+| TP-GOV-002 | IRQ-GOV-002 | ★2 | inventory completeness is actively verified through independent discovery routes, not self-declared |
+| TP-GOV-003 | IRQ-GOV-003 | ★3 | conditions of use are technically enforced in platform configuration and monitored, not merely stated |
+| TP-GOV-004 | IRQ-GOV-004 | ★3 | tiering reflects autonomy, tool access and customer proximity, verified by independent re-scoring |
+| TP-GOV-005 | IRQ-GOV-005 | ★3 | the policy suite covers GenAI and agentic risk areas explicitly, not by inference from legacy policy |
+| TP-GOV-006 | IRQ-GOV-006 | ★2 | AI risk appetite is measurable and demonstrably gates individual deployment decisions |
+| TP-GOV-007 | IRQ-GOV-007 | ★3 | validation is structurally independent, exercises reject authority, and rests on firm-relevant evidence |
+| TP-GOV-008 | IRQ-GOV-008 | ★3 | monitoring signals reach accountable governance bodies and produce substantive decisions, not "noted" entries |
+| TP-GOV-009 | IRQ-GOV-009 | ★3 | documentation is answerable by a naive reviewer under time limit and current against change control |
+| TP-GOV-010 | IRQ-GOV-010 | ★3 | consequential decisions are fully reconstructable from retained records across all five artefact types |
+| TP-GOV-011 | IRQ-GOV-011 | ★3 | regulatory obligation mapping is complete per system, verified by independent re-determination |
+| TP-GOV-012 | IRQ-GOV-012 | ★2 | the effective operating envelope is reconciled against the approved envelope across six drift vectors, with drift triggering re-approval |
+| TP-GOV-013 | IRQ-GOV-013 | ★2 | cohort-level identification and proactive remediation capability exists for any defined AI failure signature, distinct from and additional to single-decision reconstruction |
+| TP-GOV-014 | IRQ-GOV-014 | ★2 | AI-specific failure classes are named in the incident taxonomy, severity-mapped and routed to the correct notification path |
+| TP-GOV-015 | IRQ-GOV-015 | ★2 | external capability claims are traceable to, and do not exceed, the validated capability envelope; a reconciliation process detects and corrects drift between representation and evidence |
+| TP-GOV-016 | IRQ-GOV-016 | ★2 | AI-originated output entering risk-data aggregation and regulatory reporting is governed to the same BCBS 239 data-quality principles as other risk data, with AI provenance flagged and traceable through the aggregation chain |
+
+**Total: 109 procedures** — DAT 14, MOD 16, AGT 14, SEC 14, HUM 9, TPR 9, RES 7, CON 10, GOV 16.
+
+**Programme total: 455.0 reviewer-days** — DAT 54, MOD 72, AGT 64, SEC 57.0, HUM 42.0, TPR 29.0, RES 27, CON 49, GOV 61. This is a manual-equivalent upper bound for the full battery, not a quotation: §5A's point stands that the prescribed set is a ceiling to calibrate down from, and it is more load-bearing at 455.0 than it was at the previous figure, not less.
+
+---
+
+## 10. Governance of This Component
+
+**Change control.** A procedure may be amended without touching its canvas where the amendment concerns execution detail only. Any amendment affecting the ★ rating, the pass/fail interpretation or the assurance objective requires a canvas change first, approved by the maintainer.
+
+**Version alignment.** The release version in `README.md` applies to every procedure sheet and to the canvas it was derived from; the domain playbooks state it. A canvas revision triggers a review of the corresponding procedure within the same cycle.
+
+**Feedback loop.** Where fieldwork repeatedly shows a procedure to be impractical, under-specified or producing findings that do not survive challenge, the Testing Lead raises it with the maintainer. Procedures are expected to change as the underlying methodologies mature — in particular, several currently rated ★2 should be re-rated upward if and when external benchmarks emerge, and that re-rating must happen at the canvas, not silently in the playbook.
+
+---
+
+**Change Log:** v1.3.0 (2026-10) — §1 names the regulatory crosswalk; §3.1 states the non-production rule by reference to METHODOLOGY_STANDARDS.md §3, with two admissible routes for evidence from production and the staging replica described as a test environment; §5 tier ★ minimums follow the assurance-level rule (Tier 1's disclosure covers ★1 as well as ★2 procedures; Tiers 2 and 3 require ★4 or above on material tests for reasonable assurance, and a material procedure rated ★1–★3 runs with disclosure and limits the opinion to limited assurance), and the friction note carries the as-at ★ count and its consequence; §5A wording made neutral; §6 names the Testing Lead as the Phase 4 owner; §10 and the document custodian name the maintainer.
+
+**Version:** the release version in `README.md`; the signed manifest, `ownership/MANIFEST.sha256`, identifies the release.
+**Status:** Active
