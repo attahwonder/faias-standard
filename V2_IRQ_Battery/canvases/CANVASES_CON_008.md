@@ -100,14 +100,14 @@ Assuming controls are well-implemented and monitored:
   Severity: 2 (individual customer lacks full context but underlying decision quality is not itself necessarily impaired; primarily a transparency/contestability gap)
   Likelihood: 2 (foreseeable given the common gap between interface-level and substantive-influence disclosure; mitigated where comprehension testing is active)
   Detectability: 2 (comprehension testing and complaint-pattern monitoring surface gaps within a reporting cycle)
-  Recoverability: 2 (remediable via disclosure redesign and re-testing within weeks to months)
+  Recoverability: 3 (remediable via disclosure redesign and re-testing within weeks to months)
   Novelty: 3 (distinguishing interface-level from substantive-influence disclosure, and testing the latter's comprehension specifically for AI, is a genuinely newer discipline)
 
 If controls are absent or degraded:
   Severity: 3 (systemic undermining of contestability across all AI-influenced decisions; Consumer Duty and accountability-framework breach)
   Likelihood: 3 (probable given the common conflation of generic T&Cs disclosure with tested, point-of-interaction, substantive disclosure)
   Detectability: 3 (silent failure from the firm's perspective; typically surfaces only via complaint escalation or thematic review specifically probing AI transparency)
-  Recoverability: 2 (remediable via disclosure redesign, though prior undisclosed decisions may warrant retrospective review)
+  Recoverability: 3 (remediable via disclosure redesign, though prior undisclosed decisions may warrant retrospective review)
   Novelty: 4 (domain expert very likely to treat generic legal disclosure as sufficient, missing the comprehension and point-of-interaction requirements entirely)
 
 Residual risk interpretation: Moderate-to-high priority; while individual severity is more contained than some other CON IRQs, this failure mode directly undermines the effectiveness of the accountability/contestability framework (HUM-007/HUM-008) that other controls rely upon as a backstop, so its systemic importance exceeds its standalone severity rating.
@@ -119,18 +119,24 @@ Residual risk interpretation: Moderate-to-high priority; while individual severi
 | **Severity** | 3 | Systemic undermining of contestability across all AI-influenced decisions; directly weakens the accountability backstop other controls rely upon |
 | **Likelihood** | 3 | Probable given the common conflation of generic legal disclosure with tested, point-of-interaction, substantive-influence disclosure |
 | **Detectability** | 3 | Silent from the firm's perspective; typically surfaces only via complaint escalation or thematic review specifically probing AI transparency |
-| **Recoverability** | 2 | Remediable via disclosure redesign and re-testing within weeks to months |
+| **Recoverability** | 3 | Remediable via disclosure redesign and re-testing within weeks to months |
 | **Novelty** | 4 | Domain expert very likely to treat generic legal/T&Cs disclosure as sufficient, missing the comprehension and point-of-interaction requirements |
 
 ## 17. Regulatory Basis
-> [FCA, PS22/9, July 2022, and FG22/5, July 2022, "Consumer Duty final guidance"] establishes the consumer-understanding outcome, requiring communications to be tested for comprehension with the actual target audience, and requires customers to have the information they need, when they need it. [UNVERIFIED — no FCA-specific AI transparency/disclosure guidance beyond the general Consumer Duty communications requirement and the general "AI and the FCA: our approach" position was located] (verified 29 Jul 2026).
+> [FCA, PS22/9, July 2022, and FG22/5, July 2022, "Final non-Handbook Guidance for firms on the Consumer Duty"] establishes the consumer-understanding outcome, requiring communications to be tested for comprehension with the actual target audience, and requires customers to have the information they need, when they need it. [UNVERIFIED — no FCA-specific AI transparency/disclosure guidance beyond the general Consumer Duty communications requirement and the general "AI and the FCA: our approach" position was located] (verified 29 Jul 2026).
 
 ## 18. Research Basis
 > [Belton, C., Bogiatzis-Gibbons, D., Keeley, I., Spang, J., Turkay, C. & Pi, Y., "Credit where credit is due: How can we explain AI's role in credit decisions for consumers?" FCA Research Note, 24 February 2025] is FS-specific, empirical and directly on point. In a UK regulator experimental study, participants tried to identify errors (bad input data versus flawed algorithm logic) in AI-assisted credit decisions under different explanation designs; the explanation method significantly affected — and in the data-error condition, impaired — participants' ability to detect errors, and participants' self-reported confidence rose even as actual error-detection performance fell. This is the mechanism this claim is concerned with directly: disclosure and explanation can raise a customer's confidence in an AI-influenced decision while lowering their actual ability to identify when it is wrong, so disclosure that is merely present is not evidence that it is comprehended or that it functions as a check.
 >
 > [Consumer Financial Protection Bureau, "Chatbots in consumer finance," 6 June 2023] provides supporting, if qualitative, US evidence that chatbots' limited nature and lack of human escalation "may not be apparent" to customers signing up for a financial relationship — a disclosure-awareness gap evidenced via complaint-database review rather than a representative comprehension test, and consistent in direction with, but weaker than, Belton et al.
 >
-> **Research basis last reviewed:** 25 August 2026 · **review cadence:** Standard (12 months)
+> [Financial Conduct Authority, "Consumer understanding: good practice and areas for improvement," Consumer Duty review, published 13 March 2026] records, as good practice, that firms test communications before and after a change with proportionate tools — surveys, comprehension checks, A/B testing (before and after) and feedback from frontline interactions — and verify whether the change improves customer understanding. This is the general testing method that field 11 applies to AI-influence disclosure. It is a supervisory good-practice publication and not a prescribed test protocol, and it does not address disclosure of AI use.
+>
+> **[FAIAS Incident Register, row 56, "In the matter of Earnest Operations LLC", 2025]** — the Assurance of Discontinuance agreed between a state Attorney General and a student-loan lender alleges that the lender gave "inaccurate reasons for declining an application to consumers in Adverse Action Notices" (para 54), some of the inaccurate reasons coming from a drop-down menu that lacked the model's educational variables (paras 52(a)–(b) and 53). A notice existed but stated the wrong reasons, so the customer could not understand or contest the decision. These are the Attorney General's allegations, which the lender denies and does not admit (para 7), not an adjudicated finding.
+>
+> **[FAIAS Incident Register, row 57, "CJEU C-203/22 Dun & Bradstreet Austria", 2025]** — the Court of Justice of the European Union records, in its judgment (paras 16–19) and press release on Case C-203/22, that an Austrian court had found, by final decision, that Dun & Bradstreet "had failed to provide the customer with 'meaningful information about the logic involved' in the automated decision-making in question" (press release), a refusal of a mobile-phone contract on an automated credit assessment. The Court ruled that the person may require an explanation of the procedure and principles actually applied (operative part, point 1), and its press release states that the explanation must enable the person to understand and challenge the decision.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -154,6 +160,10 @@ Related IRQs:
 [2] Financial Conduct Authority, 2022. "FG22/5 — Final non-Handbook Guidance for firms on the Consumer Duty."
     Published: July 2022
     URL: https://www.fca.org.uk/publication/finalised-guidance/fg22-5.pdf
+
+[3] Financial Conduct Authority, 2026. "Consumer understanding: good practice and areas for improvement."
+    Published: 13 March 2026
+    URL: https://www.fca.org.uk/publications/good-and-poor-practice/consumer-understanding-good-practice-areas-improvement
 ```
 
 ## 21. Four-Test Validation Footer
@@ -173,6 +183,10 @@ Related IRQs:
 - v1.0 (2026-07): Initial publication.
 - v1.2.0 (2026-09-12): Field 19 — IRQ-CON-010 added as the reciprocal cross-reference (disclosure of AI's material influence is necessary and not sufficient where the journey separately frictions exit; TP-CON-008's non-production journey reproduction is the nearest adjacent procedure). No other field changed; ★2 unchanged.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citations added in the reserved form (row 56, In the matter of Earnest Operations LLC, for inaccurate adverse action notices, alleged and not adjudicated; row 57, CJEU C-203/22 Dun & Bradstreet Austria, for the explanation of an automated credit decision that the Court held is owed). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2 (Field 16, and the controls-in-place case in Field 15). The canvas states recovery within weeks to months, which is beyond the within-hours level that ASSURANCE_MODEL.md §7 scores 2; the scale names no band between days and years, and 3 (reversible within days) is the nearest anchor. In the controls-absent case Recoverability is scored 3 in place of 2, so that it is not lower than the controls-in-place figure. The other axes, the ★ rating and the research basis are unchanged.
+- v1.3.3 (2026-10-09): Field 17 Regulatory Basis — the FCA finalised guidance FG22/5 is cited under its issued title, "Final non-Handbook Guidance for firms on the Consumer Duty", in place of a description set in quotation marks. Form corrections only. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — the FCA's consumer-understanding good-practice publication of 13 March 2026 added as a regulator source for the general comprehension-testing method, with its limits. Field 20 — entry [3] added. Research-basis review date moved. No change to controls, test, ★2 or risk profile.
 ```
 
 ---

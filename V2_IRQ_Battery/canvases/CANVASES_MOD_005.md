@@ -137,12 +137,14 @@ Residual risk: Critical. Deployment gate should not be passed without epistemic-
 | **Novelty** | 4 | The five-way epistemic-state distinction is genuinely AI-specific; a domain expert's mental model of "the system would say if it didn't know" does not hold for generative models by default. |
 
 ## 17. Regulatory Basis
-> [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — decisions affecting retail customers must be properly evidenced; fabricated resolution of missing or conflicting evidence is a direct foreseeable-harm failure. [PRA SS1/23, May 2023, effective 17 May 2024, Principle 3/4] — development and validation principles require that model behaviour under degraded or ambiguous input conditions is understood and controlled, not merely under clean test conditions. No regulation names "epistemic-state behavioural distinction" explicitly; this IRQ operationalises the above principles for a failure mode specific to generative models. (verified 29 Jul 2026)
+> [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — decisions affecting retail customers must be properly evidenced; fabricated resolution of missing or conflicting evidence is a direct foreseeable-harm failure. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024, Principle 3/4] — development and validation principles require that model behaviour under degraded or ambiguous input conditions is understood and controlled, not merely under clean test conditions. No regulation names "epistemic-state behavioural distinction" explicitly; this IRQ operationalises the above principles for a failure mode specific to generative models. (verified 29 Jul 2026)
 
 ## 18. Research Basis
 > [Xiong, M., et al., 2023, "Can LLMs Express Their Uncertainty? An Empirical Evaluation of Confidence Elicitation in LLMs", arXiv:2306.13063] — demonstrates systematic overconfidence when models verbalise uncertainty, evidencing the core mechanism. [Tian, K., et al., 2023, "Just Ask for Calibration", arXiv:2305.14975] — shows verbalised confidence can be elicited more reliably than raw token probabilities, informing the control design. [Kadavath, S., et al., 2022, "Language Models (Mostly) Know What They Know", arXiv:2207.05221] — self-assessment carries signal but degrades out of distribution, supporting the need for explicit testing rather than assumed abstention. [Wu, K., et al., 2024, "ClashEval", arXiv:2404.10198] — quantifies how models resolve tension between retrieved evidence and prior belief, directly relevant to the conflicting-evidence condition. [Chen, J., et al., 2023, "Benchmarking Large Language Models in Retrieval-Augmented Generation" (RGB), arXiv:2309.01431] — provides tested dimensions (noise robustness, negative rejection, counterfactual robustness) directly mapping to this IRQ's five conditions.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Fast (6 months)
+> **[FAIAS Incident Register, row 73, "Walters v. OpenAI", 2025]** — the court's recital of undisputed facts records that ChatGPT, given the URL of a complaint, first said that it did "not have access to the internet and cannot read or retrieve any documents"; given the same URL again, it "provided a different, inaccurate summary" of the complaint; and, asked whether it could read the URL, it answered "yes" and named a real person as the accused embezzler. A request the system could not satisfy produced an inaccurate summary and not a refusal. The court granted summary judgment to OpenAI. The action is a defamation case in Georgia, not a financial-services matter.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -169,8 +171,8 @@ Residual risk: Critical. Deployment gate should not be passed without epistemic-
 [5] Chen, J., Lin, H., Han, X., Sun, L., 2023. "Benchmarking Large Language Models in
     Retrieval-Augmented Generation." arXiv:2309.01431.
 [6] FCA, 2022. "PS22/9: A New Consumer Duty." PRIN 2A in force 31 July 2023.
-[7] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023, effective
-    17 May 2024.
+[7] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -194,6 +196,9 @@ FOUR-TEST VALIDATION:
 
 Change Log:
 - v1.0 (2026-07): Initial publication; four tests passed.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 73, Walters v. OpenAI, a defamation action and not a financial-services matter). Research-basis review date moved. No change to controls, test, ★3 or risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 ```
 
 ---

@@ -63,7 +63,7 @@ Control Breakpoints:
 
 ## 9. Expected Controls (Traced)
 - **Statistical process control with trend detection (e.g. CUSUM, rolling baseline comparison)** — [Page, E.S., 1954, "Continuous Inspection Schemes", Biometrika 41(1–2):100–115, https://doi.org/10.1093/biomet/41.1-2.100; extended by NIST AI RMF 1.0, January 2023, MEASURE function, to AI system performance monitoring] — detects cumulative small deviations, not only single-point threshold breaches.
-- **Periodic model revalidation independent of alerting** — [PRA, SS1/23, May 2023, ongoing monitoring and periodic revalidation principle] — a scheduled, alert-independent review acts as a backstop against slow-decay blind spots.
+- **Periodic model revalidation independent of alerting** — [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023), ongoing monitoring and periodic revalidation principle] — a scheduled, alert-independent review acts as a backstop against slow-decay blind spots.
 - **Drift baselining with trend-sensitive criteria** — [linked IRQ-DAT-011, IRQ-MOD-010] — statistical baselines explicitly designed to detect gradual as well as abrupt shift.
 - **Rolling cohort comparison rather than point-in-time snapshot** — Emerging Practice — comparing current performance against a rolling historical window (not just the most recent measurement) to surface trend; no single published FS-specific standard identified, drawing on general time-series monitoring practice.
 - **Alert threshold review balancing sensitivity and alert fatigue** — Emerging Practice — deliberate, documented trade-off decision rather than an unexamined default toward wide thresholds.
@@ -126,18 +126,22 @@ Residual risk interpretation: This is a high-detectability-risk, high-novelty IR
 | **Novelty** | 4 | Counter-intuitive even for teams who believe they already have adequate monitoring |
 
 ## 17. Regulatory Basis
-> [PRA, SS1/23, May 2023] establishes ongoing monitoring and periodic revalidation as continuous obligations, which this IRQ interprets as requiring sensitivity to gradual as well as abrupt change. [PRA, SS1/21, March 2021] and [Regulation (EU) 2022/2554, DORA, Art. 10] establish detection obligations generally; neither specifies trend-detection methodology explicitly, so this IRQ's specific technical requirement (trend/cumulative-drift sensitivity) is an interpretive extension rather than a directly cited rule [UNVERIFIED — no more specific PRA/DORA text on gradual-degradation/trend-detection methodology was located after search] (verified 29 Jul 2026).
+> [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] establishes ongoing monitoring and periodic revalidation as continuous obligations, which this IRQ interprets as requiring sensitivity to gradual as well as abrupt change. [Regulation (EU) 2022/2554, DORA, Art. 10] establishes detection obligations generally; [PRA, SS1/21, March 2022 (11 March 2022, updating 29 March 2021)] sets none, and expects scenario testing to focus on recovery and response arrangements rather than on preventing incidents from occurring (para 6.1); neither specifies trend-detection methodology explicitly, so this IRQ's specific technical requirement (trend/cumulative-drift sensitivity) is an interpretive extension rather than a directly cited rule [UNVERIFIED — no more specific PRA/DORA text on gradual-degradation/trend-detection methodology was located after search] (verified 29 Jul 2026).
 
 ## 18. Research Basis
 > The statistical basis for trend and cumulative-drift detection is peer-reviewed, multi-group and named, not a general practice claim. CUSUM originates in [Page, E.S., 1954, "Continuous Inspection Schemes", Biometrika 41(1–2):100–115, https://doi.org/10.1093/biomet/41.1-2.100], with the change-point inference that completes the "Page-Hinkley" pairing in [Hinkley, D.V., 1971, "Inference about the change-point from cumulative sum tests", Biometrika 58(3):509–523, https://doi.org/10.1093/biomet/58.3.509]. The two canonical drift detectors come from independent groups: DDM in [Gama, J., Medas, P., Castillo, G., Rodrigues, P., 2004, "Learning with Drift Detection", Advances in Artificial Intelligence – SBIA 2004, Lecture Notes in Computer Science 3171, pp. 286–295, https://doi.org/10.1007/978-3-540-28645-5_29] and ADWIN in [Bifet, A., Gavaldà, R., 2007, "Learning from Time-Changing Data with Adaptive Windowing", Proc. 2007 SIAM International Conference on Data Mining, pp. 443–448, https://doi.org/10.1137/1.9781611972771.42], the latter providing "rigorous guarantees of its performance, in the form of bounds on the rates of false positives and false negatives" and benchmarking itself directly against DDM. The field is surveyed in [Gama, J., Žliobaitė, I., Bifet, A., Pechenizkiy, M., Bouchachia, A., 2014, "A survey on concept drift adaptation", ACM Computing Surveys 46(4):1–37, https://doi.org/10.1145/2523813] — already carried in this repository's academic source register and cited at IRQ-DAT-011, to which this IRQ's failure chain links.
 >
 > Two findings in that literature are load-bearing for this IRQ and replace what was previously asserted. First, the gradual-versus-abrupt asymmetry is a published result, not an inference: "As predicted by theory, detecting the change is harder in slopes than in abrupt changes" [Bifet & Gavaldà 2007, §3; read at the authors' preprint of 17 October 2006, the version relied on, the SDM proceedings text not having been reached]. Second, the Independent Test at §11 is that literature's own evaluation protocol rather than a design constructed here — synthetic series at a known slope, a no-change control for false positives, and measured detection delay, reported per slope [Bifet & Gavaldà 2007, §4, same preprint].
 >
+> A later peer-reviewed protocol covers four of the detectors named above. [Cerqueira, V., Gomes, H.M., Heyden, M., Pfahringer, B., Bifet, A., 2026, "A Framework for Evaluating and Benchmarking Concept Drift Detection Methods", Proceedings of the 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD '26), pp. 8671–8682, https://doi.org/10.1145/3770855.3819070] injects controlled changes into real-world datasets, scores detection with timing-aware measures (an F1 detection score and a normalised detection time), and benchmarks 14 detectors, among them ADWIN, CUSUM, DDM and Page-Hinkley, on seven real-world datasets under abrupt and gradual transitions. Its data are classification streams, not series of LLM output quality, so it supports the design of the Independent Test and not any finding about LLM drift. The authors state that their code and experiments are public at github.com/vcerqueira/experiments-drift_evaluation. No ★ change follows from this addition.
+>
 > Temporal quality degradation is empirically established in peer-reviewed work covering financial-services data: [Vela, D., Sharp, A., Zhang, R., Nguyen, T., Hoang, A., Pianykh, O.S., 2022, "Temporal quality degradation in AI models", Scientific Reports 12:11654, https://doi.org/10.1038/s41598-022-15245-z] reports degradation in 91% of 128 (model, dataset) pairs drawn from healthcare operations, transportation, finance and weather, and classifies the degradation it observed into at least three patterns (Figure 3 A–C): gradual, in which relative model error increases no faster than linearly over time; explosive; and increasing unpredictability. The same paper states the benchmark gap this IRQ's ★ turns on: the field still lacks "systematic knowledge on what exactly should trigger and control model retraining".
 >
-> [NIST AI RMF 1.0, January 2023, MEASURE function] extends continuous measurement expectations to AI systems generally. **The residual gap is narrower than previously recorded and is stated precisely: no peer-reviewed research addresses detection of slow decay in *LLM output quality* specifically, in financial services or elsewhere** [UNVERIFIED — searched 12 September 2026 across peer-reviewed indexing; none located. Candidate material on LLM drift is preprint or vendor-published only and is not cited here].
+> [NIST AI RMF 1.0, January 2023, MEASURE function] extends continuous measurement expectations to AI systems generally. **The residual gap is narrower than previously recorded and is stated precisely: no peer-reviewed research addresses detection of slow decay in *LLM output quality* specifically, in financial services or elsewhere** [UNVERIFIED — searched 12 September 2026 across peer-reviewed indexing; none located. Candidate material on LLM drift is mostly preprint or vendor-published; the one journal-published study (Chen, Zaharia and Zou, Harvard Data Science Review 6(2), 2024) compares two model snapshots and does not address detection of slow decay].
 >
-> **Research basis last reviewed:** 12 September 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 77, "Anthropic postmortem of three infrastructure bugs", 2025]** — the provider's own postmortem records quality decay that built up over weeks and was found through accumulating user reports: its evaluations "simply didn't capture the degradation users were reporting, in part because Claude often recovers well from isolated mistakes". The decay lasted weeks, not months, and had an infrastructure cause. It is an incident record and not peer-reviewed research, and the statement above that no peer-reviewed research addresses detection of slow decay in LLM output quality stands.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -149,12 +153,12 @@ Related IRQs:
 
 ## 20. References
 ```
-[1] Prudential Regulation Authority, 2023. "SS1/23 — Model risk management principles for banks."
-    Published: May 2023
+[1] Prudential Regulation Authority, 2026. "SS1/23 — Model risk management principles for banks."
+    Published: April 2026 (16 April 2026, updating 17 May 2023)
     URL: https://www.bankofengland.co.uk/prudential-regulation/publication/2023/may/model-risk-management-principles-for-banks-ss
 
-[2] Prudential Regulation Authority, 2021. "SS1/21 — Operational resilience: Impact tolerances for important business services."
-    Published: March 2021
+[2] Prudential Regulation Authority, 2022. "SS1/21 — Operational resilience: Impact tolerances for important business services."
+    Published: March 2022 (11 March 2022, updating 29 March 2021)
     URL: https://www.bankofengland.co.uk/prudential-regulation/publication/2021/march/operational-resilience-impact-tolerances-for-important-business-services-ss
 
 [3] NIST, 2023. "Artificial Intelligence Risk Management Framework (AI RMF) Version 1.0."
@@ -184,6 +188,10 @@ Related IRQs:
 [9] Vela, D., Sharp, A., Zhang, R., Nguyen, T., Hoang, A., Pianykh, O.S., 2022. "Temporal quality degradation in AI models." Scientific Reports 12:11654.
     Published: 8 July 2022
     URL: https://doi.org/10.1038/s41598-022-15245-z
+
+[10] Cerqueira, V., Gomes, H.M., Heyden, M., Pfahringer, B., Bifet, A., 2026. "A Framework for Evaluating and Benchmarking Concept Drift Detection Methods." Proceedings of the 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD '26), pp. 8671–8682. Code stated in the paper: github.com/vcerqueira/experiments-drift_evaluation.
+    Published: August 2026
+    URL: https://doi.org/10.1145/3770855.3819070
 ```
 
 ## 21. Four-Test Validation Footer
@@ -203,6 +211,14 @@ Related IRQs:
 - v1.0 (2026-07): Initial publication.
 - v1.2.0 (2026-09-12): ★2 justification rewritten at an unchanged rating (no ★ movement) — the statistical limb re-anchored from "a well-established general discipline" to peer-reviewed primaries (Page, Biometrika 41(1–2), 1954; Hinkley, Biometrika 58(3), 1971; Gama et al., SBIA 2004; Bifet & Gavaldà, SIAM SDM 2007; Gama et al., ACM Computing Surveys 46(4), 2014; Vela et al., Scientific Reports 12:11654, 2022); the field 9 CUSUM attribution re-anchored to Page (1954), field 18 rewritten, six references added at §20; the ★3 reading recorded as considered at this anchor with the rating held; the TP-RES-006 playbook sheet carries the same basis.
 - v1.3.0 (2026-10): Field 20 — reference [3], AI RMF 1.0, given the URL of NIST AI 100-1 in place of the URL of NIST AI 600-1. ★2 unchanged.
+- v1.3.3 (2026-10-09): Field 20 — the reference entry for PRA SS1/21 gives its current version, March 2022 (11 March 2022, updating 29 March 2021). No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/21 is no longer cited for detection obligations, which it does not set; the sentence states that SS1/21 expects scenario testing to focus on recovery and response arrangements rather than on preventing incidents (para 6.1). The DORA Art. 10 limb is unchanged. ★2 unchanged.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/21 cited as its March 2022 version (11 March 2022, updating 29 March 2021); the expectations cited are unchanged.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 77, Anthropic postmortem of three infrastructure bugs, an incident record and not peer-reviewed research). The statement in the field that no peer-reviewed research addresses detection of slow decay in LLM output quality stands. Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — Cerqueira et al. (KDD 2026) cited as a later peer-reviewed evaluation protocol for drift detectors, with its limit stated (classification streams, not LLM output quality). Field 20 References — entry [10] added. ★2 unchanged.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — the sentence on candidate LLM-drift material now names the journal-published study, Chen, Zaharia and Zou (Harvard Data Science Review 6(2), 2024), and states what it does not address; the UNVERIFIED marker on the slow-decay statement stands. Research-basis review date moved. ★2 unchanged.
 ```
 
 ---

@@ -149,12 +149,14 @@ agentic assurance conclusion.
 | **Novelty** | 3 | Recognising that abandoned/intermediate steps form part of the required evidential record, not just the final output, is a non-obvious extension of traditional audit-trail thinking. |
 
 ## 17. Regulatory Basis
-> [FCA/PRA record-keeping expectations under SYSC and DISP] require firms to retain records sufficient to reconstruct decisions for audit, complaint and regulatory purposes; an incomplete agentic trace does not meet this standard where the AI system materially influenced the decision. [PRA SS1/23, May 2023] requires governance and monitoring evidence for models within MRM scope, including agentic components. [EU AI Act, Regulation (EU) 2024/1689, Art. 12 (record-keeping/logging) and Art. 19 (log retention)] establishes explicit automatic-logging and retention obligations for high-risk AI systems, directly applicable where the agent supports credit or other Annex III high-risk activities (from 2 Dec 2027, per the Digital Omnibus postponement of Annex III deadlines agreed Jul 2026). (corrected & verified 29 Jul 2026)
+> [FCA/PRA record-keeping expectations under SYSC and DISP] require firms to retain records sufficient to reconstruct decisions for audit, complaint and regulatory purposes; an incomplete agentic trace does not meet this standard where the AI system materially influenced the decision. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] requires governance and monitoring evidence for models within MRM scope, including agentic components. [EU AI Act, Regulation (EU) 2024/1689, Art. 12 (record-keeping/logging) and Art. 19 (log retention)] establishes explicit automatic-logging and retention obligations for high-risk AI systems, directly applicable where the agent supports credit or other Annex III high-risk activities (from 2 Dec 2027, per the Digital Omnibus postponement of Annex III deadlines agreed Jul 2026). (corrected & verified 29 Jul 2026)
 
 ## 18. Research Basis
-> [Chan, A., et al., 2024, "Visibility into AI Agents," FAccT 2024, arXiv:2401.13138] — establishes identifiers, real-time monitoring and activity logs as the core requirements for agent oversight, directly informing this IRQ's control set. [Microsoft AI Red Team, 2025, "Taxonomy of Failure Modes in Agentic AI Systems," April 2025] — names "hidden chains" and incomplete observability as a recognised agentic failure category. [Anthropic, 2024, "Sabotage Evaluations for Frontier Models"] — evaluation framework premised on the ability to observe and audit an agent's actual behaviour, underscoring why complete traces are a prerequisite for any downstream agentic assurance activity.
+> [Chan, A., et al., 2024, "Visibility into AI Agents," FAccT 2024, arXiv:2401.13138] — establishes identifiers, real-time monitoring and activity logs as the core requirements for agent oversight, directly informing this IRQ's control set. [Microsoft AI Red Team, 2025, "Taxonomy of Failure Mode in Agentic AI Systems," April 2025] — its failure mode "Insufficient transparency and accountability" covers an action or decision of an agent whose accountability cannot be traced because the agent process was not logged well enough (printed p. 24). The taxonomy does not use the term "hidden chains", which is FAIAS's own. [Anthropic, 2024, "Sabotage Evaluations for Frontier Models"] — evaluation framework premised on the ability to observe and audit an agent's actual behaviour, underscoring why complete traces are a prerequisite for any downstream agentic assurance activity.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Fast (6 months)
+> **[FAIAS Incident Register, row 55, "Microsoft 365 Copilot audit-log gap", 2025]** — a security researcher reports that Microsoft 365 Copilot read a file and left no audit-log entry when the user asked it not to link the file it summarised: "in that case, the audit log is empty". A consequential AI action left no entry in the record a firm would use to reconstruct what its AI accessed. On the researcher's account Microsoft fixed the flaw, rated it "important", issued no CVE and planned no customer notice. Carried as a secondary row: the source is the researcher's own disclosure, and the dates and Microsoft's decisions are as he reports them.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -176,12 +178,13 @@ agentic assurance conclusion.
 ```
 [1] Chan, A., et al., 2024. "Visibility into AI Agents." Proc. FAccT 2024.
     arXiv:2401.13138.
-[2] Microsoft AI Red Team, 2025. "Taxonomy of Failure Modes in Agentic AI Systems."
+[2] Microsoft AI Red Team, 2025. "Taxonomy of Failure Mode in Agentic AI Systems."
     April 2025.
 [3] Anthropic, 2024. "Sabotage Evaluations for Frontier Models." October 2024.
 [4] European Union, 2024. "Regulation (EU) 2024/1689 — Artificial Intelligence Act,"
     Articles 12 and 19. OJ L 12.7.2024.
-[5] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023.
+[5] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023).
 ```
 
 ## 21. Four-Test Validation Footer
@@ -197,7 +200,8 @@ FOUR-TEST VALIDATION:
   traditional discrete-transaction logging — are part of what must be
   reconstructable for an agentic system.
 ✓ Test 2 (Plausible Harm): Grounded in Chan et al.'s visibility/activity-log
-  research and Microsoft's failure-mode taxonomy naming hidden chains explicitly.
+  research and the failure mode "Insufficient transparency and accountability" in
+  Microsoft's failure-mode taxonomy.
 ✓ Test 3 (Testable): Fully testable via engineered multi-step tasks with abandoned/
   retried branches, reconstructed from logs alone in a non-production environment.
   ★2 methodology, honestly caveated.
@@ -208,6 +212,11 @@ FOUR-TEST VALIDATION:
 Change Log:
 - v1.0 (2026-07): Initial publication; all four tests passed; flagged as a
   foundational, cross-cutting control for the domain.
+- v1.3.3 (2026-10-09): Fields 18 and 21 — the Microsoft AI Red Team taxonomy is cited for its failure mode "Insufficient transparency and accountability", in place of a "hidden chains" category, which the taxonomy does not name. "Hidden chains" stays as FAIAS's own term. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 18 and 20 — the Microsoft AI Red Team whitepaper takes its title as issued on its cover, "Taxonomy of Failure Mode in Agentic AI Systems". Form corrections only. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 55, Microsoft 365 Copilot audit-log gap, carried as a secondary row on the researcher's own disclosure). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 ```
 
 ---

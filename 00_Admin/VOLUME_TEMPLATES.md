@@ -183,7 +183,7 @@ Component 3 documents the Claims-Argument-Evidence (CAE) chains that form the ba
 - Table of Contents
 
 #### Part A: Assurance Claims Framework
-1. **Core Assurance Claims** (5–10 major claims)
+1. **Core Assurance Claims** (the core claims assessed, from CLAIMS_REGISTER.md: ASSURANCE_ARCHITECTURE.md, Layer 2)
    - Example claim: "The system only accesses authorised information sources within the designed operating envelope."
    - Example claim: "Human reviewers maintain genuine independent review capacity without automation bias."
    - Example claim: "Escalation failures are detected and prevent customer-impacting decisions."
@@ -194,13 +194,13 @@ Component 3 documents the Claims-Argument-Evidence (CAE) chains that form the ba
    - Example:
      | Core Claim | Supporting IRQs | Test Status | Materiality |
      |---|---|---|---|
-     | System accesses only authorised sources | IRQ-DAT-003, IRQ-DAT-006, IRQ-SEC-004 | Passed | Core |
-     | Escalation prevents wrong decisions | IRQ-HUM-007, IRQ-HUM-008 | Passed | Core |
+     | System accesses only authorised sources | IRQ-DAT-009, IRQ-DAT-010, IRQ-AGT-004, IRQ-SEC-008, IRQ-SEC-011 | Passed | Core |
+     | Escalation prevents wrong decisions | IRQ-HUM-004, IRQ-HUM-005 | Passed | Core |
 
 3. **Claim Weighting Rule**
    - A failed IRQ is material (impacts opinion) only if it undermines a core claim with no alternative control
-   - Example: "IRQ-MOD-004 (hallucination detection) failed → Undermines claim 'System confidence calibration prevents false acceptance.' → Remediation required before deployment opinion."
-   - Example: "IRQ-MOD-015 (capability uncertainty) flagged as inconclusive → Does not undermine claim, because escalation controls (IRQ-HUM-007) compensate → Opinion includes condition."
+   - Example: "IRQ-MOD-006 (confidence calibration) failed → Undermines claim 'System confidence calibration prevents false acceptance.' → Remediation required before deployment opinion."
+   - Example: "IRQ-MOD-001 (capability uncertainty) flagged as inconclusive → Does not undermine claim, because escalation controls (IRQ-HUM-004) compensate → Opinion includes condition."
 
 #### Part B: Materiality-Screened Findings
 
@@ -254,34 +254,15 @@ Component 4 is the centralised repository and inventory of all evidence collecte
 - Table of Contents
 
 #### Part A: Evidence Categories
-1. **Policy & Governance Documents**
-   - AI governance policy, approval workflows, roles
-   - Risk appetite statement for AI
-   - Third-party vendor assessment policy
+The seven categories of `V4_Evidence_Catalogue/EVIDENCE_PACK.md`. Each lists its mandatory items, with the expected evidence level, the claims supported and the tiers that require it.
 
-2. **Technical Design & Architecture**
-   - System architecture diagrams (model, data, integrations)
-   - Deployment configuration (staging, production)
-   - Security controls architecture
-
-3. **Training & Competence**
-   - Training records for AI governance roles
-   - Competence assessments (regulators may require demonstrated understanding)
-
-4. **Testing & Validation**
-   - Test plans, test cases, test execution logs
-   - Test results summary (pass/fail rates, remediation status)
-   - Peer review evidence (test method reviewed and approved)
-
-5. **Monitoring & Incident Response**
-   - Monitoring alerts and thresholds (drift detection, anomaly detection)
-   - Incident logs (last 12 months)
-   - Post-incident reviews and corrective actions
-
-6. **Vendor Management**
-   - Third-party risk assessments (model providers, data brokers, SaaS tools)
-   - SLA compliance tracking
-   - Supply-chain security validation
+1. **Governance**
+2. **Business**
+3. **Model**
+4. **Data**
+5. **Security**
+6. **Operations**
+7. **Human Oversight**
 
 #### Part B: Evidence Inventory
 Structured table (per IRQ or per subdomain):
@@ -495,7 +476,7 @@ For each core claim (e.g., "Hallucination is controlled"):
 **Hazard-Control-Evidence chain (per ISO 15026-2 structured argument)**
 
 #### Back Matter
-- Definitions: "reasonable assurance" (comprehensive controls, L4–L5 evidence, and no material claim resting on a test rated ★1–★3) vs. "limited assurance" (selective controls, emerging practice, mixed evidence, or a material claim resting on a test rated ★1–★3)
+- Definitions: "reasonable assurance" (comprehensive controls, L4–L5 evidence, and no material claim resting on a test rated ★1–★3) vs. "limited assurance" (selective controls, emerging practice, mixed evidence, or a material claim resting on a test rated ★1–★3); on what the register's ratings support at this version, see ASSURANCE_ARCHITECTURE.md, the assurance-level rule
 - Lifecycle monitoring dashboard specification (KPIs to track post-deployment)
 - Envelope drift detection triggers (thresholds for re-assessment)
 
@@ -546,8 +527,8 @@ Component 7 is the formal Independent Assurance Opinion; it draws on the conclus
 
 | Core Claim | Material? | Test Status | Evidence Level | Confidence (internal working judgement; the issued report states ★) | Residual Risk | Opinion Impact |
 |---|---|---|---|---|---|---|
-| "System accesses only authorised sources" | Yes | Passed | L4 | High | Low | Supports "Should Proceed" |
-| "Hallucination is detected before use" | Yes | Passed | L4 | High | Low | Supports "Should Proceed" |
+| "System accesses only authorised sources" | Yes | Passed | L4 | Medium | Low | Supports "Should Proceed" |
+| "Hallucination is detected before use" | Yes | Passed | L4 | Medium | Low | Supports "Should Proceed" |
 | "Human reviewers maintain independent authority" | Yes | Inconclusive | L2–L3 | Medium | Medium | Condition: escalation threshold tuning |
 | "Monitoring detects envelope drift" | Yes | Passed | L3 | Medium | Medium–Low | Supports "Should Proceed" |
 
@@ -565,7 +546,7 @@ Component 7 is the formal Independent Assurance Opinion; it draws on the conclus
 
 **Opinion Category:** One of four conclusions:
 
-1. **Should Proceed** — Controls are designed sufficiently, and performed as designed in non-production testing; operating effectiveness in production is assessed at post-deployment re-assurance. No material deficiencies. Deployment recommended; the firm's own approval authority decides. Ongoing monitoring to continue per lifecycle plan.
+1. **Should Proceed** — Controls are designed sufficiently, and performed as designed in non-production testing; operating effectiveness in production is assessed at post-deployment re-assurance. No material deficiencies, on evidence that meets the tier's evidence minimum (ASSURANCE_ARCHITECTURE.md, Layer 2). Deployment recommended; the firm's own approval authority decides. Ongoing monitoring to continue per lifecycle plan.
 
 2. **Should Proceed With Conditions** — System demonstrates sufficient control design. Conditions specified above are to be satisfied within stated timelines before deployment; the firm's own approval authority decides.
 
@@ -575,7 +556,7 @@ Component 7 is the formal Independent Assurance Opinion; it draws on the conclus
 
 **Per opinion category:**
 - **Basis:** 1–2 sentences explaining key findings that drove the conclusion
-- **Assurance level:** reasonable or limited; no reasonable assurance rests on a material test rated ★1–★3
+- **Assurance level:** reasonable or limited; no reasonable assurance rests on a material test rated ★1–★3 (ASSURANCE_ARCHITECTURE.md, the assurance-level rule, which states what the register's ratings support at this version)
 
 #### Part G: Review Confidence Statement
 

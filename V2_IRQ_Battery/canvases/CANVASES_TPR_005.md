@@ -118,12 +118,18 @@ Residual risk interpretation: The security (code-execution) tail risk is the mos
 | **Novelty** | 3 | Requires AI-specific supply-chain security knowledge (serialisation format risk) beyond generic software security training |
 
 ## 17. Regulatory Basis
-> No FS-specific regulation directly addresses open-source model artefact integrity; this IRQ is grounded in general ICT/cyber risk management obligations ([Regulation (EU) 2022/2554, DORA, Art. 9] ICT risk management, extended to AI artefact supply chain) and general model risk management documentation expectations ([PRA SS1/23, May 2023]) [UNVERIFIED — DORA Art. 9 and SS1/23 do not reference open-weight model artefacts specifically; applicability is FAIAS's interpretive extension] (verified 29 Jul 2026).
+> No FS-specific regulation directly addresses open-source model artefact integrity; this IRQ is grounded in general ICT/cyber risk management obligations ([Regulation (EU) 2022/2554, DORA, Art. 6 (ICT risk management framework) and Art. 9 (protection and prevention)] ICT risk management, extended to AI artefact supply chain) and general model risk management documentation expectations ([PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023)]) [UNVERIFIED — DORA Arts. 6 and 9 and SS1/23 do not reference open-weight model artefacts specifically; applicability is FAIAS's interpretive extension] (verified 29 Jul 2026; DORA articles re-read 8 Oct 2026; PRA SS1/23 cited as its April 2026 version).
 
 ## 18. Research Basis
 > [OWASP Machine Learning Security Top 10, 2023, ML06:2023 ML Supply Chain Attacks; OWASP Top 10 for LLM Applications 2025, LLM03:2025 Supply Chain — unsafe model serialisation] document the artefact-integrity and unsafe-serialisation risks directly (entry names corrected against owasp.org, 3 October 2026). [UNVERIFIED — this remains an active, young research area; no single canonical peer-reviewed paper on backdoored open-source LLM fine-tunes was confirmed as a settled reference at time of search] (verified 29 Jul 2026).
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> [Nikolic, I., Baluta, T., Saxena, P., 2025, "Model Provenance Testing for Large Language Models", Advances in Neural Information Processing Systems 38 (NeurIPS 2025), arXiv:2502.00706] is a peer-reviewed method for the lineage of a model. Using only black-box access, it tests whether one model is derived from another by comparing the similarity of their outputs against a baseline set by unrelated models. It reports 90–95% precision and 80–90% recall on two benchmarks of over 600 models from 30 million to 4 billion parameters. It addresses lineage, not weight integrity or backdoors, so the statement above that no settled reference on backdoored open-source fine-tunes was confirmed stands. The paper states that the implementation and the two benchmarks are at github.com/ivicanikolicsg/model_provenance_testing. No ★ change follows from this addition.
+>
+> **[FAIAS Incident Register, row 82, "JFrog malicious Hugging Face models", 2024]** — researchers report "around 100 instances" of malicious models on a public hub, including pickle models whose loading gives the attacker a shell, so a claim that a downloaded model is the model the firm believes it is, and is safe to execute, could not be made without checks. The researchers name no victim organisation. Carried as a secondary row: the source is the researchers' own disclosure.
+>
+> **[FAIAS Incident Register, row 88, "ReversingLabs nullifAI Hugging Face models", 2025]** — researchers found two Hugging Face models carrying reverse-shell payloads that the hub's own security scanning did not flag as unsafe; they were reported on 20 January 2025 and removed in less than 24 hours, the researchers call them closer to a proof of concept, and no victim is recorded. A hub's "not flagged" status was not a screening control for a firm that deployed open-source models. Carried as a secondary row: the source is the researchers' own disclosure, and no statement from the hub's operator was read.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -135,13 +141,18 @@ Related IRQs:
 
 ## 20. References
 ```
-[1] OWASP Foundation, 2023. "OWASP Machine Learning Security Top 10." v0.4 (or latest).
+[1] OWASP Foundation, 2023. "OWASP Machine Learning Security Top 10."
+    Latest release v0.3 (pre-release, 29 September 2023).
     URL: https://owasp.github.io/www-project-machine-learning-security-top-10/docs/
     Accessed: 2026-07-29
 
-[2] European Union, 2022. "Regulation (EU) 2022/2554 (DORA)", Art. 9.
+[2] European Union, 2022. "Regulation (EU) 2022/2554 (DORA)", Art. 6 and Art. 9.
     Applied: 17 January 2025
     URL: https://eur-lex.europa.eu/eli/reg/2022/2554/oj
+
+[3] Nikolic, I., Baluta, T., Saxena, P., 2025. "Model Provenance Testing for Large Language Models." Advances in Neural Information Processing Systems 38 (NeurIPS 2025). arXiv:2502.00706. Code and benchmarks stated in the paper: github.com/ivicanikolicsg/model_provenance_testing.
+    Published: 2025
+    URL: https://arxiv.org/abs/2502.00706
 ```
 
 ## 21. Four-Test Validation Footer
@@ -160,6 +171,10 @@ Related IRQs:
 **Change Log:**
 - v1.0 (2026-07): Initial publication.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 17 and 20 — DORA cited at Art. 6 (ICT risk management framework) and Art. 9 (protection and prevention), in place of Art. 9 alone, at field 17 and at reference [2]; the dated note at field 17 states what its date covers. Reference [1] names the latest release of the OWASP Machine Learning Security Top 10, v0.3 (pre-release, 29 September 2023), in place of "v0.4 (or latest)". No change to controls, test, ★ rating or risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citations added in the reserved form (row 82, JFrog disclosure of malicious Hugging Face models, carried as a secondary row; row 88, ReversingLabs nullifAI models, carried as a secondary row, closer to a proof of concept, with no victim recorded). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — Nikolic et al. (NeurIPS 2025) cited as a method for testing the lineage of a model, with its limit stated (lineage, not weight integrity or backdoors); the UNVERIFIED marker stands. Field 20 References — entry [3] added. Research-basis review date moved. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 ```
 
 ---

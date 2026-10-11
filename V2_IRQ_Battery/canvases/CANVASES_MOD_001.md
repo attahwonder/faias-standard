@@ -56,7 +56,7 @@ Control Breakpoints:
 **AO-MOD-001:** The AI system's capability envelope shall be empirically defined through testing that includes tasks adjacent to and outside approved scope, and the system or surrounding controls shall detect and flag inputs that fall outside that tested envelope before reliance.
 
 ## 9. Expected Controls (Traced)
-- **Capability evaluation covering in-scope, boundary and out-of-scope task classes** — [NIST AI RMF 1.0, MAP function, January 2023; PRA SS1/23, May 2023, development/validation principles] — test design explicitly includes adjacent and out-of-scope probes, not only in-distribution accuracy.
+- **Capability evaluation covering in-scope, boundary and out-of-scope task classes** — [NIST AI RMF 1.0, MAP function, January 2023; PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), development/validation principles] — test design explicitly includes adjacent and out-of-scope probes, not only in-distribution accuracy.
 - **Documented intended-use and limitation statement (model card)** — [NIST AI 600-1 GenAI Profile, July 2024; linked IRQ-GOV-009] — scope boundaries are written down and distributed to users, not left implicit.
 - **Scope/out-of-distribution detection at inference** — [Emerging Practice; informed by D'Amour et al. 2020/22 underspecification findings] — technical or procedural signal that an input falls outside the tested envelope, routed to escalation.
 - **Risk tiering that incorporates capability-boundary evidence** — [linked IRQ-GOV-004] — approval tier reflects how well capability limits are known, not only autonomy/tool access.
@@ -98,7 +98,7 @@ Assuming controls are well-implemented and monitored:
   Severity: 3 (multiple customers exposed to unreliable out-of-scope decisions; regulatory notice risk)
   Likelihood: 2 (requires informal scope creep plus absent boundary testing and reconciliation)
   Detectability: 2 (usage sampling and scope-detection flags surface drift within days-to-weeks)
-  Recoverability: 2 (affected cases identifiable via usage logs; re-decisioning feasible)
+  Recoverability: 3 (affected cases identifiable via usage logs; re-decisioning feasible)
   Novelty: 3 (domain expert might miss it; the assumption that "approval = tested everywhere" is common but AI-specific non-linear degradation is not obvious)
 
 Interpretation: acceptable residual risk with capability testing and reconciliation in place; highest concern is informal scope creep outrunning governance cycles.
@@ -118,18 +118,20 @@ Residual risk: Critical. Deployment gate should not be passed without envelope t
 | **Severity** | 3 | Multiple customers exposed to unreliable decisions in an untested task class; regulatory notice risk under SS1/23 MRM expectations. |
 | **Likelihood** | 3 | Probable if boundary testing and reconciliation are absent; informal scope expansion to adjacent tasks is a normal, low-friction business behaviour. |
 | **Detectability** | 3 | Without scope-detection signals or usage sampling, out-of-envelope use is discovered only via periodic audit or complaint, not in real time. |
-| **Recoverability** | 2 | Usage logs typically permit identification and re-decisioning of affected cases within days. |
+| **Recoverability** | 3 | Usage logs typically permit identification and re-decisioning of affected cases within days. |
 | **Novelty** | 3 | Traditional model risk practice tests fixed metrics on a fixed set; probing adjacent/out-of-scope inputs for a sharp capability cliff is AI-specific and easily missed by a credit/AML SME. |
 
 ## 17. Regulatory Basis
-> [PRA SS1/23, May 2023, effective 17 May 2024, Principle 3 (model development, implementation and use) and Principle 4 (independent model validation) — a model must be validated for, and used within, its intended scope] — directly engages capability-envelope testing. [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — foreseeable-harm obligation is engaged where a system produces unreliable outcomes in an untested scope. No regulation names "capability envelope testing" explicitly; this IRQ operationalises SS1/23's development/validation and ongoing-use principles for AI-specific non-linear degradation. (verified 29 Jul 2026)
+> [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024, Principle 3 (model development, implementation and use) and Principle 4 (independent model validation) — a model must be validated for, and used within, its intended scope] — directly engages capability-envelope testing. [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — foreseeable-harm obligation is engaged where a system produces unreliable outcomes in an untested scope. No regulation names "capability envelope testing" explicitly; this IRQ operationalises SS1/23's development/validation and ongoing-use principles for AI-specific non-linear degradation. (verified 29 Jul 2026)
 >
 > **Scope-boundary legal anchor.** [FSMA 2000, s.19(1): "No person may carry on a regulated activity in the United Kingdom, **or purport to do so**, unless he is—(a) an authorised person; or (b) an exempt person." (s.19(2) names this the general prohibition.)] — engaged where confident output produced outside the model's tested capability envelope is advice-shaped and could be read as carrying on a regulated activity outside the firm's permissions; capability-envelope testing and scope-detection controls are, among other things, what keeps output inside permitted activities.
 
 ## 18. Research Basis
 > [D'Amour, Heller, Moldovan, et al., 2020/22, "Underspecification Presents Challenges for Credibility in Modern Machine Learning", JMLR (arXiv:2011.03395)] — identical held-out test performance can mask materially divergent behaviour once deployed, evidencing why in-distribution metrics alone cannot certify a capability envelope. [Koh et al., 2021, "WILDS: A Benchmark of in-the-Wild Distribution Shifts", arXiv:2012.07421] — demonstrates large, sometimes sharp performance drops under realistic distribution shift, supporting the expectation of non-linear boundary failure rather than graceful degradation.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Fast (6 months)
+> **[FAIAS Incident Register, row 72, "Williston Tesla Autopilot crash", 2017]** — the National Transportation Safety Board found that "the driver could use the Autopilot system on roads for which it was not intended to be used", and names operational design domains for Level 2 vehicle automation as a safety issue: the owner's manual said that Autopilot should be used only in preferred road environments, but Tesla "did not automatically restrict the availability of Autopilot based on road classification". It evidences an envelope stated in guidance and not enforced by the system, not the way the envelope was defined. The setting is automotive driver assistance, not financial services.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -148,8 +150,8 @@ Residual risk: Critical. Deployment gate should not be passed without envelope t
     Machine Learning Research. arXiv:2011.03395.
 [2] Koh, P.W., et al., 2021. "WILDS: A Benchmark of in-the-Wild Distribution Shifts."
     arXiv:2012.07421.
-[3] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023, effective
-    17 May 2024.
+[3] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
 [4] NIST, 2023. "Artificial Intelligence Risk Management Framework (AI RMF 1.0)." January
     2023.
 [5] NIST, 2024. "NIST AI 600-1: Artificial Intelligence Risk Management Framework —
@@ -181,6 +183,10 @@ FOUR-TEST VALIDATION:
 Change Log:
 - v1.0 (2026-07): Initial publication; four tests passed.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 72, Williston Tesla Autopilot crash, in an automotive driver-assistance setting). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2 (Field 16, and the controls-in-place case in Field 15). The canvas states recovery within days; ASSURANCE_MODEL.md §7 scores recovery within hours 2 and recovery within days 3. The other axes, the ★ rating and the research basis are unchanged.
 ```
 
 ---

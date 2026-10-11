@@ -139,7 +139,7 @@ IRQ-RES-005/-006's detection capability produces any governance consequence at a
 | **Novelty** | 3 | Governance SMEs may assume an existing model-governance committee automatically extends its standing agenda to novel GenAI/agentic signal types without verification. |
 
 ## 17. Regulatory Basis
-> [PRA, SS1/23, Principle 4 (Independent model validation) — ongoing monitoring and periodic review; restriction/withdrawal engages Principle 5 (Model risk mitigants)] requires monitoring outcomes to inform governance decisions on model status, use restriction or withdrawal; extended to AI/ML per PRA's April 2024 mapping letter. [FCA/PRA operational resilience regime, PRA SS1/21; FCA PS21/3] requires tested escalation paths for events materially affecting important business services, which applies where AI system degradation could do so. [ISO/IEC 42001:2023, clause 9.3] requires management review of AI system performance and monitoring information as a standing governance activity. Section pinpoints [UNVERIFIED — cited modules/articles confirmed extant (PRA SS1/23, SS1/21, PS21/3, ISO/IEC 42001:2023, EU AI Act Arts. 9/11/12/19); no AI-specific sub-clause pinpoint published by the regulator beyond module/clause level cited] (verified 29 Jul 2026).
+> [PRA, SS1/23, Principle 4 (Independent model validation) — ongoing monitoring and periodic review; restriction/withdrawal engages Principle 5 (Model risk mitigants)] requires monitoring outcomes to inform governance decisions on model status, use restriction or withdrawal; extended to AI/ML per the Bank of England and PRA letter of 22 April 2024. [FCA/PRA operational resilience regime, PRA SS1/21; FCA PS21/3] requires tested escalation paths for events materially affecting important business services, which applies where AI system degradation could do so. [ISO/IEC 42001:2023, clause 9.3] requires management review of AI system performance and monitoring information as a standing governance activity. Section pinpoints [UNVERIFIED — cited modules/articles confirmed extant (PRA SS1/23, SS1/21, PS21/3, ISO/IEC 42001:2023, EU AI Act Arts. 9/11/12/19); no AI-specific sub-clause pinpoint published by the regulator beyond module/clause level cited] (verified 29 Jul 2026).
 
 ## 18. Research Basis
 > No peer-reviewed literature specifically addresses escalation-path adequacy between AI monitoring and corporate governance bodies; this control area is operational-resilience and audit practice rather than an academic research literature, consistent with the domain's evidentiary profile. [Published FS incident reports, various] repeatedly show that post-incident reviews identify monitoring signals that existed well before governance action was taken, across both traditional IT and AI-enabled systems; this canvas treats such findings as the closest available analogue evidence for the harm mechanism rather than citing a specific unverified incident.
@@ -162,12 +162,13 @@ IRQ-RES-005/-006's detection capability produces any governance consequence at a
 
 ## 20. References
 ```
-[1] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023, effective
-    17 May 2024; current version 23 April 2026 (LIAF01/26). Principle 4 — Independent model validation, incl. ongoing monitoring.
-[2] PRA, 2021. "SS1/21 — Operational resilience." FCA, 2021. "PS21/3."
+[1] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024; amended by LIAF01/26, published 23 April 2026. Principle 4 — Independent model validation, incl. ongoing monitoring.
+[2] PRA, 2022. "SS1/21 — Operational resilience."
+    March 2022 (11 March 2022, updating 29 March 2021). FCA, 2021. "PS21/3."
 [3] ISO/IEC, 2023. "ISO/IEC 42001:2023 — Artificial intelligence management systems —
     Requirements." Clause 9.3, Management Review.
-[4] Bank of England/PRA, 2024. "PRA response to Government on AI regulation." April 2024.
+[4] Bank of England/PRA, 2024. "The Bank and the PRA's response to DSIT/HMT: update on our approach to AI." 22 April 2024.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -193,6 +194,10 @@ FOUR-TEST VALIDATION:
 Change Log:
 - v1.0 (2026-07): Initial publication; all four tests passed.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 17 — the SS1/23 sentence names the Bank of England and PRA letter of 22 April 2024, in place of the PRA's April 2024 mapping. Form corrections only. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — the reference entry for PRA SS1/21 gives its current version, March 2022 (11 March 2022, updating 29 March 2021). No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 References — the Bank of England and PRA letter of 22 April 2024 cited by its title, The Bank and the PRA's response to DSIT/HMT: update on our approach to AI. No change to controls, test, ★ rating or risk profile.
 ```
 
 ---

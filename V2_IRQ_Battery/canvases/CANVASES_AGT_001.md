@@ -59,10 +59,10 @@ Control Breakpoints:
 **AO-AGT-001:** The agent's end-to-end trajectory on long-horizon, multi-step workflows shall be demonstrated to remain faithful to the originally specified business goal, with drift detectable independently of per-step output quality.
 
 ## 9. Expected Controls (Traced)
-- **End-to-end goal-fidelity evaluation on representative long-horizon tasks** — [METR, "Measuring AI Ability to Complete Long Tasks," 2025, arXiv:2503.14499; Kinniment et al. (METR), "Evaluating Language-Model Agents on Realistic Autonomous Tasks," 2023, arXiv:2312.11671] — task-completion and goal-fidelity measured on full workflows, not per-step benchmarks.
+- **End-to-end goal-fidelity evaluation on representative long-horizon tasks** — [Kwa et al. (METR), "Measuring AI Ability to Complete Long Software Tasks," 2025, arXiv:2503.14499 (NeurIPS 2025); Kinniment et al. (METR), "Evaluating Language-Model Agents on Realistic Autonomous Tasks," 2023, arXiv:2312.11671] — task-completion and goal-fidelity measured on full workflows, not per-step benchmarks.
 - **Periodic re-anchoring of the agent to the original task specification** — [NIST AI 600-1, GenAI Profile, Jul 2024, Confabulation/Value Chain categories; OWASP Agentic AI: Threats and Mitigations, Feb 2025] — architectural or prompting pattern that re-injects the original goal statement at defined checkpoints rather than relying on accumulated context alone.
 - **Reviewable trajectory traces enabling drift detection** — [linked IRQ-AGT-011; Chan et al., "Visibility into AI Agents," FAccT 2024, arXiv:2401.13138] — complete action logs allow post-hoc or real-time comparison of trajectory against original intent.
-- **Capability envelope limits on task length/complexity** — [linked IRQ-MOD-003; PRA SS1/23, May 2023, model use-condition principle] — tasks are bounded to tested horizons; longer/more complex tasks require re-validation.
+- **Capability envelope limits on task length/complexity** — [linked IRQ-MOD-003; PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), model use-condition principle] — tasks are bounded to tested horizons; longer/more complex tasks require re-validation.
 - **Checkpointed human oversight at intermediate plan stages, not only at completion** — [linked IRQ-HUM-004; FCA/PRA operational resilience regime, PRA SS1/21] — intervention capacity positioned where it is still effective.
 
 ## 10. Expected Evidence (Tagged L1–L5)
@@ -105,7 +105,7 @@ Assuming controls are well-implemented and monitored:
   Severity: 3 (incorrect AML dispositions or settlement outcomes across a batch of cases)
   Likelihood: 2 (requires compounding drift to escape re-anchoring and checkpoint controls)
   Detectability: 2 (trajectory audit sampling and checkpoint review surface drift within days)
-  Recoverability: 2 (affected cases identifiable via trace review; re-work feasible)
+  Recoverability: 3 (affected cases identifiable via trace review; re-work feasible)
   Novelty: 4 (no traditional operational-risk concept of trajectory-level goal fidelity exists)
 
 Interpretation: acceptable with re-anchoring, bounded task horizons and checkpointed review;
@@ -128,16 +128,18 @@ Residual risk: Critical. Long-horizon judgement-bearing deployment should not pr
 | **Severity** | 3 | Wrong AML dispositions or settlement outcomes affect multiple customers/cases; regulatory notice risk. |
 | **Likelihood** | 3 | Compounding per-step drift is a documented property of long-horizon agent execution, not an exotic attack. |
 | **Detectability** | 3 | Requires trajectory-level review or audit sampling; per-step and final-output review alone will not surface it. |
-| **Recoverability** | 2 | Affected cases are identifiable via trace review if traces exist; re-work is feasible within days-to-weeks. |
+| **Recoverability** | 3 | Affected cases are identifiable via trace review if traces exist; re-work is feasible within days-to-weeks. |
 | **Novelty** | 4 | No traditional AML/claims risk model contains the concept of cumulative multi-step goal drift; entirely AI-specific. |
 
 ## 17. Regulatory Basis
-> No regulation names "goal drift" explicitly. Applicable expectations: [NIST AI 600-1, Generative Artificial Intelligence Profile, Jul 2024] identifies confabulation and value-chain risks requiring lifecycle monitoring for GenAI/agentic systems. [PRA SS1/23, May 2023, effective May 2024] requires ongoing monitoring and validation of model use conditions, applicable to agentic workflows within MRM scope. [FCA PRIN 2A Consumer Duty, in force Jul 2023] requires firms to avoid foreseeable harm from automated processes affecting customer outcomes. [MAS Consultation Paper, Proposed Guidelines on AI Risk Management, Nov 2025] explicitly proposes lifecycle controls for agentic AI, the closest direct regulatory analogue. [PRA SS1/23 Principle 4 (ongoing monitoring within independent validation)]. (verified 29 Jul 2026)
+> No regulation names "goal drift" explicitly. Applicable expectations: [NIST AI 600-1, Generative Artificial Intelligence Profile, Jul 2024] identifies confabulation and value-chain risks requiring lifecycle monitoring for GenAI/agentic systems. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), effective May 2024] requires ongoing monitoring and validation of model use conditions, applicable to agentic workflows within MRM scope. [FCA PRIN 2A Consumer Duty, in force Jul 2023] requires firms to avoid foreseeable harm from automated processes affecting customer outcomes. [MAS Consultation Paper, Proposed Guidelines on AI Risk Management, Nov 2025] proposes that the evaluation and testing of AI agents cover their key failure modes (proposed Guidelines, paragraph 4.15) and that monitoring, where relevant, cover reasoning processes, actions taken and tools used (paragraph 4.23(a)). MAS issued the final Guidelines on 7 Oct 2026, effective 7 Oct 2027; FIs may meet the expectations of Sections 5 and 6 by 7 Oct 2028 (paragraph 1.8). They keep both limbs (paragraphs 5.15 and 5.23(a)) and add the effectiveness of associated guardrails to the testing (paragraph 5.15). Paragraph 1.11 names the mechanism this IRQ tests: "a divergence between pre-defined goals and how the AI agent translated such goals into actions". Together these are the closest direct regulatory analogue (verified 10 Oct 2026). [PRA SS1/23 Principle 4 (ongoing monitoring within independent validation)]. (verified 29 Jul 2026)
 
 ## 18. Research Basis
-> [METR, "Measuring AI Ability to Complete Long Tasks," 2025, arXiv:2503.14499] — establishes that agent task time-horizon is doubling roughly every seven months, evidencing that long-horizon deployment is an imminent, not distant, condition. [Kinniment et al. (METR), "Evaluating Language-Model Agents on Realistic Autonomous Tasks," 2023, arXiv:2312.11671] — autonomous-task evaluation methodology this test adapts. [Chan et al., "Harms from Increasingly Agentic Algorithmic Systems," FAccT 2023, arXiv:2302.10329] — foundational argument that harm scales with agency/autonomy. [Microsoft AI Red Team, "Taxonomy of Failure Modes in Agentic AI Systems," Apr 2025] — practitioner taxonomy including goal-drift-adjacent failure classes.
+> [Kwa et al. (METR), "Measuring AI Ability to Complete Long Software Tasks," 2025, arXiv:2503.14499 (NeurIPS 2025)] — establishes that agent task time-horizon is doubling roughly every seven months, evidencing that long-horizon deployment is an imminent, not distant, condition. [Kinniment et al. (METR), "Evaluating Language-Model Agents on Realistic Autonomous Tasks," 2023, arXiv:2312.11671] — autonomous-task evaluation methodology this test adapts. [Chan et al., "Harms from Increasingly Agentic Algorithmic Systems," FAccT 2023, arXiv:2302.10329] — foundational argument that harm scales with agency/autonomy. [Microsoft AI Red Team, "Taxonomy of Failure Mode in Agentic AI Systems," Apr 2025] — practitioner taxonomy including goal-drift-adjacent failure classes. [Xu, F. F., et al., 2025, "TheAgentCompany: Benchmarking LLM Agents on Consequential Real World Tasks," NeurIPS 2025 Datasets and Benchmarks Track, arXiv:2412.14161] — a published benchmark that sets agents professional tasks, long-horizon tasks among them, in a simulated software company and scores them against checkpoints with partial credit; the environment and code are public. It covers the final-outcome measure in field 11 only: it scores task completion and not trajectory-level goal fidelity, and its tasks are software-company tasks, not financial-services tasks.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Fast (6 months)
+> **[FAIAS Incident Register, row 47, "Project Vend phase one", 2025]** — in an AI laboratory's pilot office shop whose customers were the laboratory's own employees (not a production deployment), the shopkeeper agent was talked into discounts and free items and priced some items below cost; it announced a plan to end discount codes and, on the laboratory's account, returned to offering them within days. Each step was locally accommodating and the profit goal failed, so goal drift shows in outcome measures over the whole horizon and not in per-step quality.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -150,19 +152,22 @@ Residual risk: Critical. Long-horizon judgement-bearing deployment should not pr
 
 ## 20. References
 ```
-[1] METR, 2025. "Measuring AI Ability to Complete Long Tasks." arXiv:2503.14499.
+[1] Kwa, T., et al. (METR), 2025. "Measuring AI Ability to Complete Long Software Tasks." Proc. NeurIPS 2025. arXiv:2503.14499.
 [2] Kinniment, M., et al. (METR), 2023. "Evaluating Language-Model Agents on Realistic
     Autonomous Tasks." arXiv:2312.11671.
 [3] Chan, A., et al., 2023. "Harms from Increasingly Agentic Algorithmic Systems."
     Proc. FAccT 2023. arXiv:2302.10329.
 [4] Chan, A., et al., 2024. "Visibility into AI Agents." Proc. FAccT 2024. arXiv:2401.13138.
-[5] Microsoft AI Red Team, 2025. "Taxonomy of Failure Modes in Agentic AI Systems."
+[5] Microsoft AI Red Team, 2025. "Taxonomy of Failure Mode in Agentic AI Systems."
     April 2025.
 [6] NIST, 2024. "AI 600-1: Generative Artificial Intelligence Profile." July 2024.
-[7] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023.
+[7] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023).
 [8] FCA, 2022. "PS22/9 / FG22/5: A New Consumer Duty." PRIN 2A in force 31 July 2023.
 [9] MAS, 2025. "Consultation Paper: Proposed Guidelines on Artificial Intelligence Risk
-    Management." November 2025.
+    Management." November 2025. Consultation Paper P017-2025; final Guidelines issued 7 Oct 2026 and effective 7 Oct 2027.
+[10] Xu, F. F., et al., 2025. "TheAgentCompany: Benchmarking LLM Agents on Consequential
+    Real World Tasks." NeurIPS 2025 Datasets and Benchmarks Track. arXiv:2412.14161.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -186,6 +191,18 @@ FOUR-TEST VALIDATION:
 
 Change Log:
 - v1.0 (2026-07): Initial publication; all four tests passed.
+- v1.3.3 (2026-10-09): Fields 18 and 20 — the Microsoft AI Red Team whitepaper takes its title as issued on its cover, "Taxonomy of Failure Mode in Agentic AI Systems". Form corrections only. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 17 and 20 — the MAS consultation paper is cited for what it proposes, evaluation and testing of AI agents that cover their key failure modes (paragraph 4.15 of the proposed Guidelines) and monitoring of reasoning processes, actions taken and tools used (paragraph 4.23(a)), in place of "explicitly proposes lifecycle controls for agentic AI". The final Guidelines of 7 Oct 2026 are cited for the same limbs (paragraphs 5.15 and 5.23(a)), for the effectiveness of associated guardrails (paragraph 5.15), for the mechanism this IRQ tests (paragraph 1.11) and for their dates (paragraph 1.8), with the expectations of Sections 5 and 6 to be met by 7 Oct 2028. Reference [9] carries the paper's number, P017-2025, and the dates of the final Guidelines. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 47, Project Vend phase one), bounded to a pilot shop run by an AI laboratory and not a production deployment. Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2 (Field 16, and the controls-in-place case in Field 15). The canvas states recovery within days-to-weeks, which is beyond the within-hours level that ASSURANCE_MODEL.md §7 scores 2; the scale names no band between days and years, and 3 (reversible within days) is the nearest anchor. The other axes, the ★ rating and the research basis are unchanged.
+- v1.3.3 (2026-10-09): Fields 9, 18 and 20 — the METR time-horizon paper is cited as Kwa et al. (METR): the arXiv record lists people and no organisation author. Form corrections only. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 9, 18 and 20 — the METR citation (arXiv:2503.14499) given its current title, "Measuring AI Ability to Complete Long Software Tasks", and its venue, NeurIPS 2025. Research-basis review date moved. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — TheAgentCompany benchmark added as a
+  published method that covers the final-outcome measure only, with its limits.
+  Field 20 — entry [10] added. Research-basis review date moved. No change to controls,
+  test, ★2 or risk profile.
 ```
 
 ---

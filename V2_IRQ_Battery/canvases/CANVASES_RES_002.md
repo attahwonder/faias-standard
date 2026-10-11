@@ -60,7 +60,7 @@ Control Breakpoints:
 ## 9. Expected Controls (Traced)
 - **Explicit degraded-mode signalling** — [linked IRQ-AGT-005] — output is tagged or routed differently when generated under a partial-failure condition (e.g. retrieval unavailable), rather than presented identically to normal-mode output.
 - **Idempotency and retry-safety controls for tool/action calls** — [established distributed-systems engineering practice; cf. OWASP API Security Top 10, 2023, relevant to duplicate-request handling] — retried actions carry idempotency keys preventing duplication.
-- **Severe-but-plausible scenario testing including AI-specific partial failure** — [PRA SS1/21, March 2021; FCA SYSC 15A per PS21/3, March 2021] — scenario testing explicitly includes retrieval-down, tool-timeout, load-spike and rate-limiting scenarios for AI components.
+- **Severe-but-plausible scenario testing including AI-specific partial failure** — [PRA SS1/21, March 2022 (11 March 2022, updating 29 March 2021); FCA SYSC 15A per PS21/3, March 2021] — scenario testing explicitly includes retrieval-down, tool-timeout, load-spike and rate-limiting scenarios for AI components.
 - **Graceful degradation design pattern** — [linked IRQ-RES-001] — Emerging Practice specific to GenAI/agentic pipelines; general graceful-degradation engineering principles are established, their systematic application to LLM/RAG/agent stacks is less standardised across the industry.
 - **Chaos/failure-injection testing** — Emerging Practice, informed by established site-reliability engineering chaos-testing methodology — no FS-specific AI standard identified for this application.
 
@@ -122,7 +122,7 @@ Residual risk interpretation: Detectability is the dominant concern absent expli
 | **Novelty** | 3 | Continued plausible output during partial failure is a distinctly AI/GenAI failure mode, not covered by traditional outage-based resilience testing |
 
 ## 17. Regulatory Basis
-> [PRA, SS1/21, March 2021] and [FCA, SYSC 15A per PS21/3, March 2021] require severe-but-plausible scenario testing to evidence an IBS remains within impact tolerance; this IRQ requires that testing scope explicitly include AI-component partial-failure and stress scenarios (retrieval down, tool timeout, load spike, rate limiting), which generic infrastructure-outage scenario testing does not automatically cover.
+> [PRA, SS1/21, March 2022 (11 March 2022, updating 29 March 2021)] and [FCA, SYSC 15A per PS21/3, March 2021] require severe-but-plausible scenario testing to evidence an IBS remains within impact tolerance; this IRQ requires that testing scope explicitly include AI-component partial-failure and stress scenarios (retrieval down, tool timeout, load spike, rate limiting), which generic infrastructure-outage scenario testing does not automatically cover.
 
 ## 18. Research Basis
 > No peer-reviewed research specifically documents "unsafe degradation under partial AI-pipeline failure" as a named phenomenon [UNVERIFIED — no such named study was located after search]; this IRQ is grounded in established distributed-systems and site-reliability engineering principles (graceful degradation, chaos engineering, idempotent retry design) applied to the specific characteristics of RAG/agentic AI pipelines, and in the general hallucination literature's finding that models produce fluent output regardless of underlying evidence quality.
@@ -140,8 +140,8 @@ Related IRQs:
 
 ## 20. References
 ```
-[1] Prudential Regulation Authority, 2021. "SS1/21 — Operational resilience: Impact tolerances for important business services."
-    Published: March 2021
+[1] Prudential Regulation Authority, 2022. "SS1/21 — Operational resilience: Impact tolerances for important business services."
+    Published: March 2022 (11 March 2022, updating 29 March 2021)
     URL: https://www.bankofengland.co.uk/prudential-regulation/publication/2021/march/operational-resilience-impact-tolerances-for-important-business-services-ss
 
 [2] Financial Conduct Authority, 2021. "PS21/3 — Building operational resilience." Handbook SYSC 15A.
@@ -168,6 +168,8 @@ Related IRQs:
 
 **Change Log:**
 - v1.0 (2026-07): Initial publication.
+- v1.3.3 (2026-10-09): Field 20 — the reference entry for PRA SS1/21 gives its current version, March 2022 (11 March 2022, updating 29 March 2021). No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/21 cited as its March 2022 version (11 March 2022, updating 29 March 2021); the expectations cited are unchanged.
 ```
 
 ---

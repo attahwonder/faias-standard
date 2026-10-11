@@ -57,7 +57,7 @@ Control Breakpoints:
 **AO-DAT-008:** Where the knowledge store contains conflicting documents, retrieval behaviour shall be deterministic and governed by an explicit, auditable precedence rule, such that materially identical queries receive consistent, defensible answers.
 
 ## 9. Expected Controls (Traced)
-- **Explicit precedence metadata and conflict-resolution logic** — [Barnett et al., 2024, "Seven Failure Points When Engineering a RAG System"] — documents carry precedence metadata (current/superseded, jurisdiction, approval status) consulted by the retrieval layer, not left to similarity score alone.
+- **Explicit precedence metadata and conflict-resolution logic** — [Barnett et al., 2024, "Seven Failure Points When Engineering a Retrieval Augmented Generation System", on adding metadata to the retrieved context; the paper does not address precedence or supersession] — documents carry precedence metadata (current/superseded, jurisdiction, approval status) consulted by the retrieval layer, not left to similarity score alone.
 - **Deterministic tie-breaking in the retrieval/ranking pipeline** — [Chen et al., 2023, "Benchmarking Large Language Models in Retrieval-Augmented Generation" (RGB), arXiv:2309.01431, negative-rejection and counterfactual-robustness testing] — retrieval configuration is version-pinned and reproducible for a given index state, and conflicts are resolved by rule rather than arbitrary rank.
 - **Consistency testing across repeated and rephrased queries** — [Wu, K., et al., 2024, "ClashEval", arXiv:2404.10198, tug-of-war between an LLM's internal prior and external evidence] — periodic testing confirms the same underlying question yields consistent answers regardless of phrasing or session.
 - **Retrieval-state logging per interaction** — [linked IRQ-GOV-010] — the specific document version(s) retrieved and used are logged, enabling reconstruction of why a given answer was produced.
@@ -128,12 +128,12 @@ and accountability risk rather than a single catastrophic-harm risk.
 | **Novelty** | 3 | "Most relevant" producing arbitrary rather than authoritative selection is an architecture-specific RAG behaviour. |
 
 ## 17. Regulatory Basis
-> [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] fair-treatment and consistency-of-outcome expectations are engaged where materially similar customers receive materially different treatment without a defensible reason. [PRA SS1/23, Principle 2 (governance) and documentation expectations under Principle 4] require decisions to be reconstructable. No regulation names RAG retrieval determinism explicitly. [UNVERIFIED — no further pinpoint exists; mechanism genuinely unaddressed by name] (verified 29 Jul 2026).
+> [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] fair-treatment and consistency-of-outcome expectations are engaged where materially similar customers receive materially different treatment without a defensible reason. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), Principle 2 (governance) and documentation expectations under Principle 4] require decisions to be reconstructable. No regulation names RAG retrieval determinism explicitly. [UNVERIFIED — no further pinpoint exists; mechanism genuinely unaddressed by name] (verified 29 Jul 2026).
 
 ## 18. Research Basis
-> [Barnett, S., et al., 2024, "Seven Failure Points When Engineering a RAG System", arXiv:2401.05856] — names conflicting-document retrieval as a documented empirical failure point. [Chen, J., et al., 2023, "Benchmarking Large Language Models in Retrieval-Augmented Generation" (RGB), arXiv:2309.01431] — tests negative-rejection and counterfactual robustness, directly applicable to conflict-resolution testing. [Wu, K., et al., 2024, "ClashEval" on faithfulness under conflicting evidence, arXiv:2404.10198] — quantifies the tug-of-war between retrieved evidence and model prior, relevant to predicting which conflicting document "wins." [Friel, R., Belyi, M., Sanyal, A., 2024 (latest version January 2025), "RAGBench: Explainable Benchmark for Retrieval-Augmented Generation Systems", arXiv:2407.11005] — its TRACe framework separates context Relevance from context Utilization, allowing a reviewer to observe not just what was retrieved when conflicting documents exist but which retrieved passages the generator actually used in the answer, converting the precedence question from output inspection ("did the answer cite the current policy?") into a measurable utilisation profile across superseded and current documents. This lets the test build conflicting-document test sets and measure Utilization split across the conflict pair, evidencing whether precedence control operates in the generator as well as the retriever — previously only retrieval-rank evidence was practically obtainable. RAGBench is an academic benchmark, not FS-certified; no ★ change follows from this addition.
+> [Barnett, S., et al., 2024, "Seven Failure Points When Engineering a Retrieval Augmented Generation System", arXiv:2401.05856] — names "contradicting information in the context" as one cause of failure point FP4 ("Not Extracted"), a failure to extract an answer that is present in the retrieved context. [Chen, J., et al., 2023, "Benchmarking Large Language Models in Retrieval-Augmented Generation" (RGB), arXiv:2309.01431] — tests negative-rejection and counterfactual robustness, directly applicable to conflict-resolution testing. [Wu, K., et al., 2024, "ClashEval" on faithfulness under conflicting evidence, arXiv:2404.10198] — quantifies the tug-of-war between retrieved evidence and model prior, relevant to predicting which conflicting document "wins." [Friel, R., Belyi, M., Sanyal, A., 2024 (latest version January 2025), "RAGBench: Explainable Benchmark for Retrieval-Augmented Generation Systems", arXiv:2407.11005] — its TRACe framework separates context Relevance from context Utilization, allowing a reviewer to observe not just what was retrieved when conflicting documents exist but which retrieved passages the generator actually used in the answer, converting the precedence question from output inspection ("did the answer cite the current policy?") into a measurable utilisation profile across superseded and current documents. This lets the test build conflicting-document test sets and measure Utilization split across the conflict pair, evidencing whether precedence control operates in the generator as well as the retriever — previously only retrieval-rank evidence was practically obtainable. RAGBench is an academic benchmark, not FS-certified; no ★ change follows from this addition.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -145,7 +145,7 @@ and accountability risk rather than a single catastrophic-harm risk.
 
 ## 20. References
 ```
-[1] Barnett, S., et al., 2024. "Seven Failure Points When Engineering a RAG System." arXiv:2401.05856.
+[1] Barnett, S., et al., 2024. "Seven Failure Points When Engineering a Retrieval Augmented Generation System." arXiv:2401.05856.
 [2] Chen, J., et al., 2023. "Benchmarking Large Language Models in Retrieval-Augmented
     Generation." arXiv:2309.01431.
 [3] Wu, K., et al., 2024. "ClashEval: Quantifying the tug-of-war between an LLM's internal prior and external evidence" arXiv:2404.10198.
@@ -162,7 +162,7 @@ Status: Active
 FOUR-TEST VALIDATION:
 ✓ Test 1 (SME Blind Spot): Traditional document management assumes a single current version;
   simultaneous retrievability of near-tied conflicting documents is RAG-specific.
-✓ Test 2 (Plausible Harm): Documented as an empirical failure point (Barnett et al., 2024)
+✓ Test 2 (Plausible Harm): Contradicting information in the context is named as one cause of an extraction failure (Barnett et al., 2024)
   with directly applicable robustness-testing methods (Chen et al., 2023; Wu et al., 2024).
 ✓ Test 3 (Testable): Repeated/rephrased query consistency testing is executable in
   non-production. ★3.
@@ -171,6 +171,9 @@ FOUR-TEST VALIDATION:
 
 Change Log:
 - v1.0 (2026-07): Initial publication.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 9, 18 and 20 — the Seven Failure Points citation takes its title as issued, "Seven Failure Points When Engineering a Retrieval Augmented Generation System". Form corrections only. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 9 Expected Controls — the Barnett et al. citation at the precedence-metadata control narrowed to what the paper covers. Field 18 Research Basis — the Barnett et al. entry corrected: the paper names contradicting information in the context as one cause of an extraction failure (FP4), not conflicting-document retrieval as a failure point. Field 21 Four-Test Validation Footer — Test 2 wording corrected to match. Research-basis review date moved. No change to controls, test, ★ rating or risk profile.
 ```
 
 ---

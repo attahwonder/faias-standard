@@ -100,14 +100,14 @@ Every FAIAS engagement produces an Evidence Catalogue (Component 4 deliverable) 
 
 #### 3.1 Model Card
 - **Description:** Technical documentation of model: type (LLM, classifier, regressor, agent), architecture, training data, evaluation metrics, known limitations, scope of intended use, version history
-- **Evidence Level:** L2 (technical design) + L4 (evaluation results if published benchmark)
+- **Evidence Level:** L2 (technical design) + L4 (evaluation results produced independently of the developer; ASSURANCE_MODEL.md §5)
 - **Supporting Claims:** "Model behaviour is understood"; "Limitations are documented"
 - **Tier Applicability:** Tier 1+ (Tier 0 may use vendor description)
 - **Example Artefacts:** Model Card per Hugging Face standard, Technical Specification, Provider Documentation
 
 #### 3.2 Model Evaluation & Validation Results
 - **Description:** Evaluation on held-out test data or benchmark: accuracy, precision/recall, fairness metrics, robustness testing, hallucination rates, confidence calibration. Benchmarked against published standards (if available).
-- **Evidence Level:** L4 (independent testing) or L3 (design review) if staged-only
+- **Evidence Level:** L4 (independent testing, including in a staged environment) or L3 (demonstration; ASSURANCE_MODEL.md §5)
 - **Supporting Claims:** "Model performs within acceptable tolerances"; "Hallucination rate is measured and controlled"
 - **Tier Applicability:** Tier 1+
 - **Example Artefacts:** Test Results Report, Evaluation Spreadsheet, Benchmark Comparison Table, Fairness Analysis

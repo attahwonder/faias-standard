@@ -65,7 +65,7 @@ Control Breakpoints:
 ## 9. Expected Controls (Traced)
 - **Explanation-adequacy testing with the actual reviewing population** — [Emerging Practice, informed by Doshi-Velez & Kim, 2017, "Towards A Rigorous Science of Interpretable Machine Learning", arXiv:1702.08608, human-grounded evaluation framework] — explanations tested on real underwriters/claims handlers/investigators, measuring decision-behaviour impact, not just comprehension surveys.
 - **Faithfulness caveats on model-stated reasoning propagated into explanation design** — [linked IRQ-MOD-009] — where the underlying model's stated reasoning is known to be potentially unfaithful, explanation content and reviewer training are designed with that caveat explicit, rather than presenting the explanation as a ground-truth account of the decision process.
-- **EU AI Act Article 13 transparency and Article 14 oversight-support requirements** — [EU AI Act, Regulation (EU) 2024/1689, Articles 13 and 14, Aug 2024] — high-risk AI systems must be sufficiently transparent to enable users to interpret output and use it appropriately, directly requiring adequacy, not mere presence, of explanation.
+- **EU AI Act Article 13 transparency and Article 14 oversight-support requirements** — [EU AI Act, Regulation (EU) 2024/1689, Articles 13 and 14, Aug 2024] — high-risk AI systems must be sufficiently transparent to enable deployers to interpret output and use it appropriately, directly requiring adequacy, not mere presence, of explanation.
 - **FCA Consumer Duty and PRIN 2A comprehensibility standard** — [FCA, Handbook PRIN 2A, Consumer Duty, Jul 2023] — informs the standard against which internal decision-maker explanations, and any customer-facing explanation, should be assessed for genuine comprehensibility.
 - **Timeliness requirement matched to the decision workflow's time constraints** — [linked IRQ-HUM-002; FCA, Handbook SYSC 4.1.1R] — explanation must be deliverable within the time the reviewer actually has available, not only theoretically adequate given unlimited time.
 
@@ -111,7 +111,7 @@ Assuming controls are well-implemented and monitored:
     testing with real reviewers is active and repeated at model change)
   Detectability: 2 (detectable via the seeded-error comparison
     methodology, ahead of any real event)
-  Recoverability: 2 (reversible via explanation redesign once
+  Recoverability: 3 (reversible via explanation redesign once
     identified; days-to-weeks, with re-testing)
   Novelty: 3 (domain expert assumes an explanation feature satisfies
     the requirement; testing explanation adequacy against actual
@@ -149,7 +149,7 @@ share test infrastructure with IRQ-HUM-001's seeded-error programme.
 | **Severity** | 2 | Does not directly cause harm but materially weakens the human checkpoint relied upon to catch harm originating elsewhere |
 | **Likelihood** | 3 | Probable given the well-documented pattern of post-hoc, potentially unfaithful generative explanations and the rarity of decision-behaviour-impact testing by default |
 | **Detectability** | 2 | Detectable via the seeded-error comparative test methodology, ahead of any real event, if such testing is active |
-| **Recoverability** | 2 | Reversible via explanation redesign and re-testing once identified, typically within weeks |
+| **Recoverability** | 3 | Reversible via explanation redesign and re-testing once identified, typically within weeks |
 | **Novelty** | 3 | Domain expert assumes presence of an explanation feature satisfies the requirement; testing for decision-behaviour impact rather than comprehensibility alone is specialist practice |
 
 ## 17. Regulatory Basis
@@ -212,6 +212,8 @@ Related IRQs:
 **Change Log:**
 - v1.0 (2026-07): Initial publication; all four tests passed.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 9 Expected Controls — the EU AI Act Article 13 limb says "deployers", the term Article 13(1) uses, in place of "users". No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2 (Field 16, and the controls-in-place case in Field 15). The canvas states recovery typically within weeks, which is beyond the within-hours level that ASSURANCE_MODEL.md §7 scores 2; the scale names no band between days and years, and 3 (reversible within days) is the nearest anchor. The other axes, the ★ rating and the research basis are unchanged.
 ```
 
 ---

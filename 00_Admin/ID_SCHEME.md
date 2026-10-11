@@ -129,7 +129,7 @@ Related IRQs:
   - IRQ-GOV-007 (I.3 Validation & Oversight; independent validation sign-off for model QA)
 ```
 
-Cross-references are recorded **owner-side**: a link is carried in field 19 of the canvas that owns the dependency, and the register row's Related-IRQs column mirrors that canvas's field 19 exactly. Links are deliberately not asserted to be bidirectional — A referencing B does not require B to reference A. (Rule restated 26 Aug 2026; the earlier bidirectionality statement described a discipline the estate never operated. Register↔canvas agreement is machine-checked at every signing.)
+Cross-references are recorded **owner-side**: a link is carried in field 19 of the canvas that owns the dependency, and the register row's Related-IRQs column mirrors that canvas's field 19 exactly. Links are deliberately not asserted to be bidirectional — A referencing B does not require B to reference A. (Rule restated 26 Aug 2026; the earlier bidirectionality statement described a discipline the estate never operated. Register↔canvas agreement is enforced by the maintainer's signing check (ASSURANCE_MODEL.md §6A.2), which the maintainer runs over the standard's files before each signing and which is not published with the standard.)
 
 ---
 
@@ -175,7 +175,8 @@ An IRQ must not simultaneously define:
 **Custodian:** the maintainer
 
 **Change process:**
-- **New domain or subdomain:** maintainer approval (major version bump)
+- **New domain:** maintainer approval (major version bump)
+- **New subdomain:** maintainer approval (minor version bump)
 - **New IRQ:** maintainer approval within subdomain (minor version bump)
 - **Renumbering/consolidation:** Not permitted (breaks external references). Use Deprecation instead.
 

@@ -8,7 +8,7 @@
 
 Three commitments were fixed before any content was written:
 
-1. **Evidence base before drafting.** The standard's quality rests on its evidence base rather than its drafting. Source registers (regulators, standards bodies, frontier labs, academia, incidents) were compiled and web-verified *before* the review questions were populated, so that canvases draw on pre-verified citations rather than inventing them; a citation whose pinpoint could not be confirmed carries an [UNVERIFIED] tag (README.md §3).
+1. **Evidence base before drafting.** The standard's quality rests on its evidence base rather than its drafting. Source registers (regulators, standards bodies, frontier labs, academia, incidents) were compiled *before* the review questions were populated, so that canvases draw on registered sources rather than inventing them; each register's notes state how its rows were checked, and a citation whose pinpoint could not be confirmed carries an [UNVERIFIED] tag (README.md §3).
 2. **Taxonomy before risks.** Mixing threats, vulnerabilities, controls, consequences and governance failures into one list produces duplication and inconsistent findings. FAIAS built a canonical taxonomy first, with explicit single-homing rules and written boundary rulings for the hard cases (e.g. RAG poisoning: data supply-chain vs inference-time attack; agent memory: data asset vs operational context).
 3. **Honesty as a feature.** Where the science is immature, the standard says so — anchored ★ ratings, "none established" labels, and unresolved citations retagged `[UNVERIFIED — reason]` rather than papered over. The intended reader (a board, a regulator, an internal audit committee) is told not only what was found but the basis on which the review was conducted.
 
@@ -45,4 +45,4 @@ This discipline was applied bidirectionally: it removed items (e.g. standalone l
 - Every risk item carries publication dates and source versions (per `METHODOLOGY_STANDARDS.md`), so individual canvases can be updated as research, incidents and regulation evolve — without rewriting the framework.
 - `TAXONOMY.md` is the single authoritative source for the hierarchy; all other documents defer to it.
 - The IRQ↔claim matrix must retain its no-orphan property after any register change; the QA checklist and verification-log format are reusable for future batches.
-- Known-aging content (regulatory timelines, in-flight standards such as ISO/IEC 27090 and NIST COSAIS, unpublished MAS AIRG final guidelines) is flagged in the registers for scheduled re-verification.
+- Known-aging content (regulatory timelines, and in-flight standards such as ISO/IEC 27090 and NIST COSAIS) is flagged in the registers for scheduled re-verification.

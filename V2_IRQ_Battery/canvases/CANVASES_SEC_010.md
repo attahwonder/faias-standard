@@ -134,12 +134,14 @@ integrations, particularly where any single tool server holds broad permission.
 | **Novelty** | 4 | Genuinely emergent threat class (named formally only in 2025); combines an old security concept (confused deputy) with an entirely new mechanism (agentic tool discovery), leaving almost no traditional-risk-review analogue. |
 
 ## 17. Regulatory Basis
-> No regulation names MCP/tool-server compromise explicitly; this is a genuinely emerging area. [DSIT, AI Cyber Security Code of Practice, Jan 2025] — secure-by-design principles for agentic systems apply by extension. [FCA SYSC 8 outsourcing/third-party requirements] — a tool server providing material functionality to an agentic system may constitute a third-party dependency requiring governance under existing outsourcing rules, though this application is not yet explicitly tested by regulators. [PRA SS1/23] — where the agentic system is within model risk management scope. [UNVERIFIED — confirmed as of Jul 2026: no FCA/PRA/DSIT publication specifically addresses MCP or tool-server-protocol security; monitor for supervisory statements as agentic adoption grows] (verified 29 Jul 2026).
+> No regulation names MCP/tool-server compromise explicitly; this is a genuinely emerging area. [DSIT, AI Cyber Security Code of Practice, Jan 2025] — secure-by-design principles for agentic systems apply by extension. [FCA SYSC 8 outsourcing/third-party requirements] — a tool server providing material functionality to an agentic system may constitute a third-party dependency requiring governance under existing outsourcing rules, though this application is not yet explicitly tested by regulators. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] — where the agentic system is within model risk management scope. [UNVERIFIED — as of Jul 2026 no FCA/PRA/DSIT publication was located that sets out security guidance specifically for MCP or tool-server protocols; the FCA Mills Review ("The Mills Review: AI and the future of retail financial services", 6 July 2026, p.141) notes in one passage that MCP and similar protocols lack strong identity guarantees, clear mandate structures and strong audit standards; monitor for supervisory statements as agentic adoption grows] (verified 29 Jul 2026; Mills Review read 7 Oct 2026).
 
 ## 18. Research Basis
 > [OWASP Foundation, 2025, "Agentic Security Initiative — Agentic AI: Threats and Mitigations", v1.0, February 2025] — the first structured threat model for agentic systems, explicitly naming tool-server compromise, memory poisoning, and cascading multi-agent failures; primary source for this IRQ. [OWASP GenAI Security Project, 2025, "Securing Agentic Applications Guide", v1.0, 28 July 2025] — practical secure-build guidance (tool sandboxing, identity, human-in-the-loop gates) directly informing the control set. [Greshake et al., 2023, arXiv:2302.12173] — the underlying instruction/data-channel-confusion mechanism a poisoned tool-server response exploits, once its content reaches the agent's context.
 >
-> **Research basis last reviewed:** 12 September 2026 · **review cadence:** Fast (6 months)
+> **[FAIAS Incident Register, row 83, "postmark-mcp backdoored MCP server", 2025]** — the impersonated vendor's own statement records that the actor "built trust over 15 versions" of a look-alike MCP server on npm and "then added a backdoor in version 1.0.16 that secretly BCC'd emails to an external server". A tool server that had gained trust over many versions was altered in a later version to copy the data passed through it to an external server. It evidences update-borne compromise of a tool server, not poisoned tool descriptions.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -202,6 +204,9 @@ Change Log:
   corrected on the same basis from "v1.0, 27 July 2025" to "v1.0, 28 July 2025",
   harmonising the reference list with field 9. No change to controls, test, ★ or risk
   profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023). No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 83, postmark-mcp, a look-alike MCP server altered by a later update). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.3 (2026-10-09): Field 17 Regulatory Basis — the tag on supervisory guidance for MCP and tool-server protocols no longer says confirmed for a negative search, and names the FCA Mills Review (6 July 2026) passage that MCP lacks strong identity guarantees, clear mandate structures and strong audit standards. No change to the ★ rating or the risk profile.
 ```
 
 ---

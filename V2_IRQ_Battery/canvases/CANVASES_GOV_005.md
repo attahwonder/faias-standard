@@ -57,7 +57,7 @@ Control Breakpoints:
 
 ## 9. Expected Controls (Traced)
 - **Dedicated GenAI acceptable-use policy covering data entry restrictions, permitted use cases and prohibited practices** — [FCA, "AI Update," Apr 2024, confirming existing SYSC/Consumer Duty framework applies but requiring firm-level policy translation; ISO/IEC 42001:2023, clause 5.2 (policy)] — a current, GenAI-specific policy document, not solely inference from legacy policy headings.
-- **Output-reliance policy defining required verification/human-review behaviour before generated content is relied upon in customer or material decisions** — [PRA SS1/23, May 2023, use and compensating-controls principle, extended to generative outputs] — Emerging Practice: SS1/23 was not written for generative model outputs specifically; applying its use-principle logic to output-reliance policy is a firm-level extension, not yet standard.
+- **Output-reliance policy defining required verification/human-review behaviour before generated content is relied upon in customer or material decisions** — [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), use and compensating-controls principle, extended to generative outputs] — Emerging Practice: SS1/23 was not written for generative model outputs specifically; applying its use-principle logic to output-reliance policy is a firm-level extension, not yet standard.
 - **Agent permission and delegation policy defining approval, scoping and revocation of autonomous action authority** — [ISO/IEC 42001:2023, clause 8 (operation)] — Emerging Practice: no established regulatory standard specifically addresses agentic permission-delegation policy; this control area is genuinely nascent, and is documented as such rather than papered over.
 - **Data-entry classification extending existing data protection policy to explicitly name GenAI prompts/uploads as a data-handling event** — [UK GDPR Art. 5(1)(f) and Art. 32; linked IRQ-DAT-002] — closes the gap between legacy data policy scope and the new channel.
 - **Policy review cadence tied to AI capability/tooling change, not solely annual calendar review** — [ISO/IEC 42001:2023, clause 9 (performance evaluation) and clause 10 (improvement)] — ensures policy currency keeps pace with a fast-moving technology, rather than becoming stale between annual cycles.
@@ -136,12 +136,14 @@ premise of every downstream governance control.
 | **Novelty** | 2 | Less AI-specific than other GOV IRQs — this is fundamentally a policy-maintenance discipline familiar to any governance SME, applied to a new technology; the AI-specific element is knowing which four risk areas to check for. |
 
 ## 17. Regulatory Basis
-> [FCA, "AI Update," Apr 2024] confirms the FCA expects existing SYSC and Consumer Duty obligations to be translated into firm-level policy for AI use, without prescribing the policy content itself, leaving policy-suite adequacy a firm responsibility this IRQ tests. [PRA, SS1/23, May 2023] establishes model use principles that extend to AI/ML by the PRA's own April 2024 mapping, implying output-reliance policy should exist for generative model use. [ISO/IEC 42001:2023, clause 5.2] requires a documented AI policy as a certifiable management-system requirement. [UK GDPR Art. 5(1)(f) and Art. 32] underlies the data-entry policy gap specifically, where GenAI prompts constitute a data processing/egress channel.
+> [FCA, "AI Update," Apr 2024] confirms the FCA expects existing SYSC and Consumer Duty obligations to be translated into firm-level policy for AI use, without prescribing the policy content itself, leaving policy-suite adequacy a firm responsibility this IRQ tests. [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] establishes model use principles that extend to AI/ML by the Bank of England and PRA letter of 22 April 2024, implying output-reliance policy should exist for generative model use. [ISO/IEC 42001:2023, clause 5.2] requires a documented AI policy as a certifiable management-system requirement. [UK GDPR Art. 5(1)(f) and Art. 32] underlies the data-entry policy gap specifically, where GenAI prompts constitute a data processing/egress channel.
 
 ## 18. Research Basis
 > No peer-reviewed academic literature specifically evaluates financial-services GenAI/agentic policy-suite adequacy; this control area is compliance/governance practice rather than a research literature, consistent with this domain's evidentiary profile. [FCA "AI Update" (2024)] and [ISO/IEC 42001:2023] are treated as the most credible available reference points for the expected policy scope.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 67, "Victoria's Department of Families, Fairness and Housing", 2024]** — the Information Commissioner records that at the time of the incident "there were no specific departmental rules in place about when and how these tools should or should not be used" (para 92), the department's guidance following on 25 October 2023 (para 98): staff had no departmental rule on the use of such tools until then. The department is a public-sector child protection body, not a financial-services firm.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -158,8 +160,8 @@ premise of every downstream governance control.
 ## 20. References
 ```
 [1] FCA, 2024. "AI Update." April 2024.
-[2] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023, effective
-    17 May 2024.
+[2] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
 [3] ISO/IEC, 2023. "ISO/IEC 42001:2023 — Artificial intelligence management system."
     Clauses 5.2, 8, 9, 10.
 [4] UK, 2018 (as amended). "UK General Data Protection Regulation." Art. 5(1)(f), Art. 32.
@@ -187,6 +189,10 @@ FOUR-TEST VALIDATION:
 
 Change Log:
 - v1.0 (2026-07): Initial publication; all four tests passed.
+- v1.3.3 (2026-10-09): Field 17 — the SS1/23 sentence names the Bank of England and PRA letter of 22 April 2024, in place of the PRA's April 2024 mapping. Form corrections only. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 67, the Information Commissioner's investigation of a Victorian child protection department, a public-sector setting). Research-basis review date moved. No change to controls, test, ★3 or risk profile.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 ```
 
 ---

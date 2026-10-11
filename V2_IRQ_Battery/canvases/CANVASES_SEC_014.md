@@ -115,7 +115,7 @@ Assuming controls are well-implemented and monitored:
   Detectability: 3 (an unvalidated hand-off typically does not appear in
               conventional user-input logging or perimeter security tooling,
               since the payload originates from the model, not the user)
-  Recoverability: 2 (reversible within days via patching the hand-off point
+  Recoverability: 3 (reversible within days via patching the hand-off point
               and re-testing; moderate cost absent a crystallised breach)
   Novelty: 3 (requires understanding that model output, not only model
               input, is an untrusted surface — a natural but incorrect
@@ -152,16 +152,22 @@ downstream execution context.
 | **Severity** | 3 | Injection, cross-site scripting, server-side request forgery or unauthorised command execution against a downstream system; potential data-integrity or client-side compromise. |
 | **Likelihood** | 2 | Plausible but requires both attacker-influenced content reaching model output and an unvalidated downstream hand-off; mitigated by upstream injection-resistance and this IRQ's own control layer where present. |
 | **Detectability** | 3 | Payload originates in model output rather than direct user input, so it does not appear in conventional user-input logging or perimeter security tooling tuned to catch user-submitted attack strings. |
-| **Recoverability** | 2 | Reversible within days via patching the specific hand-off point and re-testing; moderate cost absent a crystallised breach. |
+| **Recoverability** | 3 | Reversible within days via patching the specific hand-off point and re-testing; moderate cost absent a crystallised breach. |
 | **Novelty** | 3 | Requires recognising model output, not only model input, as an untrusted surface — a natural but incorrect default assumption, though the underlying discipline (validation at a trust boundary) is familiar once reframed. |
 
 ## 17. Regulatory Basis
-> No regulation names improper output handling in generative AI systems explicitly. [UK GDPR Art. 5(1)(f), Art. 32] — integrity and security of processing, engaged where an unvalidated output hand-off enables unauthorised data access or data-integrity compromise. [DSIT, AI Cyber Security Code of Practice, January 2025] — secure-by-design principles for AI systems apply to output-handling boundaries as much as to input-handling ones. [PRA SS1/23 Model Risk Management, May 2023] and [FCA/PRA operational resilience regime] — where the consuming downstream system supports an important business service or falls within model-risk-management scope. Cited as governing expectations; no output-handling-specific rule exists.
+> No regulation names improper output handling in generative AI systems explicitly. [UK GDPR Art. 5(1)(f), Art. 32] — integrity and security of processing, engaged where an unvalidated output hand-off enables unauthorised data access or data-integrity compromise. [DSIT, AI Cyber Security Code of Practice, January 2025] — secure-by-design principles for AI systems apply to output-handling boundaries as much as to input-handling ones. [PRA SS1/23 Model Risk Management, April 2026 (16 April 2026, updating 17 May 2023)] and [FCA/PRA operational resilience regime] — where the consuming downstream system supports an important business service or falls within model-risk-management scope. Cited as governing expectations; no output-handling-specific rule exists.
 
 ## 18. Research Basis
 > [OWASP Foundation, 2025, "OWASP Top 10 for LLM Applications 2025", entry LLM05:2025 Improper Output Handling, genai.owasp.org] — the primary, verified anchor for this IRQ: a mature, community-maintained, actively updated framework naming this exact risk class (unvalidated LLM output reaching a downstream interpreter, renderer, query engine or execution context) and its standard mitigations (context-appropriate encoding, parameterised query construction, treating output as untrusted). No peer-reviewed academic literature specific to financial-services deployment of this control was identified in this review; the OWASP framework is the operative, and sufficient, anchor for a named and actively maintained risk category, and this is recorded as the basis for the ★2 rating rather than an evidentiary gap.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Fast (6 months)
+> Peer-reviewed work outside financial services evidences the consequence for one boundary. [Pedro, R., Coimbra, M.E., Castro, D., Carreira, P., Santos, N., 2025, "Prompt-to-SQL Injections in LLM-Integrated Web Applications: Risks and Defenses", Proceedings of the 47th IEEE/ACM International Conference on Software Engineering (ICSE 2025), pp. 1768–1780, https://doi.org/10.1109/ICSE55347.2025.00007] shows that user prompts passed through the Langchain middleware can be turned into SQL queries that compromise the database, evaluates several language models against such attacks, and proposes defences built as extensions to Langchain. Its scope is the query-engine boundary in Langchain applications. It does not cover renderers, shells or other execution contexts. The authors' repository, github.com/rodrigo-pedro/P2SQL, holds the code, prompts and data for the paper. No ★ change follows from this addition.
+>
+> **[FAIAS Incident Register, row 79, "EchoLeak (CVE-2025-32711)", 2025]** — the independent case study of a crafted email that Microsoft 365 Copilot retrieved as ordinary context records exfiltration by "circumventing link redaction with reference-style Markdown, exploiting auto-fetched images, and abusing a Microsoft Teams proxy allowed by the content security policy", so model output handed to a renderer that fetched images became the exfiltration channel. Carried as a secondary row: the mechanism is from an independent case study on arXiv, and the original researchers' disclosure was not read.
+>
+> **[FAIAS Incident Register, row 86, "Vanna AI CVE-2024-5565", 2024]** — the CVE description records that "it is possible to alter the prompt using prompt injection and run arbitrary Python code instead of the intended visualization code", and that external input to the library's ask method, with visualize set to True (the default), "leads to remote code execution"; it is a publicly disclosed defective state of shipped software, with a vulnerability record, and no victim is recorded. Carried as a secondary row: the CVE record was assigned by the reporting researchers' firm, and no statement from the vendor was read.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -180,10 +186,14 @@ downstream execution context.
 [1] OWASP Foundation, 2025. "OWASP Top 10 for LLM Applications 2025."
     Entry LLM05:2025 Improper Output Handling. genai.owasp.org.
 [2] DSIT, 2025. "AI Cyber Security Code of Practice." January 2025.
-[3] PRA, 2023. "SS1/23 — Model risk management principles for banks."
-    May 2023.
+[3] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023).
 [4] UK GDPR, Regulation (EU) 2016/679 as retained in UK law. Article 5(1)(f)
     (integrity and confidentiality); Article 32 (security of processing).
+[5] Pedro, R., Coimbra, M.E., Castro, D., Carreira, P., Santos, N., 2025. "Prompt-to-SQL
+    Injections in LLM-Integrated Web Applications: Risks and Defenses." Proc. 47th IEEE/ACM
+    International Conference on Software Engineering (ICSE 2025), pp. 1768–1780.
+    https://doi.org/10.1109/ICSE55347.2025.00007. Code: github.com/rodrigo-pedro/P2SQL.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -214,4 +224,14 @@ FOUR-TEST VALIDATION:
 Change Log:
 - v1.0 (2026-08-01): Initial publication as part of the v1.0.3 batch.
   New subdomain E.7. Four tests passed.
+- v1.3.3 (2026-10-09): Fields 17 and 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citations added in the reserved form (row 79, EchoLeak, carried as a secondary row on an independent case study; row 86, Vanna AI CVE-2024-5565, carried as a secondary row on a CVE record assigned by the reporting researchers' firm). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — Pedro et al. (ICSE 2025) cited as peer-reviewed
+  work outside financial services for the query-engine boundary, with its scope stated.
+  Field 20 References — entry [5] added. Research-basis review date moved. No change to the ★
+  rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2
+  (Field 16, and the controls-in-place case in Field 15). The canvas states recovery
+  within days; ASSURANCE_MODEL.md §7 scores recovery within hours 2 and recovery
+  within days 3. The other axes, the ★ rating and the research basis are unchanged.
 ```

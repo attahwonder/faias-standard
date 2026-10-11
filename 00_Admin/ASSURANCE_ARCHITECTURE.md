@@ -17,7 +17,7 @@ The engagement output is an **OPINION**, not a findings list. FAIAS draws on the
 
 **Four Opinion Categories:**
 
-1. **Should Proceed** — Reasonable or limited assurance, as the assurance-level rule below allows: the AI system's controls are sufficient for deployment under the stated operating envelope; residual risks are within risk appetite; all material claims are supported by strong evidence (predominantly L4–L5).
+1. **Should Proceed** — Reasonable or limited assurance, as the assurance-level rule below allows: the AI system's controls are sufficient for deployment under the stated operating envelope; residual risks are within risk appetite; all material claims are supported by evidence that meets the evidence minimum for the engagement's tier (TIERING_MODEL.md).
 
 2. **Should Proceed With Conditions** — Reasonable or limited assurance, as the assurance-level rule below allows, subject to conditions: deployment is recommended if specified conditions are met (e.g., enhanced monitoring, restricted envelope, mandatory training, vendor SLA). Conditions are measurable, time-bound, and testable.
 
@@ -27,7 +27,7 @@ The engagement output is an **OPINION**, not a findings list. FAIAS draws on the
 
 ### Assurance Level by Opinion Category
 
-**The assurance-level rule.** Reasonable assurance is available only where every material claim rests on tests rated ★4 or above (ASSURANCE_MODEL.md §6), in addition to the evidence requirements above. No reasonable assurance rests on a material test rated ★1–★3. Where a material claim can be tested only at ★1–★3, the test still runs, its rating is disclosed at the point of the conclusion (PLAYBOOK_OVERVIEW.md §8), and the opinion is given at limited assurance. An alternative rule, under which L4–L5 evidence with a disclosed ★2–★3 test method could support reasonable assurance, is not adopted in this version: no evidence test for it has yet been stated.
+**The assurance-level rule.** Reasonable assurance is available only where every material claim rests on tests rated ★4 or above (ASSURANCE_MODEL.md §6), in addition to the evidence requirements above. No reasonable assurance rests on a material test rated ★1–★3. Where a material claim can be tested only at ★1–★3, the test still runs, its rating is disclosed at the point of the conclusion (PLAYBOOK_OVERVIEW.md §8), and the opinion is given at limited assurance. An alternative rule, under which L4–L5 evidence with a disclosed ★2–★3 test method could support reasonable assurance, is not adopted in this version: no evidence test for it has yet been stated. At this version, two tests are rated ★4 (REGISTER_STATS.md), IRQ-SEC-001 and IRQ-SEC-003, and both support CLM-09 only (IRQ_CLAIM_MATRIX.md), so a Tier 2 or Tier 3 opinion, whose scope covers all nine domains (TIERING_MODEL.md), is given at limited assurance in practice.
 
 The four categories are deployment recommendations, not ISAE 3000 conclusion types. Should Proceed With Conditions is not a qualified conclusion: ISAE 3000 reserves a qualified conclusion for a material scope limitation or a material misstatement (ISAE 3000 (Revised), para 74).
 
@@ -60,6 +60,8 @@ EVIDENCE (IRQ assessments, test results, monitoring data)
 - "Vendor updates and model changes cannot silently alter production behaviour; all changes are versioned and tested."
 - "The system fails safely: degradation does not cascade into customer harm or regulatory breach."
 - "Confidence estimates reflect actual accuracy; miscalibration is detected and escalated."
+
+**Core claims.** The core claims are the claims in CLAIMS_REGISTER.md; each is mapped to its IRQs in IRQ_CLAIM_MATRIX.md. The examples above show the form of a claim.
 
 **Chain Example:**
 
@@ -138,7 +140,7 @@ Every IRQ finding is screened against **ten materiality lenses**. Reviewers chas
 1. For each IRQ finding (Pass / Fail / Partial / **Not Testable**):
    - Map to all applicable dimensions (≥1 typical)
    - Assess if failure has **material** business consequence (not theoretical; not reversible in hours; not covered by compensating controls)
-   - **Not Testable — presumption.** Not Testable applies where the evidence needed cannot be obtained within FAIAS's scope (the reviewer does not test production: METHODOLOGY_STANDARDS.md §3). For a **Critical** claim, an untestable IRQ presumptively yields **Unable to Form Opinion** on that claim. The presumption is defeated **only** by a scope restriction that eliminates reliance on the missing evidence — **never** by a commitment to future work. High and Medium claims' Not Testable findings route through ordinary materiality screening.
+   - **Not Testable — presumption.** Not Testable applies where the evidence needed cannot be obtained within FAIAS's scope (the reviewer does not test production: METHODOLOGY_STANDARDS.md §3). For a **Critical** claim, an untestable IRQ leaves the claim unassessed, and the presumptive opinion is **Unable to Form Opinion** (CLAIMS_REGISTER.md: evidence insufficient to assess a Critical claim). The presumption is defeated **only** by a scope restriction that eliminates reliance on the missing evidence — **never** by a commitment to future work. High and Medium claims' Not Testable findings route through ordinary materiality screening.
 2. If finding is material on ≥1 dimension:
    - Escalate to OPINION conclusions
    - Tag in reporting as materialityThreshold
@@ -237,7 +239,7 @@ An opinion under this architecture is **a conclusion under conditions, not a ver
 - Synthesise claims assessment
 - Screen findings against materiality (10 lenses)
 - Apply claim-level weighting (failed IRQ → failed claim?)
-- Issue OPINION (Should Proceed / With Conditions / Should Not Proceed)
+- Issue OPINION (Should Proceed / With Conditions / Should Not Proceed / Unable to Form Opinion)
 
 **Early Life Monitoring Phase (Weeks 1–12 post-deployment)**
 - Confirm system behaves as tested (model performance, escalation patterns, confidence distribution)
@@ -249,14 +251,14 @@ An opinion under this architecture is **a conclusion under conditions, not a ver
 - Revisit claims: are they still valid?
 - Audit envelope: has drift occurred uncontrolled?
 - Review monitoring data: are residual risks within appetite?
-- Re-test IRQs sampling (1 year → may re-test 20% of IRQs; 3 years → material re-test needed)
+- Re-test IRQs at the depth set for the tier (ENGAGEMENT_MODEL.md, Phase 6: full reassessment at Tier 3; a tested subset at Tier 2; attestation at Tier 1; policy review at Tier 0)
 - Publish an updated opinion — the OPINION_TEMPLATE form with a new basis date (confidence in continued safety)
 
 **Major Change Review Phase**
 - Model update, new customer segment, new tool integration, new business process
 - Triggered by: vendor update, envelope expansion, significant incident, regulatory change
 - Light re-assurance or full re-test depending on change scope
-- Publish a Pass-With-Conditions conclusion (per the concluding forms) or hold deployment
+- Publish an updated opinion — the OPINION_TEMPLATE form with a new basis date — or hold deployment
 
 **Dated Forward Obligation Trigger.** An opinion issued while a dated future legal obligation is already enacted carries that obligation as a **dated condition** — a calendar trigger, not a monitoring trigger — with re-assurance against that obligation scheduled at or before the date it becomes applicable, independent of other triggers. Worked examples (dates verified at drafting): EU AI Act Art 50 obligations → 2 Aug 2026 · EU AI Act Annex III high-risk obligations → 2 Dec 2027 (deferring instrument Reg (EU) 2026/1744) · UK Data (Use and Access) Act 2025 s.80 automated-decision regime → commenced 5 Feb 2026 (SI 2026/82 reg 2(j)) · AMLR (EU) 2024/1624 → applies 10 Jul 2027.
 
@@ -332,22 +334,22 @@ After the engagement, the assurance team assesses: **"How confident are we that 
 
 | Level | Definition | Indicators | Implication |
 |-------|-----------|-----------|-----------|
-| **HIGH** | Mature research methods, established benchmarks, strong multi-source evidence (L4–L5), methodical coverage, multiple independent validators | ★4–★5 tests; L4–L5 evidence dominant; peer-reviewed methods; repeatable; similar systems previously assured | Opinion is robust; low re-assurance frequency (annual or 18-month) |
-| **MEDIUM** | Emerging techniques, some evidence gaps, judgement reliance, single-source evidence, frontier AI behaviours | Mix of ★3–★4 tests; L3 evidence mix; professional judgment required; expert variability; limited precedents | Opinion is credible but limited; use for deployment gate but require closer monitoring; annual re-assurance mandatory |
-| **LOW** | Frontier capability, limited methodology, sparse or no incident history, extrapolation from research, untested controls | ★1–★2 tests; L1–L2 evidence; no benchmark; expert elicitation only; theoretical framework | Opinion carries significant uncertainty; use only if risk mitigated by other means; high re-assurance frequency (quarterly or per change) |
+| **HIGH** | Mature research methods, established benchmarks, strong multi-source evidence (L4–L5), methodical coverage, multiple independent validators | mostly ★4 tests (the tie to testing confidence below); L4–L5 evidence dominant; peer-reviewed methods; repeatable; similar systems previously assured | Opinion is robust; low re-assurance frequency (annual or 18-month) |
+| **MEDIUM** | Emerging techniques, some evidence gaps, judgement reliance, single-source evidence, frontier AI behaviours | mostly ★3 tests, or a mix of ★3 and ★4 (the tie below); L3 evidence mix; professional judgment required; expert variability; limited precedents | Opinion is credible but limited; use for deployment gate but require closer monitoring; annual re-assurance mandatory |
+| **LOW** | Frontier capability, limited methodology, sparse or no incident history, extrapolation from research, untested controls | mostly ★1–★2 tests (the tie below); L1–L2 evidence; no benchmark; expert elicitation only; theoretical framework | Opinion carries significant uncertainty; use only if risk mitigated by other means; high re-assurance frequency (quarterly or per change) |
 
 **Review Confidence Statement (internal assessment — informs the narrative forms below; per the owner's decision of 1 August 2026 it is never issued to the addressee as a grade or scale):**
 
-Example: "Our review confidence in this assurance is **LOW**. Hallucination and confidence-calibration testing use credible research methods with no agreed benchmark (★3), and production monitoring is L5. However, reviewer competence assessment relies on training logs (L2) and a single 90-day sample (L3); we rely on professional judgment that 12% disagreement rate indicates independence. Envelope drift detection is emerging practice (★2). Under the tie to testing confidence below, a mean ★ rating below 3.2 gives Low review confidence. Recommend re-assurance at each material change and quarterly monitoring review to validate assumptions."
+Example: "Our review confidence in this assurance is **LOW**. Hallucination and confidence-calibration testing use credible research methods with no agreed benchmark (★3), and production monitoring is L5. However, reviewer competence assessment relies on training logs (L2) and a single 90-day sample (L3); we rely on professional judgment that 12% disagreement rate indicates independence. Envelope drift detection is emerging practice (★2). More than 30% of the evidence items are L1–L2. Under the tie to testing confidence below, that evidence profile gives Low review confidence, although the mean ★ of the three rated tests (2.7) is in the Medium band. Recommend re-assurance at each material change and quarterly monitoring review to validate assumptions."
 
-**Tie to Testing Confidence (★1–★5):**
+**Tie to Testing Confidence (★1–★5; no test is rated ★5):**
 
-Aggregate testing confidence across all IRQs:
-- If mean ★ rating ≥ 4.2 and L4–L5 evidence is >70% → High Review Confidence
-- If mean ★ rating 3.2–4.1 and L3–L5 evidence is >70% → Medium Review Confidence
-- If mean ★ rating < 3.2 or L1–L2 evidence is >30% → Low Review Confidence
+This is the one statement of the review-confidence rule; ENGAGEMENT_MODEL.md and OPINION_TEMPLATE.md refer to it and do not restate it. Take the mean ★ of the tests run in the engagement, each at the rating its canvas carries, and the share of the engagement's evidence items at each level (ASSURANCE_MODEL.md §5). Apply the first level whose condition is met:
+- High Review Confidence: mean ★ of 3.5 or above, and L4–L5 evidence above 70%
+- Medium Review Confidence: mean ★ of 2.5 or above, and L3–L5 evidence above 70%
+- Low Review Confidence: every other case. An engagement that runs no test (Tier 0, design review only) has no mean ★ and is Low.
 
-*Note: testing practice for AI in financial services is still emerging, and no test in the current battery is rated above ★4, so on the current battery no engagement reaches High Review Confidence. The threshold is kept so that it applies once settled benchmarks exist.*
+*Note: no test in the battery is rated ★5 (ASSURANCE_MODEL.md §6), so the thresholds are set on ★1–★4. At this version few tests are rated ★4 (the assurance-level rule, Layer 2), so High review confidence is reachable only by a scope built around those tests, which no tier prescribes.*
 
 **How review confidence reaches the report — the statement on the basis of the review.** The internal assessment above informs the engagement; it is never expressed to the addressee as a grade or scale. In the issued report it takes one of exactly **two narrative forms**, stated separately from the conclusion: *(A) review conducted on the full evidential basis sought* — the evidence sought at scoping was substantially obtained, the tested environment demonstrated representative to the extent recorded, conclusions resting principally on artefact and test, residual limits enumerated; or *(B) review conducted on a qualified evidential basis* — each respect in which the basis was narrower than scoped is named, together with what would have strengthened it, and the conclusion is read with those limits. **The minimum-basis rule:** where the review's own evidential basis cannot support either statement, no conclusion is signed — the outcome is Unable to Form Opinion, and the statement records what a conclusion would require. The basis statement is therefore never available as a means of qualifying a signed conclusion. The ★ scale grades test-method maturity within the methodology and does not appear in the statement.
 
@@ -357,7 +359,7 @@ Aggregate testing confidence across all IRQs:
 
 - ISAE 3000 (Revised): International Standard on Assurance Engagements, *Assurance Engagements Other than Audits or Reviews of Historical Financial Information* (IAASB, December 2013; effective for assurance reports dated on or after 15 December 2015)
 - GSN Community Standard, Version 2 (2018); Goal Structuring Notation for Safety Cases
-- UL 4600: Standard for Safety for Autonomous Vehicles and Automated Driving Systems (Underwriters Laboratories)
+- UL 4600: Standard for Evaluation of Autonomous Products, Edition 3, 17 March 2023 (Underwriters Laboratories)
 - ISO/IEC 15026-2: Systems and Software Assurance — Part 2: Assurance Case
 - ARP 4761: Guidelines and Methods for Conducting the Safety Assessment Process on Civil Airborne Systems and Equipment (SAE International)
 - IEC 61508: Functional Safety of Electrical/Electronic/Programmable Electronic Safety-Related Systems (IEC)

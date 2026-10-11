@@ -59,7 +59,7 @@ Control Breakpoints:
 **AO-CON-009:** The AI system shall not produce harmful, abusive, degrading or unsafe output toward a customer or colleague in ordinary, non-adversarial use, tested against a structured harm taxonomy independently of adversarial red-teaming.
 
 ## 9. Expected Controls (Traced)
-- **Harm-taxonomy testing under normal-use conditions** — candidate methodology: [MLCommons (Ghosh et al.), 2025, "AILuminate v1.0", arXiv:2503.05731] — Emerging Practice; no FS-specific benchmark exists for this failure mode, and AILuminate's 12 hazard-category, Poor→Excellent grading is the closest available candidate, while remaining not FS-certified and general (not FS-specific) in its hazard definitions.
+- **Harm-taxonomy testing under normal-use conditions** — candidate methodology: [MLCommons (Ghosh et al.), 2025, "AILuminate: Introducing v1.0 of the AI Risk and Reliability Benchmark from MLCommons", arXiv:2503.05731] — Emerging Practice; no FS-specific benchmark exists for this failure mode, and AILuminate's 12 hazard-category, Poor→Excellent grading is the closest available candidate, while remaining not FS-certified and general (not FS-specific) in its hazard definitions.
 - **Documented tolerance, fixed before testing** — the pass/fail threshold for ordinary-use harmful-output rate is fixed and recorded before test execution, distinct from the adversarial success-rate thresholds used for IRQ-SEC-001/002.
 - **Production monitoring of ordinary-use output against the harm taxonomy** — Emerging Practice; no published FS standard for this specific monitoring discipline was located.
 - **Human-in-the-loop review as backstop** — [linked IRQ-HUM-002] — material customer-facing content is routed to human review, catching harmful output that taxonomy testing missed.
@@ -100,14 +100,14 @@ Assuming controls are well-implemented and monitored:
   Severity: 2 (individual distress or reputational-adjacent harm, generally contained and recoverable)
   Likelihood: 2 (foreseeable as an emergent property of generative behaviour; mitigated by active ordinary-use testing)
   Detectability: 2 (production monitoring and complaint analysis surface patterns within a reporting cycle)
-  Recoverability: 2 (individually remediable via apology, retraining, or prompt/guardrail adjustment)
+  Recoverability: 3 (individually remediable via apology, retraining, or prompt/guardrail adjustment)
   Novelty: 3 (the distinction between adversarial and ordinary-use harm testing is AI-specific and not obvious from a security-testing mindset)
 
 If controls are absent or degraded:
   Severity: 3 (pattern of unprovoked harmful output to customers or colleagues; Consumer Duty breach; reputational exposure heightened precisely because incidents appear unprovoked)
   Likelihood: 3 (probable given that no dedicated testing exists for this specific, structurally distinct failure surface)
   Detectability: 3 (silent failure; surfaces via individual complaint or, worse, media/social reporting of an apparently unprovoked AI harm incident)
-  Recoverability: 2 (individually remediable, though reputational harm from a publicised unprovoked incident is harder to reverse than from an acknowledged adversarial compromise)
+  Recoverability: 3 (individually remediable, though reputational harm from a publicised unprovoked incident is harder to reverse than from an acknowledged adversarial compromise)
   Novelty: 4 (domain expert very likely to conflate "we red-team it" with "we've tested for harmful output", missing that adversarial and ordinary-use testing are different disciplines with different evidence bases)
 
 Residual risk interpretation: High priority given the specific danger that existing adversarial testing is mistaken for coverage of this failure mode, combined with the reputational asymmetry of an "unprovoked" harm incident relative to an acknowledged attack.
@@ -119,16 +119,18 @@ Residual risk interpretation: High priority given the specific danger that exist
 | **Severity** | 3 | Customer or colleague distress and Consumer Duty exposure; reputational risk heightened because the incident appears unprovoked |
 | **Likelihood** | 2 | Foreseeable as an emergent property of generative behaviour; not routine where dedicated ordinary-use harm testing is in place |
 | **Detectability** | 3 | Not surfaced by adversarial red-teaming or accuracy testing; requires a deliberately distinct, ordinary-use-specific test |
-| **Recoverability** | 2 | Individually remediable via apology, retraining or guardrail adjustment within weeks |
+| **Recoverability** | 3 | Individually remediable via apology, retraining or guardrail adjustment within weeks |
 | **Novelty** | 4 | The distinction between adversarial elicitation (SEC-001/002) and ordinary-use harm testing is genuinely AI-specific and easily conflated by a security-testing mindset |
 
 ## 17. Regulatory Basis
-> [FCA, FG22/5, July 2022, "Consumer Duty final guidance"] establishes outcomes covering customer harm broadly, including foreseeable harm arising from firm conduct, not limited to financial loss, which extends to AI-generated harmful or degrading output. [UNVERIFIED — no FCA or PRA guidance specifically addressing AI-generated harmful, abusive or degrading customer-facing content, distinct from the general Consumer Duty and financial promotion obligations already cited across this domain, was located in the source material for the v1.0.3 batch; this should be re-checked against the primary regulatory record before the canvas is relied upon, per this standard's practice of fetching the instrument rather than recalling it].
+> [FCA, FG22/5, July 2022, "Final non-Handbook Guidance for firms on the Consumer Duty"] establishes outcomes covering customer harm broadly, including foreseeable harm arising from firm conduct, not limited to financial loss, which extends to AI-generated harmful or degrading output. [UNVERIFIED — no FCA or PRA guidance specifically addressing AI-generated harmful, abusive or degrading customer-facing content, distinct from the general Consumer Duty and financial promotion obligations already cited across this domain, was located in the source material for the v1.0.3 batch; this should be re-checked against the primary regulatory record before the canvas is relied upon, per this standard's practice of fetching the instrument rather than recalling it].
 
 ## 18. Research Basis
-> [Ghosh, S., et al. (MLCommons), 2025, "AILuminate: Introducing v1.0 of the AI Risk and Reliability Benchmark from MLCommons", arXiv:2503.05731] is cited here as the candidate independent-test methodology (see field 11): a consortium-governed benchmark grading systems Poor→Excellent across 12 hazard categories under prompting conditions that are not exclusively adversarial, giving this IRQ its only currently available measurement approach. This is distinct from and additional to its attachment to IRQ-CON-004/SEC-001/SEC-002 (see those canvases) — here it is the test methodology itself, not a supporting citation for an accuracy or jailbreak-resistance control. [UNVERIFIED — no published FS-specific incident report confirming an AI system produced harmful, abusive or degrading output to a customer under genuinely non-adversarial conditions, as distinct from the factual-mis-statement incidents cited under IRQ-CON-004 (Moffatt v. Air Canada 2024; NYC MyCity 2024), was located]. The absence of a confirmed FS ordinary-use-harm incident is consistent with the Four-Test finding below that this is a genuinely untested surface, not a tested-and-clean one; it is not evidence of low risk.
+> [Ghosh, S., et al. (MLCommons), 2025, "AILuminate: Introducing v1.0 of the AI Risk and Reliability Benchmark from MLCommons", arXiv:2503.05731] is cited here as the candidate independent-test methodology (see field 11): a consortium-governed benchmark grading systems Poor→Excellent across 12 hazard categories under prompting conditions that are not exclusively adversarial, giving this IRQ its only currently available measurement approach. This is distinct from and additional to its attachment to IRQ-CON-004/SEC-001/SEC-002 (see those canvases) — here it is the test methodology itself, not a supporting citation for an accuracy or jailbreak-resistance control. [UNVERIFIED — no published FS-specific incident report confirming an AI system produced harmful, abusive or degrading output to a customer under genuinely non-adversarial conditions, as distinct from the factual-mis-statement incidents cited under IRQ-CON-004 (Moffatt v. Air Canada 2024; NYC MyCity 2024), was located]. The absence of a confirmed FS ordinary-use-harm incident is consistent with the Four-Test finding below that this is a genuinely untested surface, not a tested-and-clean one; it is not evidence of low risk. Related work, not a method for this test: [Jindal, M., et al., 2025, "SAGE: A Generic Framework for LLM Safety Evaluation," Proc. EMNLP 2025: Industry Track, arXiv:2504.19674] — a published framework that evaluates an application against a stated harm policy over multi-turn conversations with simulated users of differing personalities; its three tested applications include a financial-topics specialist built with a system prompt, its three harm policies cover sexual harm, misinformation and violence, and its code is public. Its simulated users are prompted adversarial agents, and the paper reports no non-adversarial user setting, so it does not isolate the ordinary, non-adversarial use that this IRQ concerns.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 58, "Google Gemini homework conversation", 2024]** — a conversation record shared through Google's own Gemini feature shows a run of homework questions about ageing adults, with no adversarial prompt visible, followed by a reply that told the student "Please die"; Google's statement that the response violated its policies is known only as CBS News reported it. It is ordinary-use harm from a customer-facing assistant. It is not a financial-services incident, so the unverified record above, which asks for an FS-specific incident, stands. Carried as a secondary row: the source is the shared conversation record, with Google's statement as reported.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -148,6 +150,10 @@ Related IRQs:
 [2] Ghosh, S., et al. (MLCommons), 2025. "AILuminate: Introducing v1.0 of the AI Risk and Reliability Benchmark from MLCommons." arXiv:2503.05731.
     Published: 19 February 2025 (revised 18 April 2025)
     URL: https://arxiv.org/abs/2503.05731 ; https://mlcommons.org/benchmarks/ailuminate/
+
+[3] Jindal, M., Shrawgi, H., Agrawal, P., Dandapat, S., 2025. "SAGE: A Generic Framework for LLM Safety Evaluation." Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing: Industry Track, pp. 11-33. arXiv:2504.19674.
+    Published: November 2025
+    URL: https://aclanthology.org/2025.emnlp-industry.2/ ; https://arxiv.org/abs/2504.19674
 ```
 
 ## 21. Four-Test Validation Footer
@@ -166,6 +172,10 @@ Related IRQs:
 **Change Log:**
 - v1.0 (2026-07-31): Initial publication; new IRQ in the v1.0.3 batch (adopted 31 Jul 2026 as a new IRQ, deliberately distinct from a CON-004 amendment). ★2 assigned pending formal adoption of the candidate benchmark methodology (AILuminate).
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 58, Google Gemini homework conversation, carried as a secondary row and not a financial-services incident), so the unverified record in the field stands. Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2 (Field 16, and the controls-in-place case in Field 15). The canvas states recovery within weeks, which is beyond the within-hours level that ASSURANCE_MODEL.md §7 scores 2; the scale names no band between days and years, and 3 (reversible within days) is the nearest anchor. In the controls-absent case Recoverability is scored 3 in place of 2, so that it is not lower than the controls-in-place figure. The other axes, the ★ rating and the research basis are unchanged.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — the FCA finalised guidance FG22/5 is cited under its issued title, "Final non-Handbook Guidance for firms on the Consumer Duty", in place of a description set in quotation marks. AILuminate is cited under the title of the paper, "AILuminate: Introducing v1.0 of the AI Risk and Reliability Benchmark from MLCommons", not its product name. Form corrections only. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — SAGE added as related work only, not as a method for this test, with its limit. Field 20 — entry [3] added. Research-basis review date moved. No change to controls, test, ★2 or risk profile.
 ```
 
 ---

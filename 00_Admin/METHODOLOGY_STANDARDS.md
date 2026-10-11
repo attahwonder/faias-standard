@@ -76,7 +76,7 @@ Every other statement of this rule in FAIAS refers here. The reviewer never test
 
 ## 3a. FOUR-TEST Inclusion Discipline for IRQs
 
-Every Independent Review Question (IRQ) must satisfy all four criteria before inclusion in FAIAS. This discipline ensures each IRQ addresses a genuine, testable, decision-relevant risk rather than abstract technical curiosity.
+Every Independent Review Question (IRQ) must satisfy all four criteria before inclusion in FAIAS. This discipline ensures each IRQ addresses a genuine, testable, decision-relevant risk rather than abstract technical curiosity. A criterion is satisfied when it holds for the deployments to which the IRQ applies. A limit on the answer (a thin evidence base carried by a low ★, an answer by documentation review rather than by testing, or an applicability condition) is stated with the answer in the IRQ's four-test record, and it does not make the criterion unmet.
 
 ### Test 1: SME Blind Spot
 **Criterion:** A domain subject-matter expert (domain banker, risk manager, compliance officer) is likely to overlook this IRQ because it stems from AI-specific behaviour rather than domain expertise alone.
@@ -171,7 +171,7 @@ Per ASSURANCE_MODEL.md section 6, every independent test is assigned a confidenc
 
 **Rule:** In Review Canvas field 11 (Independent Test), the test procedure is followed by a confidence rating: `[Test Description] — ★[1–5] Confidence`.
 
-**Reporting rule:** A conclusion resting on ★1–★2 tests (very early research, bespoke methodology) must be labelled in reporting as **judgement-based**:
+**Reporting rule:** A conclusion resting on a test rated ★3 or below states the rating and its consequence at the point of the conclusion, in the form of words that PLAYBOOK_OVERVIEW.md §8 requires for that rating. A conclusion resting on ★1–★2 tests (very early research, bespoke methodology) must also be labelled in reporting as **judgement-based**:
 - "Conclusion should be interpreted as professional assessment, not standardised evidence."
 - "Test is based on novel methodology; results should be validated with established benchmarks if available."
 
@@ -239,7 +239,7 @@ A centralized bibliography in each volume lists all sources with:
 
 ### Versioning scheme:
 - **Major version** (M): Structural/governance changes (new domains, new phases)
-- **Minor version** (m): Taxonomy/control updates, new review questions
+- **Minor version** (m): Taxonomy/control updates (including new subdomains), new review questions
 - **Patch version** (p): Typos, citation corrections, clarifications (no substantive change to control definitions)
 - Format: `v1.0.0`
 

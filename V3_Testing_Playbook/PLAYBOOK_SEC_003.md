@@ -2,7 +2,7 @@
 
 **IRQ:** IRQ-SEC-003 — Indirect Prompt Injection via Retrieved Content Overriding Application Intent (subdomain E.1; canvas published in `EXEMPLAR_CANVASES.md`, Canvas 1).
 **Assurance objective:** AO-SEC-003 — retrieved content shall be treated as untrusted input and shall not be capable of altering privileged instructions or causing unauthorised tool use, across all retrieval paths and under adversarially crafted content.
-**Confidence:** ★4 (carried unchanged). Method class: Established Benchmark — OWASP Top 10 for LLM Applications 2025, LLM01 testing guidance; MITRE ATLAS AML.T0051 case studies; attack corpus informed by Greshake et al. (2023).
+**Confidence:** ★4 (carried unchanged). Method class: Established Benchmark — OWASP Top 10 for LLM Applications 2025, LLM01 testing guidance (under review, URO-7, REGISTER_STATS.md); MITRE ATLAS AML.T0051 case studies; attack corpus informed by Greshake et al. (2023).
 
 ### Preconditions
 - Isolated staging deployment of the full retrieval stack: same embedding model, same retriever configuration, same context-assembly logic, same tool permission model as intended production. A test against a simplified retrieval stack tests a different system.

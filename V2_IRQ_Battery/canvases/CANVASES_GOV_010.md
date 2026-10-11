@@ -154,12 +154,16 @@ past-decision component elevates this beyond a routine documentation finding.
 | **Novelty** | 3 | A governance SME versed in structured decision-system logging may not anticipate the four-artefact-type, cross-linked nature of a GenAI/agentic decision record. |
 
 ## 17. Regulatory Basis
-> [EU AI Act, Regulation (EU) 2024/1689, Art. 12 (record-keeping) and Art. 19 (log retention)] requires automatic logging capable of ensuring a level of traceability of the AI system's functioning throughout its lifecycle, for high-risk systems, with logs retained per Art. 19 for a period appropriate to the system's purpose. [FCA/PRA record-keeping expectations under SYSC and DISP] require firms to retain records sufficient to reconstruct decisions for audit, complaint and regulatory purposes across all regulated activities, applicable regardless of EU AI Act in-scope status. [PRA, SS1/23, May 2023] governance and monitoring principles require evidence sufficient to support ongoing oversight, which presupposes reconstructable records. Section pinpoints [UNVERIFIED — cited modules/articles confirmed extant (PRA SS1/23, SS1/21, PS21/3, ISO/IEC 42001:2023, EU AI Act Arts. 9/11/12/19); no AI-specific sub-clause pinpoint published by the regulator beyond module/clause level cited] (verified 29 Jul 2026).
+> [EU AI Act, Regulation (EU) 2024/1689, Art. 12 (record-keeping) and Art. 19 (log retention)] requires automatic logging capable of ensuring a level of traceability of the AI system's functioning throughout its lifecycle, for high-risk systems, with logs retained per Art. 19 for a period appropriate to the system's purpose. [FCA/PRA record-keeping expectations under SYSC and DISP] require firms to retain records sufficient to reconstruct decisions for audit, complaint and regulatory purposes across all regulated activities, applicable regardless of EU AI Act in-scope status. [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] governance and monitoring principles require evidence sufficient to support ongoing oversight, which presupposes reconstructable records. Section pinpoints [UNVERIFIED — cited modules/articles confirmed extant (PRA SS1/23, SS1/21, PS21/3, ISO/IEC 42001:2023, EU AI Act Arts. 9/11/12/19); no AI-specific sub-clause pinpoint published by the regulator beyond module/clause level cited] (verified 29 Jul 2026).
 
 ## 18. Research Basis
-> [Chan, A., et al., 2024, "Visibility into AI Agents," Proc. FAccT 2024 (arXiv:2401.13138)] documents the specific challenge of capturing complete, reviewable agentic action traces including intermediate and abandoned steps, directly relevant to this IRQ's agentic-trace component. No FS-specific empirical literature quantifies record-reconstruction failure rates for deployed GenAI/agentic decision systems; this control area otherwise draws on internal-audit evidentiary-sufficiency practice rather than a dedicated research literature.
+> [Chan, A., et al., 2024, "Visibility into AI Agents," Proc. FAccT 2024 (arXiv:2401.13138)] assesses activity logging (logs of tool use, internal reasoning, self-critique and memory management) as a measure to increase visibility into AI agents, directly relevant to this IRQ's agentic-trace component. No FS-specific empirical literature quantifies record-reconstruction failure rates for deployed GenAI/agentic decision systems; this control area otherwise draws on internal-audit evidentiary-sufficiency practice rather than a dedicated research literature.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 55, "Microsoft 365 Copilot audit-log gap", 2025]** — a security researcher's disclosure records that a file access by an AI assistant left no entry in the audit log that the customer holds as its compliance record, so a firm's record of what its AI accessed could be incomplete for the period before the fix, and on the researcher's account Microsoft planned no customer notice. Carried as a secondary row: the source is the researcher's own disclosure.
+>
+> **[FAIAS Incident Register, row 67, "Victoria's Department of Families, Fairness and Housing", 2024]** — the Information Commissioner's investigation records that a review "identified 100 cases with indicators that ChatGPT may have been used to draft child protection related documents": the finding is of indicators of use, not of a reconstructed record of it. The department is a public-sector child protection body, not a financial-services firm.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -179,9 +183,9 @@ past-decision component elevates this beyond a routine documentation finding.
 ```
 [1] European Union, 2024. "Regulation (EU) 2024/1689 — Artificial Intelligence Act."
     OJ L 12.7.2024. Art. 12 (Record-Keeping) and Art. 19 (Automatically Generated Logs).
-[2] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023, effective
-    17 May 2024.
-[3] Chan, A., Salganik, R., Markelius, A., et al., 2024. "Visibility into AI Agents."
+[2] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
+[3] Chan, A., Ezell, C., Kaufmann, M., et al., 2024. "Visibility into AI Agents."
     Proc. ACM FAccT 2024. arXiv:2401.13138.
 [4] FCA. "DISP — Dispute Resolution: Complaints." FCA Handbook (complaint time-limit
     rules governing retention alignment).
@@ -211,6 +215,11 @@ FOUR-TEST VALIDATION:
 Change Log:
 - v1.0 (2026-07): Initial publication; all four tests passed.
 - v1.3.0 (2026-10): Field 9 — the cross-reference to IRQ-DAT-010, written without its leading zero, corrected. ★3 unchanged.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citations added in the reserved form (row 55, Microsoft 365 Copilot audit-log gap, carried as a secondary row on the researcher's own disclosure; row 67, the Information Commissioner's investigation of a Victorian child protection department, for past AI use shown by indicators only). Research-basis review date moved. No change to controls, test, ★3 or risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — the Chan et al. entry corrected: the paper assesses activity logging (logs of tool use, internal reasoning, self-critique and memory management) as a visibility measure and does not discuss intermediate or abandoned steps. Research-basis review date moved. No change to controls, test, ★ rating or risk profile.
+- v1.3.3 (2026-10-09): Field 20 References — reference [3], "Visibility into AI Agents": the co-authors corrected to Chan, A., Ezell, C., Kaufmann, M., et al. No change to the ★ rating or the risk profile.
 ```
 
 ---

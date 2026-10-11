@@ -131,12 +131,14 @@ Residual risk: Critical if secondary telemetry pipelines are unreviewed, given t
 | **Novelty** | 3 | Data-flow mapping is standard practice, but its extension to AI-specific secondary pipelines (telemetry, embeddings) is not yet routine, making this a partial rather than total blind spot for security-literate SMEs. |
 
 ## 17. Regulatory Basis
-> [UK GDPR Art. 5(1)(f), Art. 28 (processor obligations), Art. 32] — engaged directly wherever confidential personal data egresses to a third party without an established lawful basis and appropriate contractual/technical controls. [DSIT, AI Cyber Security Code of Practice, Jan 2025] — data-flow mapping as a core secure-AI-operation principle. [PRA SS1/23 Model Risk Management] and [FCA SYSC 8 outsourcing requirements] — where a third-party AI provider constitutes outsourcing/material third-party reliance, governance of data handling is a direct regulatory expectation.
+> [UK GDPR Art. 5(1)(f), Art. 28 (processor obligations), Art. 32] — engaged directly wherever confidential personal data egresses to a third party without an established lawful basis and appropriate contractual/technical controls. [DSIT, AI Cyber Security Code of Practice, Jan 2025] — data-flow mapping as a core secure-AI-operation principle. [PRA SS1/23 Model Risk Management, April 2026 (16 April 2026, updating 17 May 2023)] and [FCA SYSC 8 outsourcing requirements] — where a third-party AI provider constitutes outsourcing/material third-party reliance, governance of data handling is a direct regulatory expectation.
 
 ## 18. Research Basis
 > [OWASP Foundation, 2025, "Top 10 for LLM Applications 2025", LLM02 Sensitive Information Disclosure] — direct classification of this failure mode with mitigation guidance. [DSIT, "AI Cyber Security Code of Practice", January 2025] — UK-specific secure-AI-operation principles including data-flow mapping. No peer-reviewed academic paper specifically addresses telemetry/observability-pipeline egress for AI systems as a distinct research topic; this control area rests primarily on standards/regulatory sources rather than academic literature — noted as a comparative evidentiary gap versus other SEC IRQs.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Fast (6 months)
+> **[FAIAS Incident Register, row 81, "Wiz Research exposed DeepSeek database", 2025]** — researchers found, "[w]ithin minutes", a publicly accessible and unauthenticated ClickHouse database linked to DeepSeek whose exposure "includes over a million lines of log streams containing chat history, secret keys, backend details, and other highly sensitive information". Prompt content sent to a provider persisted in logs reachable outside anyone's control. The missing authentication is a generic access-control failure, which this question does not cover; the point for this question is the persistence of prompt content in the provider's logs. The page shows no firm's data in the logs and no access by anyone other than the researchers. Carried as a secondary row: the source is the researchers' own disclosure, and no statement from DeepSeek was read.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -157,7 +159,8 @@ Residual risk: Critical if secondary telemetry pipelines are unreviewed, given t
 [2] DSIT, 2025. "AI Cyber Security Code of Practice." January 2025.
 [3] UK GDPR, retained EU law, Articles 5, 28, 32.
 [4] FCA Handbook, SYSC 8 (Outsourcing).
-[5] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023.
+[5] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023).
 ```
 
 ## 21. Four-Test Validation Footer
@@ -183,6 +186,9 @@ FOUR-TEST VALIDATION:
 
 Change Log:
 - v1.0 (2026-07): Initial publication; four tests passed.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023). No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 81, Wiz Research on an exposed DeepSeek database, carried as a secondary row on the researchers' own disclosure, bounded to the persistence of prompt content in provider logs). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
 ```
 
 ---

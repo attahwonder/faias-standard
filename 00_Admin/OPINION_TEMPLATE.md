@@ -10,7 +10,7 @@
 This document is a skeleton template for preparing an **Independent Assurance Opinion** on whether an AI system should proceed to deployment, using FAIAS. The template is non-normative: it illustrates one use of FAIAS and is not a requirement of the standard. FAIAS draws on the conclusion forms of ISAE 3000 (Revised); it does not make an engagement ISAE-conformant, and a practitioner who reports under ISAE 3000 must meet that standard in full.
 
 Each FAIAS engagement produces an opinion that answers: *"Should this AI system proceed to deployment?"* with one of four conclusions:
-1. **Should Proceed** — No material deficiencies; proceed with ongoing monitoring
+1. **Should Proceed** — No material deficiencies, on evidence that meets the tier's evidence minimum; proceed with ongoing monitoring
 2. **Should Proceed With Conditions** — Conditions must be satisfied within specified timelines
 3. **Should Not Proceed** — Material control gaps require substantial remediation
 4. **Unable to Form Opinion** — Insufficient evidence or access; extended review needed
@@ -105,7 +105,7 @@ The Independent Assurance Opinion reads like an **operational resilience assessm
 - Subdomains covered: [e.g., B.2 Hallucination, D.1 Automation Bias, E.3 Supply Chain]
 
 **Assurance Claims Evaluated:**
-- [List 5–10 core claims assessed, e.g., "System accesses only authorised sources"]
+- [List the core claims assessed, by CLAIMS_REGISTER.md ID and text (ASSURANCE_ARCHITECTURE.md, Layer 2: core claims)]
 
 **Materiality Threshold:**
 - Findings escalated to opinion if material against ≥1 materiality lens (per ASSURANCE_ARCHITECTURE.md, Layer 3: Materiality Screening)
@@ -129,9 +129,9 @@ The Independent Assurance Opinion reads like an **operational resilience assessm
 - Testing focused on material IRQs; lower-priority questions deferred to lifecycle monitoring
 
 **Time-Bound:**
-- Opinion valid for [X months] from issue date
+- Opinion valid for [X months] from issue date, and not beyond the next required re-assessment
 - Major changes (code, model weights, data sources, user segments, vendor relationships) trigger re-assessment requirement
-- Annual reassessment recommended per FAIAS assurance lifecycle
+- Annual reassessment required at minimum (ENGAGEMENT_MODEL.md, Phase 6, Periodic Assurance)
 
 #### A.3 Basis Date — the Opinion Speaks as at Its Date
 
@@ -160,7 +160,7 @@ We applied the FAIAS independent assurance standard, which comprises 7 interlink
 7. **Component 7 (Independent Assurance Opinion):** This document; four-box conclusion drawing on the conclusion forms of ISAE 3000 (reasonable / limited assurance)
 
 **Assurance Type:** [Reasonable Assurance / Limited Assurance]
-- **Reasonable Assurance:** Comprehensive control review, majority L4–L5 evidence, and every material claim resting on tests rated ★4 or above. No reasonable assurance rests on a material test rated ★1–★3 (ASSURANCE_ARCHITECTURE.md, Layer 2: the assurance-level rule)
+- **Reasonable Assurance:** Comprehensive control review, majority L4–L5 evidence, and every material claim resting on tests rated ★4 or above. No reasonable assurance rests on a material test rated ★1–★3 (ASSURANCE_ARCHITECTURE.md, Layer 2: the assurance-level rule, which states what the register's ratings support at this version)
 - **Limited Assurance:** Selective control review, a mix of evidence levels, or any material claim resting on a test rated ★1–★3, each such rating disclosed at the point of the conclusion (PLAYBOOK_OVERVIEW.md §8)
 
 **Where the engagement is classified Limited Assurance, the issued report states both of the following, in the summary of the work performed and not only in an internal working paper:** that the procedures performed in a limited assurance engagement vary in nature and timing from, and are **less in extent** than for, a reasonable assurance engagement; and that consequently the level of assurance obtained is **substantially lower** than the assurance that would have been obtained had a reasonable assurance engagement been performed. Where it assists the reader, the summary may also indicate procedures that were **not** performed which would ordinarily be expected in a reasonable assurance engagement; that indication is not required to be exhaustive, because "a complete identification of all such procedures may not be possible" where the practitioner's required understanding and consideration of engagement risk is itself less than in a reasonable assurance engagement. *(IAASB, International Standard on Assurance Engagements (ISAE) 3000 (Revised), *Assurance Engagements Other than Audits or Reviews of Historical Financial Information*, final pronouncement, December 2013 (IAASB; published by IFAC), effective for assurance reports dated on or after December 15, 2015, para 69(k)(i)–(ii), with para A175; ifac.org, accessed 2026-09-11.)*
@@ -205,8 +205,8 @@ We applied the FAIAS independent assurance standard, which comprises 7 interlink
 - **Passed:** IRQs supporting this claim passed testing; control design verified, and controls performed as designed in non-production testing; no conditions required
 - **Passed w/ Conditions:** IRQs supporting this claim passed with caveats; condition specified in Section E (e.g., "confirm threshold tuning")
 - **Inconclusive:** Insufficient evidence or emerging practice; no published benchmark; condition specified or escalated to lifecycle monitoring
-- **Evidence Level:** L4–L5 = independent testing; L2–L3 = design/documentation; L1 = assertion only
-- **Confidence (★):** maturity of the test method (ASSURANCE_MODEL.md §6). ★5 = published, widely adopted methodology with a settled financial-services benchmark (no FAIAS test is rated ★5); ★3 = credible research methods, no agreed benchmark; ★1 = expert judgment only
+- **Evidence Level:** L1 = assertion; L2 = documentation; L3 = demonstration, such as a design walkthrough or a staging test; L4 = independent evidence; L5 = operational evidence (ASSURANCE_MODEL.md §5)
+- **Confidence (★):** maturity of the test method (ASSURANCE_MODEL.md §6). ★5 = published, widely adopted methodology with a settled financial-services benchmark (no FAIAS test is rated ★5); ★3 = credible research methods, no agreed benchmark; ★1 = expert judgment only. The ★ values in the table are illustrative; on what the register's ratings support at this version, see ASSURANCE_ARCHITECTURE.md, the assurance-level rule
 - **Residual Risk:** After control implementation, what risk remains? Scale: Low / Medium / High
 
 ---
@@ -275,7 +275,7 @@ State the assurance level obtained in the conclusion. Reasonable assurance is av
 > We have [reasonable / limited] assurance that [System Name] is designed with controls sufficient to manage the identified risks within the declared operating envelope, and those controls performed as designed in non-production testing. Operating effectiveness in production is assessed at post-deployment re-assurance. No material deficiencies were identified. We recommend deployment, with ongoing operational monitoring per the FAIAS assurance lifecycle (early-life monitoring weeks 1–12, then annual assurance); the firm's own approval authority decides.
 
 **Basis for Conclusion:**
-- Material claims supported predominantly by L4–L5 evidence; for reasonable assurance, no material claim rests on a test rated ★1–★3 (Part B.1)
+- Material claims supported by evidence that meets the evidence minimum for the engagement's tier (TIERING_MODEL.md); for reasonable assurance, no material claim rests on a test rated ★1–★3 (Part B.1)
 - [X] out of [Y] IRQs passed testing without exception
 - Regulatory alignment assessed against FCA, PRA, [other regulators]
 - No material control gaps; minor findings delegated to lifecycle monitoring
@@ -347,15 +347,15 @@ State the assurance level obtained in the conclusion. Reasonable assurance is av
 
 ### PART G: REVIEW CONFIDENCE STATEMENT
 
-**Overall Review Confidence (internal working judgment; never issued as a grade):** [High / Medium / Low]
+**Overall Review Confidence (internal working judgment; never issued as a grade):** [High / Medium / Low], by the rule in ASSURANCE_ARCHITECTURE.md (Final Layer: the tie to testing confidence)
 
 *The three paragraphs below are working notes for the engagement file. They are not reproduced in the issued report, which carries the statement on the basis of the review in form (A) or (B), set out below.*
 
-> [High] We have high confidence that we have identified all material AI risks in this deployment. Assessment methodology is mature (published benchmarks, established standards), evidence base is primarily L4–L5 (independent testing, operational data), testing confidence is high (★4 ratings; on the current battery no engagement reaches High, ASSURANCE_ARCHITECTURE.md), and coverage spans all material IRQs. Residual uncertainty is low and attributable to inherent frontier risks without published defences.
+> [High] We have high confidence that we have identified all material AI risks in this deployment. Assessment methodology is mature (published benchmarks, established standards), evidence base is primarily L4–L5 (independent testing, operational data), testing confidence is in the High band (at this version no tier-prescribed scope reaches it), and coverage spans all material IRQs. Residual uncertainty is low and attributable to inherent frontier risks without published defences.
 >
-> [Medium] We have medium confidence in our risk identification. Assessment includes some emerging-practice controls (no published gold standard), evidence is mixed (L2–L3 design review plus L4 testing), testing methodology is partially novel (★2–★3 ratings), and time constraints prevented comprehensive coverage of lower-priority IRQs. Residual risk may exist in untested areas.
+> [Medium] We have medium confidence in our risk identification. Assessment includes some emerging-practice controls (no published gold standard), evidence is mixed (L2–L3 design review plus L4 testing), testing methodology is partially novel (mean ★ in the Medium band), and time constraints prevented comprehensive coverage of lower-priority IRQs. Residual risk may exist in untested areas.
 >
-> [Low] We have limited confidence in our risk identification. Assessment methodology is sparse (few published benchmarks for this risk domain), evidence is primarily L1–L2 (design documentation, expert assertion), testing confidence is low (★1–★2 ratings), or time/scope constraints severely restricted coverage. Residual risk is likely; repeat assessment recommended within [X] months.
+> [Low] We have limited confidence in our risk identification. Assessment methodology is sparse (few published benchmarks for this risk domain), evidence is primarily L1–L2 (design documentation, expert assertion), testing confidence is in the Low band, or time/scope constraints severely restricted coverage. Residual risk is likely; repeat assessment recommended within [X] months.
 
 **Factors Contributing to Confidence Level:**
 - Maturity of testing methods used (established benchmark vs. emerging practice vs. expert judgment)
@@ -407,7 +407,7 @@ State the assurance level obtained in the conclusion. Reasonable assurance is av
   - [KPI 2]: Escalation accuracy; escalate if <95%
   - [KPI 3]: Alert fatigue (override rate); escalate if >15%
 
-- **Periodic Assurance (Annual or Post-Major-Change):** Full re-assessment required if
+- **Periodic Assurance (Annual or Post-Major-Change):** Re-assessment required, at least of the IRQs that ENGAGEMENT_MODEL.md (Phase 6, Major-Change Re-Assessment Triggers) names for the trigger, if
   - Code/model weights updated materially
   - Data sources changed
   - Operating envelope expanded (new customer segments, use cases)
@@ -469,12 +469,12 @@ State the assurance level obtained in the conclusion. Reasonable assurance is av
 #### J.1 Glossary
 
 - **Assurance Claim:** Assertion about system safety (e.g., "Hallucination is controlled")
-- **Evidence Level (L1–L5):** Credibility rating of evidence piece
-  - L1 (Assertion): Unvalidated claim; design document only
-  - L2 (Documentation): Policy/procedure exists; not tested
+- **Evidence Level (L1–L5):** Credibility rating of evidence piece, as defined in ASSURANCE_MODEL.md §5, which governs
+  - L1 (Assertion): Unvalidated claim with no supporting artefact, such as a vendor claim with no detail
+  - L2 (Documentation): Policy, procedure or design document exists; not tested
   - L3 (Demonstration): Design review or staging test shows concept works
-  - L4 (Independent Testing): Standardised test by independent team; published benchmark
-  - L5 (Operational): Live production data demonstrates control effectiveness
+  - L4 (Independent Evidence): Test, audit or assessment by a party independent of the system's developer, including independent testing in a staged environment; the maturity of its method is rated on the ★ scale, not by the evidence level
+  - L5 (Operational): Operational data from production, a production-like system or a similar deployment demonstrates control effectiveness
 - **Failure Mode:** How behaviour becomes unsafe (e.g., "confident hallucination")
 - **IRQ (Independent Review Question):** Unit of assurance; one IRQ per failure mode per domain
 - **Operating Envelope:** Designed-for (explicit yes-list) and NOT-designed-for (explicit no-list) operating conditions
@@ -518,7 +518,7 @@ For each material finding:
 | Confidence Level | # Tests | Method | Benchmark Used? | Pass Rate | Notes |
 |---|---|---|---|---|---|
 | ★5 (Settled financial-services benchmark) | 0 | — | — | — | No FAIAS test is rated ★5 |
-| ★4 (Published, partially standardised) | 2 | Published methodology, partially standardised | Partial | 100% (2 of 2) | Rating stated without additional caveat |
+| ★4 (Published, partially standardised) | 2 | Published methodology, partially standardised | Partial | 100% (2 of 2) | Rating stated without a maturity caveat; each canvas's own caveat still stated |
 | ★3 (Credible research, no agreed benchmark) | 36 | Research-grounded method; reviewer-designed metrics and thresholds | No | 97% (35 of 36) | Professional-assessment caveat at each conclusion |
 | ★2 (Bespoke method) | 46 | Institution-specific design; professional judgment dominant | No | 91% (42 of 46) | Caveat at each conclusion; conditions specified |
 | ★1 (Very early research) | 6 | Expert review only; novel or unvalidated method | No | 83% (5 of 6) | Expert opinion, not evidence; escalation flags recommended |

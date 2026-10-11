@@ -122,14 +122,16 @@ Residual risk interpretation: This is one of the highest-novelty, highest-detect
 | **Novelty** | 4 | Server-side, provider-controlled model change is unfamiliar territory for traditional change management |
 
 ## 17. Regulatory Basis
-> [Regulation (EU) 2022/2554, DORA, Art. 6 (ICT risk management framework) and Art. 9(4)(e) (ICT change management)] require an ICT risk management framework including change management covering ICT services, extending in principle to third-party model changes. No FS regulator has published AI-specific guidance mandating canary/drift-detection testing for hosted models; this IRQ addresses a governance-continuity risk under general model risk management expectations ([PRA SS1/23, Principle 4 (independent model validation, including ongoing monitoring)] applied to vendor-hosted models — the PRA states the principles apply to models whether developed in-house or externally, including vendor models; only the application to hosted-model drift specifically is FAIAS's interpretive extension) [UNVERIFIED — sub-clause pinpoint not confirmed against primary text] (verified 29 Jul 2026).
+> [Regulation (EU) 2022/2554, DORA, Art. 6 (ICT risk management framework) and Art. 9(4)(e) (ICT change management)] require an ICT risk management framework including change management covering ICT services, extending in principle to third-party model changes. No FS regulator has published AI-specific guidance mandating canary/drift-detection testing for hosted models; this IRQ addresses a governance-continuity risk under general model risk management expectations ([PRA SS1/23, Principle 4 (independent model validation, including ongoing monitoring)] applied to vendor-hosted models — the PRA states the principles apply to models whether developed in-house or externally, including vendor models; only the application to hosted-model drift specifically is FAIAS's interpretive extension) [UNVERIFIED — sub-clause pinpoint not confirmed against primary text] (verified 29 Jul 2026; DORA pinpoints corrected 3 Oct 2026).
 
 ## 18. Research Basis
-> The risk of silent vendor-side model drift is documented in industry and academic commentary on "model versioning" and "LLM behavioural drift" [UNVERIFIED — no confirmed peer-reviewed source specifically on silent vendor-side LLM drift was located after search; closest related work is general LLM-evaluation/benchmark-drift literature, not a named study of this exact phenomenon] (verified 29 Jul 2026). This IRQ is grounded in the general software supply-chain integrity principle (unpinned dependencies introduce undetected behavioural change) applied to hosted AI models, and in BoE FPC's concentration/monitoring framing of AI/cloud provider dependency (Financial Stability in Focus, April 2025).
+> The risk of silent vendor-side model drift is documented in industry and academic commentary on "model versioning" and "LLM behavioural drift", and in two peer-reviewed studies. [Chen, L., Zaharia, M., Zou, J., 2023, "How Is ChatGPT's Behavior Changing Over Time?", arXiv:2307.09009; Harvard Data Science Review 6(2), 2024] compares the March 2023 and June 2023 versions of GPT-3.5 and GPT-4 and finds that the behaviour of the same service changed substantially between them; the authors note that when and how these services are updated is opaque. It compares two snapshots and tests no method for detecting such change. [Gao, I., Liang, P., Guestrin, C., 2025, "Model Equality Testing: Which Model Is This API Serving?", Proc. ICLR 2025, arXiv:2410.20247] formalises the detection of changes that an API provider may make to a model's output distribution, "possibly without notifying users", as a two-sample statistical test. Applied to 31 commercial endpoints for four Llama models in summer 2024, the test found 11 endpoints serving a different distribution from the reference weights. The audit compares each endpoint with reference weights; the paper describes the same test for one endpoint at two points in time but reports no such measurement. [Cai, W., et al., 2025, "Are You Getting What You Pay For? Auditing Model Substitution in LLM APIs", arXiv:2504.04715; poster, Regulatable ML workshop, NeurIPS 2025] reports that statistical tests on text outputs are query-intensive and fail against subtle substitutions (verified 7 Oct 2026). This IRQ is grounded in the general software supply-chain integrity principle (unpinned dependencies introduce undetected behavioural change) applied to hosted AI models, and in BoE FPC's concentration/monitoring framing of AI/cloud provider dependency (Financial Stability in Focus, April 2025).
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 77, "Anthropic postmortem of three infrastructure bugs", 2025]** — the provider's own postmortem records provider-side serving changes (a routing error, a runtime optimisation and a compiler bug, with a load-balancing change that increased the traffic affected) that changed what customers received, and that the provider's own checks did not detect; user reports found the decay. The causes were infrastructure faults, not a change to weights or safety filters, and the postmortem records shares of requests affected and not any firm's loss. It is an incident record and not a peer-reviewed source.
 >
-> **URO-3 (secondary): UpgradeBench, arXiv:2608.20918v1, 21 August 2026 — whether released-benchmark evidence bears on this canvas's question; it does not clear the `[UNVERIFIED — no confirmed peer-reviewed source]` tag, which requires a confirmed peer-reviewed source on silent provider-side change — resolve by 2027-03-11.** Primary home is IRQ-MOD-002. The ★ above stands untouched (§6A.2).
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
+>
+> **URO-3 (secondary): UpgradeBench, arXiv:2608.20918v1, 21 August 2026 — whether released-benchmark evidence bears on this canvas's question; it is not a source on silent provider-side change, being a v1 preprint about a disclosed release — resolve by 2027-03-11.** Primary home is IRQ-MOD-002. The ★ above stands untouched (§6A.2).
 
 ## 19. Related IRQs
 ```
@@ -148,13 +150,25 @@ Related IRQs:
     Applied: 17 January 2025
     URL: https://eur-lex.europa.eu/eli/reg/2022/2554/oj
 
-[2] Prudential Regulation Authority, 2023. "SS1/23 — Model risk management principles for banks."
-    Published: May 2023
+[2] Prudential Regulation Authority, 2026. "SS1/23 — Model risk management principles for banks."
+    Published: April 2026 (16 April 2026, updating 17 May 2023)
     URL: https://www.bankofengland.co.uk/prudential-regulation/publication/2023/may/model-risk-management-principles-for-banks-ss
 
 [3] Bank of England, Financial Policy Committee, 2025. "Financial Stability in Focus: Artificial intelligence in the financial system."
     Published: April 2025
     URL: https://www.bankofengland.co.uk/financial-stability-in-focus/2025/april-2025
+
+[4] Chen, L., Zaharia, M., Zou, J., 2024. "How Is ChatGPT's Behavior Changing Over Time?" Harvard Data Science Review 6(2).
+    Published: 12 March 2024 (arXiv:2307.09009, 2023)
+    URL: https://doi.org/10.1162/99608f92.5317da47
+
+[5] Gao, I., Liang, P., Guestrin, C., 2025. "Model Equality Testing: Which Model Is This API Serving?" Proc. ICLR 2025.
+    Published: 2025 (arXiv:2410.20247)
+    URL: https://proceedings.iclr.cc/paper_files/paper/2025/hash/d73234a13815fc1f9779dd17d89be9b4-Abstract-Conference.html
+
+[6] Cai, W., Shi, T., Zhao, X., Song, D., 2025. "Are You Getting What You Pay For? Auditing Model Substitution in LLM APIs." Poster, Regulatable ML workshop, NeurIPS 2025.
+    Published: arXiv:2504.04715 (v2, 29 September 2025)
+    URL: https://arxiv.org/abs/2504.04715
 ```
 
 ## 21. Four-Test Validation Footer
@@ -174,6 +188,10 @@ Related IRQs:
 - v1.0 (2026-07): Initial publication.
 - v1.2.0 (2026-09-12): Expected Evidence — dated worked example added on provider-side extraction pressure (illicit-distillation disclosure naming seven China-based labs and one named campaign, 10 Sep 2026) with the NSA/FBI/CISA advisory AA26-251A (8 Sep 2026) beside it. Related IRQs — TPR-001 added. Research Basis — the URO-3 (secondary) flag recorded against UpgradeBench (arXiv:2608.20918v1, 21 August 2026), whose primary home is IRQ-MOD-002; the ★ above stands untouched under §6A.2 and the silent-drift UNVERIFIED marker is not discharged. ★2 unchanged.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 17 Regulatory Basis — the dated note states what its date covers: the DORA pinpoints corrected on 3 October 2026. No change to controls, test, ★ rating or risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 77, Anthropic postmortem of three infrastructure bugs, an incident record and not a peer-reviewed source). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.3 (2026-10-09): Fields 18 and 20 — the silent-drift [UNVERIFIED] marker removed: two peer-reviewed studies are cited (Chen, Zaharia and Zou, Harvard Data Science Review 6(2), 2024; Gao, Liang and Guestrin, ICLR 2025), with Cai et al. (2025, workshop poster) as the reported limit of statistical tests on text outputs; references [4] to [6] added. The URO-3 (secondary) text now says that UpgradeBench is not a source on silent provider-side change. Research-basis review date moved. ★2 and the risk profile unchanged.
 ```
 
 ---

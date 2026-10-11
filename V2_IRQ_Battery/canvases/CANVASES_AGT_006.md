@@ -131,7 +131,7 @@ data exposure or shared-infrastructure disruption affects other services.
 | **Novelty** | 3 | Recursion and aggregate-permission risk across a delegation tree has no direct precedent in human-delegation risk models. |
 
 ## 17. Regulatory Basis
-> No regulation names "sub-agent recursion limits" explicitly. [PRA/FCA operational resilience regime, SS1/21, PS21/3] requires resilience against disruption, including from uncontrolled resource consumption by an internal system. [PRA SS1/23, May 2023] requires governance of model/agentic risk drivers, including resource consumption and permission scope. [OWASP Top 10 for LLM Applications 2025, LLM10 Unbounded Consumption] and [OWASP Agentic AI: Threats and Mitigations, Feb 2025] are cited as accepted industry practice. [NIST AI 600-1, Jul 2024] names value chain and component integration among its risk categories, applicable to multi-agent delegation chains.
+> No regulation names "sub-agent recursion limits" explicitly. [PRA/FCA operational resilience regime, SS1/21, PS21/3] requires resilience against disruption, including from uncontrolled resource consumption by an internal system. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] requires governance of model/agentic risk drivers, including resource consumption and permission scope. [OWASP Top 10 for LLM Applications 2025, LLM10 Unbounded Consumption] and [OWASP Agentic AI: Threats and Mitigations, Feb 2025] are cited as accepted industry practice. [NIST AI 600-1, Jul 2024] names value chain and component integration among its risk categories, applicable to multi-agent delegation chains.
 
 ## 18. Research Basis
 > [OWASP, 2025, "Agentic AI: Threats and Mitigations," OWASP Agentic Security Initiative v1.0] — names uncontrolled agent behaviour and resource exhaustion as core multi-agent/delegation risks. [OWASP, 2025, "Top 10 for LLM Applications 2025," LLM10:2025 Unbounded Consumption] — defines resource/cost exhaustion as a named vulnerability class applicable to recursive agent architectures. [Hammond, L., et al., 2025, "Multi-Agent Risks from Advanced AI," Cooperative AI Foundation, arXiv:2502.14143] — the reference taxonomy for risks arising from multiple interacting or delegating agents, including miscoordination and resource-consumption failure modes.
@@ -159,8 +159,10 @@ data exposure or shared-infrastructure disruption affects other services.
 [3] Hammond, L., et al., 2025. "Multi-Agent Risks from Advanced AI." Cooperative AI
     Foundation. arXiv:2502.14143.
 [4] NIST, 2024. "AI 600-1: Generative Artificial Intelligence Profile." July 2024.
-[5] PRA, 2021. "SS1/21 — Operational resilience." FCA, 2021. "PS21/3."
-[6] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023.
+[5] PRA, 2022. "SS1/21 — Operational resilience."
+    March 2022 (11 March 2022, updating 29 March 2021). FCA, 2021. "PS21/3."
+[6] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023).
 ```
 
 ## 21. Four-Test Validation Footer
@@ -193,6 +195,9 @@ Change Log:
   category carried unchanged. Aggregate-permission-tree testing still has no agreed
   benchmark. ★2 affirmed under the v1.2.0 anchor; the v1.1.0 position stands as register
   history.
+- v1.3.3 (2026-10-09): Field 20 — the reference entry for PRA SS1/21 gives its current version, March 2022 (11 March 2022, updating 29 March 2021). No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 ```
 
 ---

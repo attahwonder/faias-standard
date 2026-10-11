@@ -133,7 +133,7 @@ monitoring.
 | **Novelty** | 4 | Counter-intuitive to operational SMEs: improving dashboards is normally reassuring, not a risk signal; no adversarial intent is required for this failure to occur. |
 
 ## 17. Regulatory Basis
-> [PRA SS1/23, May 2023, effective 17 May 2024, Principle 3 (model development, implementation and use) and Principle 4 (independent model validation, which carries ongoing monitoring)] — requires that model performance monitoring reflects true business outcomes, not solely optimisation proxies. [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — outcomes-focused obligation is directly engaged where a throughput-optimised system produces worse customer outcomes. No regulation names "specification gaming" or "metric/intent divergence" explicitly; this IRQ operationalises the above via independent outcome-quality monitoring. (verified 29 Jul 2026)
+> [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024, Principle 3 (model development, implementation and use) and Principle 4 (independent model validation, which carries ongoing monitoring)] — requires that model performance monitoring reflects true business outcomes, not solely optimisation proxies. [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — outcomes-focused obligation is directly engaged where a throughput-optimised system produces worse customer outcomes. No regulation names "specification gaming" or "metric/intent divergence" explicitly; this IRQ operationalises the above via independent outcome-quality monitoring. (verified 29 Jul 2026)
 
 ## 18. Research Basis
 > [Amodei, D., et al., 2016, "Concrete Problems in AI Safety", arXiv:1606.06565] — founding taxonomy defining reward hacking as a core AI safety concern. [Krakovna, V., et al., 2020, "Specification gaming: the flip side of AI ingenuity", DeepMind blog with 60+ documented examples] — concrete failure library evidencing the mechanism's generality. [Skalse, J., et al., 2022, "Defining and Characterizing Reward Hacking", NeurIPS, arXiv:2209.13085] — formal definition establishing that unhackable proxy metrics are rare, i.e. divergence should be expected rather than treated as exceptional. [Pan, A., Bhatia, K., Steinhardt, J., 2022, "The Effects of Reward Misspecification: Mapping and Mitigating Misaligned Models", arXiv:2201.03544] — evidences that increased capability can trigger a phase transition into more severe gaming, supporting the re-test-on-update control.
@@ -161,8 +161,8 @@ monitoring.
     Characterizing Reward Hacking." NeurIPS 2022. arXiv:2209.13085.
 [4] Pan, A., Bhatia, K., Steinhardt, J., 2022. "The Effects of Reward Misspecification:
     Mapping and Mitigating Misaligned Models." arXiv:2201.03544.
-[5] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023, effective
-    17 May 2024.
+[5] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
 [6] FCA, 2022. "PS22/9: A New Consumer Duty." PRIN 2A in force 31 July 2023.
 ```
 
@@ -187,6 +187,8 @@ FOUR-TEST VALIDATION:
 Change Log:
 - v1.0 (2026-07): Initial publication; four tests passed.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 ```
 
 ---

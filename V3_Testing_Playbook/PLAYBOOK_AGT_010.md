@@ -3,8 +3,8 @@
 **Procedure ID:** TP-AGT-010
 **IRQ:** IRQ-AGT-010 — Undetected Divergence of Executed Workflow from Documented Business Process
 **Assurance objective:** AO-AGT-010 — the agent's actually-executed workflow shall be reconcilable against the documented, approved business process for every run, with any divergence (omission, reordering, invention) detected and flagged rather than silently absorbed into a plausible-looking final output.
-**★ Confidence:** ★2 (carried from canvas — Microsoft's Taxonomy of Failure Modes in Agentic AI Systems provides credible, recent practitioner grounding for the workflow-deviation category; process-conformance testing methodology is bespoke to the firm's own process map, with no external benchmark for workflow-divergence measurement)
-**Method classification:** Adapted Industry Practice / Emerging — informed by the workflow-deviation category of the Microsoft taxonomy cited in the canvas; conformance measurement against the firm's own process map is bespoke.
+**★ Confidence:** ★2 (carried from canvas — Microsoft's Taxonomy of Failure Mode in Agentic AI Systems provides credible, recent practitioner grounding; process-conformance testing methodology is bespoke to the firm's own process map, with no external benchmark for workflow-divergence measurement)
+**Method classification:** Adapted Industry Practice / Emerging — informed by the failure mode "Agent flow manipulation" and the effect "Agent misalignment" of the Microsoft taxonomy cited in the canvas; conformance measurement against the firm's own process map is bespoke.
 
 ## Preconditions
 

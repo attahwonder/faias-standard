@@ -58,7 +58,7 @@ Control Breakpoints:
 - **Technical access control matching approved user groups (role-based access control, SSO group scoping)** — [ISO/IEC 42001:2023, clause 8.1 (operational planning and control)] — approved conditions of use are operationalised as system configuration, not policy alone.
 - **Task-scoping via system prompt/guardrail configuration with tamper-evident change control** — [OWASP LLM Top 10 guidance on excessive agency and system-prompt handling, 2025 edition; linked IRQ-MOD-013 change control] — restricts what the system will do even for authorised users, with changes to that scoping logged and reviewable.
 - **Least-privilege tool exposure matching approved task scope for agentic systems** — [linked IRQ-AGT-003; OWASP LLM06/agency guidance 2025] — an agent's tool permissions are the technical enforcement mechanism for its approved action scope.
-- **Periodic reconciliation of actual usage logs against approved conditions of use** — [PRA SS1/23, May 2023, ongoing monitoring and periodic validation expectations] — Emerging Practice: applying SS1/23's ongoing monitoring expectation specifically to conditions-of-use reconciliation (as distinct from model performance monitoring) is not yet standard MRM practice.
+- **Periodic reconciliation of actual usage logs against approved conditions of use** — [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), ongoing monitoring and periodic validation expectations] — Emerging Practice: applying SS1/23's ongoing monitoring expectation specifically to conditions-of-use reconciliation (as distinct from model performance monitoring) is not yet standard MRM practice.
 - **EU AI Act intended-purpose and use-restriction documentation with logging obligations where in scope** — [Regulation (EU) 2024/1689, Art. 9 (risk management) and Art. 12 (record-keeping/logging)] — for in-scope high-risk systems, logging supports post-hoc verification that use matched intended purpose.
 
 ## 10. Expected Evidence (Tagged L1–L5)
@@ -131,12 +131,16 @@ Residual risk: High without technical enforcement; this IRQ is a leading indicat
 | **Novelty** | 3 | Domain experts reviewing approval-paper prose typically do not separately verify platform configuration; the paper-vs-reality gap is AI-platform-specific. |
 
 ## 17. Regulatory Basis
-> [PRA, SS1/23, May 2023, ongoing monitoring and use principles] requires that model use is monitored against approved parameters, extending to technical enforcement of conditions of use for AI systems. [ISO/IEC 42001:2023, clause 8.1] requires operational planning and control to actually implement AI management system requirements, not merely document them. [Regulation (EU) 2024/1689 (EU AI Act), Art. 9 and Art. 12] requires risk management and record-keeping/logging for in-scope high-risk systems, supporting post-hoc verification of intended-use compliance. [FCA, "AI Update," Apr 2024] confirms SYSC governance requirements apply, including that stated controls must be operationally real. [Financial Services and Markets Act 2000, s.19(1)] provides the underlying statutory reason conditions of use must be technically enforced, not merely stated: "No person may carry on a regulated activity in the United Kingdom, or purport to do so, unless he is—(a) an authorised person; or (b) an exempt person." (s.19(2) names this the general prohibition.) Where an approval scopes an AI system's conditions of use precisely to keep its output inside the firm's permitted activities — e.g. triage or drafting only, not advice — an unenforced condition is not merely a governance gap; it is the mechanism by which the system's actual output could cross into activity the firm is not authorised to carry on, engaging s.19 directly rather than by analogy.
+> [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023), ongoing monitoring and use principles] requires that model use is monitored against approved parameters, extending to technical enforcement of conditions of use for AI systems. [ISO/IEC 42001:2023, clause 8.1] requires operational planning and control to actually implement AI management system requirements, not merely document them. [Regulation (EU) 2024/1689 (EU AI Act), Art. 9 and Art. 12] requires risk management and record-keeping/logging for in-scope high-risk systems, supporting post-hoc verification of intended-use compliance. [FCA, "AI Update," Apr 2024] confirms SYSC governance requirements apply, including that stated controls must be operationally real. [Financial Services and Markets Act 2000, s.19(1)] provides the underlying statutory reason conditions of use must be technically enforced, not merely stated: "No person may carry on a regulated activity in the United Kingdom, or purport to do so, unless he is—(a) an authorised person; or (b) an exempt person." (s.19(2) names this the general prohibition.) Where an approval scopes an AI system's conditions of use precisely to keep its output inside the firm's permitted activities — e.g. triage or drafting only, not advice — an unenforced condition is not merely a governance gap; it is the mechanism by which the system's actual output could cross into activity the firm is not authorised to carry on, engaging s.19 directly rather than by analogy.
 
 ## 18. Research Basis
 > No peer-reviewed academic literature specifically addressing conditions-of-use enforcement gaps in deployed enterprise GenAI was identified in the source registers; this control area is governance/audit practice rather than a research literature, consistent with this domain's evidentiary profile. [OWASP Top 10 for LLM Applications 2025] is treated as the closest available applied-practice source for guardrail/configuration control adequacy.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 65, "Uber Advanced Technologies Group Tempe crash", 2019]** — the developer had installed inward-facing cameras in its test vehicles, but "supervisors said that they rarely reviewed the camera videos" (s.2.2.2.2); the Board states that regular review could have uncovered "critical violations of ATG policy, such as the use of a cell phone". A stated condition of use existed with a monitoring tool that was rarely used. The developer is an automated-driving company, not a financial-services firm.
+>
+> **[FAIAS Incident Register, row 67, "Victoria's Department of Families, Fairness and Housing", 2024]** — the Information Commissioner records that at the time of the incident "there were no specific departmental rules in place about when and how these tools should or should not be used" (para 92), that guidance followed on 25 October 2023 (para 98), and that the department "has no technical means of verifying if personal information has or is being input into ChatGPT by employees" (para 112), with no evidence that its website-blocking capability was used for generative AI tools (para 113). A rule held as guidance had no technical control or breach monitoring behind it. The department is a public-sector body, not a financial-services firm.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -149,8 +153,8 @@ Residual risk: High without technical enforcement; this IRQ is a leading indicat
 
 ## 20. References
 ```
-[1] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023, effective
-    17 May 2024.
+[1] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
 [2] ISO/IEC, 2023. "ISO/IEC 42001:2023 — Artificial intelligence management system."
     Clause 8.1.
 [3] European Union, 2024. "Regulation (EU) 2024/1689 — Artificial Intelligence Act."
@@ -185,6 +189,9 @@ Change Log:
 - v1.1 (2026-07-31): Added FSMA 2000 s.19 legal anchor to Regulatory Basis and
   References — conditions of use exist precisely to
   keep output inside permitted activities.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citations added in the reserved form (row 65, Uber Advanced Technologies Group, for a stated condition of use with an unused monitoring tool; row 67, the Information Commissioner's investigation of a Victorian child protection department, for a usage rule held as guidance with no technical control). Research-basis review date moved. No change to controls, test, ★3 or risk profile.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 ```
 
 ---

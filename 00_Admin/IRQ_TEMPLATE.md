@@ -146,7 +146,7 @@ Control Breakpoints (can interrupt chain):
 **Format:** `[Test Procedure Description] — [Methodology cite] — ★[1–5] Confidence`
 
 **Example:**
-> "Inject 30 hallucinated customer records into staging RAG corpus; run 50 customer queries designed to surface hallucination. Measure: (1) system flags hallucination, (2) confidence score is well-calibrated, (3) escalation workflow triggers. Compare against the internal confidence validation baseline. Test executed in isolated staging environment; no production data or live systems accessed. — ★3 Confidence (credible research methods, no agreed benchmark; staging environment realism to production assumed)"
+> "Inject 30 hallucinated customer records into staging RAG corpus; run 50 customer queries designed to surface hallucination. Measure: (1) system flags hallucination, (2) confidence score is well-calibrated, (3) escalation workflow triggers. Compare against the internal confidence validation baseline. Test executed in isolated staging environment; no production data or live systems accessed. — ★3 Confidence (credible research methods, no agreed benchmark; staging realism to production not assumed without a Parity Declaration)"
 
 ---
 
@@ -199,7 +199,7 @@ Assuming controls are well-implemented and monitored:
   Severity: 3 (multiple customers harmed; regulatory notice risk)
   Likelihood: 2 (unlikely given strong escalation; requires control degradation)
   Detectability: 3 (detected via customer complaint within days; not real-time)
-  Recoverability: 2 (reversible within days; moderate business/regulatory cost)
+  Recoverability: 3 (reversible within days; moderate business/regulatory cost)
   Novelty: 4 (domain expert very likely to miss; requires AI knowledge)
 
 Residual risk interpretation: Acceptable if controls remain strong and monitored. Highest concern: Novelty (easy to become complacent given AI expertise scarcity); prioritise ongoing monitoring and team competence.
@@ -208,7 +208,7 @@ If controls are absent or degraded:
   Severity: 4 (systemic harm; financial loss; regulatory breach highly probable)
   Likelihood: 4 (near-certain without escalation)
   Detectability: 3 (customer complaints; forensic discovery of hallucinated decisions)
-  Recoverability: 3 (years-long remediation; FCA enforcement)
+  Recoverability: 4 (years-long remediation; FCA enforcement)
   Novelty: 4 (domain expert unaware)
 
 Residual risk: Critical. Immediate remediation required.
@@ -225,7 +225,7 @@ Residual risk: Critical. Immediate remediation required.
 | **Severity** | 3 | Multiple customers harmed; regulatory notice risk (Consumer Duty) |
 | **Likelihood** | 3 | Probable if RAG staleness control absent; demonstrated in staged tests; data recency gaps common in production |
 | **Detectability** | 3 | Detected within days via customer complaint; not in real-time monitoring; detection requires log forensics |
-| **Recoverability** | 2 | Reversible within days via FOS handling; customer compensation; moderate business cost |
+| **Recoverability** | 3 | Reversible within days via FOS handling; customer compensation; moderate business cost |
 | **Novelty** | 4 | Domain expert very likely to miss; requires AI hallucination + confidence miscalibration knowledge; outside traditional credit risk model |
 
 ---
@@ -249,7 +249,7 @@ Residual risk: Critical. Immediate remediation required.
 **Example:**
 > "[Zou et al., 2024, 'PoisonedRAG: Knowledge Corruption Attacks to Retrieval-Augmented Generation of Large Language Models', arXiv:2402.07867] shows that a few malicious texts injected into a RAG knowledge database can make the model return an attacker-chosen answer. [Ji et al., 2023, 'Survey of Hallucination in Natural Language Generation', ACM Computing Surveys] reviews how hallucinated text is measured and mitigated in natural language generation. [Published FS incident, 2023] detailed customer complaint arising from LLM-generated incorrect account summary."
 
-**Incident-register citations.** Where the research basis rests on an incident carried in `V1_Research_Compendium/INCIDENT_REGISTER.md`, the citation takes a reserved form, in this field by default, or in the field where the incident is used, keeping the shape above: `**[FAIAS Incident Register, row N, "Short incident name", YEAR]** — what the incident evidences for this IRQ.` Where the canvas also cites the incident's primary, the primary's bracket follows the register bracket: `**[FAIAS Incident Register, row N, "Short incident name", YEAR]**, citing [primary] — what the incident evidences for this IRQ.` The link is two-way and resolves in both directions: a register row cited in this form names this IRQ in its `IRQ(s) supported` cell, and every IRQ named in a row's `IRQ(s) supported` cell cites that row on its own canvas — in this form or, for a citation made before the form was introduced on 19 September 2026, by naming the incident in the canvas's own text. An incident not carried in the register is not cited in this form — either the row is added, or the underlying source is cited in its own right.
+**Incident-register citations.** Where the research basis rests on an incident carried in `V1_Research_Compendium/INCIDENT_REGISTER.md`, the citation takes a reserved form, in this field by default, or in the field where the incident is used, keeping the shape above: `**[FAIAS Incident Register, row N, "Short incident name", YEAR]** — what the incident evidences for this IRQ.` Where the canvas also cites the incident's primary, the primary's bracket follows the register bracket, either at once — `**[FAIAS Incident Register, row N, "Short incident name", YEAR]**, citing [primary] — what the incident evidences for this IRQ.` — or after the quotation or statement from the primary that it supports, later in the same citation. `YEAR` is the year, stated in the row's Date cell, of the event or report on which the citing field relies. The link is two-way and resolves in both directions: a register row cited in this form names this IRQ in its `IRQ(s) supported` cell, and every IRQ named in a row's `IRQ(s) supported` cell cites that row on its own canvas — in this form or, for a citation made before the form was introduced on 19 September 2026, by naming the incident in the canvas's own text. An incident not carried in the register is not cited in this form — either the row is added, or the underlying source is cited in its own right.
 
 ---
 

@@ -118,12 +118,14 @@ Residual risk interpretation: Detectability is the dominant concern — this fai
 | **Novelty** | 4 | The embedding-index coupling is a narrow, AI-infrastructure-specific dependency unfamiliar outside specialist teams |
 
 ## 17. Regulatory Basis
-> No FS regulation directly addresses embedding/vector database dependency risk; this IRQ is grounded in general ICT dependency mapping and business continuity obligations ([Regulation (EU) 2022/2554, DORA, Art. 11] business continuity policy; [PRA SS2/21, March 2021] outsourcing and third-party risk, including exit planning) applied to this specific AI-infrastructure dependency [UNVERIFIED — SS2/21 does not name embedding/vector-database dependencies specifically; applicability is FAIAS's interpretive extension] (verified 29 Jul 2026).
+> No FS regulation directly addresses embedding/vector database dependency risk; this IRQ is grounded in general ICT dependency mapping and business continuity obligations ([Regulation (EU) 2022/2554, DORA, Art. 11] business continuity policy; [PRA SS2/21, November 2024 (15 November 2024, updating 29 March 2021)] outsourcing and third-party risk, including exit planning) applied to this specific AI-infrastructure dependency [UNVERIFIED — SS2/21 does not name embedding/vector-database dependencies specifically; applicability is FAIAS's interpretive extension] (verified 29 Jul 2026).
 
 ## 18. Research Basis
-> No peer-reviewed research specifically documents "embedding-index mismatch" as a named failure class in FS contexts [UNVERIFIED — no such named study was located after search; the phenomenon is a reasoned extension of established IR evaluation methodology, not an established empirical finding] (verified 29 Jul 2026). This IRQ is grounded in established information-retrieval evaluation methodology (precision/recall metrics) and general software dependency/lock-in risk analysis, applied to the specific technical coupling between embedding models and vector index geometry.
+> No peer-reviewed research specifically documents "embedding-index mismatch" as a named failure class in FS contexts [UNVERIFIED — no such named study was located after search, and no FS-specific study was located; non-FS peer-reviewed work measures the retrieval loss when queries from a newer embedding model search an index built with an older one (Vejendla, H., 2025, "Drift-Adapter: A Practical Approach to Near Zero-Downtime Embedding Model Upgrades in Vector Databases", EMNLP 2025, pp. 15938-15949)] (verified 29 Jul 2026; Vejendla read 7 Oct 2026). This IRQ is grounded in established information-retrieval evaluation methodology (precision/recall metrics) and general software dependency/lock-in risk analysis, applied to the specific technical coupling between embedding models and vector index geometry.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> For the metrics used in the staging test, [Muennighoff, N., Tazi, N., Magne, L., Reimers, N., 2023, "MTEB: Massive Text Embedding Benchmark", Proceedings of the 17th Conference of the European Chapter of the Association for Computational Linguistics (EACL 2023), pp. 2014–2037, https://doi.org/10.18653/v1/2023.eacl-main.148] provides public retrieval datasets and metrics: the model under test embeds all queries and all corpus documents, and the benchmark reports nDCG, MRR, MAP, precision and recall at several cut-offs, with nDCG@10 as its main metric. It compares embedding models, each used for both queries and corpus. It does not test a stale index queried by a new model. Its code is public at github.com/embeddings-benchmark/mteb. [Vejendla, H., 2025, "Drift-Adapter: A Practical Approach to Near Zero-Downtime Embedding Model Upgrades in Vector Databases", Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing (EMNLP 2025, Main), pp. 15938–15949, https://doi.org/10.18653/v1/2025.emnlp-main.805] is a mitigation paper by a single author: it trains a mapping from new-model queries into the old embedding space. In its evaluation, the baseline with no adaptation, which searches the old index with new-model queries, reaches 0.589 to 0.723 of the Recall@10 of a full re-embedding on three public text datasets in an upgrade from MiniLM to MPNet. It is not a financial-services study or a monitoring protocol, and the paper names no code repository. No ★ change follows from this addition.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -140,9 +142,17 @@ Related IRQs:
     Applied: 17 January 2025
     URL: https://eur-lex.europa.eu/eli/reg/2022/2554/oj
 
-[2] Prudential Regulation Authority, 2021. "SS2/21 — Outsourcing and third party risk management."
-    Published: March 2021
+[2] Prudential Regulation Authority, 2024. "SS2/21 — Outsourcing and third party risk management."
+    Published: November 2024 (15 November 2024, updating 29 March 2021)
     URL: https://www.bankofengland.co.uk/prudential-regulation/publication/2021/march/outsourcing-and-third-party-risk-management-ss
+
+[3] Muennighoff, N., Tazi, N., Magne, L., Reimers, N., 2023. "MTEB: Massive Text Embedding Benchmark." Proceedings of the 17th Conference of the European Chapter of the Association for Computational Linguistics (EACL 2023), pp. 2014–2037. Code: github.com/embeddings-benchmark/mteb.
+    Published: May 2023
+    URL: https://doi.org/10.18653/v1/2023.eacl-main.148
+
+[4] Vejendla, H., 2025. "Drift-Adapter: A Practical Approach to Near Zero-Downtime Embedding Model Upgrades in Vector Databases." Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing (EMNLP 2025, Main), pp. 15938–15949. The paper names no code repository.
+    Published: November 2025
+    URL: https://doi.org/10.18653/v1/2025.emnlp-main.805
 ```
 
 ## 21. Four-Test Validation Footer
@@ -160,6 +170,10 @@ Related IRQs:
 
 **Change Log:**
 - v1.0 (2026-07): Initial publication.
+- v1.3.3 (2026-10-09): Field 20 — the reference entry for PRA SS2/21 gives its current version, November 2024 (15 November 2024, updating 29 March 2021). No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS2/21 cited as its November 2024 version (15 November 2024, updating 29 March 2021); the expectations cited are unchanged.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — MTEB (EACL 2023) and Drift-Adapter (EMNLP 2025) cited with their limits stated; the Drift-Adapter figures give the retrieval loss of its no-adaptation baseline on public text, not on financial-services data. Field 20 References — entries [3] and [4] added. Research-basis review date moved. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — the tag now cites non-FS peer-reviewed work on retrieval across embedding-model versions (Vejendla, EMNLP 2025) and states that no FS-specific study was located; the first sentence of the field is unchanged. No change to the ★ rating or the risk profile.
 ```
 
 ---

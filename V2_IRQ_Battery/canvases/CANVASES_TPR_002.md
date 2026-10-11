@@ -56,7 +56,7 @@ Control Breakpoints:
 ## 9. Expected Controls (Traced)
 - **Mandatory contractual provisions for ICT third-party arrangements** — [Regulation (EU) 2022/2554, DORA, Art. 30] — contracts for critical/important functions must include audit rights, service description, termination rights and exit strategy provisions.
 - **Outsourcing contract minimum content standards** — [EBA Guidelines on outsourcing arrangements, EBA/GL/2019/02, Title IV, Section 13 (Contractual phase, incl. 13.3 Access, information and audit rights; 13.4 Termination rights)] (verified 29 Jul 2026) — audit, access and termination rights proportionate to criticality.
-- **Third-party contractual risk management** — [PRA SS2/21, March 2021] — contractual terms should enable ongoing oversight and exit within business continuity requirements.
+- **Third-party contractual risk management** — [PRA SS2/21, November 2024 (15 November 2024, updating 29 March 2021)] — contractual terms should enable ongoing oversight and exit within business continuity requirements.
 - **AI-specific change-notification clause** — Emerging Practice — firms are extending standard SLA notice-of-change clauses to explicitly cover model weight/version/safety-filter changes; no published FS-sector standard clause library identified.
 - **Output/content usage rights review** — Emerging Practice, informed by general IP/licensing contract law — no AI-specific FS regulatory standard identified for output ownership terms.
 
@@ -120,12 +120,14 @@ Residual risk interpretation: Manageable with a disciplined contract renewal cyc
 | **Novelty** | 3 | Requires combined legal and AI-domain literacy uncommon in standard contract review |
 
 ## 17. Regulatory Basis
-> [Regulation (EU) 2022/2554, DORA, Art. 30] mandates specific contractual provisions for arrangements supporting critical or important functions, including audit rights, service levels, and termination/exit rights. [EBA Guidelines on outsourcing arrangements, EBA/GL/2019/02, Title IV, Section 13 (Contractual phase)] set minimum contractual content expectations (verified 29 Jul 2026). [PRA SS2/21, March 2021] expects contractual terms to enable ongoing oversight and exit consistent with business continuity planning.
+> [Regulation (EU) 2022/2554, DORA, Art. 30] mandates specific contractual provisions for arrangements supporting critical or important functions, including audit rights, service levels, and termination/exit rights. [EBA Guidelines on outsourcing arrangements, EBA/GL/2019/02, Title IV, Section 13 (Contractual phase)] set minimum contractual content expectations (verified 29 Jul 2026). [PRA SS2/21, November 2024 (15 November 2024, updating 29 March 2021)] expects contractual terms to enable ongoing oversight and exit consistent with business continuity planning.
 
 ## 18. Research Basis
-> No peer-reviewed academic literature specifically addresses AI-provider contract clause design; this IRQ extends established outsourcing contract law and DORA's ICT contractual-content regime to the AI-specific case of model versioning and behavioural change. [UNVERIFIED — no UK Finance, ISDA or equivalent sector body publication specifically addressing AI-model versioning/behavioural-change contract clauses was located; the gap noted in the surrounding text stands as stated] (verified 29 Jul 2026).
+> No peer-reviewed academic literature specifically addresses AI-provider contract clause design; this IRQ extends established outsourcing contract law and DORA's ICT contractual-content regime to the AI-specific case of model versioning and behavioural change. [UNVERIFIED — no UK Finance or ISDA publication specifically addressing AI-model versioning/behavioural-change contract clauses was located; the FINOS AI Governance Framework mitigation AIR-PREV-010 (AI Model Version Pinning) sets out versioning, release-note and advance-notice terms for supplier contracts] (verified 29 Jul 2026; AIR-PREV-010 read 7 Oct 2026).
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 87, "Windsurf Claude capacity cut", 2025]** — the customer's own statement records that "[w]ith less than a week of notice, Anthropic informed us they were cutting off nearly all of our first-party capacity to the Claude 3.x models", and that capacity from other inference providers was "not enough today, given the length of notice, to support all of the existing demand". It is one party's account: the contract terms and the provider's reasons are not in the source, and whether the notice breached any term is not known.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -142,11 +144,11 @@ Related IRQs:
     URL: https://eur-lex.europa.eu/eli/reg/2022/2554/oj
 
 [2] European Banking Authority, 2019. "Guidelines on outsourcing arrangements." EBA/GL/2019/02.
-    URL: https://www.eba.europa.eu/regulation-and-policy/internal-governance/guidelines-on-outsourcing-arrangements
-    Accessed: 2026-07-29 (source confirmed live and current as at this date) (verified 29 Jul 2026).
+    URL: https://www.eba.europa.eu/sites/default/files/documents/10180/2551996/38c80601-f5d7-4855-8ba3-702423665479/EBA%20revised%20Guidelines%20on%20outsourcing%20arrangements.pdf
+    Accessed: 2026-07-29 (source confirmed live and current as at this date; URL changed to the Final Report PDF, read 8 Oct 2026) (verified 29 Jul 2026).
 
-[3] Prudential Regulation Authority, 2021. "SS2/21 — Outsourcing and third party risk management."
-    Published: March 2021
+[3] Prudential Regulation Authority, 2024. "SS2/21 — Outsourcing and third party risk management."
+    Published: November 2024 (15 November 2024, updating 29 March 2021)
     URL: https://www.bankofengland.co.uk/prudential-regulation/publication/2021/march/outsourcing-and-third-party-risk-management-ss
 ```
 
@@ -166,6 +168,11 @@ Related IRQs:
 **Change Log:**
 - v1.0 (2026-07): Initial publication.
 - v1.2.0 (2026-09-12): Expected Evidence — dated worked example added (an upstream model supplier exercising a change-of-control cancellation right, 28 Aug 2026: "the maximum notice provided by our contract", 76 days, and no statement on customer data). IRQ-TPR-009 not carried. ★3 / P3 unchanged.
+- v1.3.3 (2026-10-09): Field 20 — the reference entry for PRA SS2/21 gives its current version, November 2024 (15 November 2024, updating 29 March 2021). No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS2/21 cited as its November 2024 version (15 November 2024, updating 29 March 2021); the expectations cited are unchanged.
+- v1.3.3 (2026-10-09): Field 20 References — the URL of EBA/GL/2019/02 points to the Final Report PDF, in place of a page that now shows the EBA third-party risk management guidelines; the note "source confirmed live and current as at this date" says that it covers the earlier URL. No change to controls, test, ★ rating or risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 87, Windsurf statement on a provider's withdrawal of model capacity, one party's account). Research-basis review date moved. No change to controls, test, ★3 or risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — the tag on sector-body publications now names the FINOS AI Governance Framework mitigation AIR-PREV-010 (AI Model Version Pinning) as setting out versioning, release-note and advance-notice terms for supplier contracts; the search statement now names UK Finance and ISDA only, and the words "or equivalent sector body" are removed. No change to the ★ rating or the risk profile.
 ```
 
 ---

@@ -60,7 +60,7 @@ Control Breakpoints:
 
 ## 9. Expected Controls (Traced)
 - **Critical ICT third-party provider concentration assessment** — [Regulation (EU) 2022/2554, DORA, Chapter V (Managing of ICT third-party risk), Section II — Oversight Framework of critical ICT third-party service providers] — regime specifically targets systemic concentration risk from critical ICT/cloud providers, extending to AI infrastructure providers.
-- **Aggregate third-party dependency mapping** — [PRA SS2/21, March 2021] — expects firms to understand aggregate outsourcing exposure, not only individual arrangements.
+- **Aggregate third-party dependency mapping** — [PRA SS2/21, November 2024 (15 November 2024, updating 29 March 2021)] — expects firms to understand aggregate outsourcing exposure, not only individual arrangements.
 - **Board-approved risk appetite with measurable concentration indicators** — [linked IRQ-GOV-006] — concentration is one measurable indicator within the firm's overall AI risk appetite statement.
 - **Substitutability/exit strategy testing** — [Regulation (EU) 2022/2554, DORA, Art. 28(8) exit strategies] — exit strategies are required for ICT services supporting critical or important functions, with exit plans documented and sufficiently tested, proportionately under Art. 4(2).
 - **Systemic AI/cloud concentration monitoring** — [Bank of England Financial Policy Committee, "Financial Stability in Focus: Artificial intelligence in the financial system," April 2025] — supervisory-level framing that firms should be aware of and responsive to, informing internal risk appetite calibration.
@@ -125,12 +125,14 @@ Residual risk interpretation: This is a severity-and-novelty-dominant IRQ — in
 | **Novelty** | 4 | Aggregation blind spot is structurally undetectable from any single system's perspective |
 
 ## 17. Regulatory Basis
-> [Regulation (EU) 2022/2554, DORA, Chapter V] establishes an oversight framework for critical ICT third-party providers explicitly targeting concentration risk, with Art. 28(8) requiring exit strategies and documented exit plans, sufficiently tested in accordance with the proportionality criteria of Art. 4(2). [PRA SS2/21, March 2021] expects firms to understand aggregate outsourcing exposure across arrangements, not only individually. [Bank of England Financial Policy Committee, "Financial Stability in Focus," April 2025] frames AI/cloud provider concentration as a monitored systemic risk factor, informing the supervisory lens likely to be applied to firm-level concentration management.
+> [Regulation (EU) 2022/2554, DORA, Chapter V] establishes an oversight framework for critical ICT third-party providers explicitly targeting concentration risk, with Art. 28(8) requiring exit strategies and documented exit plans, sufficiently tested in accordance with the proportionality criteria of Art. 4(2). [PRA SS2/21, November 2024 (15 November 2024, updating 29 March 2021)] expects firms to understand aggregate outsourcing exposure across arrangements, not only individually. [Bank of England Financial Policy Committee, "Financial Stability in Focus," April 2025] frames AI/cloud provider concentration as a monitored systemic risk factor, informing the supervisory lens likely to be applied to firm-level concentration management.
 
 ## 18. Research Basis
-> [Bank of England Financial Policy Committee, "Financial Stability in Focus: Artificial intelligence in the financial system," April 2025] and the [Bank of England Financial Stability Report, July 2025 AI chapter] provide the primary evidentiary basis, explicitly flagging concentration in a small number of AI/cloud providers as a systemic monitoring priority (verified 29 Jul 2026). No firm-level academic study of AI-specific concentration risk measurement methodology is confirmed in this repository's source registers [UNVERIFIED — no such firm-level methodology study was located after search; this remains a supervisory-level, not academic, evidence base] (verified 29 Jul 2026).
+> [Bank of England Financial Policy Committee, "Financial Stability in Focus: Artificial intelligence in the financial system," April 2025] provides the primary evidentiary basis, explicitly flagging concentration in a small number of AI/cloud providers as a systemic monitoring priority (verified 29 Jul 2026). No firm-level academic study of AI-specific concentration risk measurement methodology is confirmed in this repository's source registers [UNVERIFIED — no such firm-level methodology study was located after search; this remains a supervisory-level, not academic, evidence base] (verified 29 Jul 2026).
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 87, "Windsurf Claude capacity cut", 2025]** — the AI coding-tool vendor's own statement shows dependence on one provider's models, with substitute capacity "from other inference providers" that was, on its account, not enough at that length of notice to support all of the existing demand. The cause was a decision by the provider and not an outage, and the source holds no risk appetite or measure of aggregate exposure.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -149,17 +151,13 @@ Related IRQs:
     Applied: 17 January 2025
     URL: https://eur-lex.europa.eu/eli/reg/2022/2554/oj
 
-[2] Prudential Regulation Authority, 2021. "SS2/21 — Outsourcing and third party risk management."
-    Published: March 2021
+[2] Prudential Regulation Authority, 2024. "SS2/21 — Outsourcing and third party risk management."
+    Published: November 2024 (15 November 2024, updating 29 March 2021)
     URL: https://www.bankofengland.co.uk/prudential-regulation/publication/2021/march/outsourcing-and-third-party-risk-management-ss
 
 [3] Bank of England, Financial Policy Committee, 2025. "Financial Stability in Focus: Artificial intelligence in the financial system."
     Published: April 2025
     URL: https://www.bankofengland.co.uk/financial-stability-in-focus/2025/april-2025
-
-[4] Bank of England, 2025. "Financial Stability Report — July 2025."
-    Published: July 2025
-    URL: https://www.bankofengland.co.uk/financial-stability-report/2025/july-2025
 ```
 
 ## 21. Four-Test Validation Footer
@@ -179,6 +177,10 @@ Related IRQs:
 - v1.0 (2026-07): Initial publication.
 - v1.2.0 (2026-09-12): Expected Evidence — dated worked example added on procurement-channel dependency (harnesses spoofed to harvest credentials; resellers silently proxying to a different model, 10 Sep 2026). Related IRQs — TPR-001 and SEC-011 added. ★2 / P2 unchanged.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — the reference entry for PRA SS2/21 gives its current version, November 2024 (15 November 2024, updating 29 March 2021). No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS2/21 cited as its November 2024 version (15 November 2024, updating 29 March 2021); the expectations cited are unchanged.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 87, Windsurf statement on a provider's withdrawal of model capacity, for substitute capacity that was not enough at that length of notice). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.3 (2026-10-09): Fields 18 and 20 — the Financial Stability Report of July 2025 is no longer cited as a source on AI (the report has no section on AI, mentions AI only in passing, does not discuss cloud provider concentration, and points to the April 2025 Financial Stability in Focus), and its reference entry is removed. The April 2025 Financial Stability in Focus remains the evidentiary basis for AI and cloud provider concentration. Research-basis review date moved. No change to the ★ rating or the risk profile.
 ```
 
 ---

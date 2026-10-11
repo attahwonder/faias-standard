@@ -78,7 +78,7 @@ Control Breakpoints:
 
 ## 9. Expected Controls (Traced)
 - **Explicit, documented Operating Envelope Declaration at approval — a yes-list/no-list of designed-for and not-designed-for scope (customer segments, languages, products, use case, escalation rate, stress scenarios) that serves as the reconciliation baseline** — [ASSURANCE_ARCHITECTURE.md, Layer 4, AI Safety Case, "Operating Envelope Declaration"] — the FAIAS-native anchor for this control, itself grounded in the same safety-case discipline (ARP 4761; IEC 61508; ISO/IEC 15026-2) used in aviation and functional-safety domains for explicit, bounded scope-of-safety-claim declarations.
-- **Periodic, structured reconciliation of effective use (actual task types, actual user population, current prompt/system-instruction content, current tool/integration map, current business-process description) against the approved envelope, at a defined cadence and on defined triggers (major change, incident, periodic review)** — [PRA, SS1/23, May 2023, ongoing monitoring and periodic review principle, extended per ASSURANCE_ARCHITECTURE.md's Periodic Assurance Phase] — the direct AI-neutral MRM anchor for "does the model still operate as validated," extended here to the AI-specific question of whether *use* still matches the *validated* use.
+- **Periodic, structured reconciliation of effective use (actual task types, actual user population, current prompt/system-instruction content, current tool/integration map, current business-process description) against the approved envelope, at a defined cadence and on defined triggers (major change, incident, periodic review)** — [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023), ongoing monitoring and periodic review principle, extended per ASSURANCE_ARCHITECTURE.md's Periodic Assurance Phase] — the direct AI-neutral MRM anchor for "does the model still operate as validated," extended here to the AI-specific question of whether *use* still matches the *validated* use.
 - **Defined drift triggers mapped to specific vectors — business-process change, prompt/config change (linked IRQ-MOD-013), new tool/integration (linked IRQ-AGT-010), customer-segment expansion (linked IRQ-MOD-001), vendor-side silent capability change (linked IRQ-TPR-004) — each requiring mandatory re-approval before the drifted use continues** — [EU AI Act, Regulation (EU) 2024/1689, Art. 9 — continuous, iterative risk management system requiring the risk-management process to be regularly reviewed and updated throughout the lifecycle] — the clearest binding regulatory anchor requiring lifecycle-continuous (not point-in-time) risk management for in-scope high-risk systems, directly supporting a mandatory re-trigger requirement rather than a discretionary one.
 - **Technical enforcement (not policy-only) of the approved envelope's boundaries where feasible — e.g. platform-level restriction of user groups, task types or connected tools to those approved, per IRQ-GOV-003 — reducing the population of drift vectors that depend on human process discipline alone** — [linked IRQ-GOV-003; NIST AI 100-1, Jan 2023, GOVERN function] — narrows the surface this IRQ must monitor by preventing some drift vectors architecturally rather than only detecting them after the fact.
 - **Named, empowered accountability for the reconciliation exercise and authority to require re-approval or suspend drifted use, distinct from (and escalating from) individual function owners who each control only one drift vector** — [linked IRQ-GOV-001, IRQ-HUM-005; ASSURANCE_ARCHITECTURE.md, Layer 2, Mandatory Completeness Rule] — closes the "no single function sees the cumulative picture" blind spot identified in field 7.
@@ -190,12 +190,14 @@ Review phases.
 | **Novelty** | 4 | The archetypal AI-native governance blind spot: outside the traditional banking risk model, emergent, and very likely to be missed by a domain expert whose "has this changed" instinct is keyed to model version rather than surrounding use pattern. |
 
 ## 17. Regulatory Basis
-> [EU AI Act, Regulation (EU) 2024/1689, Art. 9] requires a continuous, iterative risk-management system, regularly reviewed and updated throughout the AI system's lifecycle — the clearest binding requirement that risk management (and, by extension, the scope it was performed against) cannot be a point-in-time exercise, directly supporting a mandatory re-trigger requirement for envelope drift in Annex III high-risk systems. [PRA, SS1/23, May 2023] ongoing monitoring and periodic review principle requires firms to confirm models continue to perform and be used as validated, extended here to the AI-specific question of whether *use* still matches *validated use*, not only whether the model's technical performance is stable. [Bank of England/PRA, "PRA response to Government on AI regulation," Apr 2024] and the PRA's Oct 2025 MRM AI/ML roundtable both signal increasing supervisory attention to how AI use evolves post-approval. No UK/FS regulation names "operating envelope drift" as a defined term; this IRQ's framing is FAIAS's own structural contribution (per ASSURANCE_ARCHITECTURE.md, Layer 4), built on the continuous-risk-management obligations cited above. Section pinpoints [UNVERIFIED — cited modules/articles confirmed extant (PRA SS1/23, SS1/21, PS21/3, ISO/IEC 42001:2023, EU AI Act Arts. 9/11/12/19); no AI-specific sub-clause pinpoint published by the regulator beyond module/clause level cited] (verified 29 Jul 2026).
+> [EU AI Act, Regulation (EU) 2024/1689, Art. 9] requires a continuous, iterative risk-management system, regularly reviewed and updated throughout the AI system's lifecycle — the clearest binding requirement that risk management (and, by extension, the scope it was performed against) cannot be a point-in-time exercise, directly supporting a mandatory re-trigger requirement for envelope drift in Annex III high-risk systems. [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] ongoing monitoring and periodic review principle requires firms to confirm models continue to perform and be used as validated, extended here to the AI-specific question of whether *use* still matches *validated use*, not only whether the model's technical performance is stable. [Bank of England and PRA, "The Bank and the PRA's response to DSIT/HMT: update on our approach to AI," 22 April 2024] notes that SS1/23 includes expectations for dynamic models (models able to adapt, recalibrate or otherwise change autonomously in response to new inputs) and that, given the evolution of use cases, the Bank and the PRA will keep their approach under continuous review; the PRA's Oct 2025 MRM AI/ML roundtable signals increasing supervisory attention to how AI use evolves post-approval. No UK/FS regulation names "operating envelope drift" as a defined term; this IRQ's framing is FAIAS's own structural contribution (per ASSURANCE_ARCHITECTURE.md, Layer 4), built on the continuous-risk-management obligations cited above. Section pinpoints [UNVERIFIED — cited modules/articles confirmed extant (PRA SS1/23, SS1/21, PS21/3, ISO/IEC 42001:2023, EU AI Act Arts. 9/11/12/19); no AI-specific sub-clause pinpoint published by the regulator beyond module/clause level cited] (verified 29 Jul 2026).
 
 ## 18. Research Basis
 > The envelope-drift concept and its named drift vectors (business-process, user-behaviour, tool/integration, prompt, customer-segment, silent capability drift) are drawn directly from ASSURANCE_ARCHITECTURE.md's Layer 4 AI Safety Case framework, itself grounded in the safety-case discipline of aviation and functional-safety standards [ARP 4761, SAE International; IEC 61508; ISO/IEC 15026-2, Systems and Software Assurance — Assurance Case] where an explicit, bounded "operating envelope" or "operational design domain" and its drift are long-established structural concepts (the closest direct analogue being the automated-driving-systems Operational Design Domain concept in UL 4600 and ISO 34503). No FS-specific academic literature yet quantifies AI operating-envelope drift as a distinct empirical phenomenon; this is consistent with the concept's status as an emerging, cross-domain-transferred safety-engineering construct rather than a benchmarked AI-safety research finding, and is stated honestly as such (★2, not ★3+, for the Independent Test above).
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 69, "State v. Loomis COMPAS", 2016]** — the Wisconsin Supreme Court records that "COMPAS was not developed for use at sentencing, but was intended for use by the Department of Corrections in making determinations regarding treatment, supervision, and parole" (para 100), and that "no cross-validation study for a Wisconsin population has yet been completed". A tool built for one use was considered for another, and the record carried no validation for the population concerned; the Court allowed that use only with a written advisement of these limitations. The setting is criminal sentencing, not financial services.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -222,20 +224,20 @@ Review phases.
 ```
 [1] European Union, 2024. "Regulation (EU) 2024/1689 — Artificial Intelligence Act."
     OJ L 12.7.2024. Art. 9, Risk Management System.
-[2] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023, effective
-    17 May 2024.
-[3] Bank of England/PRA, 2024. "PRA response to Government on AI regulation." April 2024.
-[4] Bank of England/PRA, 2025. "PRA model risk management roundtable on AI and ML
-    technologies." Meeting note, published November 2025.
+[2] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
+[3] Bank of England/PRA, 2024. "The Bank and the PRA's response to DSIT/HMT: update on our approach to AI." 22 April 2024.
+[4] Bank of England/PRA, 2025. "The PRA holds model risk management roundtable on artificial
+    intelligence and machine learning technologies." Published November 2025.
 [5] SAE International, 2010. "ARP 4761 — Guidelines and Methods for Conducting the Safety
     Assessment Process on Civil Airborne Systems and Equipment."
 [6] IEC, 2010. "IEC 61508 — Functional Safety of Electrical/Electronic/Programmable
     Electronic Safety-Related Systems."
 [7] ISO/IEC, 2011. "ISO/IEC 15026-2 — Systems and Software Assurance — Part 2: Assurance
     Case."
-[8] Underwriters Laboratories, 2023. "UL 4600 — Standard for Safety for the Evaluation of
-    Autonomous Products." (Operational Design Domain concept, cited as cross-domain
-    analogue.)
+[8] Underwriters Laboratories, 2023. "UL 4600 — Standard for Evaluation of Autonomous
+    Products," Edition 3, 17 March 2023. (Operational Design Domain concept, cited as
+    cross-domain analogue.)
 ```
 
 ## 21. Four-Test Validation Footer
@@ -269,6 +271,13 @@ FOUR-TEST VALIDATION:
 Change Log:
 - v1.0 (2026-07): Initial publication; all four tests passed as the domain's flagship IRQ.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20, reference [8] — UL 4600 takes the title of its current edition, "Standard for Evaluation of Autonomous Products" (Edition 3, 17 March 2023). Form corrections only. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20, reference [4] — the PRA roundtable page is cited by its heading as published, "The PRA holds model risk management roundtable on artificial intelligence and machine learning technologies". Form corrections only. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 69, State v. Loomis, in a criminal sentencing setting). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.3 (2026-10-09): Field 17 Regulatory Basis — the Bank of England and PRA letter of 22 April 2024 cited by its title, The Bank and the PRA's response to DSIT/HMT: update on our approach to AI; the letter's part of the post-approval sentence narrowed to what the letter says (SS1/23 expectations for dynamic models; the approach kept under continuous review as use cases evolve); the roundtable part unchanged. Field 20 References — the same title. No change to controls, test, ★ rating or risk profile.
+- v1.3.3 (2026-10-09): Field 20 References — reference [4], the PRA roundtable page: its description corrected to a page published in November 2025, since the page reports two roundtable sessions and links the presentation slides. No change to the ★ rating or the risk profile.
 ```
 
 ---

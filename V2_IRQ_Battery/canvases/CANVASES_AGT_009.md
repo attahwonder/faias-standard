@@ -64,7 +64,7 @@ Control Breakpoints:
 
 ## 9. Expected Controls (Traced)
 - **Version control and change-approval for all prompt/scaffold artefacts** — [linked IRQ-MOD-013; NIST AI RMF 1.0, Jan 2023, MANAGE function] — prompts are stored, versioned and change-approved with the same rigour as code, closing the "content vs code" gap.
-- **Behavioural regression testing triggered by any prompt/scaffold change** — [linked IRQ-MOD-013; Chen et al., "How Is ChatGPT's Behavior Changing over Time?", 2023, arXiv:2307.09009, demonstrating that behaviour drifts materially with configuration/version changes even absent a stated model change] — a defined regression suite runs before any prompt change reaches production.
+- **Behavioural regression testing triggered by any prompt/scaffold change** — [linked IRQ-MOD-013; Chen et al., "How Is ChatGPT's Behavior Changing over Time?", 2023, arXiv:2307.09009; Harvard Data Science Review 6(2), 2024, demonstrating that behaviour drifts materially with configuration/version changes even absent a stated model change] — a defined regression suite runs before any prompt change reaches production.
 - **Monitoring capable of attributing behavioural drift to its source (model, code, or prompt/config)** — [linked IRQ-GOV-008, IRQ-RES-005/006; PRA SS1/23 ongoing monitoring principle] — drift-detection tooling distinguishes which layer changed, rather than assuming model version stability implies behavioural stability.
 - **Explicit caveat on reliance on model-stated reasoning as an oversight control** — [Anthropic, "Reasoning Models Don't Always Say What They Think," Apr 2025; OpenAI, "Detecting Misbehavior in Frontier Reasoning Models," Mar 2025] — any control relying on chain-of-thought inspection documents that stated reasoning may not faithfully reflect actual drivers of behaviour.
 - **Change-log linkage between prompt versions and observed behavioural test results** — [linked IRQ-GOV-009 documentation standard] — each prompt version is traceable to the regression evidence that supported its approval.
@@ -143,12 +143,14 @@ testing should be a standard deployment-governance requirement, not optional.
 | **Novelty** | 3 | Recognising prompt text as behaviour-bearing configuration equivalent to code requires a non-obvious reframing for most change-management functions. |
 
 ## 17. Regulatory Basis
-> No regulation names "prompt version control" explicitly. [PRA SS1/23, May 2023] requires model risk governance covering all components materially affecting model behaviour, which extends to prompts and scaffolds by principle. [FCA AI Update, Apr 2024] and [SYSC change-management expectations] require firms to control changes affecting regulated activities. [NIST AI RMF 1.0, Jan 2023, MANAGE function] establishes ongoing management of AI system changes as a governance expectation. [EU AI Act, Regulation (EU) 2024/1689, Art. 9 (risk management), Art. 12 (record-keeping/logging)], applicable where prompt changes alter a high-risk system's behaviour (from 2 Dec 2027, per the Digital Omnibus postponement of Annex III deadlines agreed Jul 2026; Art. 9/12 obligations otherwise unaffected by the postponement for non-Annex-III uses already in scope). (corrected & verified 29 Jul 2026)
+> No regulation names "prompt version control" explicitly. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] requires model risk governance covering all components materially affecting model behaviour, which extends to prompts and scaffolds by principle. [FCA AI Update, Apr 2024] and [SYSC change-management expectations] require firms to control changes affecting regulated activities. [NIST AI RMF 1.0, Jan 2023, MANAGE function] establishes ongoing management of AI system changes as a governance expectation. [EU AI Act, Regulation (EU) 2024/1689, Art. 9 (risk management), Art. 12 (record-keeping/logging)], applicable where prompt changes alter a high-risk system's behaviour (from 2 Dec 2027, per the Digital Omnibus postponement of Annex III deadlines agreed Jul 2026; Art. 9/12 obligations otherwise unaffected by the postponement for non-Annex-III uses already in scope). (corrected & verified 29 Jul 2026)
 
 ## 18. Research Basis
-> [Chen, L., Zaharia, M., Zou, J., 2023, "How Is ChatGPT's Behavior Changing over Time?", arXiv:2307.09009] — empirically demonstrates that the same API endpoint's behaviour drifted materially across months, evidencing that configuration/version changes (which may include undisclosed prompt or system changes on the provider side) produce behavioural drift independent of headline "model" changes. [Anthropic, 2025, "Reasoning Models Don't Always Say What They Think"] — chain-of-thought is not faithful to actual computation, meaning inspecting stated reasoning cannot substitute for controlling the actual prompt/scaffold configuration. [OpenAI, 2025, "Detecting Misbehavior in Frontier Reasoning Models"] — shows that penalising visible "bad thoughts" teaches models to hide them, reinforcing that oversight must rely on controlled configuration rather than reasoning-trace inspection alone.
+> [Chen, L., Zaharia, M., Zou, J., 2023, "How Is ChatGPT's Behavior Changing over Time?", arXiv:2307.09009; Harvard Data Science Review 6(2), 2024] — empirically demonstrates that the same API endpoint's behaviour drifted materially across months, evidencing that configuration/version changes (which may include undisclosed prompt or system changes on the provider side) produce behavioural drift independent of headline "model" changes. [Anthropic, 2025, "Reasoning Models Don't Always Say What They Think"] — chain-of-thought is not faithful to actual computation, meaning inspecting stated reasoning cannot substitute for controlling the actual prompt/scaffold configuration. [OpenAI, 2025, "Detecting Misbehavior in Frontier Reasoning Models"] — shows that penalising visible "bad thoughts" teaches models to hide them, reinforcing that oversight must rely on controlled configuration rather than reasoning-trace inspection alone. [Chatterjee, A., et al., 2024, "POSIX: A Prompt Sensitivity Index For Large Language Models," Findings of EMNLP 2024, pp. 14550-14565, arXiv:2410.02185] — a published index of prompt sensitivity, the relative change in the log-likelihood of a response when its prompt is replaced by a different, intent-preserving prompt; code is public. It measures sensitivity to variation that preserves intent, not the effect of an edit that changes the content of an instruction, which field 11 also covers; it needs response log-likelihoods, and the paper applies it to open-source models.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Fast (6 months)
+> **[FAIAS Incident Register, row 54, "xAI Grok unauthorised prompt change", 2025]** — xAI states that on 14 May 2025 an unauthorised modification was made to the Grok response bot's prompt on X, and that its "existing code review process for prompt changes was circumvented"; its remedies were to publish its prompts on GitHub, add checks so that employees cannot change the prompt without review, and monitor round the clock. A prompt change reached users outside xAI's code review process for prompt changes, and it directed the bot's replies on a political topic. This is a different event from the July 2025 episode that the register carries at row 24.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -169,14 +171,20 @@ testing should be a standard deployment-governance requirement, not optional.
 ## 20. References
 ```
 [1] Chen, L., Zaharia, M., Zou, J., 2023. "How Is ChatGPT's Behavior Changing over
-    Time?" arXiv:2307.09009.
+    Time?" arXiv:2307.09009. Published in Harvard Data Science Review 6(2), 12 March 2024,
+    https://doi.org/10.1162/99608f92.5317da47.
 [2] Anthropic, 2025. "Reasoning Models Don't Always Say What They Think." April 2025.
 [3] OpenAI, 2025. "Detecting Misbehavior in Frontier Reasoning Models." March 2025.
 [4] NIST, 2023. "Artificial Intelligence Risk Management Framework (AI RMF) Version
     1.0." January 2023.
-[5] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023.
+[5] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023).
 [6] European Union, 2024. "Regulation (EU) 2024/1689 — Artificial Intelligence Act."
     OJ L 12.7.2024.
+[7] Chatterjee, A., Renduchintala, H. S. V. N. S. K., Bhatia, S., Chakraborty, T., 2024.
+    "POSIX: A Prompt Sensitivity Index For Large Language Models." Findings of the
+    Association for Computational Linguistics: EMNLP 2024, pp. 14550-14565.
+    arXiv:2410.02185.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -206,6 +214,14 @@ Change Log:
   poisoning via an unauthenticated local inference interface, CVE-2026-65105, 25 Aug
   2026), re-homed from IRQ-SEC-010 on the September 2026 refresh reading. Related IRQs —
   SEC-010 and SEC-011 added. No change to controls, test, ★ or risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 54, xAI Grok unauthorised prompt change of May 2025, a different event from row 24). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.3 (2026-10-09): Fields 9, 18 and 20 — the Chen, Zaharia and Zou citation (arXiv:2307.09009) now also gives its publication in Harvard Data Science Review 6(2), 2024. Research-basis review date moved. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — POSIX prompt sensitivity index added as a
+  published method for sensitivity to intent-preserving variation, with its limits.
+  Field 20 — entry [7] added. Research-basis review date moved. No change to controls,
+  test, ★2 or risk profile.
 ```
 
 ---

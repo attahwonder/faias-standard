@@ -134,7 +134,9 @@ Residual risk: material to critical in multi-tenant or high-DSAR-volume deployme
 ## 18. Research Basis
 > No FS-specific peer-reviewed study of AI memory/conversation-store erasure completeness was located in the source registers; this reflects the genuinely emerging nature of persisted-memory governance as an AI-specific data-asset class, flagged [UNVERIFIED — no FS-specific study located] (verified 29 Jul 2026) rather than filled with an adjacent but non-supporting citation. The adversarial cross-tenant testing methodology draws on established multi-tenant access-control practice (ISO/IEC 27001) rather than AI-specific published research, which is itself part of why this IRQ's test is rated ★2 rather than higher.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 60, "OpenAI ChatGPT open-source caching library bug", 2023]** — the provider's own report states that "a bug in an open-source library" allowed some users to see titles from another active user's chat history, and that the same bug may have made payment-related details of 1.2% of ChatGPT Plus subscribers active in a nine-hour window visible to other users. A persisted conversation store, served through a shared cache, returned one user's data to another; the fault sat in the caching library and not in the model. The provider is not a financial-services firm.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -170,6 +172,7 @@ FOUR-TEST VALIDATION:
 
 Change Log:
 - v1.0 (2026-07): Initial publication.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 60, the ChatGPT incident of 20 March 2023, in a consumer and enterprise AI service and not a financial-services firm). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
 ```
 
 ---

@@ -71,14 +71,15 @@ transparency obligations only.
 
 | File | Confirmed | Corrected | Unresolvable (→ UNVERIFIED) | Total flags |
 |---|---|---|---|---|
-| CANVASES_AGT.md | 4 | 2 | 2 | 8 |
-| CANVASES_MOD.md | 12 | 0 | 0 | 12 |
-| CANVASES_SEC.md | 2 | 1 | 5 | 8 |
-| CANVASES_DAT.md | 12 | 1 | 5 | 18 |
+| CANVASES_AGT.md | 3 | 2 | 3 | 8 |
+| CANVASES_MOD.md | 9 | 3 | 0 | 12 |
+| CANVASES_SEC.md | 1 | 1 | 6 | 8 |
+| CANVASES_DAT.md | 11 | 3 | 4 | 18 |
 | EXEMPLAR_CANVASES.md | 1 | 0 | 0 | 1 |
-| **Total** | **31** | **4** | **12** | **47** |
+| **Total** | **25** | **9** | **13** | **47** |
 
 Note: some rows in the table above resolve a paragraph partially CONFIRMED / partially
 UNVERIFIED (e.g. one citation pinpointed, a second acknowledged as a genuine gap); these are
-counted once under whichever resolution is dominant for that flag, consistent with the
-per-file counts above.
+counted once, by the first word of the resolution. Six rows (10, 12, 13, 14, 18 and 21) start
+CONFIRMED and also carry UNVERIFIED; they are counted under Confirmed. The per-file counts
+above are taken from the rows.

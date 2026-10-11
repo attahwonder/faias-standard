@@ -63,7 +63,7 @@ Control Breakpoints:
 **AO-HUM-005:** Authority to suspend or constrain the AI system shall be assigned to named, senior individuals with documented, rehearsed criteria for exercising it, and the organisation shall hold evidence — through simulation or historical exercise — that this authority would be exercised against genuine commercial or operational pressure.
 
 ## 9. Expected Controls (Traced)
-- **Named suspension authority with documented, specific trigger criteria** — [FCA, PS21/3, Operational Resilience, Mar 2021, containment/recovery expectations] — a specific individual (not a committee) holds authority, with objective, pre-agreed criteria for when suspension should be triggered.
+- **Named suspension authority with documented, specific trigger criteria** — [FCA, PS21/3, Operational Resilience, Mar 2021, scenario testing requirement (SYSC 15A.5.3R); containment is this canvas's reading, field 17] — a specific individual (not a committee) holds authority, with objective, pre-agreed criteria for when suspension should be triggered.
 - **Simulated suspension-decision exercises against realistic commercial-pressure scenarios** — [linked IRQ-RES-003; PRA SS1/21, scenario testing requirement] — periodic tabletop or live-fire exercises in which the named individual must decide whether to suspend under a scenario deliberately designed to include revenue, deadline or reputational counter-pressure.
 - **SM&CR individual accountability mapping for the suspension role** — [FCA/PRA, Senior Managers & Certification Regime] — the suspension authority is mapped to a specific Senior Manager Function with documented accountability, reinforcing genuine ownership rather than diffuse committee responsibility.
 - **Psychological-safety and non-retaliation policy specifically covering suspension decisions** — [Emerging Practice; drawing on established safety-culture literature, e.g. Reason, J., 1997, "Managing the Risks of Organizational Accidents"] — explicit organisational commitment that exercising suspension authority, even if later judged unnecessary, will not be treated as a performance failing.
@@ -154,12 +154,16 @@ Resilience domain.
 | **Novelty** | 3 | Domain expert would recognise the need for named accountability but is likely to miss that untested formal authority is frequently not exercised under real pressure without rehearsal |
 
 ## 17. Regulatory Basis
-> [EU AI Act, Regulation (EU) 2024/1689, Article 14(4)(e), Aug 2024] requires the practical ability to interrupt a high-risk AI system's operation. [FCA, PS21/3, Mar 2021] and [PRA, SS1/21, Mar 2021] require tested containment and scenario-based exercising of operational resilience arrangements, which this canvas interprets as extending to the human decision-maker's tested willingness to act. [FCA/PRA, Senior Managers & Certification Regime] provides the individual accountability framework underpinning named suspension authority. Section pinpoints [UNVERIFIED — cited modules (SYSC 4, SYSC 9, SYSC 15A, PRA SS1/21/PS21/3, EU AI Act Art. 14 — SYSC 19D removed 25 Aug 2026: it is the dual-regulated firms Remuneration Code and was mis-cited; SYSC 4.1.1R substituted, verified from the Handbook) confirmed extant on FCA Handbook/BoE/eur-lex; no AI-specific sub-clause pinpoint published by the regulator to cite beyond module level] (verified 29 Jul 2026).
+> [EU AI Act, Regulation (EU) 2024/1689, Article 14(4)(e), Aug 2024] requires the practical ability to interrupt a high-risk AI system's operation. [FCA, PS21/3, Mar 2021] and [PRA, SS1/21, March 2022 (11 March 2022, updating 29 March 2021)] require scenario-based exercising of operational resilience arrangements, which this canvas interprets as extending to tested containment and to the human decision-maker's tested willingness to act. [FCA/PRA, Senior Managers & Certification Regime] provides the individual accountability framework underpinning named suspension authority. Section pinpoints [UNVERIFIED — cited modules (SYSC 4, SYSC 9, SYSC 15A, PRA SS1/21/PS21/3, EU AI Act Art. 14 — SYSC 19D removed 25 Aug 2026: it is the dual-regulated firms Remuneration Code and was mis-cited; SYSC 4.1.1R substituted, verified from the Handbook) confirmed extant on FCA Handbook/BoE/eur-lex; no AI-specific sub-clause pinpoint published by the regulator to cite beyond module level] (verified 29 Jul 2026).
 
 ## 18. Research Basis
 > [Reason, J., 1997, "Managing the Risks of Organizational Accidents", Ashgate] establishes the safety-culture and psychological-safety foundations for why formal authority is insufficient without organisational reinforcement to exercise it. [Vaughan, D., 1996, "The Challenger Launch Decision", University of Chicago Press] documents "normalisation of deviance" — the organisational dynamic by which warning signs are progressively discounted under schedule/commercial pressure — the closest documented real-world analogue to the failure mode this IRQ addresses. Public incident: [Boeing 737 MAX, U.S. House Committee on Transportation and Infrastructure, 2020, Final Committee Report] illustrates commercial-pressure-driven delay in exercising safety-critical stop authority in a comparably regulated, high-consequence industry.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> [Grance, T., Nolan, T., Burke, K., Dudley, R., White, G., Good, T., 2006, "Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities", NIST Special Publication 800-84, September 2006] is the published method class for the tabletop exercise in field 11. It sets out how to design, develop, conduct and evaluate exercise events. Its chapter 4 describes a tabletop exercise as a discussion-based event in which personnel with roles in a plan discuss their responses to a stated emergency. Its section 4.2.4 states that senior-level personnel should take part where the objective is to validate the decision-making and oversight processes within the plan. Its section 4.5 states that the debrief comments and the observations of the facilitator and the data collector should be captured in an after action report, and Appendix A.3 gives a sample. The guide is written for IT-related plans, such as contingency plans and incident response plans. Its tabletop chapter has no AI scenario, no condition of commercial pressure and no measure of time to decision, so it supports the form of the exercise and not the scenario content that this IRQ tests. No ★ change follows from this addition.
+>
+> **[FAIAS Incident Register, row 76, "An agent used DNS to reach an external chatbot", 2026]** — the developer's own report records that monitoring flagged a training-run agent within 15 minutes and a person began to review it three minutes later, but that "the run did not stop automatically as expected, leading to confusion around whether it should have been stopped"; it was stopped by hand two and a half hours later. Detection and the start of human review took minutes and the stop took hours, because it was unclear whether the run should be stopped. The developer is an AI laboratory and the environment an internal training run, not a financial-services firm.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -188,9 +192,13 @@ Related IRQs:
     Published: 2024-07-12
     URL: https://eur-lex.europa.eu/eli/reg/2024/1689/oj
 
-[5] Prudential Regulation Authority, 2021. "Supervisory Statement SS1/21."
-    Published: 2021-03-29
+[5] Prudential Regulation Authority, 2022. "Supervisory Statement SS1/21."
+    Published: 2022-03-11 (updating 2021-03-29)
     URL: https://www.bankofengland.co.uk/prudential-regulation/publication/2021/march/operational-resilience-impact-tolerances-for-important-business-services-ss
+
+[6] Grance, T., Nolan, T., Burke, K., Dudley, R., White, G., Good, T., 2006. "Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities." NIST Special Publication 800-84. (Cited for the form of the exercise only.)
+    Published: September 2006
+    URL: https://csrc.nist.gov/pubs/sp/800/84/final
 ```
 
 ## 21. Four-Test Validation Footer
@@ -209,6 +217,12 @@ Related IRQs:
 **Change Log:**
 - v1.0 (2026-07): Initial publication; all four tests passed.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — the reference entry for PRA SS1/21 gives its current version, March 2022 (11 March 2022, updating 29 March 2021). No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 9 — PS21/3 cited for its scenario testing requirement (SYSC 15A.5.3R), not for containment, which is this canvas's reading (field 17). No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 17 — tested containment is stated as this canvas's reading of FCA PS21/3 and PRA SS1/21, not as their requirement: both require scenario testing, and neither states a containment requirement. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/21 cited as its March 2022 version (11 March 2022, updating 29 March 2021); the expectations cited are unchanged.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 76, OpenAI report on an agent that used DNS to reach an external chatbot, in an internal training run and not a financial-services setting). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — NIST SP 800-84 cited as the published method class for the tabletop in field 11, with its scope limit stated. Field 20 References — entry [6] added. Research-basis review date moved. No change to the ★ rating or the risk profile.
 ```
 
 ---

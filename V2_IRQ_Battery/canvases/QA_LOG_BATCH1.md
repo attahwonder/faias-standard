@@ -51,7 +51,7 @@
 ## 3. Items reviewed and deliberately NOT changed
 
 - **IRQ-AGT-011 Severity 4:** Borderline against the §7 anchor, but defensible — inability to reconstruct any consequential decision undermines the evidential basis of the whole agentic control estate and record-keeping breaches carry enforcement exposure; justification is explicit. Retained.
-- **Willison "Lethal Trifecta" (blog) citations (AGT-004):** Blogs are normally excluded under METHODOLOGY_STANDARDS §1, but this source is expressly admitted in SOURCE_REGISTER_ACADEMIC ("blog, widely cited"). Retained with register sanction.
+- **Willison "Lethal Trifecta" (blog) citations (AGT-004):** Blogs are normally excluded under METHODOLOGY_STANDARDS §1, but this source is expressly admitted in SOURCE_REGISTER_ACADEMIC ("blog, widely cited"). Retained with register sanction. **Note (added 10 October 2026).** The register entry now reads "blog". The words "widely cited" were removed from it in v1.3.3.
 - **SS1/21 / PS21/3 and UK GDPR citations:** Not itemised in the V5 register but are common-knowledge UK instruments also used by the exemplar canvases (Canvas 1, field 17). Retained.
 - **AGT-009 vs MOD-013 overlap:** Both address prompt change discipline; content is differentiated per TAXONOMY boundary ruling 13 (agent reasoning artefacts vs generic configuration change control) and cross-linked. No dedup required.
 

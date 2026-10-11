@@ -54,8 +54,8 @@ Control Breakpoints:
 **AO-GOV-001:** Every AI system in scope shall have a single named, sufficiently senior, SM&CR-mapped accountable owner across its full lifecycle — including where AI capability is delivered by, or embedded within, a third party.
 
 ## 9. Expected Controls (Traced)
-- **Named senior accountable owner assigned at approval, recorded in governance records** — [PRA SS1/23, May 2023, Principle 1 (Model Identification) and governance expectations] — no model, including AI/ML models, proceeds to use without documented ownership.
-- **SM&CR mapping of AI ownership to a Senior Manager Function or equivalent accountable individual** — [PRA/FCA, "PRA response to Government on AI regulation," Apr 2024, mapping DSIT principles onto SS1/23 and SMCR; FCA "AI Update," Apr 2024, confirming SMCR as the accountability anchor for AI] — ownership is not merely operational but attributable under the existing accountability regime.
+- **Named senior accountable owner assigned at approval, recorded in governance records** — [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), Principle 1 (Model Identification) and governance expectations] — no model, including AI/ML models, proceeds to use without documented ownership.
+- **SM&CR mapping of AI ownership to a Senior Manager Function or equivalent accountable individual** — [Bank of England and PRA, "The Bank and the PRA's response to DSIT/HMT: update on our approach to AI," 22 April 2024, mapping DSIT principles onto SS1/23 and SMCR; FCA "AI Update," Apr 2024, confirming SMCR as the accountability anchor for AI] — ownership is not merely operational but attributable under the existing accountability regime.
 - **Ownership requirement extended to embedded/third-party AI** — [ISO/IEC 42001:2023, clause 5 (Leadership) and clause 8 (Operation), AI management system leadership/roles requirements] — AI management system roles and responsibilities are assigned regardless of build-vs-buy origin.
 - **Governance function (AI Management System / model risk function) that verifies ownership is genuine, not nominal** — [ISO/IEC 42001:2023, clause 9 (Performance evaluation); NIST AI RMF 1.0, Govern function, Jan 2023] — periodic verification that named owners are engaged, resourced and exercising the role.
 - **EU AI Act provider/deployer role clarity where in scope** — [Regulation (EU) 2024/1689, Art. 9 (risk management system) and Art. 26 (deployer obligations)] — for in-scope high-risk systems, roles and responsible persons must be identifiable, reinforcing the ownership control.
@@ -122,12 +122,16 @@ Residual risk: High if uncontrolled at scale; low-cost to remediate once identif
 | **Novelty** | 3 | Embedded AI ownership gaps are AI-specific (capability arriving inside non-AI-branded procured software); domain expert governance intuition, built for standalone models, may miss this vector. |
 
 ## 17. Regulatory Basis
-> [PRA, SS1/23, "Model risk management principles for banks," May 2023, effective 17 May 2024, Principle 1 — Model Identification, and governance expectations throughout] requires documented ownership and accountability for models, extending to AI/ML per PRA's April 2024 mapping letter. [PRA/FCA, "PRA response to Government on AI regulation," Apr 2024] explicitly maps AI governance onto existing SMCR accountability structures. [FCA, "AI Update," Apr 2024] confirms Consumer Duty, SYSC and SMCR — not a new AI rulebook — as the accountability anchor. [Regulation (EU) 2024/1689 (EU AI Act), Art. 9 and Art. 26] requires identifiable responsible roles for in-scope high-risk systems where the firm is a provider or deployer.
+> [PRA, SS1/23, "Model risk management principles for banks," April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024, Principle 1 — Model Identification, and governance expectations throughout] requires documented ownership and accountability for models, extending to AI/ML per the Bank of England and PRA letter of 22 April 2024. [Bank of England and PRA, "The Bank and the PRA's response to DSIT/HMT: update on our approach to AI," 22 April 2024] explicitly maps AI governance onto existing SMCR accountability structures. [FCA, "AI Update," Apr 2024] confirms Consumer Duty, SYSC and SMCR — not a new AI rulebook — as the accountability anchor. [Regulation (EU) 2024/1689 (EU AI Act), Art. 9 and Art. 26] requires identifiable responsible roles for in-scope high-risk systems where the firm is a provider or deployer.
 
 ## 18. Research Basis
 > [Bank of England/PRA/FCA, "Artificial Intelligence and Machine Learning," Discussion Paper DP5/22, Oct 2022] frames the core supervisory question of whether SMCR and existing accountability frameworks in fact extend to AI systems in practice, not merely in policy — the empirical gap this IRQ tests. [ISO/IEC 42001:2023, clauses 5 and 8] establishes leadership/role-assignment requirements for AI management systems as accepted management-system practice, the closest available standards analogue (no peer-reviewed empirical literature on AI ownership genuineness specifically was identified; this control area is governance/audit practice rather than a research literature, consistent with this domain's evidentiary profile).
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 65, "Uber Advanced Technologies Group Tempe crash", 2019]** — the National Transportation Safety Board found that the automated-driving developer "did not have a safety division or a dedicated safety manager responsible for risk assessment and mitigation"; the head of operations, "lacking experience in safety management", held the role as an additional responsibility. Accountability existed in name without time, expertise or capacity. The developer is not a financial-services firm; the point that carries across is an owner named without the capacity to act.
+>
+> **[FAIAS Incident Register, row 66, "ANAO audit of AI governance at the Australian Taxation Office", 2025]** — carried as an audit finding of control gaps, not a harm event: the Australian National Audit Office found that "Key roles and responsibilities with respect to AI are not always clearly defined, including enterprise-wide responsibilities and accountabilities" at the Australian Taxation Office, which appointed its Chief Data Officer as accountable official in November 2024. The match to this question is partial: the audit records roles left undefined, not an owner named without capacity.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -142,9 +146,9 @@ Residual risk: High if uncontrolled at scale; low-cost to remediate once identif
 ```
 [1] Bank of England/PRA/FCA, 2022. "Artificial Intelligence and Machine Learning." Discussion
     Paper DP5/22. Published October 2022.
-[2] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023, effective
-    17 May 2024.
-[3] Bank of England/PRA, 2024. "PRA response to Government on AI regulation." April 2024.
+[2] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
+[3] Bank of England/PRA, 2024. "The Bank and the PRA's response to DSIT/HMT: update on our approach to AI." 22 April 2024.
 [4] FCA, 2024. "AI Update." April 2024.
 [5] European Union, 2024. "Regulation (EU) 2024/1689 — Artificial Intelligence Act."
     OJ L, 12 July 2024. Art. 9, Art. 26.
@@ -174,6 +178,11 @@ FOUR-TEST VALIDATION:
 
 Change Log:
 - v1.0 (2026-07): Initial publication; all four tests passed.
+- v1.3.3 (2026-10-09): Field 17 — the SS1/23 sentence names the Bank of England and PRA letter of 22 April 2024, in place of the PRA's April 2024 mapping. Form corrections only. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 17 and 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citations added in the reserved form (row 65, Uber Advanced Technologies Group, for an owner named without capacity; row 66, the Australian National Audit Office audit of the Australian Taxation Office, carried as an audit finding of control gaps and not a harm event, and matched in part). Research-basis review date moved. No change to controls, test, ★3 or risk profile.
+- v1.3.3 (2026-10-09): Field 9 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.3 (2026-10-09): Field 9 Expected Controls — the Bank of England and PRA letter of 22 April 2024 cited by its title, The Bank and the PRA's response to DSIT/HMT: update on our approach to AI, with the Bank of England and the PRA as issuers (it was cited as a PRA/FCA document under another title). Field 17 Regulatory Basis — the same. Field 20 References — the same. No change to controls, test, ★ rating or risk profile.
 ```
 
 ---

@@ -58,7 +58,7 @@ Control Breakpoints:
 - **Synthetic-data provenance tagging** — [EU AI Act, Regulation (EU) 2024/1689, Art. 10 data governance] — every record's real/synthetic origin and generation method recorded in the data registry.
 - **Fidelity validation against real-distribution tail statistics** — [Shumailov et al., 2024, Nature, "AI models collapse when trained on recursively generated data"; Alemohammad et al., 2023, "Self-Consuming Generative Models Go MAD"] — synthetic augmentation validated to confirm it does not erode distributional tails relative to the real reference population.
 - **Segment-stratified representativeness testing** — [linked IRQ-DAT-005; ISO/IEC TR 24027:2021 bias measurement] — synthetic augmentation of minority segments tested for preserved within-segment diversity, not homogenised replacement.
-- **Accumulation over replacement in synthetic augmentation strategy** — [Gerstgrasser et al., 2024, "Is Model Collapse Inevitable? Breaking the Curse of Recursion by Accumulating Data"] — synthetic data supplements rather than replaces real data in training mixes, per the documented mitigation for collapse-type degradation.
+- **Accumulation over replacement in synthetic augmentation strategy** — [Gerstgrasser et al., 2024, "Is Model Collapse Inevitable? Breaking the Curse of Recursion by Accumulating Real and Synthetic Data"] — synthetic data supplements rather than replaces real data in training mixes, per the documented mitigation for collapse-type degradation.
 
 ## 10. Expected Evidence (Tagged L1–L5)
 - Statement that "synthetic data is used to balance rare classes" with no fidelity evidence — **L1**.
@@ -117,12 +117,12 @@ Residual risk: Critical when synthetic augmentation targets exactly the highest-
 | **Novelty** | 4 | Mode collapse / tail erosion in synthetic data is specialist ML-research knowledge, well outside FS domain expertise. |
 
 ## 17. Regulatory Basis
-> [EU AI Act, Regulation (EU) 2024/1689, Art. 10(2)(f) and Art. 10(3)] requires training data to be relevant, representative and examined for possible biases including as they might affect the intended purpose; synthetic augmentation falls within this data-governance obligation. No UK/FS-specific regulation names synthetic-data fidelity explicitly; this IRQ addresses prudential risk under PRA SS1/23 (Principle 3) general data-quality expectations. (verified 29 Jul 2026)
+> [EU AI Act, Regulation (EU) 2024/1689, Art. 10(2)(f) and Art. 10(3)] requires training data to be relevant, representative and examined for possible biases including as they might affect the intended purpose; synthetic augmentation falls within this data-governance obligation. No UK/FS-specific regulation names synthetic-data fidelity explicitly; this IRQ addresses prudential risk under PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), Principle 3, general data-quality expectations. (verified 29 Jul 2026)
 
 ## 18. Research Basis
-> [Shumailov, I., et al., 2024, "AI models collapse when trained on recursively generated data", Nature 631, https://doi.org/10.1038/s41586-024-07566-y] — recursive training on generated data erases distributional tails, the foundational mechanism this IRQ guards against. [Alemohammad et al., 2023, "Self-Consuming Generative Models Go MAD", arXiv:2307.01850] — independent confirmation of quality/diversity degradation across modalities. [Gerstgrasser et al., 2024, "Is Model Collapse Inevitable? Breaking the Curse of Recursion by Accumulating Data", arXiv:2404.01413] — accumulation (not replacement) mitigates collapse, the basis for the accumulation control above. [Dohmatob et al., 2024, "A Tale of Tails: Model Collapse as a Change of Scaling Laws", arXiv:2402.07043] — theoretical grounding. Note: this literature is developed primarily for recursive generative-model training (text/image), not FS tabular fine-tuning augmentation directly — the analogy is credible but adapted, hence ★2 test confidence, not ★3+.
+> [Shumailov, I., et al., 2024, "AI models collapse when trained on recursively generated data", Nature 631, https://doi.org/10.1038/s41586-024-07566-y] — recursive training on generated data erases distributional tails, the foundational mechanism this IRQ guards against. [Alemohammad et al., 2023, "Self-Consuming Generative Models Go MAD", arXiv:2307.01850] — independent confirmation of quality/diversity degradation across modalities. [Gerstgrasser et al., 2024, "Is Model Collapse Inevitable? Breaking the Curse of Recursion by Accumulating Real and Synthetic Data", arXiv:2404.01413] — accumulation (not replacement) mitigates collapse, the basis for the accumulation control above. [Dohmatob et al., 2024, "A Tale of Tails: Model Collapse as a Change of Scaling Laws", arXiv:2402.07043] — theoretical grounding. Note: this literature is developed primarily for recursive generative-model training (text/image), not FS tabular fine-tuning augmentation directly — the analogy is credible but adapted, hence ★2 test confidence, not ★3+. [Alaa, A., et al., 2022, "How Faithful is your Synthetic Data? Sample-level Metrics for Evaluating and Auditing Generative Models," Proc. ICML 2022, PMLR 162:290-306] — defines three metrics, alpha-precision, beta-recall and authenticity, that score the fidelity, diversity and generalisation of synthetic data sample by sample against a real reference sample, in a way that does not depend on the data domain; code is public. It supplies fidelity and diversity measures for the comparison in field 11, but its precision and recall measures are defined over the most typical fraction of each distribution, with the remainder treated as outliers, and the paper does not study distributional tails or rare events and leaves the representation of subgroups to future work. It is not specific to financial services.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -139,10 +139,13 @@ Residual risk: Critical when synthetic augmentation targets exactly the highest-
     https://doi.org/10.1038/s41586-024-07566-y
 [2] Alemohammad, S., et al., 2023. "Self-Consuming Generative Models Go MAD." arXiv:2307.01850.
 [3] Gerstgrasser, M., et al., 2024. "Is Model Collapse Inevitable? Breaking the Curse of
-    Recursion by Accumulating Data." arXiv:2404.01413.
+    Recursion by Accumulating Real and Synthetic Data." arXiv:2404.01413.
 [4] Dohmatob, E., et al., 2024. "A Tale of Tails: Model Collapse as a Change of Scaling Laws."
     arXiv:2402.07043.
 [5] European Union, 2024. "Regulation (EU) 2024/1689 — Artificial Intelligence Act." Art. 10.
+[6] Alaa, A., Van Breugel, B., Saveliev, E. S., van der Schaar, M., 2022. "How Faithful
+    is your Synthetic Data? Sample-level Metrics for Evaluating and Auditing Generative
+    Models." Proc. 39th International Conference on Machine Learning, PMLR 162:290-306.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -163,6 +166,12 @@ FOUR-TEST VALIDATION:
 
 Change Log:
 - v1.0 (2026-07): Initial publication.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 9 Expected Controls — the title of Gerstgrasser et al. (arXiv:2404.01413) corrected to end "Accumulating Real and Synthetic Data" (it was cited without "Real and Synthetic"). Field 18 Research Basis — the same. Field 20 References — the same. Research-basis review date moved. No change to controls, test, ★ rating or risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — alpha-precision, beta-recall and
+  authenticity (Alaa et al.) added as published fidelity and diversity metrics for
+  synthetic data, with their limits. Field 20 — entry [6] added. Research-basis review
+  date moved. No change to controls, test, ★2 or risk profile.
 ```
 
 ---

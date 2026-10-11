@@ -57,9 +57,9 @@ Control Breakpoints:
 ## 9. Expected Controls (Traced)
 - **Materiality-tiered third-party risk assessment** — [EBA Guidelines on outsourcing arrangements, EBA/GL/2019/02, Title IV, Section 12 (Pre-outsourcing analysis, incl. 12.3 Due diligence), with criticality determined under Title II, Section 4 (Critical or important functions)] (verified 29 Jul 2026) — due diligence depth scaled to criticality of the outsourced function.
 - **ICT third-party risk management diligence** — [Regulation (EU) 2022/2554, DORA, Art. 28–29] — pre-contract due diligence on ICT third-party providers, including concentration and sub-outsourcing risk.
-- **Outsourcing and third-party risk oversight** — [PRA SS2/21, March 2021, "Outsourcing and third party risk management"] — proportionate due diligence and ongoing oversight of critical outsourced services.
-- **Model risk management provider evaluation** — [PRA SS1/23, May 2023, development/validation principles extended to vendor models] [VERIFIED 25 Aug 2026 against the SS1/23 text: its stated scope covers "all models, developed in-house or externally, including vendor" models, and Principle 2.6 ("Use of externally developed models, third-party vendor products") states vendor-model expectations directly. An earlier marker here claimed the opposite; corrected at the v1.1.1 errata batch] — independent characterisation of vendor model performance and weaknesses prior to reliance.
-- **AI-specific safety/security evaluation checklist** — Emerging Practice — no single published FS-specific standard exists for AI provider diligence; firms are extending general model risk and outsourcing frameworks pending sector-specific guidance.
+- **Outsourcing and third-party risk oversight** — [PRA SS2/21, November 2024 (15 November 2024, updating 29 March 2021), "Outsourcing and third party risk management"] — proportionate due diligence and ongoing oversight of critical outsourced services.
+- **Model risk management provider evaluation** — [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), development/validation principles extended to vendor models] [VERIFIED 25 Aug 2026 against the SS1/23 text: its stated scope covers "all models, developed in-house or externally, including vendor" models, and Principle 2.6 ("Use of externally developed models, third-party vendor products") states vendor-model expectations directly. An earlier marker here claimed the opposite; corrected at the v1.1.1 errata batch] — independent characterisation of vendor model performance and weaknesses prior to reliance.
+- **AI-specific safety/security evaluation checklist** — Emerging Practice — no published FS-specific safety or security evaluation checklist exists for AI provider diligence; firms are extending general model risk and outsourcing frameworks. [MAS, Guidelines on Artificial Intelligence Risk Management, 7 Oct 2026, effective 7 Oct 2027; the expectations of Sections 5 and 6 may be met by 7 Oct 2028 (paragraph 1.8)] set supervisory expectations for the onboarding and use of third-party AI: testing third-party AI in the context of the firm's own use cases, with compensatory testing where provider disclosures are inadequate (paragraph 5.10), and eight areas to consider in deciding whether to onboard or use third-party AI, among them provider transparency, supply chain, change management and legal agreements, each of which "may be met to varying degrees" (paragraph 5.11) (verified 10 Oct 2026).
 
 ## 10. Expected Evidence (Tagged L1–L5)
 - Vendor's own model card or safety report, unverified — **L1**.
@@ -98,7 +98,7 @@ Assuming controls are well-implemented and monitored:
   Severity: 2 (single provider weakness typically bounded to specific workflow; regulatory notice risk if outsourcing register found deficient)
   Likelihood: 2 (plausible if diligence process lapses under commercial pressure; not routine given policy existence)
   Detectability: 3 (surfaces via periodic audit or incident, not real-time)
-  Recoverability: 2 (remediable via retrospective diligence and, if needed, provider substitution; moderate cost)
+  Recoverability: 3 (remediable via retrospective diligence and, if needed, provider substitution; moderate cost)
   Novelty: 3 (domain expert may miss AI-specific evaluation gaps within a familiar outsourcing-diligence process)
 
 If controls are absent or degraded:
@@ -117,16 +117,20 @@ Residual risk interpretation: Acceptable with a functioning, evidenced, material
 | **Severity** | 2 | Bounded to the specific workflow served by the under-diligenced provider; escalates only if the weakness is systemic to the provider's model |
 | **Likelihood** | 2 | Diligence policies generally exist; failure mode is process erosion or scope gaps rather than total absence |
 | **Detectability** | 3 | Detected via periodic audit, outsourcing register review or incident — not real-time monitoring |
-| **Recoverability** | 2 | Retrospective diligence and, where necessary, provider substitution are achievable within weeks |
+| **Recoverability** | 3 | Retrospective diligence and, where necessary, provider substitution are achievable within weeks |
 | **Novelty** | 3 | AI-specific evaluation concepts (safety coverage, jailbreak susceptibility) fall outside traditional outsourcing diligence training |
 
 ## 17. Regulatory Basis
-> [EBA Guidelines on outsourcing arrangements, EBA/GL/2019/02] require proportionate pre-contract due diligence for outsourced functions (Title IV, Section 12, incl. 12.3 Due diligence; criticality under Title II, Section 4) [UNVERIFIED — the Guidelines set general outsourcing due-diligence criteria and do not name AI-specific criteria; mapping to AI due diligence is FAIAS's own interpretive extension] (verified 29 Jul 2026). [Regulation (EU) 2022/2554, DORA, Art. 28] requires ICT third-party risk assessment before contracting, including concentration risk. [PRA SS2/21, March 2021] sets outsourcing and third-party risk management expectations for UK firms, including proportionate due diligence scaled to criticality.
+> [EBA Guidelines on outsourcing arrangements, EBA/GL/2019/02] require proportionate pre-contract due diligence for outsourced functions (Title IV, Section 12, incl. 12.3 Due diligence; criticality under Title II, Section 4) [UNVERIFIED — the Guidelines set general outsourcing due-diligence criteria and do not name AI-specific criteria; mapping to AI due diligence is FAIAS's own interpretive extension] (verified 29 Jul 2026). [Regulation (EU) 2022/2554, DORA, Art. 28] requires ICT third-party risk assessment before contracting, including concentration risk. [PRA SS2/21, November 2024 (15 November 2024, updating 29 March 2021)] sets outsourcing and third-party risk management expectations for UK firms, including proportionate due diligence scaled to criticality.
 
 ## 18. Research Basis
 > No peer-reviewed research specifically addresses "AI provider due diligence" as a discipline; this IRQ extends established outsourcing risk management literature and general model risk management practice (PRA SS1/23 development/validation principles) to the AI provider context. No published FS incident cleanly evidences an AI provider due-diligence failure as at 25 August 2026 — recorded as an absence, per this standard's convention. The NYDFS Apple Card report (March 2021), sometimes offered for this, is deliberately not cited here: the underwriting model was the issuing bank's own and NYDFS found no vendor-diligence failure (the report is used, correctly, for conduct in CANVASES_CON.md).
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> Two published instruments inform what a diligence file asks for; neither addresses AI provider due diligence as a discipline. [Bommasani, R., Klyman, K., Longpre, S., Kapoor, S., Maslej, N., Xiong, B., Zhang, D., Liang, P., 2025, "The 2023 Foundation Model Transparency Index", Transactions on Machine Learning Research (arXiv:2310.12941)] and the 2025 edition [Wan, A., Klyman, K., Kapoor, S., Maslej, N., Longpre, S., Xiong, B., Liang, P., Bommasani, R., 2026, "The 2025 Foundation Model Transparency Index", Transactions on Machine Learning Research (arXiv:2512.10169)] score foundation model developers on indicators of what they disclose. The 2023 edition specifies 100 indicators across upstream resources, the model and downstream use, scores each indicator 0 or 1, and covers 10 developers. A point records that information is disclosed. Its evaluation indicators ask whether the developer evaluates the model and reports the results, whether external entities can reproduce those evaluations and whether third parties evaluate the model or can do so; a point does not record whether the reported results are correct. The indicators and scores are published at github.com/stanford-crfm/fmti. [National Institute of Standards and Technology, 2026, "NIST Cybersecurity Supply Chain Risk Management: Due Diligence Assessment Quick-Start Guide", NIST Special Publication 1326, July 2026, https://doi.org/10.6028/NIST.SP.1326] describes due diligence as the investigative process of researching and verifying available information about a supplier or product, and groups the research into five categories: foreign ownership, control or influence; provenance; resilience; foundational cyber practices; and supply chain tiers. It is scoped to information and communications technology suppliers. It does not address safety evaluation coverage or model weaknesses, which step (b) of field 11 requires a diligence file to address. Both are cited as published instruments only. No ★ change follows from this addition.
+>
+> **[FAIAS Incident Register, row 81, "Wiz Research exposed DeepSeek database", 2025]** — the researchers' disclosure shows that a provider's security posture could be assessed from outside, and was weak: an unauthenticated database linked to DeepSeek was open to the internet and held over a million lines of log streams with chat history and secret keys. It does not show a firm that onboarded the provider without diligence, and the statement above that no published FS incident cleanly evidences an AI provider due-diligence failure stands. Carried as a secondary row: the source is the researchers' own disclosure, and no statement from DeepSeek was read.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -141,7 +145,7 @@ Related IRQs:
 ## 20. References
 ```
 [1] European Banking Authority, 2019. "Guidelines on outsourcing arrangements." EBA/GL/2019/02.
-    URL: https://www.eba.europa.eu/regulation-and-policy/internal-governance/guidelines-on-outsourcing-arrangements
+    URL: https://www.eba.europa.eu/sites/default/files/documents/10180/2551996/38c80601-f5d7-4855-8ba3-702423665479/EBA%20revised%20Guidelines%20on%20outsourcing%20arrangements.pdf
     Accessed: 2026-07-29. EBA/GL/2019/02 confirmed as the current, applicable version (no superseding outsourcing guideline identified as at this date) (verified 29 Jul 2026).
     Checked 3 Oct 2026: still applicable. On 18 September 2026 the EBA published a final report for
     Guidelines on the sound management of third-party risk related to non-ICT services (EBA/GL/2026/09),
@@ -151,13 +155,29 @@ Related IRQs:
     Applied: 17 January 2025
     URL: https://eur-lex.europa.eu/eli/reg/2022/2554/oj
 
-[3] Prudential Regulation Authority, 2021. "SS2/21 — Outsourcing and third party risk management."
-    Published: March 2021
+[3] Prudential Regulation Authority, 2024. "SS2/21 — Outsourcing and third party risk management."
+    Published: November 2024 (15 November 2024, updating 29 March 2021)
     URL: https://www.bankofengland.co.uk/prudential-regulation/publication/2021/march/outsourcing-and-third-party-risk-management-ss
 
 [4] New York State Department of Financial Services, 2021. "Report on Apple Card Investigation." (Retained as the source for field 18's deliberate non-citation note — the report evidences no vendor-diligence failure.)
     Published: March 2021 (issued 23 March 2021, per the Department's press release of that date)
     URL: https://www.dfs.ny.gov/reports_and_publications/202103_report_apple_card_investigation
+
+[5] Bommasani, R., Klyman, K., Longpre, S., Kapoor, S., Maslej, N., Xiong, B., Zhang, D., Liang, P., 2025. "The 2023 Foundation Model Transparency Index." Transactions on Machine Learning Research. arXiv:2310.12941 (first posted in October 2023 as "The Foundation Model Transparency Index"). Indicators and scores: github.com/stanford-crfm/fmti.
+    Published: February 2025
+    URL: https://arxiv.org/abs/2310.12941
+
+[6] Wan, A., Klyman, K., Kapoor, S., Maslej, N., Longpre, S., Xiong, B., Liang, P., Bommasani, R., 2026. "The 2025 Foundation Model Transparency Index." Transactions on Machine Learning Research. arXiv:2512.10169.
+    Published: August 2026
+    URL: https://arxiv.org/abs/2512.10169
+
+[7] National Institute of Standards and Technology, 2026. "NIST Cybersecurity Supply Chain Risk Management: Due Diligence Assessment Quick-Start Guide." NIST Special Publication 1326. (Cited as a published instrument only.)
+    Published: July 2026
+    URL: https://doi.org/10.6028/NIST.SP.1326
+
+[8] Monetary Authority of Singapore, 2026. "Guidelines on Artificial Intelligence Risk Management."
+    Published: 7 October 2026 (effective 7 October 2027)
+    URL: https://www.mas.gov.sg/regulation/guidelines/guidelines-on-artificial-intelligence-risk-management-for-financial-institutions
 ```
 
 ## 21. Four-Test Validation Footer
@@ -178,6 +198,14 @@ Related IRQs:
 - v1.2.0 (2026-09-12): Expected Evidence — two dated worked examples added (a provider-operated access tier from which the system-level guardrails are removed, and beside it a separately trained cyber model: on the provider's own advanced-cybersecurity completion measure, 1.5% for the guardrailed baseline, 2.0% for the de-guardrailed tier and 95.0% for the separately trained model, 10 Aug 2026; credential harvesters spoofing AI coding harnesses, 10 Sep 2026). Research Basis unchanged: the absence of a published FS incident evidencing a provider due-diligence failure is not closed by either. Related IRQs — SEC-011 added. ★3 / P3 unchanged.
 - v1.2.1 (2026-09-19): References — entry [4] corrected. The entry gave the Department's press release, with a title carried by neither document, while Field 18 relies on the report itself; the title and URL now name the report, and its date is given as the report's own, the day attributed to the press release. Field 18 and its deliberate non-citation note are unchanged, as is the absence recorded there; ★3 / P3 unchanged.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 9 and 20 — the evaluation-checklist line no longer says that firms await sector-specific guidance: MAS issued its Guidelines on Artificial Intelligence Risk Management on 7 Oct 2026, and they set supervisory expectations for the onboarding and use of third-party AI (paragraphs 5.10 and 5.11). The line gives their dates (paragraph 1.8): effective 7 Oct 2027, with the expectations of Sections 5 and 6 to be met by 7 Oct 2028. The line says that no published FS-specific safety or security evaluation checklist exists, in place of no single published FS-specific standard. Reference [8] added. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — the reference entry for PRA SS2/21 gives its current version, November 2024 (15 November 2024, updating 29 March 2021). No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS2/21 cited as its November 2024 version (15 November 2024, updating 29 March 2021); the expectations cited are unchanged.
+- v1.3.3 (2026-10-09): Field 20 References — the URL of EBA/GL/2019/02 points to the Final Report PDF, in place of a page that now shows the EBA third-party risk management guidelines. No change to controls, test, ★ rating or risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 81, Wiz Research on an exposed DeepSeek database, carried as a secondary row, for a provider's security posture and not a firm's diligence failure). The statement in the field that no published FS incident cleanly evidences an AI provider due-diligence failure stands. Research-basis review date moved. No change to controls, test, ★3 or risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — the Foundation Model Transparency Index (2023 and 2025 editions) and NIST SP 1326 cited as published instruments, with their limits stated; the statement that no research addresses AI provider due diligence as a discipline is unchanged. Field 20 References — entries [5] to [7] added. Research-basis review date moved. ★3 / P3 unchanged.
+- v1.3.3 (2026-10-09): Field 9 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2 (Field 16, and the controls-in-place case in Field 15). The canvas states recovery within weeks, which is beyond the within-hours level that ASSURANCE_MODEL.md §7 scores 2; the scale names no band between days and years, and 3 (reversible within days) is the nearest anchor. The other axes, the ★ rating and the research basis are unchanged.
 ```
 
 ---

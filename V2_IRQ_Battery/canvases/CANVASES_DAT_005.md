@@ -123,7 +123,9 @@ Residual risk: material and cumulative; the primary danger is that aggregate met
 ## 18. Research Basis
 > [Koh, P.W., et al., 2021, "WILDS: A Benchmark of in-the-Wild Distribution Shifts", arXiv:2012.07421] — real-world shift benchmarks demonstrating large in-the-wild performance drops from population mismatch. [D'Amour, A., et al., 2020/22, "Underspecification Presents Challenges for Credibility in Modern Machine Learning", JMLR, arXiv:2011.03395] — identical test performance can mask divergent deployment behaviour, directly explaining why aggregate metrics conceal segment-level representativeness gaps. [Rabanser, S., et al., 2019, "Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift", arXiv:1810.11953] — practical two-sample-test shift-detection methodology underpinning the independent test above.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 59, "Upstart Holdings FY2022 Form 10-K", 2023]** — the company's own annual report states that "the bulk of the data gathered and the development of our AI models have largely occurred during a period of sustained economic growth or during the COVID-19 pandemic", and that "Our AI models have not been extensively tested during other adverse economic cycles". It also records that loans from 2021 to mid-2022 bought by institutional investors underperformed target returns; the filing does not link the data gap to that result, so the row does not show that the gap caused it.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -137,7 +139,8 @@ Residual risk: material and cumulative; the primary danger is that aggregate met
 ```
 [1] European Union, 2024. "Regulation (EU) 2024/1689 — Artificial Intelligence Act." Art. 10(3).
 [2] FCA, 2022. "PS22/9: A New Consumer Duty" and "FG22/5." PRIN 2A in force 31 July 2023.
-[3] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023.
+[3] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023).
 [4] Koh, P.W., et al., 2021. "WILDS: A Benchmark of in-the-Wild Distribution Shifts." arXiv:2012.07421.
 [5] D'Amour, A., et al., 2020. "Underspecification Presents Challenges for Credibility in
     Modern Machine Learning." JMLR. arXiv:2011.03395.
@@ -164,6 +167,8 @@ FOUR-TEST VALIDATION:
 Change Log:
 - v1.0 (2026-07): Initial publication.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 59, Upstart Holdings Form 10-K for 2022: the data-gap statement is the evidence, and the filing does not link the outcome to it). Research-basis review date moved. No change to controls, test, ★3 or risk profile.
 ```
 
 ---

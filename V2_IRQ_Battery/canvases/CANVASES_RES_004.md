@@ -65,7 +65,7 @@ Control Breakpoints:
 - **Defined RTO/RPO per component type, tested** — [Regulation (EU) 2022/2554, DORA, Art. 11 (ICT business continuity policy) and Art. 12(6) (recovery time and recovery point objectives)] — recovery objectives are set and tested for each behavioural component, not only infrastructure.
 - **Index rebuild/rollback procedure** — [linked IRQ-TPR-006] — specific rollback mechanism for RAG index state, tested against RTO.
 - **Agent memory rollback with legitimate-state preservation** — Emerging Practice — no published FS-sector standard exists for safely rolling back accumulated agent memory without discarding subsequent legitimate state; this is an active, largely unsolved engineering problem addressed here as an assurance objective pending mature tooling.
-- **Restoration rehearsal / disaster recovery testing** — [PRA SS1/21, March 2021, recoverability expectation] — periodic testing that restoration actually meets the stated RTO/RPO, not a paper exercise.
+- **Restoration rehearsal / disaster recovery testing** — [PRA SS1/21, March 2022 (11 March 2022, updating 29 March 2021), recoverability expectation] — periodic testing that restoration actually meets the stated RTO/RPO, not a paper exercise.
 
 ## 10. Expected Evidence (Tagged L1–L5)
 - Assertion that "everything is version controlled" with no restoration test evidence — **L1**.
@@ -125,7 +125,7 @@ Residual risk interpretation: Recoverability is the standout concern for the age
 | **Novelty** | 3 | Extending rollback discipline from code to prompts/index/memory is a non-obvious extension for traditional DR planning |
 
 ## 17. Regulatory Basis
-> [Regulation (EU) 2022/2554, DORA, Art. 11 and Art. 12(6)] requires an ICT business continuity policy, with recovery time and recovery point objectives set under Art. 12(6), extended here to all behavioural components of an AI system, not only underlying infrastructure/code. [PRA, SS1/21, March 2021] establishes the general recoverability testing expectation this IRQ applies to model version, prompt, index and memory rollback specifically.
+> [Regulation (EU) 2022/2554, DORA, Art. 11 and Art. 12(6)] requires an ICT business continuity policy, with recovery time and recovery point objectives set under Art. 12(6), extended here to all behavioural components of an AI system, not only underlying infrastructure/code. [PRA, SS1/21, March 2022 (11 March 2022, updating 29 March 2021)] establishes the general recoverability testing expectation this IRQ applies to model version, prompt, index and memory rollback specifically.
 
 ## 18. Research Basis
 > No peer-reviewed research addresses "AI behavioural component rollback" as a named discipline, and a targeted search on 12 September 2026 located no venue-published primary on agent-memory rollback at all [UNVERIFIED — searched; none found]. The generic limb is nonetheless peer-reviewed and long settled: [Mohan, C., Haderle, D., Lindsay, B., Pirahesh, H., Schwarz, P., 1992, "ARIES: a transaction recovery method supporting fine-granularity locking and partial rollbacks using write-ahead logging", ACM Transactions on Database Systems 17(1):94–162, https://doi.org/10.1145/128765.128770] specifies partial rollback to a known-good state formally, and [Weiser, M., 1984, "Program Slicing", IEEE Transactions on Software Engineering SE-10(4):352–357, https://doi.org/10.1109/TSE.1984.5010248] supplies the dependency-tracing basis for deciding which downstream state a reverted component has contaminated — both cited as the generic foundation by the 2026 agent-memory work below.
@@ -134,7 +134,9 @@ Residual risk interpretation: Recoverability is the standout concern for the age
 >
 > Two limits are load-bearing and are recorded rather than smoothed. First, rollback in this literature repairs agent-maintained memory and execution state and "cannot undo an irreversible external side effect" [arXiv:2608.10502 §3] — so a firm's rollback RTO claim is only as good as the compensating action behind each side-effecting tool call. Second, legitimate-state preservation remains unsolved in the implementations themselves: ChronoMem maintains "a linear version history and truncates versions after a rollback (Git 'reset'-style)", with branching "not implemented or evaluated in this work", and concludes that its results "demonstrate the architectural soundness and robustness of semantic rollback under controlled long-horizon settings, rather than claiming a complete characterization of rollback behavior in production-scale agent deployments" [arXiv:2607.27773v2, Limitations]. The risk framing — that memory corruption compounds across consolidation cycles rather than staying local — is set out in [Lam, C., Li, J., Zhang, L., Zhao, K., 2026, "Governing Evolving Memory in LLM Agents: Risks, Mechanisms, and the Stability and Safety Governed Memory (SSGM) Framework", arXiv:2603.11768v2], a conceptual governance survey with no empirical evaluation, cited here for the risk taxonomy only and **not** as a rollback method.
 >
-> **Research basis last reviewed:** 12 September 2026 · **review cadence:** Standard (12 months)
+> [Swanson, M., Bowen, P., Phillips, A.W., Gallup, D., Lynes, D., 2010, "Contingency Planning Guide for Federal Information Systems", NIST Special Publication 800-34 Revision 1, May 2010 (updated November 2010), section 3.5 "Plan Testing, Training, and Exercises (TT&E)"] is the published standards-body method for testing recovery procedures in general. Its section 3.5.1 describes a test as an evaluation tool that uses quantifiable metrics to validate the operability of an information system or system component in an operational environment. It lists system recovery on an alternate platform from backup media and restoration of normal operations among the areas that a contingency plan test should address. The guide does not mention artificial intelligence, machine learning or agents, and it does not address the rollback of prompts, model version pins, indexes or agent memory. It is cited for the form of a recovery test only; it is not research on the rollback of AI components. No ★ change follows from this addition.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -150,8 +152,8 @@ Related IRQs:
     Applied: 17 January 2025
     URL: https://eur-lex.europa.eu/eli/reg/2022/2554/oj
 
-[2] Prudential Regulation Authority, 2021. "SS1/21 — Operational resilience: Impact tolerances for important business services."
-    Published: March 2021
+[2] Prudential Regulation Authority, 2022. "SS1/21 — Operational resilience: Impact tolerances for important business services."
+    Published: March 2022 (11 March 2022, updating 29 March 2021)
     URL: https://www.bankofengland.co.uk/prudential-regulation/publication/2021/march/operational-resilience-impact-tolerances-for-important-business-services-ss
 
 [3] International Organization for Standardization, 2023. "ISO/IEC 5338:2023 — AI system life cycle processes."
@@ -181,6 +183,10 @@ Related IRQs:
 [9] Lam, C., Li, J., Zhang, L., Zhao, K., 2026. "Governing Evolving Memory in LLM Agents: Risks, Mechanisms, and the Stability and Safety Governed Memory (SSGM) Framework." arXiv:2603.11768v2 (preprint; not peer-reviewed; conceptual survey, cited for the risk taxonomy only).
     Published: 19 May 2026 (v1: 12 March 2026)
     URL: https://arxiv.org/abs/2603.11768
+
+[10] Swanson, M., Bowen, P., Phillips, A.W., Gallup, D., Lynes, D., 2010. "Contingency Planning Guide for Federal Information Systems." NIST Special Publication 800-34 Revision 1, section 3.5. (Cited for the form of a recovery test only.)
+    Published: May 2010 (updated November 2010)
+    URL: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-34r1.pdf
 ```
 
 ## 21. Four-Test Validation Footer
@@ -199,6 +205,9 @@ Related IRQs:
 **Change Log:**
 - v1.0 (2026-07): Initial publication.
 - v1.2.0 (2026-09-12): ★2 justification rewritten at an unchanged rating (no ★ movement) — the generic limb re-anchored from "established practice" to peer-reviewed primaries (Mohan et al., ACM TODS 17(1), 1992; Weiser, IEEE TSE SE-10(4), 1984) and the AI-specific limb to three independent 2026 agent-memory rollback methods (arXiv:2607.27773; arXiv:2608.10502; arXiv:2605.07242), each recorded as not peer-reviewed; field 18 rewritten, six references added at §20; the TP-RES-004 playbook sheet carries the same basis.
+- v1.3.3 (2026-10-09): Field 20 — the reference entry for PRA SS1/21 gives its current version, March 2022 (11 March 2022, updating 29 March 2021). No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/21 cited as its March 2022 version (11 March 2022, updating 29 March 2021); the expectations cited are unchanged.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — NIST SP 800-34 Rev. 1, section 3.5, cited as the standards-body method for the form of a recovery test, with the limit that it does not address AI components. Field 20 References — entry [10] added. Research-basis review date moved. No change to the ★ rating or the risk profile.
 ```
 
 ---

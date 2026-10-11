@@ -64,10 +64,10 @@ Control Breakpoints:
 
 ## 9. Expected Controls (Traced)
 - **Shift-type-specific test design** — [Koh et al., 2021, "WILDS: A Benchmark of in-the-Wild Distribution Shifts", arXiv:2012.07421; Gama et al., 2014, "A Survey on Concept Drift Adaptation", ACM CSUR] — dedicated test construction and metrics for each of the six shift types, not a single generic drift dashboard.
-- **Two-sample statistical shift detection for input-side shift** — [Rabanser et al., 2019, "Failing Loudly: Detecting Dataset Shift", arXiv:1810.11953] — implementable statistical methods for population/covariate shift detection at the input level.
+- **Two-sample statistical shift detection for input-side shift** — [Rabanser et al., 2019, "Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift", arXiv:1810.11953] — implementable statistical methods for population/covariate shift detection at the input level.
 - **Concept/label shift assessment via outcome monitoring** — [D'Amour et al., 2020/22, "Underspecification...", arXiv:2011.03395] — periodic re-measurement of the true input-output relationship against fresh ground truth, since concept/label shift is invisible to input-only monitoring.
 - **Policy-shift mapping to model revalidation triggers** — [linked IRQ-GOV-011; PRA SS1/23 ongoing-validation principle] — regulatory or internal policy changes affecting permissible features, thresholds or rules are mapped to a mandatory model revalidation trigger.
-- **Defined revalidation cadence and triggers per shift type** — [PRA SS1/23, May 2023, ongoing monitoring principle; linked IRQ-RES-005] — each shift type has a documented detection method, threshold, and revalidation response, not a single blanket "annual review."
+- **Defined revalidation cadence and triggers per shift type** — [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), ongoing monitoring principle; linked IRQ-RES-005] — each shift type has a documented detection method, threshold, and revalidation response, not a single blanket "annual review."
 
 ## 10. Expected Evidence (Tagged L1–L5)
 - Vendor/internal claim that "the model is monitored for drift" — **L1** (assertion only; does not specify shift-type coverage).
@@ -141,14 +141,14 @@ coverage, not only input-side drift monitoring.
 | **Novelty** | 3 | The six-way shift taxonomy, and particularly concept/label/policy shift's invisibility to input-monitoring, is a level of precision beyond typical model risk practice. |
 
 ## 17. Regulatory Basis
-> [PRA SS1/23, May 2023, effective 17 May 2024, Principle 4 (independent model validation, including ongoing monitoring)] — the primary anchor; requires monitoring proportionate to the model's risk and use, which this IRQ interprets to require shift-type-specific coverage rather than a single generic metric. [Bank of England FPC, "Financial Stability in Focus: Artificial intelligence in the financial system", Apr 2025] — systemic concern about correlated model behaviour under shifting conditions supports the case for robust shift-type monitoring at firm level. No regulation names the six-way shift taxonomy explicitly; this IRQ operationalises SS1/23 for AI-specific shift mechanisms. (verified 29 Jul 2026)
+> [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024, Principle 4 (independent model validation, including ongoing monitoring)] — the primary anchor; requires monitoring proportionate to the model's risk and use, which this IRQ interprets to require shift-type-specific coverage rather than a single generic metric. [Bank of England FPC, "Financial Stability in Focus: Artificial intelligence in the financial system", Apr 2025] — systemic concern about correlated model behaviour under shifting conditions supports the case for robust shift-type monitoring at firm level. No regulation names the six-way shift taxonomy explicitly; this IRQ operationalises SS1/23 for AI-specific shift mechanisms. (verified 29 Jul 2026)
 
 ## 18. Research Basis
-> [Koh, P.W., et al., 2021, "WILDS: A Benchmark of in-the-Wild Distribution Shifts", arXiv:2012.07421] — real-world shift benchmarks demonstrating large, shift-type-specific performance drops. [D'Amour, A., et al., 2020/22, "Underspecification Presents Challenges for Credibility in Modern Machine Learning", arXiv:2011.03395] — evidences that identical held-out performance can mask divergent deployment behaviour under shift. [Gama, J., et al., 2014, "A Survey on Concept Drift Adaptation", ACM Computing Surveys] — canonical taxonomy and detection methods for concept drift specifically. [Rabanser, S., Günnemann, S., Lipton, Z., 2019, "Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift", arXiv:1810.11953] — practical, implementable two-sample-test shift-detection methodology. [Chen, L., Zaharia, M., Zou, J., 2023, "How Is ChatGPT's Behavior Changing over Time?", arXiv:2307.09009] — temporal shift evidenced directly in a deployed LLM API.
+> [Koh, P.W., et al., 2021, "WILDS: A Benchmark of in-the-Wild Distribution Shifts", arXiv:2012.07421] — real-world shift benchmarks demonstrating large, shift-type-specific performance drops. [D'Amour, A., et al., 2020/22, "Underspecification Presents Challenges for Credibility in Modern Machine Learning", arXiv:2011.03395] — evidences that identical held-out performance can mask divergent deployment behaviour under shift. [Gama, J., et al., 2014, "A Survey on Concept Drift Adaptation", ACM Computing Surveys] — canonical taxonomy and detection methods for concept drift specifically. [Rabanser, S., Günnemann, S., Lipton, Z., 2019, "Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift", arXiv:1810.11953] — practical, implementable two-sample-test shift-detection methodology. [Chen, L., Zaharia, M., Zou, J., 2023, "How Is ChatGPT's Behavior Changing over Time?", arXiv:2307.09009; Harvard Data Science Review 6(2), 2024] — temporal shift evidenced directly in a deployed LLM API.
 >
 > **[FAIAS Incident Register, row 5, "Zillow Offers collapse", 2021]**, citing [Zillow Group, Inc., 2021, "Zillow Group Reports Third-Quarter 2021 Financial Results & Shares Plan to Wind Down Zillow Offers Operations", Form 8-K Exhibit 99.1, United States Securities and Exchange Commission, 2 November 2021; and "Q3 2021 Shareholder Letter", Form 8-K Exhibit 99.3, 2 November 2021] — a first-party disclosure that the company's home-price forecasting error exceeded what it had modelled as possible, at a scale that ended the business line: the company recorded "a write-down of inventory of approximately $304 million within the Homes segment", expected "an additional $240 million to $265 million of losses to be recognized in Q4", announced "a reduction of Zillow's workforce by approximately 25%", and quoted its chief executive as saying that "the unpredictability in forecasting home prices far exceeds what we anticipated". It evidences the consequence this question guards against — a forecasting model operating under conditions its expected error was not estimated for, at portfolio scale — and it is the only first-party, quantified instance of that consequence this field carries, the remaining citations being research literature. It does **not** evidence the control gap: the filing names no shift type, says nothing about monitoring, revalidation triggers or detection, and does not attribute the outcome to an undetected population, covariate, concept, label, temporal or policy shift.
 >
-> **Research basis last reviewed:** 19 September 2026 · **review cadence:** Fast (6 months)
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -173,9 +173,10 @@ coverage, not only input-side drift monitoring.
 [4] Rabanser, S., Günnemann, S., Lipton, Z., 2019. "Failing Loudly: An Empirical Study of
     Methods for Detecting Dataset Shift." arXiv:1810.11953.
 [5] Chen, L., Zaharia, M., Zou, J., 2023. "How Is ChatGPT's Behavior Changing over Time?"
-    arXiv:2307.09009.
-[6] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023, effective
-    17 May 2024.
+    arXiv:2307.09009. Published in Harvard Data Science Review 6(2), 12 March 2024,
+    https://doi.org/10.1162/99608f92.5317da47.
+[6] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
 [7] Bank of England, Financial Policy Committee, 2025. "Financial Stability in Focus:
     Artificial intelligence in the financial system." April 2025.
 [8] Zillow Group, Inc., 2021. "Zillow Group Reports Third-Quarter 2021 Financial
@@ -208,6 +209,10 @@ Change Log:
 - v1.2.0 (2026-09-14): §20 reference [7] and the §17 citation — erratum: the BoE FPC title corrected from "Artificial intelligence and financial stability" (§20) and "AI and financial stability" (§17) to "Artificial intelligence in the financial system" (the title the v1.1.1 closure verified as the instrument's). No change to controls, test, ★ or risk profile.
 - v1.2.1 (2026-09-19): Field 18 — incident-register citation added in the reserved form (row 5, Zillow Offers collapse), bounded to the consequence the question guards against and stating expressly that the filing evidences no shift type and no absent revalidation trigger. Field 20 — entry [8] added for the filing, naming its Exhibits 99.1 and 99.3. Research-basis review date moved. No change to controls, test, ★3 or risk profile.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.3 (2026-10-09): Field 9 Expected Controls — the title of Rabanser et al. (arXiv:1810.11953) corrected to Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift (six words had been dropped). No change to controls, test, ★ rating or risk profile.
+- v1.3.3 (2026-10-09): Fields 18 and 20 — the Chen, Zaharia and Zou citation (arXiv:2307.09009) now also gives its publication in Harvard Data Science Review 6(2), 2024. Research-basis review date moved. No change to the ★ rating or the risk profile.
 ```
 
 ---

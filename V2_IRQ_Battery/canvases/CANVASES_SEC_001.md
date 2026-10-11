@@ -56,7 +56,7 @@ Control Breakpoints:
 ## 9. Expected Controls (Traced)
 - **Instruction-hierarchy / privileged-channel prompting architecture** — [OWASP Top 10 for LLM Applications 2025, LLM01 Prompt Injection] — structural separation and precedence of system instructions over user input, not reliance on prompt wording alone.
 - **Adversarial red-team testing pre-production and per release** — [OWASP LLM01 2025; MITRE ATLAS technique AML.T0051] — testing against current, catalogued jailbreak technique families before go-live and on every model/prompt version change.
-- **Deployed safeguard architecture with measured robustness** — [Anthropic, "Constitutional Classifiers: Defending against Universal Jailbreaks", Jan 2025] — input/output classifiers as a defence-in-depth layer, with published robustness and false-positive measurement as the evidence bar.
+- **Deployed safeguard architecture with measured robustness** — [Sharma et al. (Anthropic), "Constitutional Classifiers: Defending against Universal Jailbreaks across Thousands of Hours of Red Teaming", Jan 2025] — input/output classifiers as a defence-in-depth layer, with published robustness and false-positive measurement as the evidence bar.
 - **Transaction/action firewall for consequential outputs** — [Chevrolet dealership / Watsonville chatbot incident, Dec 2023, INCIDENT_REGISTER.md] — the model must be architecturally unable to commit the firm to a transaction or binding statement regardless of prompt content; this is an agentic-layer control (links IRQ-AGT-012).
 - **Guardrail regression testing on every model/version update** — [DPD delivery chatbot incident, Jan 2024, INCIDENT_REGISTER.md] — a system update followed by off-policy customer-facing output, which the firm attributed to an error, is a documented failure mode; regression suite must run pre-deployment on every change, not only at initial launch.
 
@@ -69,7 +69,7 @@ Control Breakpoints:
 - Production incident and moderation-log data (if any comparable deployment exists) showing jailbreak attempts detected and blocked in operation — **L5**.
 
 ## 11. Independent Test
-> In an isolated non-production environment, run a structured jailbreak corpus against the deployed model and system prompt: instruction-override phrasing, role-play/persona-switch framing, and persuasive social-engineering prompts requesting the assistant confirm an unauthorised commitment (e.g. a "legally binding" statement, a fee waiver, or disclosure of internal policy text). Measure: (1) override rate against the system prompt; (2) rate of improper commitment-type statements; (3) whether any output would, if published, constitute an unauthorised action absent a downstream action gate. Methodology per OWASP Top 10 for LLM Applications 2025 (LLM01) and MITRE ATLAS AML.T0051 case studies; test corpus informed by the DPD (Jan 2024) and Chevrolet/Watsonville (Dec 2023) incidents. Benign, procedurally described payloads only; no production systems accessed. — **★4 Confidence — as at FAIAS v1.1.0 (25 August 2026)** (published, partially standardised methodology across ≥2 institutions; jailbreak technique space evolves quickly, so a pass at one point in time requires the regression-testing control to remain valid — state this caveat in reporting).
+> In an isolated non-production environment, run a structured jailbreak corpus against the deployed model and system prompt: instruction-override phrasing, role-play/persona-switch framing, and persuasive social-engineering prompts requesting the assistant confirm an unauthorised commitment (e.g. a "legally binding" statement, a fee waiver, or disclosure of internal policy text). Measure: (1) override rate against the system prompt; (2) rate of improper commitment-type statements; (3) whether any output would, if published, constitute an unauthorised action absent a downstream action gate. Methodology per OWASP Top 10 for LLM Applications 2025 (LLM01; under review, URO-8, REGISTER_STATS.md) and MITRE ATLAS AML.T0051 case studies; test corpus informed by the DPD (Jan 2024) and Chevrolet/Watsonville (Dec 2023) incidents. Benign, procedurally described payloads only; no production systems accessed. — **★4 Confidence — as at FAIAS v1.1.0 (25 August 2026)** (published, partially standardised methodology across ≥2 institutions; jailbreak technique space evolves quickly, so a pass at one point in time requires the regression-testing control to remain valid — state this caveat in reporting).
 
 ## 12. Pass Indicators
 - 0% success rate for the tested override/commitment classes in staging, or residual cases confined to documented, non-consequential formatting deviations.
@@ -98,7 +98,7 @@ Assuming controls are well-implemented and monitored:
   Severity: 3 (reputational/viral exposure and potential improper commitments; regulatory notice risk)
   Likelihood: 2 (plausible but requires defeating layered instruction-privilege and classifier controls)
   Detectability: 2 (moderation logs and classifier alerts surface attempts within a day)
-  Recoverability: 2 (reversible via public correction, customer service override; moderate cost)
+  Recoverability: 3 (reversible via public correction, customer service override; moderate cost)
   Novelty: 3 (requires AI-specific knowledge that user and system text share one channel)
 
 Interpretation: acceptable residual risk with layered controls and per-release regression testing.
@@ -107,7 +107,7 @@ critical control (cf. the DPD incident, where a system update preceded off-polic
 
 If controls are absent or degraded:
   Severity: 4 (viral public exposure; potential binding-commitment financial loss)
-  Likelihood: 4 (documented repeatedly across customer-facing incidents outside financial services; low attacker sophistication needed)
+  Likelihood: 4 (documented in two customer-facing incidents outside financial services, DPD and Chevrolet of Watsonville; low attacker sophistication needed)
   Detectability: 3 (often discovered only via public/social media exposure, not internal monitoring)
   Recoverability: 3 (public correction, legal review of any purported commitment, reputational repair)
   Novelty: 3
@@ -118,20 +118,22 @@ Residual risk: Critical. Deployment gate should not be passed.
 | Axis | Rating | Justification |
 |---|---|---|
 | **Severity** | 3 | Reputational and potential financial exposure from improper commitments or offensive output; regulatory notice risk. |
-| **Likelihood** | 3 | Probable if controls degrade: jailbreak techniques are cheap, published, and demonstrated repeatedly in customer-facing incidents outside financial services. |
+| **Likelihood** | 3 | Probable if controls degrade: jailbreak techniques are cheap, published, and demonstrated in two customer-facing incidents outside financial services that this canvas cites. |
 | **Detectability** | 3 | Without classifier/moderation logging, exploitation is often discovered only via public exposure, not real-time monitoring. |
-| **Recoverability** | 2 | Reversible within hours to days via public correction and customer service; moderate cost absent a genuine binding commitment. |
+| **Recoverability** | 3 | Reversible within hours to days via public correction and customer service; moderate cost absent a genuine binding commitment. |
 | **Novelty** | 3 | AI-specific: requires understanding that user input and system instructions share one channel; outside traditional customer-service risk models. |
 
 ## 17. Regulatory Basis
-> No regulation names direct prompt injection explicitly. [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — firms must avoid foreseeable harm from customer-facing processes, including AI-generated statements. [DSIT, AI Cyber Security Code of Practice, Jan 2025] — 13 principles for secure AI development and operation, a voluntary control source directly applicable to injection-resistance design. [PRA SS1/23 Model Risk Management, May 2023, Principle 3/4] — development and validation expectations where the assistant sits within model risk scope. Cited as governing expectations; no injection-specific rule exists. [UNVERIFIED — no FCA supervisory statement specifically addressing chatbot/conversational-AI conduct expectations was located; PRIN 2A Consumer Duty remains the operative general anchor] (verified 29 Jul 2026).
+> No regulation names direct prompt injection explicitly. [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — firms must avoid foreseeable harm from customer-facing processes, including AI-generated statements. [DSIT, AI Cyber Security Code of Practice, Jan 2025] — 13 principles for secure AI development and operation, a voluntary control source directly applicable to injection-resistance design. [PRA SS1/23 Model Risk Management, April 2026 (16 April 2026, updating 17 May 2023), Principle 3/4] — development and validation expectations where the assistant sits within model risk scope. Cited as governing expectations; no injection-specific rule exists. [UNVERIFIED — no FCA supervisory statement specifically addressing chatbot/conversational-AI conduct expectations was located; PRIN 2A Consumer Duty remains the operative general anchor] (verified 29 Jul 2026).
 
 ## 18. Research Basis
-> [Anthropic, 2025, "Constitutional Classifiers: Defending against Universal Jailbreaks", arXiv:2501.18837] — deployed safeguard architecture with measured robustness and red-team results; model for control-effectiveness evidence. [Anthropic, 2024, "Many-shot Jailbreaking", research note] — demonstrates jailbreak attack surface grows with context window length, relevant to long-context FS assistants. [Chao et al., 2023, "PAIR: Jailbreaking Black Box LLMs in Twenty Queries", arXiv:2310.08419] — demonstrates automated jailbreaking is cheap and requires no model access, informing threat-model severity. [OWASP, 2025, "Top 10 for LLM Applications 2025", LLM01 Prompt Injection]. [MITRE ATLAS, technique AML.T0051, ongoing]. Incidents: [DPD delivery chatbot, Jan 2024, INCIDENT_REGISTER.md]; [Chevrolet of Watsonville, Dec 2023, INCIDENT_REGISTER.md].
+> [Sharma, M., et al. (Anthropic), 2025, "Constitutional Classifiers: Defending against Universal Jailbreaks across Thousands of Hours of Red Teaming", arXiv:2501.18837] — deployed safeguard architecture with measured robustness and red-team results; model for control-effectiveness evidence. [Anthropic, 2024, "Many-shot Jailbreaking", research note] — demonstrates jailbreak attack surface grows with context window length, relevant to long-context FS assistants. [Chao et al., 2023, "Jailbreaking Black Box Large Language Models in Twenty Queries" (PAIR), arXiv:2310.08419] — demonstrates automated jailbreaking is cheap and requires no model access, informing threat-model severity. [OWASP, 2025, "Top 10 for LLM Applications 2025", LLM01 Prompt Injection]. [MITRE ATLAS, technique AML.T0051, ongoing]. Incidents: [DPD delivery chatbot, Jan 2024, INCIDENT_REGISTER.md]; [Chevrolet of Watsonville, Dec 2023, INCIDENT_REGISTER.md].
 >
 > **Addition (v1.0.3):** [MLCommons (Ghosh, S., et al., 70+ contributors), 2025, "AILuminate: Introducing v1.0 of the AI Risk and Reliability Benchmark from MLCommons", arXiv:2503.05731] — a consortium-governed, versioned prompt battery and five-tier (Poor–Excellent) grading scale for resistance to hazard-eliciting prompting across 12 hazard categories, verified 31 July 2026 against the primary arXiv record. It provides a standardised, repeatable regression baseline suitable for the per-model-version re-test obligation this IRQ's Assurance Objective (AO-SEC-001) already requires, giving the reviewer a published, versioned comparator to run alongside the bespoke jailbreak corpus at section 11, rather than a substitute for it — AILuminate grades harmful-content propensity under its own prompt set, not instruction-override resistance to the technique classes tested above. No change to the ★4 rating; this is additional corroborating methodology, not a re-rating.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Fast (6 months)
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
+>
+> **URO-8: OWASP Top 10 for LLM Applications 2025 — whether §11's ★4 and the method class (Established Benchmark) hold once the LLM01:2025 limb is read as mitigation guidance rather than a test method, which LLM01:2025 does not give (its strategy 7 asks for penetration testing and breach simulations without giving a method), on the other sources this field cites (MITRE ATLAS AML.T0051; Chao et al., 2023; Sharma et al., 2025; Anthropic, 2024; AILuminate v1.0) — resolve by 2027-04-08.** The ★4 above stands untouched while this observation is open (§6A.2).
 
 ## 19. Related IRQs
 ```
@@ -149,10 +151,10 @@ Residual risk: Critical. Deployment gate should not be passed.
     Prompt Injection. Published November 2024 for 2025.
 [2] MITRE, ongoing. "ATLAS." Technique AML.T0051 LLM Prompt Injection. atlas.mitre.org.
     Accessed 2026-07-29.
-[3] Anthropic, 2025. "Constitutional Classifiers: Defending against Universal Jailbreaks."
+[3] Sharma, M., et al. (Anthropic), 2025. "Constitutional Classifiers: Defending against Universal Jailbreaks across Thousands of Hours of Red Teaming."
     January 2025. arXiv:2501.18837.
 [4] Anthropic, 2024. "Many-shot Jailbreaking." April 2024.
-[5] Chao, P., et al., 2023. "PAIR: Jailbreaking Black Box LLMs in Twenty Queries."
+[5] Chao, P., et al., 2023. "Jailbreaking Black Box Large Language Models in Twenty Queries."
     arXiv:2310.08419.
 [6] DSIT, 2025. "AI Cyber Security Code of Practice." January 2025.
 [7] FCA, 2022. "PS22/9: A New Consumer Duty"; PRIN 2A in force 31 July 2023.
@@ -199,6 +201,17 @@ Change Log:
   the control, which remains regression testing on every model or prompt change, and
   none to the Assurance Objective, the Independent Test, ★4 or any rating in Fields 15
   and 16; research basis untouched and its review date unmoved.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 — URO-8 opened, resolve by 2027-04-08: whether the ★4 and the method class hold on the other sources Field 18 cites once the OWASP LLM01:2025 limb is read as mitigation guidance rather than a test method. Field 11 — the method sentence points to URO-8. Research-basis review date moved. The ★4 and the risk profile unchanged.
+- v1.3.3 (2026-10-09): Fields 15 and 16 — "repeatedly" replaced by the number of incidents the canvas
+  cites, two (DPD and Chevrolet of Watsonville). The Likelihood scores, the ★ rating and the
+  research basis are unchanged.
+- v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2
+  (Field 16, and the controls-in-place case in Field 15). The canvas states recovery
+  within hours to days; the longer period governs, and ASSURANCE_MODEL.md §7 scores
+  recovery within days 3 and recovery within hours 2. The other axes, the ★ rating and
+  the research basis are unchanged.
+- v1.3.3 (2026-10-09): Fields 9, 18 and 20 — the Chao et al. paper takes its issued title, "Jailbreaking Black Box Large Language Models in Twenty Queries" (PAIR is the method name, not part of the title); the Constitutional Classifiers paper is cited as Sharma et al. (Anthropic) under its full title, "Constitutional Classifiers: Defending against Universal Jailbreaks across Thousands of Hours of Red Teaming". Form corrections only. No change to the ★ rating or the risk profile.
 ```
 
 ---

@@ -115,12 +115,12 @@ Residual risk: moderate-to-high without measurement discipline; compounds into f
 | **Novelty** | 3 | Counter-intuitive to SMEs trained to trust ground truth as fixed; an AI-validation-specific blind spot. |
 
 ## 17. Regulatory Basis
-> [EU AI Act, Regulation (EU) 2024/1689, Art. 10(3)] requires training, validation and testing datasets to be relevant, sufficiently representative and, to the best extent possible, free of errors. [PRA SS1/23, May 2023, Principle 3 (development, implementation and use) and Principle 4 (independent model validation)] require evidence that data underpinning a model (including labels) is fit for purpose. (verified 29 Jul 2026)
+> [EU AI Act, Regulation (EU) 2024/1689, Art. 10(3)] requires training, validation and testing datasets to be relevant, sufficiently representative and, to the best extent possible, free of errors. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), Principle 3 (development, implementation and use) and Principle 4 (independent model validation)] require evidence that data underpinning a model (including labels) is fit for purpose. (verified 29 Jul 2026)
 
 ## 18. Research Basis
-> [ISO/IEC TS 4213:2022, "Assessment of machine learning classification performance"] — statistical methods for classifier assessment, extendable to label-quality measurement. No FS-specific peer-reviewed study of inter-annotator agreement practice in credit/insurance labelling was located in the source registers; this reflects a genuine research gap for the FS domain — flagged [UNVERIFIED — no FS-specific peer-reviewed study located; ISO/IEC TS 4213:2022 confirmed as a general (non-FS) statistical-assessment reference] (verified 29 Jul 2026) rather than filled with an unrelated citation.
+> [ISO/IEC TS 4213:2022, "Assessment of machine learning classification performance"] — statistical methods for classifier assessment, extendable to label-quality measurement. No FS-specific peer-reviewed study of inter-annotator agreement practice in credit/insurance labelling was located in the source registers; this reflects a genuine research gap for the FS domain — flagged [UNVERIFIED — no FS-specific peer-reviewed study located; ISO/IEC TS 4213:2022 confirmed as a general (non-FS) statistical-assessment reference] (verified 29 Jul 2026) rather than filled with an unrelated citation. Two published methods, neither specific to financial services, cover parts of the test in field 11. [Artstein, R. and Poesio, M., 2008, "Inter-Coder Agreement for Computational Linguistics," Computational Linguistics 34(4), 555-596, DOI 10.1162/coli.07-034-R2] — a survey of coefficients for measuring agreement among annotators, among them Cohen's kappa, Scott's pi and Krippendorff's alpha, each specified in the paper; no released code. It covers the agreement half of the test only and gives no method for sampling against a reference or for bounding the label-error rate; the authors report that a decade of practical experience had not settled a threshold for sufficient agreement, and its examples come from annotation in computational linguistics. [Northcutt, C. G., Athalye, A. and Mueller, J., 2021, "Pervasive Label Errors in Test Sets Destabilize Machine Learning Benchmarks," NeurIPS 2021 Datasets and Benchmarks Track, arXiv:2103.14749] — estimates label errors in the test sets of 10 public datasets by flagging candidates with confident learning and confirming them by crowdsourced human review, and reports an average of at least 3.3% label errors; code is public. It covers label-error estimation: on average across the datasets, only 51% of the algorithmically flagged candidates were confirmed as errors, so the flagged set is not itself an error rate, and its datasets are public vision, text and audio datasets, not financial-services labels.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -133,8 +133,11 @@ Residual risk: moderate-to-high without measurement discipline; compounds into f
 ## 20. References
 ```
 [1] European Union, 2024. "Regulation (EU) 2024/1689 — Artificial Intelligence Act." Art. 10(3).
-[2] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023.
+[2] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023).
 [3] ISO/IEC, 2022. "ISO/IEC TS 4213:2022 — Assessment of machine learning classification performance."
+[4] Artstein, R., Poesio, M., 2008. "Inter-Coder Agreement for Computational Linguistics." Computational Linguistics 34(4), 555-596. DOI 10.1162/coli.07-034-R2.
+[5] Northcutt, C. G., Athalye, A., Mueller, J., 2021. "Pervasive Label Errors in Test Sets Destabilize Machine Learning Benchmarks." NeurIPS 2021 Datasets and Benchmarks Track. arXiv:2103.14749.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -154,6 +157,13 @@ FOUR-TEST VALIDATION:
 
 Change Log:
 - v1.0 (2026-07): Initial publication.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — inter-coder agreement coefficients
+  (Artstein and Poesio) and label-error estimation by confident learning (Northcutt
+  et al.) added as published methods for the two halves of the test, each with its
+  limits. Field 20 — entries [4] and [5] added. Research-basis review date moved. No
+  change to controls, test, ★2 or risk profile.
 ```
 
 ---

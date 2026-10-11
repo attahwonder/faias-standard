@@ -136,14 +136,14 @@ Related IRQs:
 ## 20. References
 ```
 [1] European Banking Authority, 2019. "Guidelines on outsourcing arrangements." EBA/GL/2019/02.
-    URL: https://www.eba.europa.eu/regulation-and-policy/internal-governance/guidelines-on-outsourcing-arrangements
-    Accessed: 2026-07-29 (source confirmed live and current as at this date) (verified 29 Jul 2026).
+    URL: https://www.eba.europa.eu/sites/default/files/documents/10180/2551996/38c80601-f5d7-4855-8ba3-702423665479/EBA%20revised%20Guidelines%20on%20outsourcing%20arrangements.pdf
+    Accessed: 2026-07-29 (source confirmed live and current as at this date; URL changed to the Final Report PDF, read 8 Oct 2026) (verified 29 Jul 2026).
 
 [2] Financial Conduct Authority, 2024. "AI Update."
     Published: April 2024
     URL: https://www.fca.org.uk/publications/corporate-documents/artificial-intelligence-ai-update-further-governments-response-ai-white-paper
 
-[3] Bank of England / PRA, 2024. "Response to DSIT AI regulation principles."
+[3] Bank of England / PRA, 2024. "The Bank and the PRA's response to DSIT/HMT: update on our approach to AI."
     Published: April 2024
     URL: https://www.bankofengland.co.uk/prudential-regulation/letter/2024/artificial-intelligence-and-machine-learning-letter
 ```
@@ -164,6 +164,8 @@ Related IRQs:
 **Change Log:**
 - v1.0 (2026-07): Initial publication.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 References — the URL of EBA/GL/2019/02 points to the Final Report PDF, in place of a page that now shows the EBA third-party risk management guidelines; the note "source confirmed live and current as at this date" says that it covers the earlier URL. No change to controls, test, ★ rating or risk profile.
+- v1.3.3 (2026-10-09): Field 20 References — the title of the Bank of England and PRA letter of 22 April 2024 corrected to The Bank and the PRA's response to DSIT/HMT: update on our approach to AI. No change to controls, test, ★ rating or risk profile.
 ```
 
 ---

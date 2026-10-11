@@ -4,7 +4,7 @@
 **IRQ:** IRQ-DAT-007 — Uncurated RAG Ingestion Allowing Stale Content to Override Current Policy
 **Assurance objective:** AO-DAT-007 — all content entering the RAG knowledge store shall pass curation controls (currency verification, deduplication, assigned content owner) before being retrievable, such that stale or superseded content cannot be presented as current.
 **★ Confidence:** ★3 (carried from canvas — RAG failure-point taxonomies and faithfulness-evaluation tooling are published and used by multiple independent groups; no canonical "currency-check adequacy" benchmark exists for FS knowledge stores, keeping this short of ★4)
-**Method classification:** Adapted Industry Practice — RAG failure-point taxonomy (Barnett et al., 2024) and RAGAS-style faithfulness evaluation (Es et al., 2023), both as cited in the canvas.
+**Method classification:** Adapted Industry Practice — RAGAS-style faithfulness evaluation (Es et al., 2023) and, for RAG failure in general, Barnett et al. (2024), whose seven failure points do not include superseded or stale documents; the seeded-supersession design is the canvas's own. Both sources as cited in the canvas.
 
 ## Preconditions
 

@@ -56,10 +56,10 @@ Control Breakpoints:
 **AO-GOV-004:** The firm's risk-based tiering methodology shall explicitly and demonstrably weight generative and agentic risk drivers — autonomy, tool access and irreversible-action capability, and customer proximity — such that control depth is proportionate to the deployment's actual risk profile, not only its underlying model type.
 
 ## 9. Expected Controls (Traced)
-- **Tiering criteria explicitly including autonomy level, tool/action permissions and customer proximity as scored dimensions** — [PRA, "PRA response to Government on AI regulation," Apr 2024, mapping DSIT AI principles onto SS1/23; MAS Information Paper ID 18/24, Dec 2024, materiality/proportionality good practice] — extends traditional model-risk tiering criteria with AI-specific dimensions.
+- **Tiering criteria explicitly including autonomy level, tool/action permissions and customer proximity as scored dimensions** — [Bank of England and PRA, "The Bank and the PRA's response to DSIT/HMT: update on our approach to AI," 22 April 2024, mapping DSIT AI principles onto SS1/23; MAS Information Paper ID 18/24, Dec 2024, materiality/proportionality good practice] — extends traditional model-risk tiering criteria with AI-specific dimensions.
 - **Alignment to EU AI Act risk-tier structure for classification consistency where in scope** — [Regulation (EU) 2024/1689, Annex III and Art. 6 (classification rules for high-risk AI systems)] — provides an externally validated reference tiering logic (unacceptable/high/limited/minimal risk) that firms can cross-check internal tiering against, particularly for credit and insurance use cases explicitly named in Annex III.
 - **Periodic re-tiering trigger when autonomy, tool access or customer proximity changes** — [linked IRQ-GOV-012; ENGAGEMENT_MODEL.md Major-Change Re-Assessment Trigger 4, "Operating Envelope Expansion"] — tiering is not a one-time assessment at approval.
-- **MAS AIRG consultation proposed proportionality framework** — [MAS, "Consultation Paper: Proposed Guidelines on Artificial Intelligence Risk Management (AIRG)," Nov 2025] — proposes materiality/proportionality criteria for AI risk tiering as a cross-sector expectation; consultation closed Jan 2026, final Guidelines not yet confirmed published as of 29 Jul 2026 [UNVERIFIED — final Guidelines text not yet issued] (verified 29 Jul 2026).
+- **MAS AIRG consultation proposed proportionality framework** — [MAS, "Consultation Paper: Proposed Guidelines on Artificial Intelligence Risk Management (AIRG)," Nov 2025] — proposes materiality/proportionality criteria for AI risk tiering as a cross-sector expectation; consultation closed Jan 2026 and MAS issued the final Guidelines on 7 Oct 2026, which retain the risk materiality assessment expectation (paragraph 4.10), apply in proportion to size and risk profile (paragraph 2.1) and take effect on 7 Oct 2027 [CONFIRMED — the final Guidelines read at mas.gov.sg on 7 Oct 2026] (verified 7 Oct 2026).
 - **Independent challenge of tiering outcomes by a function independent of the deployment team** — [linked IRQ-GOV-007; PRA SS1/23, independent validation principle] — Emerging Practice: applying SS1/23's independent-validation principle specifically to challenge tiering *classification* decisions (not just model performance) is not yet standard MRM practice.
 
 ## 10. Expected Evidence (Tagged L1–L5)
@@ -135,7 +135,7 @@ an entire risk class rather than a single deployment.
 | **Novelty** | 3 | Autonomy, tool access and customer proximity as distinct risk drivers (separate from data sensitivity/materiality) are AI-specific dimensions a traditional model-risk SME would not default to weighting. |
 
 ## 17. Regulatory Basis
-> [PRA, "PRA response to Government on AI regulation," Apr 2024] and [PRA, SS1/23, May 2023] establish that model risk tiering/materiality assessment must extend to AI/ML, without prescribing the specific AI-relevant criteria — leaving this an area where firms must demonstrate their own methodology is fit for purpose. [Regulation (EU) 2024/1689 (EU AI Act), Annex III and Art. 6] provides an externally validated risk-tier classification (including credit scoring and life/health insurance pricing as named high-risk uses) that firms can cross-check internal tiering logic against, and which is directly binding for in-scope systems. [MAS, Information Paper ID 18/24, Dec 2024] documents materiality/proportionality as an observed good-practice dimension across surveyed institutions.
+> [Bank of England and PRA, "The Bank and the PRA's response to DSIT/HMT: update on our approach to AI," 22 April 2024] and [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] establish that model risk tiering/materiality assessment must extend to AI/ML, without prescribing the specific AI-relevant criteria — leaving this an area where firms must demonstrate their own methodology is fit for purpose. [Regulation (EU) 2024/1689 (EU AI Act), Annex III and Art. 6] provides an externally validated risk-tier classification (including credit scoring and life/health insurance pricing as named high-risk uses) that firms can cross-check internal tiering logic against, and which is directly binding for in-scope systems. [MAS, Information Paper ID 18/24, Dec 2024] documents materiality/proportionality as an observed good-practice dimension across surveyed institutions.
 
 ## 18. Research Basis
 > No peer-reviewed academic literature specifically validating an AI risk-tiering methodology for financial services was identified in the source registers; this control area is regulatory/audit practice rather than a research literature, consistent with this domain's evidentiary profile. The EU AI Act's Annex III classification structure and the MAS thematic review are treated as the most credible available reference points for what AI-aware tiering criteria should weight.
@@ -156,15 +156,15 @@ an entire risk class rather than a single deployment.
 
 ## 20. References
 ```
-[1] Bank of England/PRA, 2024. "PRA response to Government on AI regulation." April 2024.
-[2] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023, effective
-    17 May 2024.
+[1] Bank of England/PRA, 2024. "The Bank and the PRA's response to DSIT/HMT: update on our approach to AI." 22 April 2024.
+[2] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
 [3] European Union, 2024. "Regulation (EU) 2024/1689 — Artificial Intelligence Act."
     OJ L, 12 July 2024. Annex III, Art. 6.
 [4] Monetary Authority of Singapore, 2024. "Information Paper: Artificial Intelligence Model
     Risk Management — Observations from a Thematic Review." ID 18/24. December 2024.
 [5] Monetary Authority of Singapore, 2025. "Consultation Paper: Proposed Guidelines on
-    Artificial Intelligence Risk Management (AIRG)." November 2025. Consultation paper (URL: mas.gov.sg/publications/consultations/2025/consultation-paper-on-guidelines-on-artificial-intelligence-risk-management); MAS has not published a distinct reference number for this paper; consultation closed Jan 2026, final Guidelines not yet issued as of 29 Jul 2026 (verified 29 Jul 2026).
+    Artificial Intelligence Risk Management (AIRG)." November 2025. Consultation Paper P017-2025 (URL: mas.gov.sg/publications/consultations/2025/consultation-paper-on-guidelines-on-artificial-intelligence-risk-management); consultation closed Jan 2026, final Guidelines issued 7 Oct 2026 and effective 7 Oct 2027 (verified 7 Oct 2026).
 ```
 
 ## 21. Four-Test Validation Footer
@@ -190,6 +190,9 @@ FOUR-TEST VALIDATION:
 Change Log:
 - v1.0 (2026-07): Initial publication; all four tests passed.
 - v1.2.0 (2026-09-12): Field 12 — the independent re-scoring Pass indicator clarified: an isolated divergence outside any pattern is recorded as a judged finding, not a Fail by itself, the Pass still turning on the absence of systematic under-tiering of agentic or customer-facing systems. Mirrored in PLAYBOOK_GOV.md's threshold table and §6 Pass clause so the procedure does not read harder than the canvas. Field 13 untouched; no Pass/Fail boundary moved; ★3 unchanged.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.3 (2026-10-09): Field 9 Expected Controls — the Bank of England and PRA letter of 22 April 2024 cited by its title, The Bank and the PRA's response to DSIT/HMT: update on our approach to AI, with the Bank of England and the PRA as issuers; the statements that the final MAS Guidelines were not yet issued replaced by the fact that MAS issued them on 7 Oct 2026, effective 7 Oct 2027, with the risk materiality assessment expectation retained (paragraphs 2.1 and 4.10). Field 17 Regulatory Basis — the letter citation as in Field 9. Field 20 References — the letter citation as in Field 9; the MAS consultation paper entry carries its reference number, P017-2025, the statement that MAS published none is removed, and the issue date of the final Guidelines is added. No change to controls, test, ★ rating or risk profile.
 ```
 
 ---

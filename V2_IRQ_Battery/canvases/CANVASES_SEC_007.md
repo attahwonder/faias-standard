@@ -125,7 +125,7 @@ Residual risk: Critical for any fine-tuning on genuinely sensitive personal or p
 | **Novelty** | 4 | Counter-intuitive memorisation-scaling property outside standard DPIA/data-protection methodology; a privacy specialist without ML-specific training will very likely miss it. |
 
 ## 17. Regulatory Basis
-> [UK GDPR Art. 5(1)(c) data minimisation, Art. 32 security of processing, Art. 35 DPIA requirement] — engaged directly where fine-tuning uses personal data and extraction risk is not assessed. [ICO guidance on AI and data protection (2023 update)] — expects organisations to assess and mitigate memorisation/re-identification risk in AI systems trained on personal data. [PRA SS1/23 Model Risk Management, Principle 3/4] — where the fine-tuned model is in MRM scope, data-handling risk assessment forms part of validation. [UNVERIFIED — the ICO's "Guidance on AI and data protection" (updated 2023) is confirmed as the correct document (ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/artificial-intelligence/guidance-on-ai-and-data-protection/), but it is organised as a rolling web guidance hub without stable numbered sections, so a specific section pinpoint cannot be reliably given] (verified 29 Jul 2026).
+> [UK GDPR Art. 5(1)(c) data minimisation, Art. 32 security of processing, Art. 35 DPIA requirement] — engaged directly where fine-tuning uses personal data and extraction risk is not assessed. [ICO, Guidance on AI and data protection (updated 15 March 2023), section "How should we assess security and data minimisation in AI?"] — expects organisations to assess and mitigate memorisation/re-identification risk in AI systems trained on personal data. [PRA SS1/23 Model Risk Management, April 2026 (16 April 2026, updating 17 May 2023), Principle 3/4] — where the fine-tuned model is in MRM scope, data-handling risk assessment forms part of validation. [CONFIRMED — the guidance hub (ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/artificial-intelligence/guidance-on-ai-and-data-protection/) lists named sections, and the section "How should we assess security and data minimisation in AI?" has its own page, which covers model inversion and membership inference and the steps to manage the risk of privacy attacks on AI models. The hub states that the guidance was updated on 15 March 2023 and that, because of changes made by the Data (Use and Access) Act, it is under review and may change] (verified 7 Oct 2026).
 
 ## 18. Research Basis
 > [Carlini, N., et al., 2021, "Extracting Training Data from Large Language Models", USENIX Security 2021, arXiv:2012.07805] — demonstrated verbatim PII extraction from GPT-2. [Nasr, M., et al., 2023, "Scalable Extraction of Training Data from (Production) Language Models", arXiv:2311.17035] — divergence attack extracting data from aligned, production ChatGPT, showing alignment does not prevent extraction. [Carlini, N., et al., 2022, "Membership Inference Attacks From First Principles", IEEE S&P, arXiv:2112.03570] — LiRA methodology; establishes low-FPR evaluation as the correct measurement standard. [Shokri, R., et al., 2017, "Membership Inference Attacks Against Machine Learning Models", IEEE S&P, arXiv:1610.05820] — founding shadow-model MIA methodology. [Carlini, N., et al., 2022, "Quantifying Memorization Across Neural Language Models", arXiv:2202.07646] — memorisation scales with model size, data duplication, and context length. [Tramèr, F., et al., 2016, "Stealing Machine Learning Models via Prediction APIs", USENIX Security 2016, arXiv:1609.02943] — model-extraction-via-query-access, relevant to API-exposed FS models.
@@ -160,10 +160,10 @@ Residual risk: Critical for any fine-tuning on genuinely sensitive personal or p
     arXiv:2202.07646.
 [6] Tramèr, F., et al., 2016. "Stealing Machine Learning Models via Prediction APIs."
     USENIX Security 2016. arXiv:1609.02943.
-[7] ICO, 2023 (updated). "Guidance on AI and data protection."
-    https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/artificial-intelligence/guidance-on-ai-and-data-protection/
-    [UNVERIFIED — web guidance hub with no stable numbered sections; document and URL
-    confirmed, specific section pinpoint not obtainable] (verified 29 Jul 2026).
+[7] ICO, 2023 (updated). "Guidance on AI and data protection," section "How should we assess security and data minimisation in AI?"
+    https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/artificial-intelligence/guidance-on-ai-and-data-protection/how-should-we-assess-security-and-data-minimisation-in-ai/
+    [CONFIRMED — section read at this URL; the guidance hub states that the guidance was updated
+    on 15 March 2023 and is under review after the Data (Use and Access) Act] (verified 7 Oct 2026).
 [8] UK GDPR, retained EU law, Articles 5, 32, 35.
 [9] Landgericht München I, 2025. "GEMA v OpenAI." Az. 42 O 14139/24, judgment of
     11 November 2025, not final. Court press release:
@@ -196,6 +196,8 @@ Change Log:
   status and confined to the recoverability limb, its quoted words attributed to the court's
   press release; reference entry [9] added at Field 20. Research-basis review date moved.
   ★3 unchanged.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 17 and 20 — the ICO Guidance on AI and data protection cited at the section "How should we assess security and data minimisation in AI?", with its URL; the statement that the guidance has no stable sections and cannot be pinpointed is removed; the hub notice that the guidance is under review after the Data (Use and Access) Act is carried. No change to controls, test, ★ rating or risk profile.
 ```
 
 ---

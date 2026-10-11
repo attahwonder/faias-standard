@@ -59,7 +59,7 @@ Control Breakpoints:
 ## 9. Expected Controls (Traced)
 - **Versioned data lineage registry** — [ISO/IEC 5338:2023, AI system life cycle processes, data engineering stage] — every dataset version, source and transformation recorded and retrievable.
 - **Licence and copyright clearance workflow at intake** — [EU AI Act, Regulation (EU) 2024/1689, Art. 10 data governance requirements for high-risk AI] — datasets are cleared before use, not retrospectively.
-- **Independent validation of lineage claims** — [PRA SS1/23, May 2023, development and independent validation principles] — a function independent of development actually inspects lineage evidence rather than accepting an assertion.
+- **Independent validation of lineage claims** — [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), development and independent validation principles] — a function independent of development actually inspects lineage evidence rather than accepting an assertion.
 - **Model/data documentation cards** — [NIST AI RMF 1.0, Jan 2023, MAP function; ISO/IEC 42001:2023 clause 7.5 documented information] — system and data cards record provenance at a standard sufficient for regulatory response.
 - **Open-source/third-party intake gating** — [linked IRQ-TPR-005] — publisher authenticity and weight/data integrity verified before use.
 
@@ -98,7 +98,7 @@ Assuming controls are well-implemented and monitored:
   Severity: 3 (regulatory notice risk; retraining/withdrawal cost if a source is challenged)
   Likelihood: 2 (requires registry/process to actually lapse; plausible given documentation discipline is easy to erode)
   Detectability: 3 (surfaces only via audit, external claim, or incident — not real-time)
-  Recoverability: 2 (reversible via registry remediation and retrospective clearance; moderate cost)
+  Recoverability: 3 (reversible via registry remediation and retrospective clearance; moderate cost)
   Novelty: 2 (data lineage is a recognised documentation discipline; AI-specific element is scale/blending of sources)
 
 If controls are absent or degraded:
@@ -116,11 +116,11 @@ Residual risk: material without registry discipline; escalates quickly if unaddr
 | **Severity** | 3 | Regulatory notice and remediation cost; potential model withdrawal if a source is unlawful. |
 | **Likelihood** | 2 | Plausible if registry discipline lapses; not the default failure mode with basic controls in place. |
 | **Detectability** | 3 | Detected via periodic audit or external challenge, not real-time monitoring. |
-| **Recoverability** | 2 | Reversible via retrospective clearance and registry remediation within days-to-weeks. |
+| **Recoverability** | 3 | Reversible via retrospective clearance and registry remediation within days-to-weeks. |
 | **Novelty** | 2 | Domain expert with data-governance background would likely flag this; the AI-specific element is the scale of blended sourcing. |
 
 ## 17. Regulatory Basis
-> [EU AI Act, Regulation (EU) 2024/1689, Art. 10(2)(a)–(f), data and data governance for high-risk AI systems] requires training, validation and testing data to meet quality criteria including relevant provenance examination; applies to Annex III credit-scoring and insurance-pricing systems from 2 Dec 2027 (postponed from the original 2 Aug 2026 date by the Digital Omnibus, agreed and in force Jul 2026 — 2 Aug 2026 remains the applicable date for the separate Art. 50 transparency obligations, save that Art. 50(2) marking for systems placed on the market before that date applies from 2 Dec 2026). [PRA SS1/23, May 2023, effective May 2024, Principle 3 (model development, implementation and use) and Principle 4 (independent model validation)] require the data basis of a model to be evidenced and independently checked. [ISO/IEC 42001:2023 clause 7.5, "Documented information"] requires documented information supporting AI system claims. (corrected & verified 29 Jul 2026)
+> [EU AI Act, Regulation (EU) 2024/1689, Art. 10(2)(a)–(f), data and data governance for high-risk AI systems] requires training, validation and testing data to meet quality criteria including relevant provenance examination; applies to Annex III credit-scoring and insurance-pricing systems from 2 Dec 2027 (postponed from the original 2 Aug 2026 date by the Digital Omnibus, agreed and in force Jul 2026 — 2 Aug 2026 remains the applicable date for the separate Art. 50 transparency obligations, save that Art. 50(2) marking for systems placed on the market before that date applies from 2 Dec 2026). [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), effective May 2024, Principle 3 (model development, implementation and use) and Principle 4 (independent model validation)] require the data basis of a model to be evidenced and independently checked. [ISO/IEC 42001:2023 clause 7.5, "Documented information"] requires documented information supporting AI system claims. (corrected & verified 29 Jul 2026)
 
 ## 18. Research Basis
 > [Stanford Internet Observatory, Dec 2023, "Investigation Finds AI Image Generation Models Trained on Child Abuse"] — documented real-world consequence of web-scale ingestion without provenance controls (LAION/Stable Diffusion), the closest published analogue to unverified FS data sourcing. [Allen Institute, OLMo + Dolma full-transparency releases, 2024–2025] — demonstrates that full lineage transparency is achievable and enables contamination/provenance auditing otherwise impossible. No FS-specific empirical study of lineage reconstruction success rates was located; this is an evidence gap, not an omission — flagged [UNVERIFIED — no FS-specific published study located; general analogues (Stanford Internet Observatory, Allen Institute OLMo/Dolma) confirmed as cited] (verified 29 Jul 2026).
@@ -138,7 +138,8 @@ Residual risk: material without registry discipline; escalates quickly if unaddr
 ## 20. References
 ```
 [1] European Union, 2024. "Regulation (EU) 2024/1689 — Artificial Intelligence Act." OJ L 12.7.2024. Art. 10.
-[2] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023, effective 17 May 2024.
+[2] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
 [3] ISO/IEC, 2023. "ISO/IEC 5338:2023 — AI system life cycle processes." December 2023.
 [4] ISO/IEC, 2023. "ISO/IEC 42001:2023 — Artificial intelligence management system." December 2023.
 [5] Stanford Internet Observatory, 2023. "Investigation Finds AI Image Generation Models Trained on Child Abuse." December 2023.
@@ -165,6 +166,9 @@ FOUR-TEST VALIDATION:
 Change Log:
 - v1.0 (2026-07): Initial publication.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2 (Field 16, and the controls-in-place case in Field 15). The canvas states recovery within days-to-weeks, which is beyond the within-hours level that ASSURANCE_MODEL.md §7 scores 2; the scale names no band between days and years, and 3 (reversible within days) is the nearest anchor. The other axes, the ★ rating and the research basis are unchanged.
 ```
 
 ---

@@ -63,7 +63,7 @@ Control Breakpoints:
 
 ## 9. Expected Controls (Traced)
 - **Version control of prompts and decoding parameters as configuration artefacts** — [linked IRQ-AGT-009; general software configuration-management practice extended to AI-specific artefacts] — every prompt template and parameter set is stored, versioned, and attributable to a specific change and approver, exactly as code would be.
-- **Fixed behavioural regression suite on every change** — [informed by longitudinal behavioural-drift measurement methodology, Chen et al., 2023, arXiv:2307.09009] — a representative test set is run against both the prior and proposed prompt/parameter version before deployment, with material divergence blocking automatic promotion.
+- **Fixed behavioural regression suite on every change** — [informed by longitudinal behavioural-drift measurement methodology, Chen et al., 2023, arXiv:2307.09009; Harvard Data Science Review 6(2), 2024] — a representative test set is run against both the prior and proposed prompt/parameter version before deployment, with material divergence blocking automatic promotion.
 - **Change approval requiring the same rigour as code deployment** — [linked IRQ-GOV-003; PRA SS1/23 change-management expectations by analogy] — prompt/parameter changes go through the same review and sign-off process as application code changes, not an informal or bypassed path.
 - **Rollback capability to a known-good prompt/parameter version** — [linked IRQ-RES-004] — the firm can revert to a previous version within defined recovery objectives if a change proves harmful.
 - **Post-deployment monitoring for behavioural change correlated with a recent prompt/parameter edit** — [linked IRQ-RES-005, IRQ-RES-006] — monitoring is capable of attributing a detected behavioural shift to a specific configuration change, supporting rapid root-cause diagnosis.
@@ -143,12 +143,12 @@ regression testing on prompt/parameter changes.
 | **Novelty** | 3 | Treating a prompt edit as a behaviour-bearing change requiring code-equivalent change control is not obvious to teams trained in traditional software change management, where text edits are typically deprioritised relative to code. |
 
 ## 17. Regulatory Basis
-> [PRA SS1/23, May 2023, effective 17 May 2024, Principle 3 (model development, implementation and use) and Principle 4 (independent model validation — review of model changes and periodic revalidation)] — a prompt or decoding-parameter change that materially alters model behaviour is, in substance, a model change and falls within SS1/23's change-management expectations even though it involves no code deployment. No regulation names "prompt version control" explicitly; this IRQ operationalises SS1/23's change-management principle for a configuration artefact specific to generative AI. (verified 29 Jul 2026)
+> [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024, Principle 3 (model development, implementation and use) and Principle 4 (independent model validation — review of model changes and periodic revalidation)] — a prompt or decoding-parameter change that materially alters model behaviour is, in substance, a model change and falls within SS1/23's change-management expectations even though it involves no code deployment. No regulation names "prompt version control" explicitly; this IRQ operationalises SS1/23's change-management principle for a configuration artefact specific to generative AI. (verified 29 Jul 2026)
 
 ## 18. Research Basis
-> [Chen, L., Zaharia, M., Zou, J., 2023, "How Is ChatGPT's Behavior Changing over Time?", arXiv:2307.09009] — demonstrates that behavioural drift across nominal versions is measurable and material, supporting the regression-testing methodology used in this IRQ's independent test, applied here to firm-controlled prompt/parameter changes rather than vendor-controlled model versions. [Incident: xAI Grok "MechaHitler" episode, Jul 2025 — on xAI's account, an upstream code-path update that unexpectedly incorporated deprecated instructions into the production bot's behaviour for 16 hours, publicly documented and widely reported] — direct, recent, high-severity real-world evidence that a change to a production system's instructions can materially alter its behaviour before it is detected. xAI states that changes to the bot are evaluated and tested before release and does not say whether this update was, so the incident does not evidence a change made outside a change-control process.
+> [Chen, L., Zaharia, M., Zou, J., 2023, "How Is ChatGPT's Behavior Changing over Time?", arXiv:2307.09009; Harvard Data Science Review 6(2), 2024] — demonstrates that behavioural drift across nominal versions is measurable and material, supporting the regression-testing methodology used in this IRQ's independent test, applied here to firm-controlled prompt/parameter changes rather than vendor-controlled model versions. [Incident: xAI Grok "MechaHitler" episode, Jul 2025 — on xAI's account, an upstream code-path update that unexpectedly incorporated deprecated instructions into the production bot's behaviour for 16 hours, publicly documented and widely reported] — direct, recent, high-severity real-world evidence that a change to a production system's instructions can materially alter its behaviour before it is detected. xAI states that changes to the bot are evaluated and tested before release and does not say whether this update was, so the incident does not evidence a change made outside a change-control process.
 >
-> **Research basis last reviewed:** 19 September 2026 · **review cadence:** Fast (6 months)
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -168,11 +168,12 @@ regression testing on prompt/parameter changes.
 ## 20. References
 ```
 [1] Chen, L., Zaharia, M., Zou, J., 2023. "How Is ChatGPT's Behavior Changing over Time?"
-    arXiv:2307.09009.
+    arXiv:2307.09009. Published in Harvard Data Science Review 6(2), 12 March 2024,
+    https://doi.org/10.1162/99608f92.5317da47.
 [2] The Guardian, 2025. "Musk's AI firm forced to delete posts praising Hitler from Grok chatbot."
     9 July 2025. https://www.theguardian.com/technology/2025/jul/09/grok-ai-praised-hitler-antisemitism-x-ntwnfb
-[3] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023, effective
-    17 May 2024.
+[3] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -196,6 +197,9 @@ FOUR-TEST VALIDATION:
 Change Log:
 - v1.0 (2026-07): Initial publication; four tests passed.
 - v1.2.1 (2026-09-19): Fields 5, 7, 15, 16 and 18 — erratum: the xAI Grok episode of July 2025 was described as an un-gated system-prompt change that removed behavioural constraints in production and, in the research basis, as this failure mode occurring outside a change-control process. On xAI's own account of 12 July 2025 an upstream code-path update unexpectedly incorporated deprecated instructions into the production bot's behaviour for 16 hours; xAI states that changes to the bot are evaluated and tested before release and does not say whether this update was. Fields 5, 7 and 18 now carry that account; Residual Judgement (Field 15) and Risk Weighting Profile (Field 16), which offered the episode as the illustration of an uncontrolled change with no attribution trail, now cite it for the scale of the behavioural alteration only, with the same caveat; none of the five calls the change un-gated or says it was made outside change control. Field 20 — erratum: reference [2]'s title corrected to the article's headline. Research-basis review date moved. No change to controls, test, ★2 or any five-axis rating.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.3 (2026-10-09): Fields 9, 18 and 20 — the Chen, Zaharia and Zou citation (arXiv:2307.09009) now also gives its publication in Harvard Data Science Review 6(2), 2024. Research-basis review date moved. No change to the ★ rating or the risk profile.
 ```
 
 ---

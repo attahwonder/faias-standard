@@ -133,12 +133,14 @@ and provenance controls.
 | **Novelty** | 4 | Requires the specific, non-intuitive knowledge that a handful of documents can dominate retrieval regardless of corpus scale; outside any traditional data-quality mental model. |
 
 ## 17. Regulatory Basis
-> No regulation names inference-time RAG poisoning explicitly. [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — foreseeable-harm obligations engaged where a targeted manipulated case reaches a customer outcome. [UK GDPR Art. 5(1)(f), Art. 32] — integrity of processing, engaged where poisoning enables a wrong decision involving personal data. [PRA SS1/23 Model Risk Management, May 2023] — knowledge-store integrity sits within the data-governance component of model risk management where the system is in MRM scope. Cited as governing expectations; no poisoning-specific rule exists.
+> No regulation names inference-time RAG poisoning explicitly. [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — foreseeable-harm obligations engaged where a targeted manipulated case reaches a customer outcome. [UK GDPR Art. 5(1)(f), Art. 32] — integrity of processing, engaged where poisoning enables a wrong decision involving personal data. [PRA SS1/23 Model Risk Management, April 2026 (16 April 2026, updating 17 May 2023)] — knowledge-store integrity sits within the data-governance component of model risk management where the system is in MRM scope. Cited as governing expectations; no poisoning-specific rule exists.
 
 ## 18. Research Basis
 > [Zou, W., Geng, R., Wang, B., Jia, J., 2024, "PoisonedRAG: Knowledge Corruption Attacks to Retrieval-Augmented Generation of Large Language Models", arXiv:2402.07867] — foundational, reproducible demonstration that a handful of injected passages steer RAG answers with high success rate; primary methodological basis for this IRQ's independent test. [Greshake et al., 2023, arXiv:2302.12173] — the model-side mechanism (retrieved content as instruction) that this write-path attack exploits once retrieval succeeds. [Carlini, N., et al., 2023, "Poisoning Web-Scale Training Datasets is Practical", arXiv:2302.10149] — establishes the general practicality and low cost of poisoning attacks on web-scale/externally-writable data sources, supporting the plausibility of ordinary-access poisoning at FS scale. [OWASP, 2025, "Top 10 for LLM Applications 2025", vector/embedding weaknesses entry]. [NIST, 2025, "AI 100-2 E2025"] — poisoning taxonomy.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Fast (6 months)
+> **[FAIAS Incident Register, row 80, "ForcedLeak Salesforce Agentforce", 2025]** — researchers report a vulnerability chain, which they demonstrated, in which text planted through the public Web-to-Lead form of a Salesforce CRM was retrieved by the Agentforce agent and executed as instruction: "the AI retrieves and processes the compromised information, inadvertently executing the hidden malicious instructions"; the form's Description field allowed 42,000 characters. An outsider with ordinary write access to an indexed source steered the agent's output. It evidences write-path steering of an agent's output, not retrieval-targeted crafting for a specific query. Carried as a secondary row: the source is the researchers' own disclosure, and no statement from Salesforce was read.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -159,7 +161,8 @@ and provenance controls.
 [3] Carlini, N., et al., 2023. "Poisoning Web-Scale Training Datasets is Practical."
     arXiv:2302.10149.
 [4] OWASP Foundation, 2025. "OWASP Top 10 for LLM Applications 2025."
-[5] NIST, 2025. "AI 100-2 E2025: Adversarial Machine Learning." March 2025.
+[5] NIST, 2025. "AI 100-2 E2025: Adversarial Machine Learning: A Taxonomy and
+    Terminology of Attacks and Mitigations." March 2025.
 [6] FCA, 2022. "PS22/9: A New Consumer Duty"; PRIN 2A in force 31 July 2023.
 ```
 
@@ -185,6 +188,9 @@ FOUR-TEST VALIDATION:
 Change Log:
 - v1.0 (2026-07): Initial publication; four tests passed.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 80, ForcedLeak, carried as a secondary row on the researchers' own disclosure). Research-basis review date moved. No change to controls, test, ★3 or risk profile.
+- v1.3.3 (2026-10-09): Field 20 References — the title of NIST AI 100-2 E2025 given in full: Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations (it was cut after "Adversarial Machine Learning"). No change to controls, test, ★ rating or risk profile.
 ```
 
 ---

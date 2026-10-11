@@ -142,7 +142,7 @@ compliance-sensitive refusal boundary (Critical) or general helpfulness (High).
 | **Novelty** | 4 | Reward hacking as a mundane training-process artefact (not deliberate deception) is highly counter-intuitive and easily dismissed by non-AI-specialist reviewers. |
 
 ## 17. Regulatory Basis
-> [PRA SS1/23, May 2023, effective 17 May 2024, Principle 4 (independent model validation)] — engaged directly, since this IRQ's core control is validation independence from the training reward process. [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — engaged where sycophantic reinforcement of a customer misunderstanding causes foreseeable harm. No regulation names "reward hacking" or "sycophancy" explicitly; this IRQ operationalises SS1/23's independent-validation principle for a fine-tuning-stage-specific failure mode. (verified 29 Jul 2026)
+> [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024, Principle 4 (independent model validation)] — engaged directly, since this IRQ's core control is validation independence from the training reward process. [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — engaged where sycophantic reinforcement of a customer misunderstanding causes foreseeable harm. No regulation names "reward hacking" or "sycophancy" explicitly; this IRQ operationalises SS1/23's independent-validation principle for a fine-tuning-stage-specific failure mode. (verified 29 Jul 2026)
 
 ## 18. Research Basis
 > [Sharma, M., et al., 2023, "Towards Understanding Sycophancy in Language Models", arXiv:2310.13548] — demonstrates RLHF systematically induces sycophancy across model families. [Denison, C., et al., 2024, "Sycophancy to Subterfuge: Investigating Reward-Tampering in Large Language Models", Anthropic, arXiv:2406.10162] — shows gaming behaviour generalises from mild sycophancy to more consequential reward-tampering-style behaviour, evidencing why screening must go beyond simple sycophancy checks. [Wei, A., Haghtalab, N., Steinhardt, J., 2023, "Jailbroken: How Does LLM Safety Training Fail?", arXiv:2307.02483] — identifies competing-objectives and mismatched-generalisation failure modes explaining why refusal training often fails to generalise to rephrased requests. [Lambert, N., et al., 2024, "RewardBench: Evaluating Reward Models", arXiv:2403.13787] — first systematic reward-model evaluation, underscoring why reward-model quality (and hence independent evaluation) is foundational to RLHF assurance.
@@ -163,6 +163,8 @@ compliance-sensitive refusal boundary (Critical) or general helpfulness (High).
   - IRQ-MOD-011 (B.5: evaluation integrity — the screening test set must not be contaminated
     by training/preference data)
   - IRQ-MOD-002 / IRQ-MOD-013 (B.1/B.6: re-testing triggers on model or fine-tuning updates)
+  - IRQ-HUM-001 (D.1: reviewers trained to expect an agreeable assistant may not recognise
+    sycophancy as a red flag — the human-review step in this IRQ's failure chain)
   - IRQ-HUM-002 (D.1: review effectiveness — sycophantic or evaluator-gaming outputs are
     precisely those most likely to pass an under-challenged human checkpoint)
 ```
@@ -177,8 +179,8 @@ compliance-sensitive refusal boundary (Critical) or general helpfulness (High).
     Fail?" arXiv:2307.02483.
 [4] Lambert, N., Pyatkin, V., Morrison, J., et al., 2024. "RewardBench: Evaluating Reward
     Models for Language Modeling." arXiv:2403.13787.
-[5] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023, effective
-    17 May 2024.
+[5] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
 [6] FCA, 2022. "PS22/9: A New Consumer Duty." PRIN 2A in force 31 July 2023.
 ```
 
@@ -205,6 +207,9 @@ Change Log:
 - v1.0 (2026-07): Initial publication; four tests passed.
 - v1.2.0 (2026-09-12): Field 10 — two dated worked examples of training-induced grader gaming added (OpenAI/Hugging Face "failed metagame" root cause, 26 Aug 2026 blog post — not the technical report, which does not contain the phrase; Anthropic Fable 5.1/Mythos 5.1 System Card p.97 §6.3.1, grader awareness spanning LLM and deterministic rewards). Field 18 — Qi, Wright, MacDiarmid & Hubinger, "Training a Misaligned Reward Seeker" (Aug 2026) added, with its limits and a note that §11 as written does not exercise the mechanism. ★2 unchanged. Deterministic-grader gaming is routed here from IRQ-MOD-015 by scope ruling.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 19 Related IRQs — IRQ-HUM-001 added beside IRQ-HUM-002: the failure chain names IRQ-HUM-001, and field 19 now lists every IRQ the chain names. No change to controls, test, ★ rating or risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 ```
 
 ---

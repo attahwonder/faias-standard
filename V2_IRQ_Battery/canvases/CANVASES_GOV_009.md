@@ -62,7 +62,7 @@ Control Breakpoints:
 
 ## 9. Expected Controls (Traced)
 - **Firm-specific system/model card covering intended use, known limitations, evaluation results and approved operating envelope, distinct from vendor-supplied generic model documentation** — [EU AI Act, Regulation (EU) 2024/1689, Art. 11 and Annex IV — technical documentation requirements for high-risk AI systems] — the direct anchor for Annex III high-risk use cases (credit, insurance pricing); extended as good practice to non-Annex-III systems given the same reviewability need.
-- **Documentation update triggered as a mandatory step of every material change-control event (model version, prompt/config change, new use case)** — [PRA, SS1/23, May 2023, documentation principle] — ties documentation currency to the firm's existing change-control process rather than leaving it as a standalone task.
+- **Documentation update triggered as a mandatory step of every material change-control event (model version, prompt/config change, new use case)** — [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023), documentation principle] — ties documentation currency to the firm's existing change-control process rather than leaving it as a standalone task.
 - **Independent readability/completeness check: a reviewer without prior system knowledge can answer defined key questions (intended use, known limitations, approved envelope, evaluation basis) from the documentation alone** — [ISO/IEC 42001:2023, clause 7.5 — documented information] — a practical adequacy test distinct from mere existence.
 - **Data statement documenting training/grounding data provenance, cross-referenced to IRQ-DAT-001** — [EU AI Act, Art. 11 and Annex IV, point 2(d)] — data governance documentation is an explicit Annex IV component.
 - **Version-controlled documentation register with a defined retention period aligned to regulatory examination and complaint-handling timeframes** — [FCA/PRA record-keeping expectations under SYSC; EU AI Act Art. 18, retention of technical documentation] — ensures historical documentation versions remain retrievable, not only the current version.
@@ -153,12 +153,14 @@ decision-reconstruction (GOV-010).
 | **Novelty** | 2 | Moderate blind spot: governance SMEs expect documentation to exist, but the AI-specific nuance (vendor cards are not firm-specific; prompt changes need documentation updates) is less severe a gap than most GOV IRQs. |
 
 ## 17. Regulatory Basis
-> [EU AI Act, Regulation (EU) 2024/1689, Art. 11 and Annex IV] requires technical documentation for high-risk AI systems covering intended purpose, design specifications, data requirements, evaluation results and known limitations, applicable to Annex III credit-scoring and insurance-pricing systems from 2 Dec 2027 (postponed from 2 Aug 2026 by the Digital Omnibus, Regulation (EU) 2026/1744, in force 27 Jul 2026), retained per Art. 18. [PRA, SS1/23, May 2023] documentation principle requires models to be documented to a standard enabling effective independent review and validation, extended to AI/ML. [ISO/IEC 42001:2023, clause 7.5] requires documented information to be controlled, current and available to those who need it. Section pinpoints [UNVERIFIED — cited modules/articles confirmed extant (PRA SS1/23, SS1/21, PS21/3, ISO/IEC 42001:2023, EU AI Act Arts. 9/11/12/19); no AI-specific sub-clause pinpoint published by the regulator beyond module/clause level cited] (verified 29 Jul 2026).
+> [EU AI Act, Regulation (EU) 2024/1689, Art. 11 and Annex IV] requires technical documentation for high-risk AI systems covering intended purpose, design specifications, data requirements, evaluation results and known limitations, applicable to Annex III credit-scoring and insurance-pricing systems from 2 Dec 2027 (postponed from 2 Aug 2026 by the Digital Omnibus, Regulation (EU) 2026/1744, in force 27 Jul 2026), retained per Art. 18. [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] documentation principle requires models to be documented to a standard enabling effective independent review and validation, extended to AI/ML. [ISO/IEC 42001:2023, clause 7.5] requires documented information to be controlled, current and available to those who need it. Section pinpoints [UNVERIFIED — cited modules/articles confirmed extant (PRA SS1/23, SS1/21, PS21/3, ISO/IEC 42001:2023, EU AI Act Arts. 9/11/12/19); no AI-specific sub-clause pinpoint published by the regulator beyond module/clause level cited] (verified 29 Jul 2026).
 
 ## 18. Research Basis
 > [Mitchell, M. et al., 2019, "Model Cards for Model Reporting," ACM FAT* 2019 (arXiv:1810.03993)] is the foundational published framework for structured model documentation and the direct ancestor of the system/model-card control cited here. [Gebru, T. et al., 2021, "Datasheets for Datasets," Communications of the ACM (arXiv:1803.09010)] provides the equivalent structured framework for the data-statement component of this IRQ's control. No FS-specific empirical literature quantifies documentation-adequacy failure rates for deployed GenAI systems; this control area otherwise draws on regulatory and audit practice rather than a dedicated FS research literature.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 66, "ANAO audit of AI governance at the Australian Taxation Office", 2025]** — carried as an audit finding of control gaps, not a harm event: of the 14 AI models that the Australian Taxation Office deployed between 1 July 2023 and 14 May 2024, as assessed in June 2024, "One (7%) AI model had up to date planning documentation and evidence of approval and 13 (93%) did not" (para 3.10 and Table 3.1, p.49). The row records no harm event or regulator inquiry, so it does not show the regulatory-response limb of this question.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -178,8 +180,8 @@ decision-reconstruction (GOV-010).
 ```
 [1] European Union, 2024. "Regulation (EU) 2024/1689 — Artificial Intelligence Act."
     OJ L 12.7.2024. Art. 11 and Annex IV, Technical Documentation.
-[2] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023, effective
-    17 May 2024.
+[2] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
 [3] ISO/IEC, 2023. "ISO/IEC 42001:2023 — Artificial intelligence management systems —
     Requirements." Clause 7.5, Documented Information.
 [4] Mitchell, M., Wu, S., Zaldivar, A., et al., 2019. "Model Cards for Model Reporting."
@@ -218,6 +220,9 @@ Change Log:
 - v1.0 (2026-07): Initial publication; all four tests passed.
 - v1.2.0 (2026-09-12): Field 10 — two dated worked examples added on documentation currency and adequacy: the OpenAI Navier–Stokes page amended 10 Sep 2026 under a dated footnote naming the section, with the removed hedge undisclosed on the page and still live on the provider's X post at capture (described as neither a silent edit nor a retraction, and recorded as five changes, not one deletion), giving rise to a dated, hashed-snapshot expectation where an external page is relied upon; and two products launched 10 Sep 2026 with no product card — the Agents API, checked within its own launch page as at 11 Sep 2026, and ChatGPT for Financial Services, which carries capability benchmarking (OfficeQA Pro, BoxBench, an internal slide-creation evaluation) but no sector-specific risk, bias or market-conduct control evidence. ★3 unchanged.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 66, the Australian National Audit Office audit of the Australian Taxation Office, carried as an audit finding of control gaps and not a harm event; the regulatory-response limb of the question is not shown). Research-basis review date moved. No change to controls, test, ★3 or risk profile.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 ```
 
 ---

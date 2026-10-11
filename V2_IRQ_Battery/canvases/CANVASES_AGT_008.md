@@ -64,7 +64,7 @@ Control Breakpoints:
 
 ## 9. Expected Controls (Traced)
 - **Memory governance as a data asset** — [linked IRQ-DAT-010; PRA SS1/23 data governance principle] — persisted memory has an owner, scoping, retention limits and tested deletion, as for any other data store.
-- **Validation of memory content against source-of-truth systems before reuse in a consequential decision** — [OWASP Agentic AI: Threats and Mitigations, Feb 2025, memory-poisoning category — the first structured articulation of this risk] — carried-forward conclusions are re-checked against authoritative systems rather than trusted at face value.
+- **Validation of memory content against source-of-truth systems before reuse in a consequential decision** — [OWASP Agentic AI: Threats and Mitigations, Feb 2025, memory-poisoning category — the principal practitioner source for this risk] — carried-forward conclusions are re-checked against authoritative systems rather than trusted at face value.
 - **Provenance tagging distinguishing AI-generated memory entries from source-system facts** — [NIST AI 600-1, Jul 2024, confabulation and information-integrity categories] — memory entries are labelled with their origin (source system vs prior AI output) so downstream sessions and human reviewers can weight them appropriately.
 - **Injection defences extended to the memory-write path** — [linked IRQ-SEC-004; Greshake et al., 2023, indirect prompt injection] — content written to memory during a session is subject to the same untrusted-content screening as live retrieval, since a poisoned session can poison future ones via memory.
 - **Escalation where a decision rests materially on carried-forward memory** — [linked IRQ-HUM-004] — human review is triggered specifically when memory content (rather than freshly retrieved source data) is a material input to the decision.
@@ -142,12 +142,14 @@ mandatory control.
 | **Novelty** | 4 | Self-reinforcing AI memory contaminating its own future decisions has no analogue in traditional data-quality or human note-taking practice. |
 
 ## 17. Regulatory Basis
-> No regulation names "AI memory poisoning" explicitly. [PRA SS1/23, May 2023] requires data governance and model risk controls extending to any data asset a model relies on, including persisted memory. [UK GDPR Art. 5(1)(d) accuracy principle] is engaged where an erroneous memory entry constitutes inaccurate personal data persisted and reused. [OWASP Agentic AI: Threats and Mitigations, Feb 2025] is the first structured articulation of memory poisoning as an agentic threat category, cited as emerging practitioner guidance rather than binding regulation. [NIST AI 600-1, Jul 2024] identifies information-integrity risks applicable to this failure mode.
+> No regulation names "AI memory poisoning" explicitly. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] requires data governance and model risk controls extending to any data asset a model relies on, including persisted memory. [UK GDPR Art. 5(1)(d) accuracy principle] is engaged where an erroneous memory entry constitutes inaccurate personal data persisted and reused. [OWASP Agentic AI: Threats and Mitigations, Feb 2025] names memory poisoning as a distinct agentic threat category, cited as emerging practitioner guidance rather than binding regulation. [NIST AI 600-1, Jul 2024] identifies information-integrity risks applicable to this failure mode.
 
 ## 18. Research Basis
-> [OWASP, 2025, "Agentic AI: Threats and Mitigations," OWASP Agentic Security Initiative v1.0] — names memory poisoning as a distinct agentic threat category, the primary source for this IRQ given the absence of peer-reviewed literature specifically on operational-memory poisoning as of 2026. [Anthropic, 2025, "Project Vend: Claude runs a small business"] — documents a real agentic deployment where accumulated erroneous context (hallucinated account details) steered ongoing agent behaviour over an extended run, an empirical analogue to memory-driven error persistence. [Hubinger et al., 2024, "Sleeper Agents," arXiv:2401.05566] — while focused on training-time backdoors rather than operational memory, evidences the general principle that persisted state can carry forward behaviour-altering content undetected by standard evaluation. **[MemToC, arXiv:2608.26295, 26 August 2026 — an arXiv preprint; no venue or journal reference is stated on the abstract page as at 12 September 2026]** — a benchmark of 6,504 evaluation episodes on the arbitration a model performs between a tool return and its own parametric memory, reporting that no cross-model ordering remains stable across three instruction-wording variants with the question and episode content held fixed. §11's test — whether a second session validates memory content against a source-of-truth system before acting on it — is the construct it measures, which is why it is named here. It does **not** discharge the absence on which this field rests the ★1: that absence is of "peer-reviewed literature specifically on operational-memory poisoning", and a preprint on memory–tool arbitration is neither peer-reviewed nor about poisoning. **Recorded with its provenance: read at the abstract page only (5 September 2026, re-read 12 September 2026); the full text has not been read, and the ★1 rating is untouched.**
+> [OWASP, 2025, "Agentic AI: Threats and Mitigations," OWASP Agentic Security Initiative v1.0] — names memory poisoning as a distinct agentic threat category, the principal practitioner source for this IRQ. [Chen et al., 2024, "AgentPoison: Red-teaming LLM Agents via Poisoning Memory or Knowledge Bases," NeurIPS 2024, arXiv:2407.12784] — a peer-reviewed study (NeurIPS 2024 poster, code released) of backdoor attacks that poison an agent's long-term memory or retrieval knowledge base, tested on three agents (autonomous driving, knowledge-intensive question answering and healthcare records). It reports an average attack success rate above 80% at a poison rate below 0.1%, and it evaluates two defences (a perplexity filter and query rephrasing). It measures attack success and benign utility; it does not test whether memory content is validated against a source of truth before reuse, which is the construct §11 tests, and none of its agents is financial. It is partial evidence for the harm mechanism (read 7 October 2026). [Anthropic, 2025, "Project Vend: Can Claude run a small shop? (And why does that matter?)"] — documents a real agentic deployment where accumulated erroneous context (hallucinated account details) steered ongoing agent behaviour over an extended run, an empirical analogue to memory-driven error persistence. [Hubinger et al., 2024, "Sleeper Agents," arXiv:2401.05566] — while focused on training-time backdoors rather than operational memory, evidences the general principle that persisted state can carry forward behaviour-altering content undetected by standard evaluation. **[MemToC, arXiv:2608.26295, 26 August 2026 — an arXiv preprint; no venue or journal reference is stated on the abstract page as at 12 September 2026]** — a benchmark of 6,504 evaluation episodes on the arbitration a model performs between a tool return and its own parametric memory, reporting that no cross-model ordering remains stable across three instruction-wording variants with the question and episode content held fixed. §11's test — whether a second session validates memory content against a source-of-truth system before acting on it — is the construct it measures, which is why it is named here. It is **not** the peer-reviewed memory-poisoning evidence cited above: a preprint on memory–tool arbitration is neither peer-reviewed nor about poisoning. **Recorded with its provenance: read at the abstract page only (5 September 2026, re-read 12 September 2026); the full text has not been read, and the ★1 rating is untouched.**
 >
-> **Research basis last reviewed:** 12 September 2026 · **review cadence:** Fast (6 months)
+> **[FAIAS Incident Register, row 53, "AI Recommendation Poisoning", 2026]** — the vendor's security researchers report over 50 unique prompts from 31 companies in 14 industries, hidden behind "Summarize with AI" buttons and links, that tried to plant persistent "trusted source" entries in AI assistants' memory; a review of 60 days of email traffic found 50 distinct examples. The attempts are observed in the wild; that an entry is saved is shown in the vendor's own demonstration, and the later decision that the entry steers is a hypothetical. The vendor states that some reported behaviours could no longer be reproduced. It is an incident record and not peer-reviewed research.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -165,11 +167,12 @@ mandatory control.
 ```
 [1] OWASP, 2025. "Agentic AI: Threats and Mitigations." OWASP Agentic Security
     Initiative, v1.0, February 2025.
-[2] Anthropic, 2025. "Project Vend: Claude runs a small business." June 2025.
+[2] Anthropic, 2025. "Project Vend: Can Claude run a small shop? (And why does that matter?)." June 2025.
 [3] Hubinger, E., et al., 2024. "Sleeper Agents: Training Deceptive LLMs that Persist
     Through Safety Training." arXiv:2401.05566.
 [4] NIST, 2024. "AI 600-1: Generative Artificial Intelligence Profile." July 2024.
-[5] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023.
+[5] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023).
 [6] UK GDPR, Article 5(1)(d), accuracy principle.
 ```
 
@@ -198,6 +201,15 @@ Change Log:
 - v1.2.0 (2026-09-12): Research Basis — MemToC (arXiv:2608.26295, 26 Aug 2026) named as
   the nearest published memory-arbitration benchmark, recorded as read at the abstract
   only. ★1 unchanged; any ★ implication held for the owner.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — OWASP Agentic AI: Threats and Mitigations (February 2025) is no longer called the first structured articulation of memory poisoning: AgentPoison (arXiv, July 2024; NeurIPS 2024), cited in field 18, is earlier. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 53, AI Recommendation Poisoning: attempts observed in the wild, the saved entry shown in a demonstration, the steered decision a hypothetical). Research-basis review date moved. No change to controls, test, ★1 or risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — the statement that no peer-reviewed
+  literature addresses operational-memory poisoning corrected: AgentPoison (NeurIPS 2024,
+  arXiv:2407.12784) added with its limits (it measures attack success, not validation of
+  memory before reuse). ★1 unchanged.
+- v1.3.3 (2026-10-09): Fields 18 and 20 — Anthropic's Project Vend post is cited under its page title, "Project Vend: Can Claude run a small shop? (And why does that matter?)". Form corrections only. No change to the ★ rating or the risk profile.
 ```
 
 ---

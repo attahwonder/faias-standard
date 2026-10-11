@@ -30,10 +30,10 @@ The model prevents two extremes: wasteful over-assessment of low-risk systems (i
 - Complexity 0–2 (deterministic retrieval or formatting; no novel reasoning)
 
 **Review Scope:**
-- IRQ Domains: Governance only (IRQ-GOV series)
+- IRQ Domains: Governance only: IRQ-GOV-001, -002, -005, -009 and -014, at documentary depth
 - Evidence Level Minimum: L2 (design documentation; policy attestation)
 - Opinion Type: Limited Assurance (or attestation only)
-- Re-Assessment: Annual or upon major model update
+- Re-Assessment: Annual or upon major model/prompt change
 
 **Rationale:** Risk is low and bounded by human review of every output. Assurance focuses on governance discipline (who owns the system, how is it monitored) rather than technical control validation.
 
@@ -51,11 +51,11 @@ The model prevents two extremes: wasteful over-assessment of low-risk systems (i
 - Complexity 2–3 (pattern matching, document extraction, prioritisation; bounded by known rules)
 
 **Review Scope:**
-- IRQ Domains: Governance, Data (sourcing), Model (hallucination, confidence), Human Oversight (escalation, override)
-- Critical Claims: "System escalates failures to human review"; "Data sources are clean"; "Output confidence is calibrated"
+- IRQ Domains: as in the Tier 1 scope table below (Governance; priority IRQs from Data, Model and Human Oversight; Resilience and Conduct where relevant)
+- Critical Claims: as in the Tier 1 scope table below
 - Evidence Level Minimum: L3 (staged testing; design review)
 - Opinion Type: Limited Assurance (selective controls; emerging practice allowed)
-- Re-Assessment: 12 months or upon material code change
+- Re-Assessment: 12 months or upon code change, new data source, changed escalation rules
 
 **Rationale:** Human review provides backstop. Assurance validates that escalation pathways work and data is reliable. Testing can rely on staged environment; emerging-practice controls acceptable if documented.
 
@@ -76,8 +76,8 @@ The model prevents two extremes: wasteful over-assessment of low-risk systems (i
 - IRQ Domains: All 9 domains (Data, Model, Agentic, Human Oversight, Security, Third-Party, Resilience, Conduct & Fairness, Governance)
 - Critical Claims: All core claims per ASSURANCE_ARCHITECTURE.md (envelope, hallucination, fairness, escalation, monitoring)
 - Evidence Level Minimum: L4 (independent testing in staged environment; benchmarked test methods; policy + operational validation)
-- Opinion Type: Reasonable Assurance where every material claim rests on tests rated ★4 or above (comprehensive methodology; L4+ evidence dominant); otherwise limited assurance, with each rating disclosed (ASSURANCE_ARCHITECTURE.md, assurance-level rule)
-- Re-Assessment: Annual or upon model update, new data source, changed decision logic, new customer segment
+- Opinion Type: Reasonable Assurance where every material claim rests on tests rated ★4 or above (comprehensive methodology; L4+ evidence dominant); otherwise limited assurance, with each rating disclosed (ASSURANCE_ARCHITECTURE.md, assurance-level rule, which states what the register's ratings support at this version)
+- Re-Assessment: Annual, or upon model update, new data source, changed decision logic, new customer segment or customer segment expansion, operating envelope change
 
 **Rationale:** Material financial and regulatory exposure demands comprehensive review. Testing must be independent and repeatable. Emerging-practice controls flagged; foundation must be published benchmarks or peer-reviewed methods.
 
@@ -97,11 +97,11 @@ The model prevents two extremes: wasteful over-assessment of low-risk systems (i
 **Review Scope:**
 - IRQ Domains: All 9 domains (comprehensive coverage; no exceptions)
 - Critical Claims: Every core claim must be supported; no workarounds
-- Evidence Level Minimum: L4–L5 (independent testing + operational validation post-deployment; no L1–L2 evidence on material claims)
-- Opinion Type: Reasonable Assurance where every material test is rated ★4 or above (the assurance-level rule) and, in addition at Tier 3, secondary controls are rated ★3 or above (rigorous methodology; mandatory L5 on critical claims; low uncertainty); otherwise limited assurance, with each rating disclosed (ASSURANCE_ARCHITECTURE.md, assurance-level rule)
+- Evidence Level Minimum: L4–L5 (independent testing; no L1–L2 evidence on material claims). L5 before the opinion comes from a production-like system or a similar deployment (ASSURANCE_MODEL.md §5); where no such L5 exists for a critical claim, the opinion states the gap as a limitation and is given at limited assurance. Post-deployment operational validation supplies L5 for the first re-assurance
+- Opinion Type: Reasonable Assurance where every material test is rated ★4 or above (the assurance-level rule) and, in addition at Tier 3, secondary controls are rated ★3 or above (rigorous methodology; mandatory L5 on critical claims; low uncertainty); otherwise limited assurance, with each rating disclosed (ASSURANCE_ARCHITECTURE.md, assurance-level rule, which states what the register's ratings support at this version)
 - Independent Validation: Mandatory external audit of assessment methodology and testing
 - Formal Approval: Requires CEO/Board sign-off (not delegation)
-- Re-Assessment: Annual, plus mandatory re-review for any model change, data change, autonomy expansion, new customer segment, or incident
+- Re-Assessment: Annual, plus mandatory re-review for any model change, data change, decision logic change, autonomy expansion, new customer segment, incident, or regulatory feedback
 
 **Rationale:** Autonomous decisions are binding; customer redress and regulatory consequences are severe. Assurance must be independent, evidence-backed, and formally documented. Emerging practice is not acceptable without explicit board risk appetite exception.
 
@@ -109,7 +109,7 @@ The model prevents two extremes: wasteful over-assessment of low-risk systems (i
 
 ## Five-Factor Materiality Assessment
 
-To assign an AI system to a tier, evaluate these five factors on a calibrated scale. Tier assignment follows a rule-based algorithm; override triggers exist for edge cases.
+To assign an AI system to a tier, evaluate these five factors on a calibrated scale. Tier assignment follows a rule-based algorithm; override triggers exist for edge cases. The profile and characteristics given for each tier above describe typical systems. The algorithm below assigns the tier, with the Tier 0 eligibility rule, the override triggers and the mandatory Tier 3 cases.
 
 ### Factor 1: Customer Impact (1–4 Scale)
 
@@ -190,14 +190,14 @@ Risk Score =
   (Complexity normalized × 0.125)
 ```
 
-**Step 4: Map to tier**
+**Step 4: Map to tier.** The score moves in steps of 0.125, so it takes 25 values from 1.000 to 4.000; each value falls in exactly one row.
 
 | Risk Score Range | Tier | Assignment |
 |---|---|---|
-| 1.0–1.5 | Tier 0 | Light-touch assessment |
-| 1.6–2.3 | Tier 1 | Standard review |
-| 2.4–3.1 | Tier 2 | Full assurance |
-| 3.2–4.0 | Tier 3 | Maximum assurance + board approval |
+| 1.000–1.500 | Tier 0 | Light-touch assessment |
+| 1.625–2.250 | Tier 1 | Standard review |
+| 2.375–3.125 | Tier 2 | Full assurance |
+| 3.250–4.000 | Tier 3 | Maximum assurance + board approval |
 
 ### Override Triggers (Force Upgrade to Higher Tier)
 
@@ -216,6 +216,8 @@ Apply tier upgrade (move to next tier) if ANY of the following conditions met:
 6. **Chain of Dependency:** System output feeds multiple downstream autonomous systems (compound risk). Upgrade by 1 tier.
 
 7. **Third-Party Sole Dependency:** System relies on single external model provider with no fallback; vendor incident would block business. Upgrade by 1 tier.
+
+**Tier 0 eligibility:** Tier 0 applies only to a system with all five Tier 0 characteristics: Customer Impact 1, Financial Impact 1, Regulatory Impact 1, Autonomy 0–1 and Complexity 0–2. A system that scores in the Tier 0 range without them is assigned Tier 1; the override triggers above then apply.
 
 **Special Case — Mandatory Tier 3:** Any system satisfying:
 - Autonomy ≥4 AND Customer Impact ≥3 (autonomous material decision by definition → Tier 3, regardless of other factors)
@@ -242,8 +244,8 @@ Apply tier upgrade (move to next tier) if ANY of the following conditions met:
 
 | Dimension | Specification |
 |---|---|
-| **IRQ Domains** | Governance, Data (A.1–A.5), Model (B.1–B.4), Human Oversight (D.1–D.4) |
-| **Critical Claims** | "Escalation pathways work"; "Data is clean"; "Hallucination is detected"; "Humans can override" |
+| **IRQ Domains** | Governance (all GOV IRQs); priority IRQs, selected in Phase 3 (ENGAGEMENT_MODEL.md), from Data (A.1–A.5), Model (B.1–B.4) and Human Oversight (D.1–D.4); the Resilience and Conduct procedures that PLAYBOOK_OVERVIEW.md §5 lists for Tier 1 |
+| **Critical Claims** | "Escalation pathways work"; "Data is clean"; "Hallucination is detected"; "Output confidence is calibrated"; "Humans can override" |
 | **Evidence Level Minimum** | L3 (staged testing, design review, policy + training records) |
 | **Testing Requirement** | Staged environment testing; non-invasive; FOUR-TEST validation per IRQ |
 | **Test Confidence Minimum** | ★3–★4 where available; procedures rated ★1–★2 run with the disclosure in PLAYBOOK_OVERVIEW.md §8 |
@@ -261,10 +263,10 @@ Apply tier upgrade (move to next tier) if ANY of the following conditions met:
 | **Critical Claims** | All core claims per ASSURANCE_ARCHITECTURE.md (no waivers) |
 | **Evidence Level Minimum** | L4 (independent staged testing; ≥1 L4–L5 per core claim) |
 | **Testing Requirement** | Non-production testing per Component 5 Playbook; benchmarked methods; FOUR-TEST discipline; cross-domain scenario testing |
-| **Test Confidence Minimum** | For reasonable assurance: ★4 or above on all material tests; ★3 permitted on lower-risk subdomains. A material test rated ★1–★3 still runs, with the disclosure in PLAYBOOK_OVERVIEW.md §8, and the opinion is then given at limited assurance |
+| **Test Confidence Minimum** | For reasonable assurance: ★4 or above on all material tests; ★3 permitted on lower-risk subdomains. A material test rated ★1–★3 still runs, with the disclosure in PLAYBOOK_OVERVIEW.md §8, and the opinion is then given at limited assurance (ASSURANCE_ARCHITECTURE.md, the assurance-level rule, which states what the register's ratings support at this version) |
 | **Opinion Type** | Reasonable assurance where the test-confidence condition above is met (comprehensive methodology; no emerging-practice exceptions); otherwise limited assurance (ASSURANCE_ARCHITECTURE.md, assurance-level rule) |
 | **Engagement Duration** | 8–12 weeks |
-| **Re-Assessment Trigger** | Annual, or upon model update, new data source, customer segment expansion, operating envelope change |
+| **Re-Assessment Trigger** | Annual, or upon model update, new data source, changed decision logic, new customer segment or customer segment expansion, operating envelope change |
 | **Board Approval** | Risk committee approval; regulatory affairs consulted |
 | **Monitoring Post-Deployment** | Weekly KPI dashboard; early-life monitoring (weeks 1–12); quarterly assurance review |
 | **Materiality Screening** | All 10 lenses; material findings escalated to opinion |
@@ -275,16 +277,16 @@ Apply tier upgrade (move to next tier) if ANY of the following conditions met:
 |---|---|
 | **IRQ Domains** | All 9 domains (exhaustive; no exceptions) |
 | **Critical Claims** | Every core claim must be supported by L4–L5 evidence; no L1–L2 on material claims |
-| **Evidence Level Minimum** | L4–L5 (independent testing + post-deployment operational validation) |
+| **Evidence Level Minimum** | L4–L5 (independent testing; L5 before the opinion as the Tier 3 review scope above states; post-deployment operational validation supplies L5 for the first re-assurance) |
 | **Testing Requirement** | Exhaustive staged testing; multiple independent tests per IRQ; L5 evidence required (production-equivalent conditions or live monitoring) |
-| **Test Confidence Minimum** | For reasonable assurance: ★4 or above on all material tests; ★3 minimum on secondary controls only. A material test rated ★1–★3 still runs, with the disclosure in PLAYBOOK_OVERVIEW.md §8, and the opinion is then given at limited assurance |
+| **Test Confidence Minimum** | For reasonable assurance: ★4 or above on all material tests; ★3 minimum on secondary controls only. A material test rated ★1–★3 still runs, with the disclosure in PLAYBOOK_OVERVIEW.md §8, and the opinion is then given at limited assurance (ASSURANCE_ARCHITECTURE.md, the assurance-level rule, which states what the register's ratings support at this version) |
 | **Opinion Type** | Reasonable assurance where the test-confidence condition above is met (rigorous; low residual uncertainty); otherwise limited assurance (ASSURANCE_ARCHITECTURE.md, assurance-level rule) |
 | **Independent Validation** | Mandatory external audit of assessment |
 | **Engagement Duration** | 12–16 weeks |
 | **Board Approval** | **Mandatory CEO/Board sign-off**; not delegable to committee |
 | **Formal Approval Document** | Board resolution documenting risk appetite exception (if any), residual risks accepted, monitoring commitment |
 | **Monitoring Post-Deployment** | Daily real-time KPI monitoring; automated escalation on threshold breach; weekly governance review; monthly model performance audit |
-| **Re-Assessment Trigger** | Minimum annual; mandatory upon any: model version change, training data change, decision logic change, autonomy expansion, new customer segment, incident, or regulatory feedback |
+| **Re-Assessment Trigger** | Minimum annual; mandatory upon any: model change, data change, decision logic change, autonomy expansion, new customer segment, incident, or regulatory feedback |
 | **Regulatory Notification** | PRA/FCA notification of major autonomous systems (if applicable); supervisory feedback incorporated into remediation |
 
 ---

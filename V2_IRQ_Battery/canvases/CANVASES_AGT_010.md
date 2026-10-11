@@ -62,7 +62,7 @@ Control Breakpoints:
 **AO-AGT-010:** The agent's actually-executed workflow shall be reconcilable against the documented, approved business process for every run, with any divergence (omission, reordering, invention) detected and flagged rather than silently absorbed into a plausible-looking final output.
 
 ## 9. Expected Controls (Traced)
-- **Process-conformance checking against the documented process definition** — [Microsoft AI Red Team, "Taxonomy of Failure Modes in Agentic AI Systems," Apr 2025, workflow-deviation category] — the executed step sequence is programmatically compared against the approved process map, not merely trusted to have followed it.
+- **Process-conformance checking against the documented process definition** — [Microsoft AI Red Team, "Taxonomy of Failure Mode in Agentic AI Systems," Apr 2025, failure mode "Agent flow manipulation" and effect "Agent misalignment"] — the executed step sequence is programmatically compared against the approved process map, not merely trusted to have followed it.
 - **Structural enforcement of mandatory steps at the orchestration layer** — [linked IRQ-AGT-012; PRA SS1/23 governance principle] — steps that are regulatory or control-critical (e.g. affordability check, required disclosure) are hard-gated in the workflow engine, not left to the agent's own planning discretion.
 - **Complete, structured action traces enabling reconciliation** — [linked IRQ-AGT-011; Chan et al., "Visibility into AI Agents," FAccT 2024] — every run's actual step sequence is logged in a form comparable against the process definition.
 - **Reconciliation sampling as an ongoing control** — [linked IRQ-GOV-010; FCA/PRA record-keeping expectations] — a defined proportion of runs are reconciled against the documented process on an ongoing basis, not only at initial validation.
@@ -77,7 +77,7 @@ Control Breakpoints:
 - Production reconciliation sampling data: divergence rate, categorised by omission/reordering/invention, over the review period — **L5**.
 
 ## 11. Independent Test
-> In a non-production environment, run the agent through a representative case set including standard cases and deliberately ambiguous or edge-case scenarios designed to tempt step omission, reordering or invention (e.g. an incomplete customer document set, a time-pressured request). Capture the full structured action trace for each run and reconcile it against the documented, approved process map. Measure: (1) divergence rate by category (omission, reordering, invention); (2) whether hard-gated mandatory steps (affordability check, disclosure) were in fact bypassable; (3) whether conformance checking, where implemented, correctly flags every divergence. Methodology informed by Microsoft's Taxonomy of Failure Modes in Agentic AI Systems workflow-deviation category. No production cases or customer data used. — **★2 Confidence — as at FAIAS v1.1.0 (25 August 2026)** (Microsoft's taxonomy provides credible, recent practitioner grounding; process-conformance testing methodology is bespoke to the firm's own process map, with no external benchmark for "workflow divergence" measurement).
+> In a non-production environment, run the agent through a representative case set including standard cases and deliberately ambiguous or edge-case scenarios designed to tempt step omission, reordering or invention (e.g. an incomplete customer document set, a time-pressured request). Capture the full structured action trace for each run and reconcile it against the documented, approved process map. Measure: (1) divergence rate by category (omission, reordering, invention); (2) whether hard-gated mandatory steps (affordability check, disclosure) were in fact bypassable; (3) whether conformance checking, where implemented, correctly flags every divergence. Methodology informed by Microsoft's Taxonomy of Failure Mode in Agentic AI Systems (the failure mode "Agent flow manipulation" and the effect "Agent misalignment"). No production cases or customer data used. — **★2 Confidence — as at FAIAS v1.1.0 (25 August 2026)** (Microsoft's taxonomy provides credible, recent practitioner grounding; process-conformance testing methodology is bespoke to the firm's own process map, with no external benchmark for "workflow divergence" measurement).
 
 ## 12. Pass Indicators
 - Zero undetected divergences across the edge-case test set; every omission, reordering or invention is flagged by conformance checking.
@@ -141,12 +141,12 @@ mandatory pre-deployment control.
 | **Novelty** | 3 | Distinguishing design intent ("built to follow the process") from structural enforcement is a non-obvious reframing for process SMEs. |
 
 ## 17. Regulatory Basis
-> No regulation names "agentic workflow conformance" explicitly. [MCOB 11.6 responsible-lending provisions] require documented affordability and disclosure steps to actually be performed, not merely intended. [FCA DISP 1.4 (complaint investigation) and DISP 1.6 (8-week final response time limit)] require defined procedural steps and timelines to be followed. [PRA SS1/23, May 2023, Principle 2 (governance)] requires governance of model/process risk drivers. [FCA/PRA record-keeping expectations under SYSC 9 and DISP 1.9, and GOV-010's underlying regulatory basis] require reconstructable evidence of the process actually followed. [Microsoft, "Taxonomy of Failure Modes in Agentic AI Systems," Apr 2025] is cited as accepted practitioner guidance, not binding regulation. (verified 29 Jul 2026)
+> No regulation names "agentic workflow conformance" explicitly. [MCOB 11.6 responsible-lending provisions] require documented affordability and disclosure steps to actually be performed, not merely intended. [FCA DISP 1.4 (complaint investigation) and DISP 1.6 (8-week final response time limit)] require defined procedural steps and timelines to be followed. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), Principle 2 (governance)] requires governance of model/process risk drivers. [FCA/PRA record-keeping expectations under SYSC 9 and DISP 1.9, and GOV-010's underlying regulatory basis] require reconstructable evidence of the process actually followed. [Microsoft, "Taxonomy of Failure Mode in Agentic AI Systems," Apr 2025] is cited as accepted practitioner guidance, not binding regulation. (verified 29 Jul 2026)
 
 ## 18. Research Basis
-> [Microsoft AI Red Team, 2025, "Taxonomy of Failure Modes in Agentic AI Systems," April 2025] — practitioner taxonomy from the largest corporate AI red team, naming workflow deviation (steps skipped, reordered, invented) as a distinct agentic failure category, directly informing this IRQ. [Chan et al., "Visibility into AI Agents," FAccT 2024, arXiv:2401.13138] — establishes activity logging and identifiers as the evidentiary basis required for any process-conformance reconciliation. [Anthropic, 2025, "Project Vend: Claude runs a small business"] — a real-world example of an agent deviating from its intended operating procedure over an extended deployment, evidencing the plausibility of undetected workflow drift.
+> [Microsoft AI Red Team, 2025, "Taxonomy of Failure Mode in Agentic AI Systems," April 2025] — practitioner taxonomy from Microsoft's AI Red Team. The taxonomy names no workflow-deviation category. Its failure mode "Agent flow manipulation" covers a threat actor who alters the flow of an agent system, for example by avoiding, adding or reordering actions (printed p. 18). Its effect "Agent misalignment" covers an agent that deviates in its actions from what the user or creator intends (printed p. 7). This IRQ's framing, steps omitted, reordered or invented, is FAIAS's own; the failure mode and the effect inform it. [Chan et al., "Visibility into AI Agents," FAccT 2024, arXiv:2401.13138] — establishes activity logging and identifiers as the evidentiary basis required for any process-conformance reconciliation. [Anthropic, 2025, "Project Vend: Can Claude run a small shop? (And why does that matter?)"] — a real-world example of an agent deviating from its intended operating procedure over an extended deployment, evidencing the plausibility of undetected workflow drift. [Nandi, S., et al., 2026, "SOP-Bench: Complex Industrial SOPs for Evaluating LLM Agents," Proc. 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining, Volume 2, pp. 9604-9615, DOI 10.1145/3770855.3817538, arXiv:2506.08119] — a benchmark of more than 2,000 tasks from expert-written standard operating procedures across 12 business domains, finance among them, with ground-truth outputs; the benchmark is public. The paper reports outcome metrics only (execution completion rate, conditional task success rate and task success rate), and its authors say that future research should add metrics for step planning, tool mapping and tool-calling accuracy, so it does not test whether an agent followed the documented steps. [Berti, A. and van der Aalst, W. M. P., 2021, "A Novel Token-Based Replay Technique to Speed Up Conformance Checking and Process Enhancement," Transactions on Petri Nets and Other Models of Concurrency XV, Springer, pp. 1-26, DOI 10.1007/978-3-662-63079-2_1, arXiv:2007.14237] — a process-mining technique that replays a recorded event log on a process model to discover deviations and obtain diagnostics, implemented in the PM4Py process mining library. It covers the reconciliation of an executed trace against a documented process model, which is the reconciliation step in this IRQ's test; it was developed for event logs of business processes, and it is not specific to AI agents.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Fast (6 months)
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -163,15 +163,23 @@ mandatory pre-deployment control.
 
 ## 20. References
 ```
-[1] Microsoft AI Red Team, 2025. "Taxonomy of Failure Modes in Agentic AI Systems."
+[1] Microsoft AI Red Team, 2025. "Taxonomy of Failure Mode in Agentic AI Systems."
     April 2025.
 [2] Chan, A., et al., 2024. "Visibility into AI Agents." Proc. FAccT 2024.
     arXiv:2401.13138.
-[3] Anthropic, 2025. "Project Vend: Claude runs a small business." June 2025.
+[3] Anthropic, 2025. "Project Vend: Can Claude run a small shop? (And why does that matter?)." June 2025.
 [4] FCA. "MCOB — Mortgages and Home Finance: Conduct of Business Sourcebook,"
     responsible lending provisions.
 [5] FCA. "DISP — Dispute Resolution: Complaints." Handbook.
-[6] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023.
+[6] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023).
+[7] Nandi, S., et al., 2026. "SOP-Bench: Complex Industrial SOPs for Evaluating LLM
+    Agents." Proc. 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining,
+    Volume 2, pp. 9604-9615. DOI 10.1145/3770855.3817538. arXiv:2506.08119.
+[8] Berti, A., van der Aalst, W. M. P., 2021. "A Novel Token-Based Replay Technique to
+    Speed Up Conformance Checking and Process Enhancement." Transactions on Petri Nets
+    and Other Models of Concurrency XV, Springer, pp. 1-26. DOI
+    10.1007/978-3-662-63079-2_1. arXiv:2007.14237.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -185,9 +193,9 @@ FOUR-TEST VALIDATION:
 ✓ Test 1 (SME Blind Spot): Process SMEs conflate "designed to follow the process"
   with "structurally enforced to follow the process" — a distinction with no
   analogue in manual, trained-staff process design.
-✓ Test 2 (Plausible Harm): Grounded in Microsoft's Taxonomy of Failure Modes in
-  Agentic AI Systems (workflow-deviation category) and Anthropic's Project Vend
-  real-world deployment evidence.
+✓ Test 2 (Plausible Harm): Grounded in Microsoft's Taxonomy of Failure Mode in
+  Agentic AI Systems (Agent flow manipulation; Agent misalignment) and Anthropic's
+  Project Vend real-world deployment evidence.
 ✓ Test 3 (Testable): Fully testable via edge-case scenario execution and trace
   reconciliation in a non-production environment. ★2 methodology, honestly caveated.
 ✓ Test 4 (Decision-Relevant): Gates deployment for any regulated workflow (lending,
@@ -196,6 +204,15 @@ FOUR-TEST VALIDATION:
 
 Change Log:
 - v1.0 (2026-07): Initial publication; all four tests passed.
+- v1.3.3 (2026-10-09): Fields 9, 11, 18 and 21 — the Microsoft AI Red Team taxonomy is cited for its failure mode "Agent flow manipulation" and its effect "Agent misalignment", in place of a "workflow-deviation category", which the taxonomy does not name. Field 18 no longer calls the team the largest corporate AI red team, which the whitepaper does not say. The ★2 rationale, a test method bespoke to the firm's process map, is unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 9, 11, 17, 18, 20 and 21 — the Microsoft AI Red Team whitepaper takes its title as issued on its cover, "Taxonomy of Failure Mode in Agentic AI Systems". Form corrections only. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.3 (2026-10-09): Fields 18 and 20 — Anthropic's Project Vend post is cited under its page title, "Project Vend: Can Claude run a small shop? (And why does that matter?)". Form corrections only. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — SOP-Bench (outcome metrics only) and the
+  process-mining token-based replay technique for conformance checking added as
+  published methods, each with its limits. Field 20 — entries [7] and [8] added.
+  Research-basis review date moved. No change to controls, test, ★2 or risk profile.
 ```
 
 ---

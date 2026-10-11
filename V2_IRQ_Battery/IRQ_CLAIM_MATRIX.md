@@ -155,4 +155,4 @@ Two-way mapping between the 109 IRQs (IRQ_REGISTER.md) and the 28 assurance clai
 - **Claim coverage:** 28 of 28 claims are supported by ≥1 IRQ (Table 2; minimum support is CLM-16 and CLM-28 with 1 IRQ each). Orphan claims: **0**.
 - Table 1 mapping entries total 169; Table 2 reverse-index entries total 169 — the two directions reconcile. (The CLM-23 cross-reference on IRQ-GOV-014 is an assessment note, not a mapping entry, and is excluded from the count.)
 - **Gap closed, 25 August 2026:** IRQ-GOV-016 now maps to the dedicated CLM-28 (regulatory-reporting integrity) as primary claim, with CLM-25 retained as secondary support for the reconstruction/traceability overlap. CLM-08 is dropped from this mapping as no longer the closest available substitute.
-- Note: CLM-16, CLM-28 (single-IRQ support) and CLM-03/CLM-06 (two IRQs each) are flagged as thin-evidence claims: an opinion on these rests on few IRQs, so their canvases warrant priority depth in Phase 3.
+- Note: CLM-16, CLM-28 (single-IRQ support) and CLM-03/CLM-06 (two IRQs each) are flagged as thin-evidence claims: an opinion on these rests on few IRQs, so their canvases warrant priority depth.

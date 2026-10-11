@@ -57,9 +57,9 @@ Control Breakpoints:
 
 ## 9. Expected Controls (Traced)
 - **Mandatory currency check and content-owner assignment at ingestion** — [NIST AI RMF 1.0, MAP function; general document-lifecycle governance practice] — no document enters the retrievable index without a named owner and a review/expiry date.
-- **Automated deduplication and version-supersession detection** — [Barnett et al., 2024, "Seven Failure Points When Engineering a RAG System", arXiv:2401.05856] — duplicate or superseded document versions are detected and the superseded copy removed or flagged.
+- **Automated deduplication and version-supersession detection** — [Emerging Practice — grounded in general document-lifecycle governance practice] — duplicate or superseded document versions are detected and the superseded copy removed or flagged.
 - **Scheduled re-verification of indexed content currency** — [linked IRQ-DAT-012 retrieval drift] — indexed documents are periodically re-checked against the authoritative source repository, not assumed static.
-- **Faithfulness/grounding evaluation of retrieval outputs** — [Es et al., 2023, "RAGAS: Automated Evaluation of RAG", arXiv:2309.15217; Magesh et al., 2024, "Hallucination-Free? Assessing the Reliability of Leading AI Legal Research Tools"] — periodic testing confirms retrieved and generated content reflects the current authoritative source.
+- **Faithfulness/grounding evaluation of retrieval outputs** — [Es et al., 2023, "Ragas: Automated Evaluation of Retrieval Augmented Generation", arXiv:2309.15217; Magesh et al., 2024, "Hallucination-Free? Assessing the Reliability of Leading AI Legal Research Tools"] — periodic testing confirms retrieved and generated content reflects the current authoritative source.
 
 ## 10. Expected Evidence (Tagged L1–L5)
 - Statement that "our knowledge base is kept up to date" with no process detail — **L1**.
@@ -70,7 +70,7 @@ Control Breakpoints:
 - Production monitoring: count and resolution of stale-content flags raised over a defined period — **L5**.
 
 ## 11. Independent Test
-> In a non-production replica of the RAG knowledge store, seed a superseded policy/product-terms document alongside its current replacement (both present, as would occur from an incomplete update). Run representative customer-facing queries and measure: (1) whether the retriever surfaces the stale document, the current document, or both without disambiguation; (2) whether the generated response reflects stale or current terms; (3) whether any currency/ownership metadata would have flagged the stale document had the ingestion control been active. Methodology follows the RAG failure-point taxonomy of Barnett et al. (2024) and RAGAS-style faithfulness evaluation (Es et al., 2023). No production data or systems used. — **★3 Confidence — as at FAIAS v1.1.0 (25 August 2026)** (RAG failure-point taxonomies and faithfulness-evaluation tooling are published and used by multiple independent groups; no single canonical "currency-check adequacy" benchmark exists for FS knowledge stores, keeping this short of ★4).
+> In a non-production replica of the RAG knowledge store, seed a superseded policy/product-terms document alongside its current replacement (both present, as would occur from an incomplete update). Run representative customer-facing queries and measure: (1) whether the retriever surfaces the stale document, the current document, or both without disambiguation; (2) whether the generated response reflects stale or current terms; (3) whether any currency/ownership metadata would have flagged the stale document had the ingestion control been active. The seeded-supersession design is this canvas's own. It draws on Barnett et al. (2024) for RAG failure in general, whose seven failure points do not include superseded or stale documents, and on RAGAS-style faithfulness evaluation (Es et al., 2023). No production data or systems used. — **★3 Confidence — as at FAIAS v1.1.0 (25 August 2026)** (RAG failure-point taxonomies and faithfulness-evaluation tooling are published and used by multiple independent groups; no single canonical "currency-check adequacy" benchmark exists for FS knowledge stores, keeping this short of ★4).
 
 ## 12. Pass Indicators
 - No document in the knowledge store lacks a currency check, owner and review date.
@@ -127,9 +127,9 @@ Residual risk: material and cumulative; scales with knowledge-store size and upd
 > [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] requires customer communications and decisions to be supported by accurate, current information; stale-policy retrieval is a direct foreseeable-harm risk under this outcome. [PRA SS1/23, Principle 3 (development/use) and Principle 4 (ongoing validation)] data-governance expectations extend to grounding-data currency for models influencing customer outcomes. No regulation names RAG currency-checking explicitly. [UNVERIFIED — no further pinpoint exists; the mechanism is genuinely unaddressed by name in the cited sources] (verified 29 Jul 2026).
 
 ## 18. Research Basis
-> [Barnett, S., et al., 2024, "Seven Failure Points When Engineering a RAG System", arXiv:2401.05856] — empirical failure-point taxonomy including stale/conflicting-document retrieval, directly informing the control set above. [Es, S., et al., 2023, "RAGAS: Automated Evaluation of RAG", arXiv:2309.15217] — reference-free faithfulness/relevance metrics usable for currency-grounding evaluation. [Magesh, V., et al., 2024, "Hallucination-Free? Assessing the Reliability of Leading AI Legal Research Tools", arXiv:2405.20362] — evidence that commercial RAG tools still hallucinate at material rates (between 17% and 33% of the time) even where vendors claim otherwise. [Friel, R., Belyi, M., Sanyal, A., 2024 (latest version January 2025), "RAGBench: Explainable Benchmark for Retrieval-Augmented Generation Systems", arXiv:2407.11005] — a 100,000-example benchmark spanning five industry domains including finance (FinQA, TAT-QA), whose TRACe framework makes retrieval quality separately measurable from generation quality: context Relevance isolates whether the retriever surfaced the right material at all, giving the ingestion-curation question a quantitative downstream check — poorly curated or stale corpora manifest as measurably degraded Relevance and Adherence rather than as an undetectable narrative problem. This lets the test score the retrieval layer with an explainable, published metric set instead of ad-hoc spot checks; the finance component (FinQA/TAT-QA-style tabular-plus-text reasoning) lets the tester exercise the corpus on document shapes resembling FS content. RAGBench is an academic benchmark, not FS-certified; no ★ change follows from this addition.
+> [Barnett, S., et al., 2024, "Seven Failure Points When Engineering a Retrieval Augmented Generation System", arXiv:2401.05856] — empirical failure-point taxonomy from three case studies; it names "contradicting information in the context" as one cause of the "Not Extracted" failure point and does not address stale or superseded documents. It informs the retrieval and extraction measures of the independent test, not the currency controls above. [Es, S., et al., 2023, "Ragas: Automated Evaluation of Retrieval Augmented Generation", arXiv:2309.15217] — reference-free faithfulness/relevance metrics usable for currency-grounding evaluation. [Magesh, V., et al., 2024, "Hallucination-Free? Assessing the Reliability of Leading AI Legal Research Tools", arXiv:2405.20362] — evidence that commercial RAG tools still hallucinate at material rates (between 17% and 33% of the time) even where vendors claim otherwise. [Friel, R., Belyi, M., Sanyal, A., 2024 (latest version January 2025), "RAGBench: Explainable Benchmark for Retrieval-Augmented Generation Systems", arXiv:2407.11005] — a 100,000-example benchmark spanning five industry domains including finance (FinQA, TAT-QA), whose TRACe framework makes retrieval quality separately measurable from generation quality: context Relevance isolates whether the retriever surfaced the right material at all, giving the ingestion-curation question a quantitative downstream check — poorly curated or stale corpora manifest as measurably degraded Relevance and Adherence rather than as an undetectable narrative problem. This lets the test score the retrieval layer with an explainable, published metric set instead of ad-hoc spot checks; the finance component (FinQA/TAT-QA-style tabular-plus-text reasoning) lets the tester exercise the corpus on document shapes resembling FS content. RAGBench is an academic benchmark, not FS-certified; no ★ change follows from this addition.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -141,13 +141,14 @@ Residual risk: material and cumulative; scales with knowledge-store size and upd
 
 ## 20. References
 ```
-[1] Barnett, S., et al., 2024. "Seven Failure Points When Engineering a RAG System." arXiv:2401.05856.
-[2] Es, S., James, J., Espinosa-Anke, L., Schockaert, S., 2023. "RAGAS: Automated Evaluation
+[1] Barnett, S., et al., 2024. "Seven Failure Points When Engineering a Retrieval Augmented Generation System." arXiv:2401.05856.
+[2] Es, S., James, J., Espinosa-Anke, L., Schockaert, S., 2023. "Ragas: Automated Evaluation
     of Retrieval Augmented Generation." arXiv:2309.15217.
 [3] Magesh, V., et al., 2024. "Hallucination-Free? Assessing the Reliability of Leading AI
     Legal Research Tools." arXiv:2405.20362.
 [4] FCA, 2022. "PS22/9: A New Consumer Duty" and "FG22/5." PRIN 2A in force 31 July 2023.
-[5] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023.
+[5] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023).
 ```
 
 ## 21. Four-Test Validation Footer
@@ -161,7 +162,8 @@ FOUR-TEST VALIDATION:
 ✓ Test 1 (SME Blind Spot): Document-lifecycle SMEs manage the authoritative repository but
   rarely realise the RAG index is a separate, silently divergent copy.
 ✓ Test 2 (Plausible Harm): Grounded in Barnett et al. (2024) RAG failure-point taxonomy and
-  Magesh et al. (2024) real-world commercial-tool failure rates.
+  Magesh et al. (2024) real-world commercial-tool failure rates for RAG failure in general;
+  the stale-policy harm itself rests on the PRIN 2A and SS1/23 anchors at field 17.
 ✓ Test 3 (Testable): Seeded stale-document injection testing is executable in non-production. ★3.
 ✓ Test 4 (Decision-Relevant): Gates whether a knowledge store may support customer-facing
   advice without a curation gate.
@@ -169,6 +171,9 @@ FOUR-TEST VALIDATION:
 Change Log:
 - v1.0 (2026-07): Initial publication.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 9, 18 and 20 — the Ragas and Seven Failure Points citations take their titles as issued ("Ragas: Automated Evaluation of Retrieval Augmented Generation"; "Seven Failure Points When Engineering a Retrieval Augmented Generation System"). Form corrections only. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 9, 11, 18 and 21 — the deduplication and version-supersession control no longer cites Barnett et al. and is labelled Emerging Practice, since the paper's seven failure points do not include duplicate, superseded or stale documents; the Field 18 description of the paper corrected to the failure points it names; Field 11 states that the seeded-supersession design is the canvas's own and cites the paper for RAG failure in general; Field 21 Test 2 cites the paper for RAG failure in general and rests the stale-policy harm on the Field 17 anchors. Research-basis review date moved. ★3 unchanged.
 ```
 
 ---

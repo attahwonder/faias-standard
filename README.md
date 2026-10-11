@@ -1,6 +1,6 @@
 # FAIAS — Financial AI Independent Assurance Standard
 
-**Version:** 1.3.2 · **Status:** Components 1–3 and 5 complete and verified, with the limits stated in §3; Components 4, 6–7 seeded (see §3) · **Last updated:** October 2026
+**Version:** 1.3.3 · **Status:** Components 1–3 and 5 complete and verified, with the limits stated in §3; Components 4, 6–7 seeded (see §3) · **Last updated:** 9 October 2026
 
 ---
 
@@ -46,6 +46,8 @@ The baseline supports several uses: design review, pre-production testing, indep
 | CON | Conduct & Fairness | H.1–H.3 (discrimination, outcomes, feedback/transparency, ordinary-use harm) | 10 |
 | GOV | Governance | I.1–I.4 (inventory, approval/tiering, validation, records) | 16 |
 
+**AI trust.** FAIAS has no "trust" domain. For the narrower reading of AI trust (governance, security and resilience), `V2_IRQ_Battery/TRUST_VIEW.md` lists those questions and claims in one place.
+
 ---
 
 ## 2. File map
@@ -71,7 +73,7 @@ All paths relative to the `FAIAS\` folder.
 |---|---|
 | `SOURCE_REGISTER_LABS.md` | 100 frontier-lab publications (Anthropic, OpenAI, DeepMind, Microsoft, Meta, Amazon, Mistral, Cohere, AI2), 2022–2026 |
 | `SOURCE_REGISTER_ACADEMIC.md` | 139 academic papers organised by FAIAS domain, with links and assurance relevance |
-| `INCIDENT_REGISTER.md` | 46 publicly documented incidents with transferable failure modes for financial services — AI incidents and two labelled automation analogues (rows 2 and 14) — with the IRQs whose canvases cite each row named against it |
+| `INCIDENT_REGISTER.md` | 91 publicly documented incidents with transferable failure modes for financial services — AI incidents, four labelled automation or non-AI analogues (rows 2, 14, 62 and 91) and one audit finding of control gaps with no harm event (row 66) — with the IRQs whose canvases cite each row named against it |
 
 ### V2_IRQ_Battery — the core methodology (Component 2 + 3)
 | File | Purpose |
@@ -81,6 +83,7 @@ All paths relative to the `FAIAS\` folder.
 | `REGISTER_STATS.md` | Counts, four-test dispositions, deliberate gaps with rationale |
 | `CLAIMS_REGISTER.md` | 28 Assurance Claims with rationale, materiality lenses, criticality |
 | `IRQ_CLAIM_MATRIX.md` | Two-way IRQ↔claim mapping with no-orphan verification |
+| `TRUST_VIEW.md` | AI trust view: the Governance, Security and Operational Resilience questions and the claims of the Security, Resilience and Governance themes, listed in one place; an index that adds no question or claim |
 | `EXEMPLAR_CANVASES.md` | The two gold-standard canvases (IRQ-SEC-003, IRQ-MOD-006) that set the quality bar |
 | `canvases\CANVASES_DAT.md` … `CANVASES_GOV.md`, with `CANVASES_<DOM>_<nnn>.md` | The 109 completed Review Canvases — 107 in their own files, one per canvas, each listed in its domain file, plus IRQ-SEC-003 and IRQ-MOD-006 in `EXEMPLAR_CANVASES.md` |
 | `canvases\QA_LOG_BATCH1–3.md` | Independent quality-assurance logs for every drafting batch |
@@ -99,6 +102,8 @@ All paths relative to the `FAIAS\` folder.
 ### Reading order for a new reviewer
 1. This README → 2. `ASSURANCE_MODEL.md` → 3. `ASSURANCE_ARCHITECTURE.md` → 4. `TIERING_MODEL.md` → 5. `ENGAGEMENT_MODEL.md` → 6. `TAXONOMY.md` + `IRQ_REGISTER.md` → 7. the domain canvas files relevant to the engagement → 8. `OPINION_TEMPLATE.md`.
 
+A reader who uses "AI trust" in its narrower sense (governance, security and resilience) can start at `V2_IRQ_Battery/TRUST_VIEW.md`.
+
 ---
 
 ## 2A. Ownership and licence
@@ -113,7 +118,7 @@ FAIAS is © 2026 Wonder Attah and is published under the **Creative Commons Attr
 
 - Components 1–3 (taxonomy, IRQ battery, claims) are complete, QA'd and source-verified. Component 5 (testing playbook) is complete as of 12 September 2026: 109 standalone step-by-step procedures, one per IRQ (see `V3_Testing_Playbook/PLAYBOOK_OVERVIEW.md`). Components 4, 6 and 7 are seeded but not fully built (evidence catalogue is a seed; safety case and opinion exist as templates without a worked example). Components 4, 6 and 7 are non-normative: they illustrate one use of FAIAS and are not requirements of the standard.
 - **A regulatory correction pass was completed on 29 July 2026** — 104 edits, covering the EBA outsourcing section structure, PRA SS1/23 principle attribution and currency, the EU AI Act timeline, and ten verification-log rows that had recorded wrong pinpoints as confirmed. See `00_Admin/CORRECTION_LOG_2026-07-29.md`, which also lists four ★-rating questions left open for the owner's decision. They were resolved at v1.1.0 (25 August 2026): IRQ-CON-005 was re-rated ★1, and IRQ-CON-003, -006 and -008 kept ★2, as each canvas's Independent Test states (`V2_IRQ_Battery/canvases/CANVASES_CON.md`).
-- Later errata are recorded in `00_Admin/CORRECTION_LOG_2026-08-01.md` (v1.0.3), `00_Admin/CORRECTION_LOG_2026-09-19.md` (v1.2.1, errata to text signed at v1.2.0, each entry naming what it was checked against) and `00_Admin/CORRECTION_LOG_2026-10-03.md` (v1.3.0, the changes made for open publication and the errata found in preparing it; and its §8, v1.3.2, corrections to text signed at v1.3.1). `00_Admin/MIGRATION_2026-10-03.md` maps the v1.3.1 file layout, in which each canvas and each test procedure has its own file and the text is unchanged.
+- Later errata are recorded in `00_Admin/CORRECTION_LOG_2026-08-01.md` (v1.0.3), `00_Admin/CORRECTION_LOG_2026-09-19.md` (v1.2.1, errata to text signed at v1.2.0, each entry naming what it was checked against), `00_Admin/CORRECTION_LOG_2026-10-03.md` (v1.3.0, the changes made for open publication and the errata found in preparing it; and its §8, v1.3.2, corrections to text signed at v1.3.1) and `00_Admin/CORRECTION_LOG_2026-10-09.md` (v1.3.3, changes to text signed at v1.3.2). `00_Admin/MIGRATION_2026-10-03.md` maps the v1.3.1 file layout, in which each canvas and each test procedure has its own file and the text is unchanged.
 - **Prescribed procedures are a ceiling, not a floor.** Effort figures assume manual execution and describe the maximal Tier 3 form; depth is calibrated per engagement and automated execution reduces effort on mechanical test classes substantially without changing ★ confidence. See `V3_Testing_Playbook/PLAYBOOK_OVERVIEW.md` §5A.
 - Residual `[UNVERIFIED — reason]` tags remain where a sub-clause pinpoint could not be confirmed against a primary source; the citation is generalised conservatively rather than asserted. See the verification logs.
 - Testing Confidence ratings are anchored on a ★1–★5 scale; no test in the standard is rated ★5. This is deliberate: no AI assurance test yet has a settled financial-services benchmark.

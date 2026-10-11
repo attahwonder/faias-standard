@@ -113,7 +113,7 @@ Assuming controls are well-implemented and monitored:
     is triggered by workflow change and periodically sampled)
   Detectability: 2 (detectable via periodic decision-trace sampling
     audit, ahead of any real incident)
-  Recoverability: 2 (reversible via a re-mapping exercise once
+  Recoverability: 3 (reversible via a re-mapping exercise once
     identified; days-to-weeks)
   Novelty: 3 (domain expert assumes SM&CR system-level ownership
     resolves the accountability question; the decision-level and
@@ -151,16 +151,16 @@ documentation update cycles.
 | **Severity** | 2 | Does not directly cause customer harm but materially impedes resolution, investigation and SM&CR discharge if harm occurs elsewhere |
 | **Likelihood** | 3 | Probable given how routinely workflow architecture is extended without a corresponding accountability re-mapping trigger |
 | **Detectability** | 2 | Detectable via periodic decision-trace sampling audit, ahead of any real incident, if the sampling programme is active |
-| **Recoverability** | 2 | Reversible via a re-mapping exercise once identified, typically within weeks |
+| **Recoverability** | 3 | Reversible via a re-mapping exercise once identified, typically within weeks |
 | **Novelty** | 3 | Domain expert assumes system-level SM&CR ownership resolves the accountability question; decision-level, multi-agent-specific tracing is not standard governance-audit practice |
 
 ## 17. Regulatory Basis
 > [FCA/PRA, Senior Managers & Certification Regime] requires individual accountability for material business functions, which extends to AI-influenced decisions but was designed before widespread multi-agent AI workflows existed, creating an interpretive gap this canvas addresses. [FCA, Handbook SYSC 4.1.1R] requires robust governance arrangements generally, including control and safeguard arrangements for information processing systems. [FCA, Handbook SYSC 9, Record Keeping] requires records sufficient to reconstruct and attribute decisions. Section pinpoints on SM&CR application to multi-agent workflows specifically [UNVERIFIED — SM&CR, SYSC 4 and SYSC 9 confirmed extant (SYSC 19D removed 25 Aug 2026 — Remuneration Code, mis-cited; SYSC 4.1.1R substituted, Handbook-verified); no FCA/PRA text specifically addressing multi-agent AI workflow attribution has been published to cite] (verified 29 Jul 2026).
 
 ## 18. Research Basis
-> [OWASP GenAI Security Project, "Agentic AI: Threats and Mitigations", Feb 2025] documents the "confused deputy" and diffuse-responsibility patterns in multi-agent systems relevant to this failure mode. [Vaccaro, K., Sandvig, C. & Karahalios, K., 2020, "'At the End of the Day Facebook Does What ItWants': How Users Experience Contesting Algorithmic Content Moderation", CSCW 2020] documents user experience of unattributable algorithmic decisions, illustrating the downstream contestability consequence of an accountability gap. Wells Fargo's 2016 cross-selling scandal (public regulatory settlement record, CFPB Consent Order, Sept 2016) is cited as a non-AI real-world analogue for diffuse organisational accountability across a delegated process, illustrating the consequence pattern this IRQ seeks to prevent in an AI context — cited for the accountability-diffusion pattern, not as an AI-specific precedent.
+> [OWASP GenAI Security Project, "Agentic AI: Threats and Mitigations", Feb 2025] documents the "confused deputy" and diffuse-responsibility patterns in multi-agent systems relevant to this failure mode. [Vaccaro, K., Sandvig, C. & Karahalios, K., 2020, "'At the End of the Day Facebook Does What It Wants': How Users Experience Contesting Algorithmic Content Moderation", CSCW 2020] documents user experience of unattributable algorithmic decisions, illustrating the downstream contestability consequence of an accountability gap. Wells Fargo's 2016 cross-selling scandal (public regulatory settlement record, CFPB Consent Order, Sept 2016) is cited as a non-AI real-world analogue for diffuse organisational accountability across a delegated process, illustrating the consequence pattern this IRQ seeks to prevent in an AI context — cited for the accountability-diffusion pattern, not as an AI-specific precedent.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -208,6 +208,8 @@ Related IRQs:
 **Change Log:**
 - v1.0 (2026-07): Initial publication; all four tests passed.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — the Vaccaro et al. title given as the article's own first page gives it ("Does What It Wants"), in place of "Does What ItWants", the form in the publisher's landing-page and DOI metadata; reference [2] in field 20 already gave it so. Research-basis review date moved. No change to controls, test, ★ rating or risk profile.
+- v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2 (Field 16, and the controls-in-place case in Field 15). The canvas states recovery typically within weeks, which is beyond the within-hours level that ASSURANCE_MODEL.md §7 scores 2; the scale names no band between days and years, and 3 (reversible within days) is the nearest anchor. The other axes, the ★ rating and the research basis are unchanged.
 ```
 
 ---

@@ -63,7 +63,7 @@ Control Breakpoints:
 
 ## 9. Expected Controls (Traced)
 - **Error-reinforcement testing with deliberately seeded errors** — [Hammond et al., "Multi-Agent Risks from Advanced AI," 2025, arXiv:2502.14143, miscoordination/collusion taxonomy] — inject a known error into one agent's intermediate output and measure whether downstream agents catch or amplify it.
-- **Genuine independence design (model/prompt/training diversity) where challenge is claimed** — [linked IRQ-AGT-007; Motwani et al., "Secret Collusion among Generative AI Agents," 2024, arXiv:2402.07510] — where independent review is the intended control, agents should not share identical model weights, prompts or training data without additional compensating checks.
+- **Genuine independence design (model/prompt/training diversity) where challenge is claimed** — [linked IRQ-AGT-007; Motwani et al., "Secret Collusion among AI Agents: Multi-Agent Deception via Steganography," 2024, arXiv:2402.07510] — where independent review is the intended control, agents should not share identical model weights, prompts or training data without additional compensating checks.
 - **Per-agent, attributable action traces** — [linked IRQ-AGT-011; Chan et al., "Visibility into AI Agents," FAccT 2024] — every agent's individual contribution to the final output is separately logged and reconstructable.
 - **Named accountable human owner mapped through the multi-agent workflow (SMCR)** — [linked IRQ-HUM-006; UK Senior Managers and Certification Regime] — a human, not the orchestration itself, is accountable for the decision, with a documented basis for that accountability given the multi-agent process.
 - **Governance recognition that multi-agent "consensus" requires the same independent-validation rigour as a single model** — [linked IRQ-GOV-007; PRA SS1/23 independent validation principle] — validation is not satisfied merely by observing agents agreeing with each other.
@@ -140,12 +140,14 @@ control must demonstrate genuine independence before that claim is relied upon.
 | **Novelty** | 4 | The illusion of independence in shared-model multi-agent design directly contradicts governance SMEs' "four eyes" intuition; entirely AI-specific. |
 
 ## 17. Regulatory Basis
-> No regulation names "multi-agent illusory independence" explicitly. [PRA SS1/23, May 2023] requires independent validation performed by a party genuinely independent of development — the same principle applies by extension to agents claiming to independently review each other. [UK Senior Managers and Certification Regime (SMCR)] requires named individual accountability for material decisions, which a multi-agent consensus with no attribution record cannot satisfy. [FCA AI Update, Apr 2024] confirms governance of AI decisions through existing SYSC/SMCR frameworks. [Hammond et al., 2025] and [OWASP Agentic AI: Threats and Mitigations, Feb 2025] are cited as accepted research/practice, not binding regulation.
+> No regulation names "multi-agent illusory independence" explicitly. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] requires independent validation performed by a party genuinely independent of development — the same principle applies by extension to agents claiming to independently review each other. [UK Senior Managers and Certification Regime (SMCR)] requires named individual accountability for material decisions, which a multi-agent consensus with no attribution record cannot satisfy. [FCA AI Update, Apr 2024] confirms governance of AI decisions through existing SYSC/SMCR frameworks. [Hammond et al., 2025] and [OWASP Agentic AI: Threats and Mitigations, Feb 2025] are cited as accepted research/practice, not binding regulation.
 
 ## 18. Research Basis
-> [Hammond, L., et al., 2025, "Multi-Agent Risks from Advanced AI," Cooperative AI Foundation, arXiv:2502.14143] — the reference taxonomy identifying miscoordination, conflict and collusion among multiple AI agents, including error-reinforcement dynamics. [Motwani, S., et al., 2024, "Secret Collusion among Generative AI Agents," arXiv:2402.07510] — demonstrates that agents can coordinate (including steganographically) in ways hard to detect, informing the "illusory independence" framing. [Calvano, E., et al., 2020, "Artificial Intelligence, Algorithmic Pricing, and Collusion," American Economic Review] — regulator-recognised evidence that independently-trained algorithmic agents can converge on correlated behaviour without explicit communication, supporting caution about assuming independence from architectural separation alone.
+> [Hammond, L., et al., 2025, "Multi-Agent Risks from Advanced AI," Cooperative AI Foundation, arXiv:2502.14143] — the reference taxonomy identifying miscoordination, conflict and collusion among multiple AI agents, including error-reinforcement dynamics. [Motwani, S., et al., 2024, "Secret Collusion among AI Agents: Multi-Agent Deception via Steganography," arXiv:2402.07510] — demonstrates that agents can coordinate (including steganographically) in ways hard to detect, informing the "illusory independence" framing. [Calvano, E., et al., 2020, "Artificial Intelligence, Algorithmic Pricing, and Collusion," American Economic Review] — regulator-recognised evidence that independently-trained algorithmic agents can converge on correlated behaviour without explicit communication, supporting caution about assuming independence from architectural separation alone. [Zhang, S., et al., 2025, "Which Agent Causes Task Failures and When? On Automated Failure Attribution of LLM Multi-Agent Systems," Proc. ICML 2025, PMLR 267:76583-76599, arXiv:2505.00212] — introduces the Who&When dataset of failure logs from 127 multi-agent systems, annotated with the responsible agent and the decisive error step, and evaluates three automated attribution methods; code and dataset are public. It bears on whether a contribution can be attributed to one agent from a trace. The best method identified the responsible agent in 53.5% of cases and the failing step in 14.2%, and the authors report that even state-of-the-art reasoning models did not reach practical usability. It tests attribution after the fact from logs, not the design of accountability, and it is not specific to financial services.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Fast (6 months)
+> **[FAIAS Incident Register, row 52, "Project Vend phase two", 2025]** — in the second phase of an AI laboratory's pilot office shop, a CEO agent built on the same model as the shopkeeper agent it supervised "shared many of the deficiencies and blind spots" of that agent, in the laboratory's words; it denied over one hundred requests from the shopkeeper for lenient treatment of customers, but authorised such requests about eight times as often as it denied them. In a vote to name the CEO agent, a staff member convinced the shopkeeper, without evidence, that their whole part of the organisation had voted for a name, and the shopkeeper then announced a staff member as the business's CEO. A checking agent on the same model shared the blind spots of the agent it checked, so its challenge was not independent. The source is the laboratory's own report of a pilot, not a production deployment.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -162,13 +164,17 @@ control must demonstrate genuine independence before that claim is relied upon.
 ```
 [1] Hammond, L., et al., 2025. "Multi-Agent Risks from Advanced AI." Cooperative AI
     Foundation. arXiv:2502.14143.
-[2] Motwani, S., et al., 2024. "Secret Collusion among Generative AI Agents."
+[2] Motwani, S., et al., 2024. "Secret Collusion among AI Agents: Multi-Agent Deception via Steganography."
     arXiv:2402.07510.
 [3] Calvano, E., Calzolari, G., Denicolò, V., Pastorello, S., 2020. "Artificial
     Intelligence, Algorithmic Pricing, and Collusion." American Economic Review 110(10).
-[4] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023.
+[4] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023).
 [5] FCA, 2024. "AI Update." April 2024.
 [6] FCA/PRA. "Senior Managers and Certification Regime (SMCR)."
+[7] Zhang, S., et al., 2025. "Which Agent Causes Task Failures and When? On Automated
+    Failure Attribution of LLM Multi-Agent Systems." Proc. 42nd International Conference
+    on Machine Learning, PMLR 267:76583-76599. arXiv:2505.00212.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -193,6 +199,14 @@ FOUR-TEST VALIDATION:
 
 Change Log:
 - v1.0 (2026-07): Initial publication; all four tests passed.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 52, Project Vend phase two, a pilot and not a production deployment). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.3 (2026-10-09): Fields 9, 18 and 20 — the Motwani et al. paper is cited under its current title, "Secret Collusion among AI Agents: Multi-Agent Deception via Steganography" (the first version, February 2024, was titled "Secret Collusion among Generative AI Agents"). Form corrections only. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — Who&When failure-attribution dataset
+  added as a published method for the attribution limb, with its limits. Field 20 —
+  entry [7] added. Research-basis review date moved. No change to controls, test, ★2 or
+  risk profile.
 ```
 
 ---

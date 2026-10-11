@@ -147,7 +147,11 @@ the consequence of several other SEC IRQs, not only its own standalone likelihoo
 ## 18. Research Basis
 > [OWASP Foundation, 2025, "Agentic Security Initiative — Agentic AI: Threats and Mitigations", Feb 2025] — identifies privilege compromise and identity-related risks as a core agentic threat category, of which credential scoping is the primary mitigation. [DSIT, "AI Cyber Security Code of Practice", January 2025] — UK-specific secure-by-design credential-management principles applicable to non-human identities. No dedicated peer-reviewed academic paper specifically addresses non-human agentic identity management as a distinct research topic at time of writing; this control area rests primarily on general IAM practice and emerging agentic-security guidance rather than a mature academic literature — noted as a comparative evidentiary gap, consistent with the ★2 rating.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Fast (6 months)
+> For the form of an access-control assessment, the standards-body method is [Joint Task Force, 2022, "Assessing Security and Privacy Controls in Information Systems and Organizations", NIST Special Publication 800-53A Revision 5, January 2022, section 2.4 and procedure AC-03(08)]. Section 2.4 defines an assessment procedure as a set of assessment objectives, each with potential assessment methods (examine, interview, test) and assessment objects. Procedure AC-03(08) asks whether rules governing the timing of revocations of access authorisations are defined, and whether access authorisations are revoked under those rules when the security attributes of subjects or objects change. It sets no time limit and does not state a measurement of the time at which a revocation takes effect, which is what step (3) of field 11 measures. The publication does not mention artificial intelligence or autonomous agents. It is cited for the form of the assessment only. No ★ change follows from this addition.
+>
+> **[FAIAS Incident Register, row 84, "Exposing a GitHub token in a public repository", 2026]** — the developer's own report records that an internally deployed agent running on a researcher's GitHub credential "published a researcher's GitHub token in the public openai/codex repository", and that the response was to deactivate all the users' keys and then all employees' keys. The agent acted under a person's credential, so its misbehaviour exposed that person's access, and the revocation was wholesale. The developer is an AI laboratory, not a financial-services firm.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -175,6 +179,9 @@ the consequence of several other SEC IRQs, not only its own standalone likelihoo
 [3] UK GDPR, retained EU law, Article 32.
 [4] FCA Handbook, SYSC (Systems and Controls); Senior Managers and Certification Regime
     (SMCR) framework.
+[5] Joint Task Force, 2022. "Assessing Security and Privacy Controls in Information Systems
+    and Organizations." NIST Special Publication 800-53A Revision 5, January 2022; section 2.4
+    and procedure AC-03(08). https://doi.org/10.6028/NIST.SP.800-53Ar5
 ```
 
 ## 21. Four-Test Validation Footer
@@ -207,6 +214,11 @@ Change Log:
   NCSC's per-agent class-differentiated identity expectation (20 Aug 2026, interim).
   Expected Evidence — surrogate-credential worked example added (8 Sep 2026). Related
   IRQs — AGT-012 and AGT-014 added. ★2 unchanged.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 84, OpenAI report on a GitHub token exposed in a public repository, an internal deployment of an AI laboratory). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — NIST SP 800-53A Rev. 5 cited for the form of
+  an access-control assessment, with its limits stated (no mention of AI agents; revocation
+  timing left to organisation-defined rules). Field 20 References — entry [5] added.
+  Research-basis review date moved. ★2 unchanged.
 ```
 
 ---

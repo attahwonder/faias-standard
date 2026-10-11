@@ -167,9 +167,9 @@ controls and aggregation-framework controls.
 > [Basel Committee on Banking Supervision, "Principles for effective risk data aggregation and risk reporting" (BCBS 239), January 2013] sets 14 principles across governance and infrastructure, risk data aggregation capabilities, risk reporting practices, and supervisory review, initially binding on global systemically important banks from 1 January 2016. The principles' accuracy and integrity, completeness, timeliness, adaptability and traceability requirements were written for system-sourced risk data; no provision within the framework, and no subsequent regulatory instrument identified in the verified source set, explicitly extends these principles to AI-generated or AI-assisted content. This IRQ's control objective therefore rests on reasoned analogy — that content contributing to the same aggregation estate should meet the same discipline regardless of how it was produced — rather than a settled regulatory requirement specific to AI, and this is stated openly rather than an AI-specific anchor being invented.
 
 ## 18. Research Basis
-> No peer-reviewed literature specifically evaluating the application of risk-data aggregation principles to AI-generated content in financial-services risk reporting was identified in the source registers; this control area is regulatory-instrument-led (the Basel Committee's aggregation and reporting principles) rather than research-led, extended by reasoned analogy rather than incident-evidenced, consistent with the honest confidence rating given at Independent Test.
+> No peer-reviewed literature specifically evaluating the application of risk-data aggregation principles to AI-generated content in financial-services risk reporting was identified in the source registers; this control area is regulatory-instrument-led (the Basel Committee's aggregation and reporting principles) rather than research-led, extended by reasoned analogy rather than incident-evidenced, consistent with the honest confidence rating given at Independent Test. [European Central Bank, Banking Supervision, "Guide on effective risk data aggregation and risk reporting," May 2024] sets out supervisory expectations for risk data aggregation and reporting against the Basel Committee's principles (BCBS 239), including complete and up-to-date data lineages at data-attribute level, and records that the ECB's thematic review of 25 significant institutions was complemented by a data lineage exercise for credit risk and a fire drill exercise for liquidity risk. It is a supervisory source for the reverse trace in field 11, from a reported figure back through its lineage. It does not set out a protocol for either exercise, and it does not address AI-originated content.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -190,6 +190,9 @@ controls and aggregation-framework controls.
     risk data aggregation and risk reporting" (BCBS 239).
     Published: January 2013. Initially binding on global systemically
     important banks from 1 January 2016.
+[2] European Central Bank, Banking Supervision, 2024. "Guide on effective risk data aggregation and risk reporting."
+    Published: May 2024
+    URL: https://www.bankingsupervision.europa.eu/ecb/pub/pdf/ssm.supervisory_guides240503_riskreporting.en.pdf
 ```
 
 ## 21. Four-Test Validation Footer
@@ -218,5 +221,6 @@ FOUR-TEST VALIDATION:
 
 Change Log:
 - v1.0 (2026-07-31): Initial publication; all four tests passed.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — the ECB's May 2024 guide on risk data aggregation and risk reporting added as a supervisory source for data lineage and the reverse trace, with its limits. Field 20 — entry [2] added. Research-basis review date moved. No change to controls, test, ★2 or risk profile.
 ```
 

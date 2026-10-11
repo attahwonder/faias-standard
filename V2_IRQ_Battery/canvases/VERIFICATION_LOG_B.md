@@ -104,7 +104,7 @@ Resolution key: **CONFIRMED** = claim verified accurate against a live primary s
 |---|---|---|---|---|
 | 1 | Rusu/Rathi speeches | Individual speech pages not fetched | UNRESOLVABLE — index page confirmed live, individual titles/dates not each confirmed | fca.org.uk/news/speeches |
 | 2 | AIC minutes | Page structure not fetched | UNRESOLVABLE — page blocked by robots.txt; existence/URL confirmed via search only | bankofengland.co.uk/financial-stability/artificial-intelligence-consortium |
-| 3 | Prohibited practices guidelines Art.5 | Reference number C(2025) 884 | UNRESOLVABLE — press page and Feb 2025 date confirmed; document number not independently confirmed against OJ/Commission register | digital-strategy.ec.europa.eu |
+| 3 | Prohibited practices guidelines Art.5 | Reference number C(2025) 884 | UNRESOLVABLE — press page and Feb 2025 date confirmed; document number not independently confirmed against OJ/Commission register **Correction (added 10 October 2026).** The Guidelines are C(2025) 5052 final of 29 July 2025. Their content was approved as C(2025) 884 final and published on 4 February 2025. | digital-strategy.ec.europa.eu |
 | 4 | EBA/ESA AI statements | Document titles/dates | UNRESOLVABLE — rolling-programme placeholder; individual documents not confirmed | eba.europa.eu |
 | 5 | MAS AIRG consultation reference number | "P020-2025" placeholder | CORRECTED — no formal MAS reference number found on MAS site or secondary trackers (Linklaters, Allen & Gledhill, BABL AI, Waystone); field corrected to state this explicitly | mas.gov.sg/publications/consultations/2025/consultation-paper-on-guidelines-on-artificial-intelligence-risk-management |
 | 6 | MDDI/MAS MindForge | Exact titles/dates | UNRESOLVABLE — collaboration confirmed via secondary reporting; primary document list not confirmed | mas.gov.sg |
@@ -113,7 +113,7 @@ Resolution key: **CONFIRMED** = claim verified accurate against a live primary s
 | 9 | HKMA AML/AI circular date | "Circular of 9 Sep 2024" | CONFIRMED — verified live: "Use of Artificial Intelligence for Monitoring of Suspicious Activities," circular of 9 Sep 2024 | hkma.gov.hk/media/eng/doc/key-information/guidelines-and-circular/2024/20240909e1.pdf |
 
 Also corrected while in the register (not part of original 9, found during the same pass and fixed for accuracy):
-- **NIST COSAIS status** — CONFIRMED: concept paper released 26 Aug 2025, programme still in development (draft use cases) — [nist.gov](https://www.nist.gov/news-events/news/2025/08/nist-releases-control-overlays-securing-ai-systems-concept-paper)
+- **NIST COSAIS status** — CONFIRMED: concept paper released 26 Aug 2025, programme still in development (draft use cases) — [nist.gov](https://www.nist.gov/news-events/news/2025/08/nist-releases-control-overlays-securing-ai-systems-concept-paper) **Correction (added 10 October 2026).** NIST released the concept paper on 14 August 2025, not 26 August 2025. An annotated outline followed on 8 January 2026.
 - **ISO/IEC 27090 status** — CORRECTED: exact title confirmed; standard is at FDIS ballot stage (50.20), not yet published — [iso.org/standard/56581.html](https://www.iso.org/standard/56581.html)
 - **OWASP AI Testing Guide status** — CORRECTED: v1.0 officially released 26 Nov 2025 (was previously listed "in progress") — [owasp.org/www-project-ai-testing-guide](https://owasp.org/www-project-ai-testing-guide/)
 
@@ -139,5 +139,7 @@ Also corrected while in the register (not part of original 9, found during the s
 | SOURCE_REGISTER_REGULATORY.md | 9 | 1 | 1 (+3 bonus corrections outside the original 9) | 7 |
 | V1_Research_Compendium (3 items) | 3 | 1 | 2 | 0 |
 | **Total** | **79** | **10** | **12** | **56** |
+
+**Correction (added 10 October 2026).** The counts above do not all agree with the rows. The Corrected column sums to 13, not 12. By the first word of each row's Resolution cell, the sections hold: CANVASES_GOV.md 5 CORRECTED and 5 UNRESOLVABLE; CANVASES_TPR.md 4 CONFIRMED, 1 RESOLVED, 3 CORRECTED, 15 UNRESOLVABLE and 1 convention note; CANVASES_RES.md 3 CORRECTED, 6 UNRESOLVABLE and 1 row updated to reference this log; CANVASES_CON.md 4 CONFIRMED (one of them partial), 10 UNRESOLVABLE and 1 row updated to reference this log; SOURCE_REGISTER_REGULATORY.md 1 CONFIRMED, 1 CORRECTED and 7 UNRESOLVABLE. These counts differ from the headings of those five sections, and for CANVASES_TPR.md, CANVASES_RES.md and CANVASES_CON.md from the table. The CANVASES_HUM.md and research-register sections agree with their rows. The July 2026 record above is kept as written.
 
 Note: the large "unresolvable" share is expected and by design for this domain — most flags are either (a) requests for a *sub-clause pinpoint* within an already-confirmed regulatory module/article (the module/article itself is accurate; no regulator has published AI-specific sub-clause text to cite more precisely), or (b) searches for a *specific peer-reviewed citation* for a named phenomenon where none was found to exist, which is itself the correct and honest finding rather than a gap in this verification pass. No substantive content was removed; no pinpoint was invented.

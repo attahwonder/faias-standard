@@ -12,6 +12,8 @@ The primary unit is the **Independent Review Question (IRQ)** — not a risk lab
 
 **Homing rule.** An IRQ lives in the domain of its primary failure surface (where the defect originates or the assurance evidence sits), not its consequence. Cross-cutting concerns are placed once and cross-referenced via Related IRQs.
 
+**AI trust is not a domain.** `TRUST_VIEW.md` lists the GOV, SEC and RES questions, and the claims of the Security, Resilience and Governance themes, in one place. Each question keeps its one home under the homing rule.
+
 ---
 
 ## Domain → subdomain hierarchy

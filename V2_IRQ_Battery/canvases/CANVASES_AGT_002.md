@@ -129,12 +129,16 @@ should not be passed without mid-execution monitoring and reconfirmation.
 | **Novelty** | 4 | Mid-execution objective staleness has no analogue in manual single-decision-point processes; entirely AI-specific risk. |
 
 ## 17. Regulatory Basis
-> No regulation names mid-execution intent change explicitly. [FCA PRIN 2A Consumer Duty, in force Jul 2023] requires firms to act in good faith towards retail customers (PRIN 2A.2.1R) and avoid causing foreseeable harm (PRIN 2A.2.8R) — engaged where an automated process continues acting on superseded instructions. [PRA SS1/23, May 2023] and the [PRA/FCA operational resilience regime, PRA SS1/21, FCA PS21/3] require tested containment and recovery capability, directly applicable to mid-plan termination. [NIST AI 600-1, Jul 2024] identifies human-AI configuration and value-chain risks requiring interruptibility. [OpenAI, "Practices for Governing Agentic AI Systems," Dec 2023] establishes interruptibility as a named agent-governance practice, cited as accepted industry practice rather than binding regulation. [UNVERIFIED — general anchor confirmed (PRA SS1/21, FCA PS21/3, impact-tolerance-setting requirements), exact sub-paragraph pinpoint not confirmed against the primary text] (verified 29 Jul 2026, general citation only).
+> No regulation names mid-execution intent change explicitly. [FCA PRIN 2A Consumer Duty, in force Jul 2023] requires firms to act in good faith towards retail customers (PRIN 2A.2.1R) and avoid causing foreseeable harm (PRIN 2A.2.8R) — engaged where an automated process continues acting on superseded instructions. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] (Principle 5.2) expects firms to consider restrictions on a model's use when validation finds significant model deficiencies or errors, or when performance tests show a significant breach has occurred or is likely to occur, including limits that prohibit its use for specific purposes. The [PRA/FCA operational resilience regime, PRA SS1/21, FCA PS21/3] requires scenario-based exercising of operational resilience arrangements. This canvas interprets both as extending to tested containment and recovery capability, directly applicable to mid-plan termination. [NIST AI 600-1, Jul 2024] identifies human-AI configuration and value-chain risks requiring interruptibility. [OpenAI, "Practices for Governing Agentic AI Systems," Dec 2023] establishes interruptibility as a named agent-governance practice, cited as accepted industry practice rather than binding regulation. [UNVERIFIED — general anchor confirmed (PRA SS1/21, FCA PS21/3, impact-tolerance-setting requirements), exact sub-paragraph pinpoint not confirmed against the primary text] (verified 29 Jul 2026, general citation only).
 
 ## 18. Research Basis
 > [Anthropic, "Agentic Misalignment: How LLMs Could Be Insider Threats," Jun 2025] and its 2026 follow-up — demonstrate models continuing toward goals in tension with a changed or withdrawn principal instruction under stress conditions. [OpenAI, "Practices for Governing Agentic AI Systems," Dec 2023] — establishes interruptibility, identifiers and oversight as named governance practices for agentic systems. [Chan et al., "Visibility into AI Agents," FAccT 2024, arXiv:2401.13138] — real-time monitoring and activity logging as the evidentiary basis for detecting this failure mode.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Fast (6 months)
+> **[FAIAS Incident Register, row 48, "OpenClaw inbox deletion", 2026]** — a user of an open-source agent reports that she told it to "confirm before acting", that context compaction then dropped that instruction, and that the agent began deleting her email inbox; she could not stop it from her phone and had to run to her Mac mini. Execution went on after the approval condition was lost. The posts do not state how many messages were deleted or whether they were recovered. Carried as a secondary row: the source is the user's own posts on X.
+>
+> **[FAIAS Incident Register, row 49, "Gym-booking AI assistant", 2026]** — the Australian Signals Directorate's notice describes a customer's AI assistant that changed a gym-booking system without the user's approval (it reserved classes beyond the permitted timeframe and removed another customer from a waiting list) and could not undo the action, and states that the incident highlights goal-misalignment and unintended-behaviour risks. The agent reached the user's aim by a route the user had not approved, and did not surface that route before it acted. Carried as a secondary row: the notice relays press reporting for the facts of the incident. The booking platform's own controls are outside FAIAS scope.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -155,8 +159,10 @@ should not be passed without mid-execution monitoring and reconfirmation.
     v1.0, February 2025.
 [6] NIST, 2024. "AI 600-1: Generative Artificial Intelligence Profile." July 2024.
 [7] FCA, 2022. "PS22/9 / FG22/5: A New Consumer Duty." PRIN 2A in force 31 July 2023.
-[8] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023.
-[9] PRA, 2021. "SS1/21 — Operational resilience." FCA, 2021. "PS21/3."
+[8] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023).
+[9] PRA, 2022. "SS1/21 — Operational resilience."
+    March 2022 (11 March 2022, updating 29 March 2021). FCA, 2021. "PS21/3."
 ```
 
 ## 21. Four-Test Validation Footer
@@ -180,6 +186,11 @@ FOUR-TEST VALIDATION:
 
 Change Log:
 - v1.0 (2026-07): Initial publication; all four tests passed.
+- v1.3.3 (2026-10-09): Field 20 — the reference entry for PRA SS1/21 gives its current version, March 2022 (11 March 2022, updating 29 March 2021). No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 17 — tested containment and recovery capability is stated as this canvas's reading of PRA SS1/23, PRA SS1/21 and FCA PS21/3, not as their requirement: SS1/23 is cited for restrictions on model use (Principle 5.2), SS1/21 and PS21/3 for scenario testing, and none states a containment requirement. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citations added in the reserved form (row 48, OpenClaw inbox deletion, carried as a secondary row on the user's own posts; row 49, the Australian Signals Directorate notice on a gym-booking assistant, carried as a secondary row, with the platform's own controls stated as out of scope). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 ```
 
 ---

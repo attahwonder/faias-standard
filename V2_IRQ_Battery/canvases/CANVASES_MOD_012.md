@@ -66,7 +66,7 @@ Control Breakpoints:
 
 ## 9. Expected Controls (Traced)
 - **Feedback-loop identification and vetting** — [linked IRQ-DAT-013] — all pathways by which model outputs could re-enter training/fine-tuning data are explicitly mapped and reviewed before being used.
-- **Accumulating rather than replacing real-world data** — [Gerstgrasser et al., 2024, "Is Model Collapse Inevitable? Breaking the Curse of Recursion by Accumulating Data", arXiv:2404.01413] — each retraining generation adds synthetic/model-output data to a growing corpus of real data rather than substituting for it, which the research shows avoids collapse.
+- **Accumulating rather than replacing real-world data** — [Gerstgrasser et al., 2024, "Is Model Collapse Inevitable? Breaking the Curse of Recursion by Accumulating Real and Synthetic Data", arXiv:2404.01413] — each retraining generation adds synthetic/model-output data to a growing corpus of real data rather than substituting for it, which the research shows avoids collapse.
 - **Rare-event and minority-subgroup preservation testing per generation** — [Shumailov et al., 2024, "AI models collapse when trained on recursively generated data", Nature; Alemohammad et al., 2023, "Self-Consuming Generative Models Go MAD", arXiv:2307.01850] — explicit tail/subgroup performance metrics are tracked across successive fine-tuning generations, not only aggregate accuracy.
 - **Synthetic data declared, bounded and validated for tail fidelity** — [linked IRQ-DAT-004] — where synthetic data augmentation is used, its proportion is documented and its preservation of rare events/minority subgroups is validated, not assumed.
 - **Theoretical scaling-law awareness informing retraining cadence and data-mix decisions** — [Dohmatob et al., 2024, "A Tale of Tails: Model Collapse as a Change of Scaling Laws", arXiv:2402.07043] — data-pipeline design decisions are informed by the analytical understanding that collapse risk scales with the proportion of recursively-generated data.
@@ -146,12 +146,12 @@ consumes model output without an accumulation policy and tail-case testing.
 | **Novelty** | 4 | Highly counter-intuitive: "retrain on more of our own data" is normally considered good MLOps practice, inverting the expected direction of the failure. |
 
 ## 17. Regulatory Basis
-> [FCA/PRA joint DP5/22 (Oct 2022) and FS2/23 feedback statement (Oct 2023), identifying data management as a top AI risk concern] — supports governance attention to training-data pipeline integrity generally. [PRA SS1/23, May 2023, effective 17 May 2024, Principle 3 development principles] — a model's data lineage and quality, including recursive-feedback effects, falls within the development/validation scope. No regulation names "model collapse" or recursive-training risk explicitly; this IRQ is a forward-looking application of SS1/23 data-quality principles to an emerging, well-evidenced AI-specific mechanism. (verified 29 Jul 2026)
+> [FCA/PRA joint DP5/22 (Oct 2022) and FS2/23 feedback statement (Oct 2023); the key points made by respondents include that data regulation is fragmented and that closer collaboration between data management and model risk management teams would be beneficial] — supports governance attention to training-data pipeline integrity generally. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024, Principle 3 development principles] — a model's data lineage and quality, including recursive-feedback effects, falls within the development/validation scope. No regulation names "model collapse" or recursive-training risk explicitly; this IRQ is a forward-looking application of SS1/23 data-quality principles to an emerging, well-evidenced AI-specific mechanism. (verified 29 Jul 2026)
 
 ## 18. Research Basis
-> [Shumailov, I., Shumaylov, Z., Zhao, Y., et al., 2024, "AI models collapse when trained on recursively generated data", Nature 631, 755–759] — the foundational, peer-reviewed demonstration that recursive training on model output progressively erases distributional tails. [Alemohammad, S., et al., 2023, "Self-Consuming Generative Models Go MAD", arXiv:2307.01850] — independent confirmation of quality/diversity degradation across generative modalities. [Gerstgrasser, M., et al., 2024, "Is Model Collapse Inevitable? Breaking the Curse of Recursion by Accumulating Data", arXiv:2404.01413] — shows accumulating (not replacing) real data with synthetic data avoids collapse, directly informing this IRQ's primary control. [Dohmatob, E., et al., 2024, "A Tale of Tails: Model Collapse as a Change of Scaling Laws", arXiv:2402.07043] — analytical scaling-law account supporting the risk statement's theoretical grounding.
+> [Shumailov, I., Shumaylov, Z., Zhao, Y., et al., 2024, "AI models collapse when trained on recursively generated data", Nature 631, 755–759] — the foundational, peer-reviewed demonstration that recursive training on model output progressively erases distributional tails. [Alemohammad, S., et al., 2023, "Self-Consuming Generative Models Go MAD", arXiv:2307.01850] — independent confirmation of quality/diversity degradation across generative modalities. [Gerstgrasser, M., et al., 2024, "Is Model Collapse Inevitable? Breaking the Curse of Recursion by Accumulating Real and Synthetic Data", arXiv:2404.01413] — shows accumulating (not replacing) real data with synthetic data avoids collapse, directly informing this IRQ's primary control. [Dohmatob, E., et al., 2024, "A Tale of Tails: Model Collapse as a Change of Scaling Laws", arXiv:2402.07043] — analytical scaling-law account supporting the risk statement's theoretical grounding.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Fast (6 months)
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -178,8 +178,8 @@ consumes model output without an accumulation policy and tail-case testing.
     Breaking the Curse of Recursion by Accumulating Real and Synthetic Data." arXiv:2404.01413.
 [4] Dohmatob, E., Feng, Y., Yang, P., Charton, F., Kempe, J., 2024. "A Tale of Tails: Model
     Collapse as a Change of Scaling Laws." arXiv:2402.07043.
-[5] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023, effective
-    17 May 2024.
+[5] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
 [6] Bank of England/FCA, 2022–2023. "DP5/22: Artificial Intelligence and Machine Learning"
     and "FS2/23" feedback statement.
 ```
@@ -205,6 +205,10 @@ FOUR-TEST VALIDATION:
 
 Change Log:
 - v1.0 (2026-07): Initial publication; four tests passed.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.3 (2026-10-09): Field 17 Regulatory Basis — the FS2/23 citation no longer says that the feedback statement identifies data management as a top AI risk concern; FS2/23 ranks no concerns, and the citation now gives two of the key points made by respondents. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 9 Expected Controls — the title of Gerstgrasser et al. (arXiv:2404.01413) corrected to end "Accumulating Real and Synthetic Data" (it was cited without "Real and Synthetic"). Field 18 Research Basis — the same. Research-basis review date moved. No change to controls, test, ★ rating or risk profile.
 ```
 
 ---

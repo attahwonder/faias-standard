@@ -62,10 +62,10 @@ Control Breakpoints:
 **AO-AGT-013:** Computer-use agents shall verify that the actual screen state matches their expected state immediately before executing any consequential GUI action, and shall pause for reconfirmation rather than act when a divergence (unexpected element, layout change, ambiguous target) is detected.
 
 ## 9. Expected Controls (Traced)
-- **Pre-action element and state verification** — [OpenAI, "Operator / Computer-Using Agent System Card," Jan 2025, confirmations and watch-mode design] — the agent re-perceives and confirms the target element and overall screen state immediately before acting, not relying on a prior, potentially stale, perception.
+- **Pre-action element and state verification** — [OpenAI, "Operator System Card," 23 January 2025, confirmations and watch-mode design] — the agent re-perceives and confirms the target element and overall screen state immediately before acting, not relying on a prior, potentially stale, perception.
 - **Structural confirmation gates for consequential screen actions** — [linked IRQ-AGT-012; OWASP Agentic AI: Threats and Mitigations, Feb 2025] — actions with material consequence (payment confirmation, form submission, data deletion) require an additional checkpoint beyond routine navigation clicks.
 - **Screenshot-level action logging** — [linked IRQ-AGT-011; Chan et al., "Visibility into AI Agents," FAccT 2024] — every consequential action is logged with the screen state the agent perceived at the moment of acting, supporting later reconstruction of any divergence.
-- **Adversarial/stress testing against unexpected UI events** — [Microsoft, "Lessons from Red Teaming 100 Generative AI Products," Jan 2025, practitioner red-team methodology] — testing deliberately introduces pop-ups, delays and layout changes representative of legacy production systems, not only stable test environments.
+- **Adversarial/stress testing against unexpected UI events** — [Bullwinkel et al. (Microsoft), "Lessons From Red Teaming 100 Generative AI Products," Jan 2025, practitioner red-team methodology] — testing deliberately introduces pop-ups, delays and layout changes representative of legacy production systems, not only stable test environments.
 - **Fallback to safe-halt on ambiguous element identification** — [linked IRQ-RES-002 safe degradation] — where the agent cannot confidently identify the intended element, it halts and escalates rather than making a best-effort guess.
 
 ## 10. Expected Evidence (Tagged L1–L5)
@@ -142,12 +142,12 @@ conservative deployment posture pending a stronger track record.
 | **Novelty** | 3 | Computer-use agent perception-action failure modes differ meaningfully from familiar RPA scripting failure modes and are not intuitively obvious to SMEs experienced with the latter. |
 
 ## 17. Regulatory Basis
-> No regulation names "computer-use agent GUI safety" explicitly. [PRA SS1/23, May 2023] requires model/process risk governance extending to any automation touching regulated activities, including GUI-based automation of legacy systems. [FCA/PRA operational resilience regime, SS1/21, PS21/3] requires safe degradation and control over automated processes supporting important business services. [FCA PRIN 2A Consumer Duty, in force Jul 2023] is engaged where GUI-automation errors produce foreseeable customer harm. [OpenAI, "Operator / Computer-Using Agent System Card," Jan 2025] is cited as an accepted industry practice example of layered computer-use agent controls, not binding regulation. [UNVERIFIED — general anchor confirmed (PRA SS1/21, FCA PS21/3, safe-degradation expectations), exact paragraph pinpoint not confirmed against the primary text] (verified 29 Jul 2026, general citation only).
+> No regulation names "computer-use agent GUI safety" explicitly. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] requires model/process risk governance extending to any automation touching regulated activities, including GUI-based automation of legacy systems. [FCA/PRA operational resilience regime, SS1/21, PS21/3] requires safe degradation and control over automated processes supporting important business services. [FCA PRIN 2A Consumer Duty, in force Jul 2023] is engaged where GUI-automation errors produce foreseeable customer harm. [OpenAI, "Operator System Card," 23 January 2025] is cited as an accepted industry practice example of layered computer-use agent controls, not binding regulation. [UNVERIFIED — general anchor confirmed (PRA SS1/21, FCA PS21/3, safe-degradation expectations), exact paragraph pinpoint not confirmed against the primary text] (verified 29 Jul 2026, general citation only).
 
 ## 18. Research Basis
-> [OpenAI, 2025, "Operator / Computer-Using Agent System Card," January 2025] — the primary published worked example of mitigations for a computer-use agent (confirmations, watch mode, injection monitoring), directly informing this IRQ's control design given the absence of independent academic literature specifically on legacy-financial-system GUI-automation safety as of 2026. [Microsoft, 2025, "Lessons from Red Teaming 100 Generative AI Products," arXiv:2501.07238] — practitioner red-teaming lessons applicable to stress-testing computer-use agents against realistic, messy production conditions rather than idealised test environments. [Chan et al., 2024, "Visibility into AI Agents," FAccT 2024] — establishes the logging/observability requirements (here, screenshot-level) this IRQ's evidence base depends on.
+> [OpenAI, 2025, "Operator System Card," 23 January 2025] — the primary published worked example of mitigations for a computer-use agent (confirmations, watch mode, injection monitoring), directly informing this IRQ's control design given the absence of independent academic literature specifically on legacy-financial-system GUI-automation safety as of 2026. [Bullwinkel, B., et al. (Microsoft), 2025, "Lessons From Red Teaming 100 Generative AI Products," arXiv:2501.07238] — practitioner red-teaming lessons applicable to stress-testing computer-use agents against realistic, messy production conditions rather than idealised test environments. [Chan et al., 2024, "Visibility into AI Agents," FAccT 2024] — establishes the logging/observability requirements (here, screenshot-level) this IRQ's evidence base depends on.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Fast (6 months)
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -163,13 +163,15 @@ conservative deployment posture pending a stronger track record.
 
 ## 20. References
 ```
-[1] OpenAI, 2025. "Operator / Computer-Using Agent System Card." January 2025.
-[2] Microsoft, 2025. "Lessons from Red Teaming 100 Generative AI Products."
+[1] OpenAI, 2025. "Operator System Card." 23 January 2025.
+[2] Bullwinkel, B., et al. (Microsoft), 2025. "Lessons From Red Teaming 100 Generative AI Products."
     arXiv:2501.07238.
 [3] Chan, A., et al., 2024. "Visibility into AI Agents." Proc. FAccT 2024.
     arXiv:2401.13138.
-[4] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023.
-[5] PRA, 2021. "SS1/21 — Operational resilience." FCA, 2021. "PS21/3."
+[4] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023).
+[5] PRA, 2022. "SS1/21 — Operational resilience."
+    March 2022 (11 March 2022, updating 29 March 2021). FCA, 2021. "PS21/3."
 [6] FCA, 2022. "PS22/9 / FG22/5: A New Consumer Duty." PRIN 2A in force 31 July
     2023.
 ```
@@ -199,6 +201,11 @@ FOUR-TEST VALIDATION:
 Change Log:
 - v1.0 (2026-07): Initial publication; all four tests passed; flagged as an
   emerging-practice control area alongside IRQ-AGT-008.
+- v1.3.3 (2026-10-09): Field 20 — the reference entry for PRA SS1/21 gives its current version, March 2022 (11 March 2022, updating 29 March 2021). No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.3 (2026-10-09): Fields 9, 18 and 20 — the Microsoft red-teaming paper is cited with its authors (Bullwinkel et al.) and its arXiv title, "Lessons From Red Teaming 100 Generative AI Products". Form corrections only. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 9, 17, 18 and 20 — the OpenAI card cited by its title, Operator System Card, 23 January 2025 (it was cited as Operator / Computer-Using Agent System Card; the Computer-Using Agent is the model the card describes). Research-basis review date moved. No change to controls, test, ★ rating or risk profile.
 ```
 
 ---

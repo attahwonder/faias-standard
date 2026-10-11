@@ -124,9 +124,13 @@ Residual risk interpretation: Recoverability is the standout concern if controls
 > [UK GDPR, Article 28] requires processor agreements specifying the nature, purpose and duration of processing, with sub-processor flow-down obligations under Article 28(2)–(4). [UK GDPR, Article 35] requires a DPIA for high-risk processing, which AI-based processing of customer data is likely to constitute; ICO's "Guidance on AI and data protection" confirms AI/ML processing frequently meets Article 35(3)/(1) high-risk criteria (large-scale profiling, novel technology, automated decision-making with legal/similarly significant effect), triggering a DPIA requirement (verified 29 Jul 2026). [Regulation (EU) 2022/2554, DORA] and [EBA Guidelines on outsourcing arrangements, EBA/GL/2019/02] additionally require data handling terms to be established as part of outsourcing due diligence and contracting.
 
 ## 18. Research Basis
-> No peer-reviewed research is required to establish this risk — it derives directly from documented provider terms-of-service variability between consumer and enterprise product tiers, a well-known industry pattern [UNVERIFIED — no single citable comparative academic study of consumer-vs-enterprise AI data-usage terms was located; the pattern is documented at the level of individual providers' own published terms rather than a comparative study] (verified 29 Jul 2026). The general principle that content submitted to generative AI systems may be logged, reviewed by human moderators, or used for training absent explicit opt-out is documented in multiple providers' own published data usage policies.
+> No peer-reviewed research is required to establish this risk — it derives directly from documented provider terms-of-service variability between consumer and enterprise product tiers, a well-known industry pattern (verified 29 Jul 2026). [King, J., Klyman, K., Capstick, E., Saade, T. and Hsieh, V., 2025, "User Privacy and Large Language Models: An Analysis of Frontier Developers' Privacy Policies," Proceedings of the AAAI/ACM Conference on AI, Ethics, and Society (AIES 2025), DOI 10.1609/aies.v8i2.36646] compares the privacy policies of six US developers (Amazon, Anthropic, Google, Meta, Microsoft and OpenAI) and reports that all six appear to train on consumer chat data by default while enterprise users' data is typically excluded from model training. Its limits: it codes the public, consumer-facing chatbot policies as at May 2025 (Anthropic's later policy update excepted); the enterprise finding is a stated observation supported by one developer's quoted terms, and enterprise terms were not coded; it reads public policies, not any firm's contract or data processing agreement; and it does not check deployed configuration (read 7 October 2026). [UNVERIFIED — no academic study was located that tests a firm's own contract terms, or the product tier and configuration it has deployed, against the provider's published terms; this is established only by the data processing agreement review and the deployed-tier check in Field 11]. The general principle that content submitted to generative AI systems may be logged, reviewed by human moderators, or used for training absent explicit opt-out is documented in multiple providers' own published data usage policies.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 89, "In re OpenAI Copyright Infringement Litigation preservation order", 2025]** — the court ordered OpenAI "to preserve and segregate all output log data that would otherwise be deleted on a going forward basis until further order of the Court" (13 May 2025); on OpenAI's account the order reached content from Free, Plus, Pro, Team and API customers without a Zero Data Retention agreement, and not Enterprise or Edu, and the obligation ended on 26 September 2025. A legal hold overrode a provider's deletion terms, and each customer's exposure depended on its tier and contract. The litigants are news publishers; no financial-services firm is named, and no firm's confidential data is shown disclosed.
+>
+> **[FAIAS Incident Register, row 90, "Zoom terms of service AI training", 2023]** — Zoom's standard terms, as archived on 11 August 2023, listed "machine learning or artificial intelligence (including for the purposes of training and tuning of algorithms and models)" among the permitted uses of service-generated data (section 10.2) and stated that "Zoom will not use audio, video or chat Customer Content to train our artificial intelligence models without your consent" (section 10.4). Whether customer content could train models was a matter of reading changing standard terms, with no technical control described; no data is shown used.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -146,8 +150,8 @@ Related IRQs:
     URL: https://eur-lex.europa.eu/eli/reg/2022/2554/oj
 
 [3] European Banking Authority, 2019. "Guidelines on outsourcing arrangements." EBA/GL/2019/02.
-    URL: https://www.eba.europa.eu/regulation-and-policy/internal-governance/guidelines-on-outsourcing-arrangements
-    Accessed: 2026-07-29 (source confirmed live and current as at this date) (verified 29 Jul 2026).
+    URL: https://www.eba.europa.eu/sites/default/files/documents/10180/2551996/38c80601-f5d7-4855-8ba3-702423665479/EBA%20revised%20Guidelines%20on%20outsourcing%20arrangements.pdf
+    Accessed: 2026-07-29 (source confirmed live and current as at this date; URL changed to the Final Report PDF, read 8 Oct 2026) (verified 29 Jul 2026).
 ```
 
 ## 21. Four-Test Validation Footer
@@ -166,6 +170,9 @@ Related IRQs:
 **Change Log:**
 - v1.0 (2026-07): Initial publication.
 - v1.2.0 (2026-09-12): Expected Evidence — one consolidated dated worked example added (a "not used to train our models by default" launch-page commitment plus administrator-configurable retention, 10 Sep 2026), recorded as L1 on its own. ★3 / P3 unchanged.
+- v1.3.3 (2026-10-09): Field 20 References — the URL of EBA/GL/2019/02 points to the Final Report PDF, in place of a page that now shows the EBA third-party risk management guidelines; the note "source confirmed live and current as at this date" says that it covers the earlier URL. No change to controls, test, ★ rating or risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citations added in the reserved form (row 89, In re OpenAI Copyright Infringement Litigation preservation order, with the exposure dependent on product tier; row 90, Zoom terms of service as archived on 11 August 2023, in which no data is shown used). Research-basis review date moved. No change to controls, test, ★3 or risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — the [UNVERIFIED] tag on the consumer-versus-enterprise terms pattern narrowed: King et al. (AIES 2025) added with its limits; the tag stays for a firm's own contract terms and deployed tier. ★3 / P3 unchanged.
 ```
 
 ---

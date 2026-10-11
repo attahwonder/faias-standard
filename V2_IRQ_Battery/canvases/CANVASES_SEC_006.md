@@ -149,7 +149,8 @@ externalised-secrets practice is followed.
 [2] MITRE, ongoing. "ATLAS." atlas.mitre.org. Accessed 2026-07-29.
 [3] Greshake, K., et al., 2023. "Not what you've signed up for..." arXiv:2302.12173.
 [4] DSIT, 2025. "AI Cyber Security Code of Practice." January 2025.
-[5] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023.
+[5] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023).
 ```
 
 ## 21. Four-Test Validation Footer
@@ -178,6 +179,7 @@ Change Log:
 - v1.2.1 (2026-09-19): Field 18 — incident-register citation added in the reserved form
   (row 37), evidencing disclosure of credentials the system held and their
   use in a subsequent attack. Research-basis review date moved. ★3 unchanged.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
 ```
 
 ---

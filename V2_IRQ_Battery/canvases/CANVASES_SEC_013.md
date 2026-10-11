@@ -113,7 +113,7 @@ Assuming controls are well-implemented and monitored:
   Detectability: 3 (a control passing this IRQ's testing still relies on
               behavioural monitoring — IRQ-RES-005/006 — to catch further
               decay after deployment; not real-time by this IRQ's evidence alone)
-  Recoverability: 2 (reversible within weeks via re-testing and control
+  Recoverability: 3 (reversible within weeks via re-testing and control
               retuning once a gap is identified; moderate cost)
   Novelty: 4 (the distinction between control-decay monitoring and
               pre-emptive adversarial-evolution testing is not intuitive to
@@ -145,11 +145,11 @@ materially important detection control.
 | **Severity** | 3 | Fraud, laundering, market-abuse or screening failure affecting customers or market integrity; regulatory notice risk where the control supports a regulated obligation. |
 | **Likelihood** | 3 | Probable over time absent this testing: static detection controls are a known adaptation target, and the taxonomy base (NIST, MITRE) shows the technique space is active and catalogued. |
 | **Detectability** | 3 | The control's own historical-accuracy metrics look healthy by construction; a genuine miss-rate gap is invisible without the dedicated adversarial-evolution test this IRQ requires. |
-| **Recoverability** | 2 | Reversible within weeks via re-testing and retuning once identified; moderate cost absent a crystallised loss event. |
+| **Recoverability** | 3 | Reversible within weeks via re-testing and retuning once identified; moderate cost absent a crystallised loss event. |
 | **Novelty** | 4 | The distinction between monitoring for decay after the fact and testing for adversarial evolution before and after deployment is unfamiliar to both fraud/AML SMEs and conventional model-risk reviewers. |
 
 ## 17. Regulatory Basis
-> No regulation names adversarial-evolution testing of AI-based detection controls explicitly. [PRA SS1/23 Model Risk Management, May 2023] — ongoing monitoring and periodic validation expectations apply to detection controls built on AI/ML techniques, and this IRQ tests a specific, currently unaddressed dimension of that validation (evolving, not only historical, threat representativeness). [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] and financial-crime obligations under the Money Laundering Regulations engage where a degraded fraud or AML control causes foreseeable customer or market harm. Cited as governing expectations; no adversarial-evolution-specific rule exists.
+> No regulation names adversarial-evolution testing of AI-based detection controls explicitly. [PRA SS1/23 Model Risk Management, April 2026 (16 April 2026, updating 17 May 2023)] — ongoing monitoring and periodic validation expectations apply to detection controls built on AI/ML techniques, and this IRQ tests a specific, currently unaddressed dimension of that validation (evolving, not only historical, threat representativeness). [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] and financial-crime obligations under the Money Laundering Regulations engage where a degraded fraud or AML control causes foreseeable customer or market harm. Cited as governing expectations; no adversarial-evolution-specific rule exists.
 
 ## 18. Research Basis
 > [NIST, 2025, "Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations", NIST AI 100-2e2025, March 2025] — a 400-plus-reference taxonomy distinguishing predictive-AI attacks (evasion, poisoning, privacy) from generative-AI attacks (supply chain, direct/indirect injection, misuse, agent security); the evasion-attack category is the direct anchor for this IRQ's control-evasion failure mode. [MITRE ATLAS (Adversarial Threat Landscape for AI Systems), atlas.mitre.org, accessed 2026] — 16 tactics, 84 techniques and 42 real-world case studies as of the November 2025 release, modelled on the MITRE ATT&CK framework, providing case-study grounding for test-scenario design. [FTC v. Rite Aid Corporation, E.D. Pa., Docket 2:23-cv-05023, complaint and proposed stipulated order filed 19 December 2023; stipulated order for permanent injunction and other relief signed 23 February 2024 and filed 26 February 2024] — as the Commission's complaint alleges, which Rite Aid neither admitted nor denied in consenting to the stipulated order (ECF No. 19, ¶5): an AI-based surveillance/screening control (facial-recognition matching) generating false-positive identifications acted on as ground truth, deployed without any testing of its accuracy before or after deployment, both vendors having disclaimed the technology's accuracy (complaint ¶¶50–51, 56, 74); cited as the closest documented precedent of an AI-as-control failing in a way that harmed the people it was meant to protect, illustrating why an untested residual miss rate is a live and consequential risk rather than a theoretical one. This is a facial-recognition matching failure, not a fraud/AML adversarial-evasion incident specifically, and is cited for the general principle — an AI security/screening control deployed and acted on without any measured real-world error rate — rather than as a direct adversarial-evolution precedent.
@@ -184,8 +184,8 @@ materially important detection control.
     19 December 2023; stipulated order for permanent injunction and other
     relief signed 23 February 2024 and filed 26 February 2024.
     URL: https://www.ftc.gov/legal-library/browse/cases-proceedings/2023190-rite-aid-corporation-ftc-v
-[4] PRA, 2023. "SS1/23 — Model risk management principles for banks."
-    May 2023.
+[4] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023).
 [5] FCA, 2022. "PS22/9: A New Consumer Duty"; PRIN 2A in force 31 July 2023.
 ```
 
@@ -232,6 +232,13 @@ Change Log:
   neither admitted nor denied; the canvas no longer describes a real-world
   error rate diverging from a reported accuracy, and states the pleading
   grade. Its stated limits, ★2 and the risk profile are unchanged.
+- v1.3.3 (2026-10-09): Fields 17 and 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2
+  (Field 16, and the controls-in-place case in Field 15). The canvas states recovery
+  within weeks, which is beyond the within-hours level that ASSURANCE_MODEL.md §7
+  scores 2; the scale names no band between days and years, and 3 (reversible within
+  days) is the nearest anchor. The other axes, the ★ rating and the research basis are
+  unchanged.
 ```
 
 ---

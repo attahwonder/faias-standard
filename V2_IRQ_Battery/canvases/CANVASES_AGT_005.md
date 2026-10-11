@@ -102,7 +102,7 @@ Assuming controls are well-implemented and monitored:
               notice risk if a pattern emerges)
   Likelihood: 2 (requires validation and safe-degradation controls to both fail)
   Detectability: 2 (validation-rejection telemetry surfaces attempts promptly)
-  Recoverability: 2 (individual erroneous transactions typically correctable;
+  Recoverability: 3 (individual erroneous transactions typically correctable;
                      moderate operational cost)
   Novelty: 3 (requires recognising hallucination as applying to structured tool
               calls, not only prose — a non-obvious extension for most SMEs)
@@ -131,16 +131,18 @@ integrity checks should be a mandatory pre-deployment gate.
 | **Severity** | 3 | Erroneous payments or compliance decisions built on falsified data affect individual to multiple customers, with regulatory exposure if systemic. |
 | **Likelihood** | 3 | Hallucination is a well-documented generative property extending naturally to structured tool calls; external API manipulation is a foreseeable, not exotic, threat. |
 | **Detectability** | 3 | Without dedicated validation telemetry, discovery may depend on reconciliation breaks or customer complaint rather than real-time detection. |
-| **Recoverability** | 2 | Individual erroneous transactions are typically correctable within days via standard operational processes. |
+| **Recoverability** | 3 | Individual erroneous transactions are typically correctable within days via standard operational processes. |
 | **Novelty** | 3 | Recognising hallucination as extending to structured tool calls, and treating external API responses as untrusted, both require AI-specific reframing. |
 
 ## 17. Regulatory Basis
-> No regulation names "tool-call hallucination" explicitly. [PRA SS1/23, May 2023] requires model risk controls covering the full processing chain, including invocation integrity where agentic systems fall within MRM scope. [FCA/PRA operational resilience regime, SS1/21, PS21/3] requires safe degradation under partial failure, directly applicable to malformed tool calls and manipulated responses. [OWASP Agentic AI: Threats and Mitigations, Feb 2025] and [NIST AI 100-2 E2025] are cited as accepted industry practice. [JMLSG/FCA AML guidance] is engaged where falsified sanctions/screening data influences a compliance decision.
+> No regulation names "tool-call hallucination" explicitly. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] requires model risk controls covering the full processing chain, including invocation integrity where agentic systems fall within MRM scope. [FCA/PRA operational resilience regime, SS1/21, PS21/3] requires safe degradation under partial failure, directly applicable to malformed tool calls and manipulated responses. [OWASP Agentic AI: Threats and Mitigations, Feb 2025] and [NIST AI 100-2 E2025] are cited as accepted industry practice. [JMLSG/FCA AML guidance] is engaged where falsified sanctions/screening data influences a compliance decision.
 
 ## 18. Research Basis
-> [Ruan, Y., et al., 2023, "Identifying the Risks of LM Agents with an LM-Emulated Sandbox" (ToolEmu), arXiv:2309.15817] — sandbox-emulation methodology for surfacing tool-use risk before production exposure, the direct methodological basis for this IRQ's test. [Andriushchenko, M., et al., 2024, "AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents," arXiv:2410.09024] — evidences agents proceeding with harmful multi-step tool-use tasks, supporting the plausibility of unvalidated execution. [OWASP, 2025, "Agentic AI: Threats and Mitigations"] — names tool misuse and unvalidated output as core agentic threat categories.
+> [Ruan, Y., et al., 2023, "Identifying the Risks of LM Agents with an LM-Emulated Sandbox" (ToolEmu), arXiv:2309.15817] — sandbox-emulation methodology for surfacing tool-use risk before production exposure, the direct methodological basis for this IRQ's test. [Andriushchenko, M., et al., 2024, "AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents," arXiv:2410.09024] — evidences agents proceeding with harmful multi-step tool-use tasks, supporting the plausibility of unvalidated execution. [OWASP, 2025, "Agentic AI: Threats and Mitigations"] — names tool misuse and unvalidated output as core agentic threat categories. [Yin, C., et al., 2026, "The Reasoning Trap: How Enhancing LLM Reasoning Amplifies Tool Hallucination," Proc. ACL 2026 (Long Papers), arXiv:2510.22977] — introduces SimpleToolHalluBench, a diagnostic benchmark of tool hallucination in two cases, no tool available and only distractor tools available; code is public. It covers hallucinated tool use, fault class (a) in field 11, and not out-of-bounds parameter values or manipulated external responses; it is not specific to financial services.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Fast (6 months)
+> **[FAIAS Incident Register, row 51, "Cursor CVE-2025-54135", 2025]** — the vendor's advisory records that the coding agent could create a new dotfile, such as its MCP configuration file, without user approval (editing an existing dotfile needed approval), so that a chained indirect prompt injection could make it add an attacker's MCP server and run code; fixed in version 1.3.9. A file write whose content injected text had set passed the invocation boundary with no approval while the file did not yet exist. The advisory does not state where the injected text came from.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
 >
 > **URO-1 (resolved 12 September 2026): OWASP Top 10 for LLM Applications, 2026 edition (published approximately 4 August 2026), renumbering eight of ten entries, with the re-baselining of the OWASP Agentic Security Initiative's agentic threat list. Flagged 25 August 2026 — examined against its LLM05:2025 anchoring (LLM10:2026; the field-9 citation corrected from LLM06/LLM08 to LLM05:2025 Improper Output Handling at v1.2.0) and resolved under §6A.2 resolution form 1: the substance behind each cited entry survives the renumbering, the Agentic Security Initiative list is cited here by category rather than by threat number and its categories are carried into v1.1 (December 2025) unchanged, and no standardised benchmark has been published for the verification this canvas's ★ rests on. The ★2 is affirmed and published under the v1.2.0 anchor.** The v1.1.0 position stands as register history; ratings issued under different anchors are not comparable numbers (§6A.1).
 
@@ -163,8 +165,14 @@ integrity checks should be a mandatory pre-deployment gate.
     Initiative, v1.0, February 2025.
 [4] NIST, 2025. "AI 100-2 E2025: Adversarial Machine Learning: A Taxonomy and
     Terminology of Attacks and Mitigations." March 2025.
-[5] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023.
-[6] PRA, 2021. "SS1/21 — Operational resilience." FCA, 2021. "PS21/3."
+[5] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023).
+[6] PRA, 2022. "SS1/21 — Operational resilience."
+    March 2022 (11 March 2022, updating 29 March 2021). FCA, 2021. "PS21/3."
+[7] Yin, C., Sha, Z., Cui, S., Meng, C., Li, Z., 2026. "The Reasoning Trap: How
+    Enhancing LLM Reasoning Amplifies Tool Hallucination." Proc. 64th Annual Meeting of
+    the Association for Computational Linguistics (Volume 1: Long Papers), pp.
+    8310-8328. arXiv:2510.22977.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -199,6 +207,15 @@ Change Log:
   entry that names the fault the control addresses. ★2 affirmed under the v1.2.0
   anchor; the v1.1.0 position stands as register history.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — the reference entry for PRA SS1/21 gives its current version, March 2022 (11 March 2022, updating 29 March 2021). No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 51, Cursor CVE-2025-54135). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2 (Field 16, and the controls-in-place case in Field 15). The canvas states recovery within days; ASSURANCE_MODEL.md §7 scores recovery within hours 2 and recovery within days 3. The other axes, the ★ rating and the research basis are unchanged.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — SimpleToolHalluBench added as a published
+  diagnostic benchmark for hallucinated tool use, with its limits. Field 20 — entry [7]
+  added. Research-basis review date moved. No change to controls, test, ★2 or risk
+  profile.
 ```
 
 ---

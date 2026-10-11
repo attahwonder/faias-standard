@@ -61,7 +61,7 @@ Control Breakpoints:
 ## 9. Expected Controls (Traced)
 - **Embedding-model version pinning and change detection** — [linked IRQ-TPR-004, IRQ-TPR-006; Chen et al., 2023, "How Is ChatGPT's Behavior Changing over Time?"] — the embedding model in use is version-pinned, with canary testing to detect silent vendor-side changes.
 - **Re-indexing trigger on embedding-model change** — [general vector-database engineering practice; no single published FS standard] — any embedding-model version change triggers a full or partial re-index, not a mixed-geometry index.
-- **Retrieval-quality monitoring independent of generation fluency** — [Es et al., 2023, "RAGAS: Automated Evaluation of RAG"; Chen et al., 2023, "Benchmarking Large Language Models in Retrieval-Augmented Generation" (RGB)] — retrieval precision/recall metrics are monitored directly, not inferred from downstream generation quality.
+- **Retrieval-quality monitoring independent of generation fluency** — [Es et al., 2023, "Ragas: Automated Evaluation of Retrieval Augmented Generation"; Chen et al., 2023, "Benchmarking Large Language Models in Retrieval-Augmented Generation" (RGB)] — retrieval precision/recall metrics are monitored directly, not inferred from downstream generation quality.
 - **Corpus-composition drift review on material corpus growth or reorganisation** — [Emerging Practice — grounded in general information-retrieval index-maintenance discipline] — material corpus changes trigger a retrieval-quality re-validation, analogous to a data-drift check.
 
 ## 10. Expected Evidence (Tagged L1–L5)
@@ -73,7 +73,7 @@ Control Breakpoints:
 - Production retrieval-quality metrics tracked over time, correlated against known embedding-model or corpus-composition change events — **L5**.
 
 ## 11. Independent Test
-> In a non-production replica of the retrieval pipeline, (a) simulate an embedding-model version change by re-embedding a subset of the corpus with a different model version while leaving the rest on the original vectors (mixed-geometry index), and measure retrieval precision/recall degradation on a representative query set; (b) simulate corpus composition drift by adding a substantial volume of topically-skewed new documents and re-measuring retrieval relevance for existing query types. Compare against RAGAS-style faithfulness/relevance metrics (Es et al., 2023) and RGB robustness benchmarking (Chen et al., 2023). No production data used. — **★2 Confidence — as at FAIAS v1.1.0 (25 August 2026)** (RAG evaluation tooling like RAGAS is published and used by multiple groups, but "retrieval/embedding drift" specifically as a monitored, benchmarked phenomenon is newer and less standardised than generation-quality evaluation; test design for the mixed-geometry and corpus-drift scenarios is largely bespoke).
+> In a non-production replica of the retrieval pipeline, (a) simulate an embedding-model version change by re-embedding a subset of the corpus with a different model version while leaving the rest on the original vectors (mixed-geometry index), and measure retrieval precision/recall degradation on a representative query set; (b) simulate corpus composition drift by adding a substantial volume of topically-skewed new documents and re-measuring retrieval relevance for existing query types. Compare against RAGAS-style faithfulness/relevance metrics (Es et al., 2023) and RGB robustness benchmarking (Chen et al., 2023). The relevance metrics are a comparator with a published limit: Roychowdhury et al. (2024), a workshop paper on telecom question answering, critique the RAGAS context-relevance and answer-relevance metrics, and the answer-similarity component of answer correctness, as unsuitable to serve as a reliable metric in an end-to-end RAG pipeline (Field 18), so a relevance score is read as a comparator and not as a reference measure. No production data used. — **★2 Confidence — as at FAIAS v1.1.0 (25 August 2026)** (RAG evaluation tooling like RAGAS is published and used by multiple groups, but "retrieval/embedding drift" specifically as a monitored, benchmarked phenomenon is newer and less standardised than generation-quality evaluation; test design for the mixed-geometry and corpus-drift scenarios is largely bespoke).
 
 ## 12. Pass Indicators
 - No mixed-geometry index exists in production; embedding-model changes trigger full re-indexing before the new model is used for live retrieval.
@@ -130,12 +130,12 @@ designed (by architecture, not intent) to be invisible in normal quality review.
 | **Novelty** | 4 | Embedding-geometry invalidation and corpus-drift effects are specialist RAG-engineering knowledge, well outside FS domain and even general technical review expertise. |
 
 ## 17. Regulatory Basis
-> [PRA SS1/23, May 2023, Principle 4/5 ongoing monitoring] extends to all model components influencing output, including the retrieval layer. [EU AI Act, Regulation (EU) 2024/1689, Art. 15(1)] robustness-maintenance obligation applies to the retrieval-augmented system as a whole, not the generative component alone. No regulation names embedding/retrieval drift explicitly. [UNVERIFIED — no further pinpoint exists; mechanism genuinely unaddressed by name] (verified 29 Jul 2026).
+> [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), Principle 4/5 ongoing monitoring] extends to all model components influencing output, including the retrieval layer. [EU AI Act, Regulation (EU) 2024/1689, Art. 15(1)] robustness-maintenance obligation applies to the retrieval-augmented system as a whole, not the generative component alone. No regulation names embedding/retrieval drift explicitly. [UNVERIFIED — no further pinpoint exists; mechanism genuinely unaddressed by name] (verified 29 Jul 2026).
 
 ## 18. Research Basis
-> [Chen, L., Zaharia, M., Zou, J., 2023, "How Is ChatGPT's Behavior Changing over Time?", arXiv:2307.09009] — direct empirical evidence that a fixed vendor API endpoint drifts substantially over months, the closest documented analogue to silent vendor-side embedding-model change. [Es, S., et al., 2023, "RAGAS: Automated Evaluation of RAG", arXiv:2309.15217] — reference-free retrieval/faithfulness metrics enabling retrieval-quality monitoring independent of generation fluency. [Chen, J., et al., 2023, "Benchmarking Large Language Models in Retrieval-Augmented Generation" (RGB), arXiv:2309.01431] — robustness-testing dimensions applicable to corpus-drift scenarios.
+> [Chen, L., Zaharia, M., Zou, J., 2023, "How Is ChatGPT's Behavior Changing over Time?", arXiv:2307.09009; Harvard Data Science Review 6(2), 2024] — direct empirical evidence that a fixed vendor API endpoint drifts substantially over months, the closest documented analogue to silent vendor-side embedding-model change. [Es, S., et al., 2023, "Ragas: Automated Evaluation of Retrieval Augmented Generation", arXiv:2309.15217] — reference-free retrieval/faithfulness metrics enabling retrieval-quality monitoring independent of generation fluency. [Roychowdhury et al., 2024, "Evaluation of RAG Metrics for Question Answering in the Telecom Domain," ICML 2024 Workshop on Foundation Models in the Wild, arXiv:2407.12873] — a workshop paper that critiques the context-relevance and answer-relevance metrics, and the answer-similarity component of answer correctness, as unsuitable to serve as a reliable metric in an end-to-end RAG pipeline; this is a limit on the relevance comparator named in Field 11. It also reports faithfulness and factual correctness as good indicators of response correctness against expert evaluation. Its evidence is one non-financial domain: 715 test questions drawn from 3GPP telecom documents (read 7 October 2026). [Chen, J., et al., 2023, "Benchmarking Large Language Models in Retrieval-Augmented Generation" (RGB), arXiv:2309.01431] — robustness-testing dimensions applicable to corpus-drift scenarios.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -148,13 +148,17 @@ designed (by architecture, not intent) to be invisible in normal quality review.
 ## 20. References
 ```
 [1] Chen, L., Zaharia, M., Zou, J., 2023. "How Is ChatGPT's Behavior Changing over Time?"
-    arXiv:2307.09009.
-[2] Es, S., James, J., Espinosa-Anke, L., Schockaert, S., 2023. "RAGAS: Automated Evaluation
+    arXiv:2307.09009. Published in Harvard Data Science Review 6(2), 12 March 2024,
+    https://doi.org/10.1162/99608f92.5317da47.
+[2] Es, S., James, J., Espinosa-Anke, L., Schockaert, S., 2023. "Ragas: Automated Evaluation
     of Retrieval Augmented Generation." arXiv:2309.15217.
 [3] Chen, J., et al., 2023. "Benchmarking Large Language Models in Retrieval-Augmented
     Generation." arXiv:2309.01431.
-[4] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023.
+[4] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023).
 [5] European Union, 2024. "Regulation (EU) 2024/1689 — Artificial Intelligence Act." Art. 15.
+[6] Roychowdhury, S., et al., 2024. "Evaluation of RAG Metrics for Question Answering in the
+    Telecom Domain." ICML 2024 Workshop on Foundation Models in the Wild. arXiv:2407.12873.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -176,6 +180,11 @@ FOUR-TEST VALIDATION:
 
 Change Log:
 - v1.0 (2026-07): Initial publication.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.3 (2026-10-09): Fields 11, 18 and 20 — a published critique of the RAGAS relevance metrics added as a limit on the relevance comparator (Roychowdhury et al., 2024); reference [6] added. ★2 unchanged.
+- v1.3.3 (2026-10-09): Fields 9, 18 and 20 — the Ragas citation takes its title as issued, "Ragas: Automated Evaluation of Retrieval Augmented Generation". Form corrections only. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 18 and 20 — the Chen, Zaharia and Zou citation (arXiv:2307.09009) now also gives its publication in Harvard Data Science Review 6(2), 2024. Research-basis review date moved. No change to the ★ rating or the risk profile.
 ```
 
 ---

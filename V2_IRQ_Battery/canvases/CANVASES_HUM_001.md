@@ -109,7 +109,7 @@ Assuming controls are well-implemented and monitored:
     active disagreement-rate monitoring; requires control degradation)
   Detectability: 2 (disagreement-rate monitoring surfaces drift within
     weeks; not real-time per-decision)
-  Recoverability: 2 (reversible within days via case re-review and
+  Recoverability: 3 (reversible within days via case re-review and
     customer remediation; moderate operational cost)
   Novelty: 3 (domain expert would recognise "review the AI's work" as
     a control but is likely to miss that AI fluency specifically
@@ -143,7 +143,7 @@ remediation given the ease of testing relative to the harm avoided.
 | **Severity** | 3 | Multiple customers/cases harmed if the review layer is compromised; regulatory notice risk under Consumer Duty and SM&CR |
 | **Likelihood** | 3 | Probable if disagreement-rate monitoring and seeded-error testing are absent; automation bias is a well-replicated finding, not an edge case |
 | **Detectability** | 2 | Detected via disagreement-rate trend or periodic audit within weeks, not real-time; requires deliberate measurement design |
-| **Recoverability** | 2 | Reversible within days via re-review and remediation of the affected case batch; moderate operational and reputational cost |
+| **Recoverability** | 3 | Reversible within days via re-review and remediation of the affected case batch; moderate operational and reputational cost |
 | **Novelty** | 3 | Domain expert recognises "human review" as necessary but is likely to miss that fluency-driven acceptance is measurable and requires AI-aware test design, not standard QA |
 
 ## 17. Regulatory Basis
@@ -213,6 +213,7 @@ Related IRQs:
 - v1.0 (2026-07): Initial publication; all four tests passed.
 - v1.2.1 (2026-09-19): Field 18 — incident-register citation added in the reserved form (row 38, Douglas v. Deutsche Bank National Trust Company), the first incident evidence this canvas carries. Field 20 — entry [7] added for the order. Research-basis review date moved. No change to controls, test, ★3 or risk profile.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2 (Field 16, and the controls-in-place case in Field 15). The canvas states recovery within days; ASSURANCE_MODEL.md §7 scores recovery within hours 2 and recovery within days 3. The other axes, the ★ rating and the research basis are unchanged.
 ```
 
 ---

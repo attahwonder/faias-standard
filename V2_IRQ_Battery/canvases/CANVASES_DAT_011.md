@@ -131,12 +131,16 @@ false sense of complete monitoring.
 | **Novelty** | 2 | Drift monitoring is a familiar model-risk discipline; the AI-specific nuance is the statistical/semantic/source three-way split, frequently under-covered. |
 
 ## 17. Regulatory Basis
-> [PRA SS1/23, May 2023, Principle 4 (independent model validation, including ongoing monitoring)] ongoing monitoring principle requires models to be monitored for continued fitness for purpose, extending to input drift. [EU AI Act, Regulation (EU) 2024/1689, Art. 15(1) and Art. 15(4)] requires accuracy, robustness and cybersecurity to be maintained throughout the lifecycle, implying drift detection as an ongoing obligation. (verified 29 Jul 2026)
+> [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), Principle 4 (independent model validation, including ongoing monitoring)] ongoing monitoring principle requires models to be monitored for continued fitness for purpose, extending to input drift. [EU AI Act, Regulation (EU) 2024/1689, Art. 15(1) and Art. 15(4)] requires accuracy, robustness and cybersecurity to be maintained throughout the lifecycle, implying drift detection as an ongoing obligation. (verified 29 Jul 2026)
 
 ## 18. Research Basis
-> [Gama, J., et al., 2014, "A Survey on Concept Drift Adaptation", ACM Computing Surveys, https://doi.org/10.1145/2523813] — canonical drift taxonomy and detection methods, the structural basis for distinguishing statistical from semantic/concept drift. [Rabanser, S., Günnemann, S., Lipton, Z., 2019, "Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift", arXiv:1810.11953] — practical, implementable two-sample-test shift-detection methodology. [Chen, Y., et al., 2023, "How Is ChatGPT's Behavior Changing over Time?", arXiv:2307.09009] — empirical evidence that even a fixed API endpoint drifts substantially over months, illustrating that source drift is not a hypothetical concern.
+> [Gama, J., et al., 2014, "A Survey on Concept Drift Adaptation", ACM Computing Surveys, https://doi.org/10.1145/2523813] — canonical drift taxonomy and detection methods, the structural basis for distinguishing statistical from semantic/concept drift. [Rabanser, S., Günnemann, S., Lipton, Z., 2019, "Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift", arXiv:1810.11953] — practical, implementable two-sample-test shift-detection methodology. [Chen, L., Zaharia, M., Zou, J., 2023, "How Is ChatGPT's Behavior Changing over Time?", arXiv:2307.09009; Harvard Data Science Review 6(2), 2024] — empirical evidence that even a fixed API endpoint drifts substantially over months, illustrating that source drift is not a hypothetical concern.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 61, "Unity Software bad customer data", 2022]** — the company's Form 10-Q states that challenges with its Operate products, which included "the consequences of ingesting bad data from a large customer", reduced the efficacy of those products, which "negatively affected revenue in February and March", with an impact of "approximately $110.0 million in 2022". The loss showed in revenue before the cause was fixed. The company is an advertising-technology firm, not a financial-services firm. Carried as a secondary row: the company's own filing is the source for the loss, and the claim that the product affected was a machine-learning tool rests on a third-party transcript of the earnings call.
+>
+> **[FAIAS Incident Register, row 62, "Equifax coding issue", 2022]** — a non-AI analogue: the credit reporting agency's own statement says that a coding issue "impacted how some credit scores were calculated" over a period of a few weeks (17 March to 6 April 2022), with fewer than 300,000 consumers having a score shift of 25 points or more; its chief executive's remark, quoted in the statement, says that the mistake "resulted in some scores going out that had incorrect data in it". The statement adds that a score shift "does not necessarily mean" that a credit decision was negatively affected, and that Equifax was working with its customers to determine the actual impact. The statement does not say when the fault was detected or whether any lender detected it, and the fault was in statistical scoring, not in an AI system.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -153,8 +157,10 @@ false sense of complete monitoring.
 [2] Rabanser, S., Günnemann, S., Lipton, Z., 2019. "Failing Loudly: An Empirical Study of
     Methods for Detecting Dataset Shift." arXiv:1810.11953.
 [3] Chen, L., Zaharia, M., Zou, J., 2023. "How Is ChatGPT's Behavior Changing over Time?"
-    arXiv:2307.09009.
-[4] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023.
+    arXiv:2307.09009. Published in Harvard Data Science Review 6(2), 12 March 2024,
+    https://doi.org/10.1162/99608f92.5317da47.
+[4] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023).
 [5] European Union, 2024. "Regulation (EU) 2024/1689 — Artificial Intelligence Act." Art. 15.
 ```
 
@@ -177,6 +183,10 @@ FOUR-TEST VALIDATION:
 
 Change Log:
 - v1.0 (2026-07): Initial publication.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citations added in the reserved form (row 61, Unity Software bad customer data, carried as a secondary row in a non-financial setting; row 62, Equifax coding issue, carried as a non-AI analogue). Research-basis review date moved. No change to controls, test, ★3 or risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.3 (2026-10-09): Fields 18 and 20 — the first author of "How Is ChatGPT's Behavior Changing over Time?" corrected to Chen, L., with Zaharia, M. and Zou, J., and its publication in Harvard Data Science Review 6(2), 2024 added beside the arXiv identifier. Research-basis review date moved. No change to the ★ rating or the risk profile.
 ```
 
 ---

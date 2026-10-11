@@ -120,7 +120,7 @@ If controls are absent or degraded:
               wild against ML pipelines generally)
   Detectability: 4 (backdoored behaviour is silent by construction — evaluates correctly on
               every test except the attacker's chosen trigger)
-  Recoverability: 3 (full artefact provenance audit required across all deployed models;
+  Recoverability: 4 (full artefact provenance audit required across all deployed models;
               potentially years-long if backdoor discovery is delayed)
   Novelty: 3
 Residual risk: Critical absent basic signing/scanning/format controls, given the
@@ -137,12 +137,16 @@ silent-by-construction nature of a successful backdoor.
 | **Novelty** | 3 | Requires reframing model weights as a supply-chain artefact class subject to the same rigour as software dependencies — a framing gap common among data-science-led ML platform teams, though increasingly documented (OWASP 2025, LLM03). |
 
 ## 17. Regulatory Basis
-> No regulation names model-artefact supply-chain integrity explicitly for AI. [DSIT, AI Cyber Security Code of Practice, Jan 2025] — secure-development principles extend to artefact supply-chain integrity. [PRA SS1/23 Model Risk Management] and [FCA/PRA operational resilience regime] — model artefact integrity sits within sound model development and operational resilience practice where in scope. General software-supply-chain-security regulatory direction (e.g. UK NCSC guidance on supply chain security) applies by analogy; no AI-artefact-specific rule yet exists. [UNVERIFIED — no NCSC guidance specific to AI-model-artefact supply-chain integrity was located as a standalone publication. Re-checked at the September 2026 refresh against NCSC's frontier-AI hub and its April–August 2026 frontier and agentic-AI blog set, including "Managing the cyber risk of agentic AI" (20 August 2026; page metadata: modified 24 August 2026): that set addresses agent containment, identity, network and compute isolation and emergency shutdown, and carries **nothing** on model-artefact integrity, so the absence stands on a wider and more recent search than before. NCSC's general supply-chain-security guidance and the DSIT AI Cyber Security Code of Practice (January 2025) remain the closest applicable sources] (re-verified 11 September 2026).
+> No regulation names model-artefact supply-chain integrity explicitly for AI. [DSIT, AI Cyber Security Code of Practice, Jan 2025] — secure-development principles extend to artefact supply-chain integrity. [PRA SS1/23 Model Risk Management, April 2026 (16 April 2026, updating 17 May 2023)] and [FCA/PRA operational resilience regime] — model artefact integrity sits within sound model development and operational resilience practice where in scope. General software-supply-chain-security regulatory direction (e.g. UK NCSC guidance on supply chain security) applies by analogy; no AI-artefact-specific rule yet exists. [UNVERIFIED — NCSC's Machine learning principles, 2.1 "Secure your supply chain" (Version 2.0, published 22 May 2024), address the supply chain of machine learning models, including a tampered model uploaded to a public model hub and exploits of the model serialisation process; no standalone NCSC publication on AI-model-artefact supply-chain integrity was located, and that principle sits within the wider Machine learning principles collection. Re-checked at the September 2026 refresh against NCSC's frontier-AI hub and its April–August 2026 frontier and agentic-AI blog set, including "Managing the cyber risk of agentic AI" (20 August 2026; page metadata: modified 24 August 2026): that set addresses agent containment, identity, network and compute isolation and emergency shutdown, and carries **nothing** on model-artefact integrity, so the absence of a standalone publication stands on a wider and more recent search than before. NCSC's Machine learning principles 2.1, NCSC's general supply-chain-security guidance and the DSIT AI Cyber Security Code of Practice (January 2025) remain the closest applicable sources] (re-verified 11 September 2026; NCSC Machine learning principles 2.1 read 7 October 2026).
 
 ## 18. Research Basis
 > [OWASP Foundation, 2025, "Top 10 for LLM Applications 2025", LLM03 Supply Chain] — direct classification of model, dataset, and dependency supply-chain risk with mitigation guidance. [Carlini, N., et al., 2023, "Poisoning Web-Scale Training Datasets is Practical", arXiv:2302.10149] — establishes the general practicality and low cost of supply-chain-style poisoning attacks, supporting plausibility of artefact-level compromise. [MITRE ATLAS, ongoing, ML-supply-chain-compromise technique category] — adversary technique catalogue applicable to artefact tampering.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Fast (6 months)
+> [Zhao, J., Wang, S., Zhao, Y., et al., 2024, "Models Are Codes: Towards Measuring Malicious Code Poisoning Attacks on Pre-trained Model Hubs", Proceedings of the 39th IEEE/ACM International Conference on Automated Software Engineering (ASE '24), pp. 2087–2098, https://doi.org/10.1145/3691620.3695271] studies malicious code in model and dataset artefacts on Hugging Face. It describes MalHug, a pipeline that extracts dataset loading scripts, deserialises models, runs taint analysis and applies pattern matching to detect and classify malicious artefacts. The authors report running it for over three months, in collaboration with a financial technology company, on a mirror of the hub: it monitored more than 705,000 models and 176,000 datasets and found 91 malicious models and 9 malicious dataset loading scripts. It scans artefacts that are already on a hub. It does not test whether a firm's own intake process rejects an unsafe artefact, which is the test in field 11, so it informs the threat picture and the choice of scanning method and not that test. The repository that the paper names, github.com/security-pride/MalHug, holds a table that describes the detected artefacts and a README; no pipeline code is released in it, and the source files of the artefacts are on Zenodo. No ★ change follows from this addition.
+>
+> **[FAIAS Incident Register, row 82, "JFrog malicious Hugging Face models", 2024]** — researchers report "around 100 instances" of malicious machine-learning models on Hugging Face, among them pickle models whose loading gives the attacker a shell on the user's machine; one PyTorch model carried a reverse-shell payload. Tampered model artefacts with a deserialisation payload were available to load from a public hub; the researchers name no victim organisation, and users reported one further model as dangerously malicious, after which the hub blocked it. Carried as a secondary row: the source is the researchers' own disclosure, and no statement from the hub's operator was read.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -163,7 +167,15 @@ silent-by-construction nature of a successful backdoor.
     arXiv:2302.10149.
 [3] MITRE, ongoing. "ATLAS." atlas.mitre.org. Accessed 2026-07-29.
 [4] DSIT, 2025. "AI Cyber Security Code of Practice." January 2025.
-[5] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023.
+[5] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023).
+[6] Zhao, J., Wang, S., Zhao, Y., et al., 2024. "Models Are Codes: Towards Measuring Malicious
+    Code Poisoning Attacks on Pre-trained Model Hubs." Proc. 39th IEEE/ACM International
+    Conference on Automated Software Engineering (ASE '24), pp. 2087–2098.
+    https://doi.org/10.1145/3691620.3695271. Result data only, no pipeline code:
+    github.com/security-pride/MalHug.
+[7] NCSC, 2024. "Machine learning principles," 2.1 "Secure your supply chain." Version 2.0, 22 May 2024.
+    https://www.ncsc.gov.uk/collection/machine-learning-principles/secure-development/secure-supply-chain
 ```
 
 ## 21. Four-Test Validation Footer
@@ -191,6 +203,12 @@ Change Log:
   agentic-AI blog set. The absence stands on the wider search; the SEC-009 gap is not
   closed.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023). No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 82, JFrog disclosure of malicious Hugging Face models, carried as a secondary row on the researchers' own disclosure, with no victim recorded). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — MalHug (ASE 2024) cited with its limits stated (hub scanning, not an intake test; no pipeline code released). Field 20 References — entry [6] added. Research-basis review date moved. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 15 — controls-absent Recoverability scored 4 in place of 3. The line allows years-long recovery if discovery is delayed, which ASSURANCE_MODEL.md §7 scores 4 (irreversible or years-long recovery). Field 16, the other axes, the ★ rating and the research basis are unchanged.
+- v1.3.3 (2026-10-09): Field 17 Regulatory Basis — the NCSC absence marker narrowed: NCSC Machine learning principles 2.1, Secure your supply chain (Version 2.0, published 22 May 2024), is cited as NCSC guidance on the machine learning model supply chain, and the absence claim is limited to a standalone NCSC publication on model-artefact supply-chain integrity. Field 20 References — entry [7] added. No change to controls, test, ★ rating or risk profile.
 ```
 
 ---

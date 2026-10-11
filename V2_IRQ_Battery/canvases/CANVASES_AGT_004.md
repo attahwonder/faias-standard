@@ -55,7 +55,7 @@ Control Breakpoints:
 **AO-AGT-004:** Composite outcomes achievable by chaining individually-permitted tools shall be explicitly analysed against business and regulatory materiality thresholds, with transaction-level guardrails bounding any combination that would exceed a single-permission's intended scope.
 
 ## 9. Expected Controls (Traced)
-- **Composite-action risk analysis at design/approval stage** — [OWASP Top 10 for LLM Applications 2025, LLM06 Excessive Agency; Willison, "The Lethal Trifecta," 2025] — explicit assessment of what an agent could achieve by combining its full tool set, not just each tool individually.
+- **Composite-action risk analysis at design/approval stage** — [OWASP Top 10 for LLM Applications 2025, LLM06 Excessive Agency; Willison, "The lethal trifecta for AI agents: private data, untrusted content, and external communication," 2025] — explicit assessment of what an agent could achieve by combining its full tool set, not just each tool individually.
 - **Transaction-level guardrails independent of individual tool permissions** — [linked IRQ-DAT-009, IRQ-SEC-011; PRA SS1/23 governance principle] — a policy layer that evaluates the combined effect of a sequence (e.g. cumulative transfer value, aggregate data fields touched) against defined thresholds.
 - **Entitlement checks applied at the aggregate-output level, not only per-source** — [linked IRQ-DAT-009] — data-aggregation outcomes are checked against the requester's entitlement to the *combined* dataset, not just each source individually.
 - **AML/fraud pattern monitoring extended to single-agent multi-tool sequences** — [FCA/JMLSG AML guidance; NIST AI 600-1, value chain and component integration category] — structuring-detection logic recognises within-session tool chains as a monitored pattern, not only cross-transaction patterns.
@@ -132,12 +132,14 @@ gate for any agent holding more than one materially combinable tool.
 | **Novelty** | 4 | No precedent in traditional segregation-of-duties design for a single actor holding multiple combinable roles; wholly AI-specific. |
 
 ## 17. Regulatory Basis
-> No regulation names "composite tool-chaining risk" explicitly. [FCA/JMLSG AML guidance] requires monitoring for structuring and threshold-avoidance patterns, applicable regardless of whether the actor is human or an agent. [PRA SS1/23, May 2023] requires governance covering model risk drivers including permission design. [UK GDPR Art. 5(1)(c) data minimisation] is engaged where aggregate data exposure exceeds the purpose for which each source was authorised. [NIST AI 600-1, Jul 2024] identifies value chain and component integration risks encompassing composite-capability scenarios. [MAS Consultation Paper on AI Risk Management, Nov 2025] proposes agentic-specific lifecycle controls, the closest regulatory analogue. [UK GDPR Art. 5(1)(c)]. (verified 29 Jul 2026)
+> No regulation names "composite tool-chaining risk" explicitly. [FCA/JMLSG AML guidance] requires monitoring for structuring and threshold-avoidance patterns, applicable regardless of whether the actor is human or an agent. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] requires governance covering model risk drivers including permission design. [UK GDPR Art. 5(1)(c) data minimisation] is engaged where aggregate data exposure exceeds the purpose for which each source was authorised. [NIST AI 600-1, Jul 2024] identifies value chain and component integration risks encompassing composite-capability scenarios. [MAS Consultation Paper on AI Risk Management, Nov 2025] applies its general lifecycle controls to AI agents. Two limbs bear on them: evaluation and testing that cover their key failure modes (proposed Guidelines, paragraph 4.15), and monitoring that, where relevant, covers reasoning processes, actions taken and tools used (paragraph 4.23(a)). MAS issued the final Guidelines on 7 Oct 2026, effective 7 Oct 2027; FIs may meet the expectations of Sections 5 and 6 by 7 Oct 2028 (paragraph 1.8). They keep both limbs (paragraphs 5.15 and 5.23(a)) and add that enhanced documentation, such as logs of prompts, model responses and reasoning processes, could be considered for AI agents (paragraph 5.23(d)). Together they are the closest regulatory analogue (verified 10 Oct 2026). [UK GDPR Art. 5(1)(c)]. (verified 29 Jul 2026)
 
 ## 18. Research Basis
-> [Willison, S., 2025, "The Lethal Trifecta," blog, widely cited] — articulates the combination of private-data access, untrusted-content exposure and an exfiltration/action channel as the structural condition producing composite-action harm, directly applicable to tool-chaining risk. [OWASP, 2025, "Top 10 for LLM Applications 2025," LLM06 Excessive Agency] — names excessive functionality and permissions, including combinable capability, as a vulnerability class. [Chan et al., "Harms from Increasingly Agentic Algorithmic Systems," FAccT 2023] — foundational argument that agentic harm scales with the combined action space available to the system.
+> [Willison, S., 2025, "The lethal trifecta for AI agents: private data, untrusted content, and external communication," blog] — articulates the combination of private-data access, untrusted-content exposure and an exfiltration/action channel as the structural condition producing composite-action harm, directly applicable to tool-chaining risk. [OWASP, 2025, "Top 10 for LLM Applications 2025," LLM06 Excessive Agency] — names excessive functionality and permissions, including combinable capability, as a vulnerability class. [Chan et al., "Harms from Increasingly Agentic Algorithmic Systems," FAccT 2023] — foundational argument that agentic harm scales with the combined action space available to the system. [Chen, Y.-S., et al., 2026, "TraceSafe: A Systematic Assessment of LLM Guardrails on Multi-Step Tool-Calling Trajectories," COLM 2026, arXiv:2604.07223] — a published benchmark (TraceSafe-Bench) of how well guard models and specialised guardrails detect unsafe steps in multi-step tool-calling trajectories, with 12 risk categories and over 1,000 execution instances; code and datasets are public. It tests whether a guard flags a recorded unsafe step; it does not test whether a firm's transaction-level guardrails detect or stop a composite outcome built from individually permitted tools, and its categories are not specific to financial services.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Fast (6 months)
+> **[FAIAS Incident Register, row 50, "Invariant Labs GitHub MCP toxic agent flow", 2025]** — researchers report that an agent which read a public issue pulled data from the user's private repositories into its context and leaked it in a pull request in a public repository, using only tools it was set up to call. The client asks the user to confirm each tool call by default, but the researchers note that many users choose "Always Allow" and stop monitoring individual actions; a check on each call does not bound the combination of calls, and the researchers describe the cause as an architectural issue at the agent-system level and not a flaw in the server code. The trigger was an indirect prompt injection in the public issue, and the demonstration used demo repositories, not a real user's. Carried as a secondary row: the source is the researchers' own disclosure, and no statement from the vendor was read.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
 >
 > **URO-1 (resolved 12 September 2026): OWASP Top 10 for LLM Applications, 2026 edition (published approximately 4 August 2026), renumbering eight of ten entries, with the re-baselining of the OWASP Agentic Security Initiative's agentic threat list. Flagged 25 August 2026 — examined against its LLM06 Excessive Agency anchoring (LLM03:2026) and resolved under §6A.2 resolution form 1: the substance behind each cited entry survives the renumbering, the Agentic Security Initiative list is cited here by category rather than by threat number and its categories are carried into v1.1 (December 2025) unchanged, and no standardised benchmark has been published for the verification this canvas's ★ rests on. The ★2 is affirmed and published under the v1.2.0 anchor.** The v1.1.0 position stands as register history; ratings issued under different anchors are not comparable numbers (§6A.1).
 
@@ -151,15 +153,19 @@ gate for any agent holding more than one materially combinable tool.
 
 ## 20. References
 ```
-[1] Willison, S., 2025. "The Lethal Trifecta." simonwillison.net, June 2025.
+[1] Willison, S., 2025. "The lethal trifecta for AI agents: private data, untrusted content, and external communication." simonwillison.net, 16 June 2025.
 [2] OWASP, 2024/2025. "OWASP Top 10 for LLM Applications 2025." LLM06:2025
     Excessive Agency.
 [3] Chan, A., et al., 2023. "Harms from Increasingly Agentic Algorithmic Systems."
     Proc. FAccT 2023. arXiv:2302.10329.
-[4] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023.
+[4] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023).
 [5] MAS, 2025. "Consultation Paper: Proposed Guidelines on Artificial Intelligence Risk
-    Management." November 2025.
+    Management." November 2025. Consultation Paper P017-2025; final Guidelines issued 7 Oct 2026 and effective 7 Oct 2027.
 [6] UK GDPR, Article 5(1)(c), data minimisation principle.
+[7] Chen, Y.-S., Huang, S.-Y., Yang, C.-L., Chen, Y.-N., 2026. "TraceSafe: A Systematic
+    Assessment of LLM Guardrails on Multi-Step Tool-Calling Trajectories." COLM 2026.
+    arXiv:2604.07223.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -188,6 +194,15 @@ Change Log:
   LLM03:2026 in the 2026 edition, with root causes and examples unchanged. No
   standardised composite-action benchmark has been published. ★2 affirmed under the
   v1.2.0 anchor; the v1.1.0 position stands as register history.
+- v1.3.3 (2026-10-09): Fields 17 and 20 — the MAS consultation paper is cited as applying its general lifecycle controls to AI agents, with two limbs that bear on them (paragraphs 4.15 and 4.23(a) of the proposed Guidelines), in place of "proposes agentic-specific lifecycle controls". The final Guidelines of 7 Oct 2026 are cited for the same limbs (paragraphs 5.15 and 5.23(a)), for enhanced documentation for AI agents (paragraph 5.23(d)) and for their dates (paragraph 1.8), with the expectations of Sections 5 and 6 to be met by 7 Oct 2028. Reference [5] carries the paper's number, P017-2025, and the dates of the final Guidelines. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 50, Invariant Labs disclosure on a GitHub MCP server, carried as a secondary row on the researchers' own disclosure). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.3 (2026-10-09): Fields 9, 18 and 20 — Willison's post is cited under its full title, "The lethal trifecta for AI agents: private data, untrusted content, and external communication", with the date 16 June 2025 in the reference entry; the words "widely cited", which the post does not support, are removed from Field 18. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — TraceSafe-Bench added as a published
+  benchmark of guardrails on tool-calling trajectories, with its limits. Field 20 —
+  entry [7] added. Research-basis review date moved. No change to controls, test, ★2 or
+  risk profile.
 ```
 
 ---

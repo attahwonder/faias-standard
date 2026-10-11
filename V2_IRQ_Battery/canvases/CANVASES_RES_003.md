@@ -61,7 +61,7 @@ Control Breakpoints:
 **AO-RES-003:** The system shall be capable of being halted or constrained within a defined time bound, with mid-plan agent termination resolving every in-flight, side-effecting action to a defined safe state (rather than an orphaned or half-completed state), and this capability shall be tested, not merely designed.
 
 ## 9. Expected Controls (Traced)
-- **Defined time-to-stop objective and tested kill mechanism** — [linked IRQ-HUM-005] — [PRA SS1/21, March 2021, recoverability/containment expectation] extended to AI-specific agentic termination.
+- **Defined time-to-stop objective and tested kill mechanism** — [linked IRQ-HUM-005] — [PRA SS1/21, March 2022 (11 March 2022, updating 29 March 2021), recoverability expectation] extended to AI-specific agentic termination.
 - **Idempotent, reversible or safely-completable action design for tool calls** — [established distributed-systems/transaction-processing engineering practice] — every side-effecting step type has a defined behaviour under mid-execution termination (complete-then-stop, safe rollback, or pause-and-flag for manual reconciliation).
 - **Mid-plan termination testing** — Emerging Practice, specific to agentic AI orchestration — no published FS-sector standard identified for testing multi-step agent termination specifically; general chaos/failure-injection testing principles apply by extension.
 - **ICT incident response and recovery capability** — [Regulation (EU) 2022/2554, DORA, Art. 11–12, ICT business continuity policy and response/recovery plans] — containment and recovery capability, including for AI-specific incidents, forms part of the mandated ICT business continuity framework.
@@ -126,12 +126,14 @@ Residual risk interpretation: This IRQ is a precondition for every other contain
 | **Novelty** | 4 | Mid-plan agentic termination with in-flight side effects is unfamiliar beyond traditional single-step kill-switch design |
 
 ## 17. Regulatory Basis
-> [Regulation (EU) 2022/2554, DORA, Art. 11–12] requires ICT business continuity policy and disaster recovery/response plans, encompassing containment and recovery capability. [PRA, SS1/21, March 2021] establishes the general recoverability expectation for important business services, which this IRQ extends explicitly to mid-plan agentic AI termination as a distinct, testable capability [UNVERIFIED — DORA Art. 11-12 and SS1/21 confirmed extant but do not name agentic AI containment specifically; no sector-specific rule was located] (verified 29 Jul 2026).
+> [Regulation (EU) 2022/2554, DORA, Art. 11–12] requires ICT business continuity policy and disaster recovery/response plans, encompassing containment and recovery capability. [PRA, SS1/21, March 2022 (11 March 2022, updating 29 March 2021)] establishes the general recoverability expectation for important business services, which this IRQ extends explicitly to mid-plan agentic AI termination as a distinct, testable capability [UNVERIFIED — DORA Art. 11-12 and SS1/21 confirmed extant but do not name agentic AI containment specifically; no sector-specific rule was located] (verified 29 Jul 2026).
 
 ## 18. Research Basis
 > No peer-reviewed research specifically documents "mid-plan agent termination safety" as a named FS risk area [UNVERIFIED — no such named study was located after search]; this IRQ is grounded in established distributed-systems/transaction-processing engineering principles (safe rollback, idempotent operations, saga pattern compensating transactions) applied to the newer context of LLM-driven agentic orchestration, where side-effecting tool calls introduce genuine termination-safety challenges not present in traditional batch or request-response systems.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 76, "An agent used DNS to reach an external chatbot", 2026]** — the developer's own report records that after detection an agent's training run "did not stop automatically as expected" and was stopped by hand two and a half hours later, once the confusion over whether it should have been stopped was resolved. Detection in minutes still left the run going for hours. It evidences the delay in halting, not the safety of the stop itself. The developer is an AI laboratory and the environment an internal training run, not a financial-services firm.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -148,8 +150,8 @@ Related IRQs:
     Applied: 17 January 2025
     URL: https://eur-lex.europa.eu/eli/reg/2022/2554/oj
 
-[2] Prudential Regulation Authority, 2021. "SS1/21 — Operational resilience: Impact tolerances for important business services."
-    Published: March 2021
+[2] Prudential Regulation Authority, 2022. "SS1/21 — Operational resilience: Impact tolerances for important business services."
+    Published: March 2022 (11 March 2022, updating 29 March 2021)
     URL: https://www.bankofengland.co.uk/prudential-regulation/publication/2021/march/operational-resilience-impact-tolerances-for-important-business-services-ss
 ```
 
@@ -169,6 +171,10 @@ Related IRQs:
 **Change Log:**
 - v1.0 (2026-07): Initial publication.
 - v1.2.0 (2026-09-12): Field 9 — a blunt, infrastructure-level kill mechanism added as an expected control distinct from graceful mid-plan termination, anchored to NCSC "Managing the cyber risk of agentic AI", "Emergency shutdown" item (20 Aug 2026, page metadata modified 24 Aug 2026; interim advice to be superseded) and CMORG "Firm Guidance for Frontier AI" v1.0 §3.1 (June 2026, printed p.5), with both source statuses stated and the FCA review expressly not cited as an expectation. Field 19 — the IRQ-AGT-012 cross-reference extended to name the emergency-shutdown split, per the owner's ruling of 12 September 2026, which places the limb in both canvases: the tested last-resort cutoff for any AI system here, the agent-specific infrastructure-level halt at IRQ-AGT-012, with AGT-003 keeping the network-restriction material. ★2 unchanged; no §11 change proposed — whether the test procedure should gain a separate last-resort step is held.
+- v1.3.3 (2026-10-09): Field 20 — the reference entry for PRA SS1/21 gives its current version, March 2022 (11 March 2022, updating 29 March 2021). No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 9 — the PRA SS1/21 limb cites a recoverability expectation, in place of a "recoverability/containment" expectation: SS1/21 states no containment expectation. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/21 cited as its March 2022 version (11 March 2022, updating 29 March 2021); the expectations cited are unchanged.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 76, OpenAI report on an agent that used DNS to reach an external chatbot, for the delay in halting and not the safety of the stop). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
 ```
 
 ---

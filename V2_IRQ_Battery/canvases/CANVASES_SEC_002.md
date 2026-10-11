@@ -52,9 +52,9 @@ Control Breakpoints:
 **AO-SEC-002:** The AI system shall resist prohibited-behaviour elicitation via multi-turn escalation, persona-switching, cross-lingual reframing and encoded-text techniques, demonstrated by adversarial testing that spans these classes in addition to single-turn testing.
 
 ## 9. Expected Controls (Traced)
-- **Multi-turn/session-level adversarial testing** — [Russinovich et al. (Microsoft), "The Crescendo Multi-Turn LLM Jailbreak Attack", Apr 2024, arXiv:2404.01833] — dedicated escalation-style test sequences (automated "Crescendomation" or equivalent), not single-message probes, included in the red-team scope.
+- **Multi-turn/session-level adversarial testing** — [Russinovich et al. (Microsoft), "Great, Now Write an Article About That: The Crescendo Multi-Turn LLM Jailbreak Attack", Apr 2024, arXiv:2404.01833] — dedicated escalation-style test sequences (automated "Crescendomation" or equivalent), not single-message probes, included in the red-team scope.
 - **Long-context/many-shot jailbreak testing** — [Anthropic, "Many-shot Jailbreaking", Apr 2024] — test scaling of guardrail robustness against context length, given the attack surface is shown to grow with context window.
-- **Automated red-team tooling to reach adequate coverage** — [Chao et al., 2023, "PAIR: Jailbreaking Black Box LLMs in Twenty Queries", arXiv:2310.08419] — automated LLM-vs-LLM red-teaming as a scalable way to explore the multi-turn/persona space that manual testing cannot cover exhaustively.
+- **Automated red-team tooling to reach adequate coverage** — [Chao et al., 2023, "Jailbreaking Black Box Large Language Models in Twenty Queries" (PAIR), arXiv:2310.08419] — automated LLM-vs-LLM red-teaming as a scalable way to explore the multi-turn/persona space that manual testing cannot cover exhaustively.
 - **Cross-lingual and encoded-text safety parity testing** — [OWASP Top 10 for LLM Applications 2025, LLM01; MITRE ATLAS AML.T0051 case studies] — Emerging Practice: no single canonical cross-lingual benchmark exists yet for FS use cases; testing should sample the firm's actual supported languages, not assume English-only parity.
 - **In-the-wild tactic mining for realistic attack corpora** — [Jiang et al. (WildTeaming/WildJailbreak), Jun 2024, arXiv:2406.18510] — attack scenarios drawn from observed real-world jailbreak tactics rather than only academic constructs, improving ecological validity of the test.
 
@@ -93,7 +93,7 @@ Assuming controls are well-implemented and monitored:
   Severity: 3 (unauthorised advice/disclosure or reputational exposure via extended sessions)
   Likelihood: 2 (requires deliberate, sustained multi-turn construction; automatable but not trivial)
   Detectability: 3 (session-length/topic-drift monitoring, where present, surfaces attempts within days; absent monitoring, silent)
-  Recoverability: 2 (reversible within days; moderate cost)
+  Recoverability: 3 (reversible within days; moderate cost)
   Novelty: 4 (session-level cumulative attack is entirely AI-specific; no traditional-risk analogue at all)
 
 Interpretation: acceptable if multi-turn/cross-lingual testing scope is genuinely covered, not
@@ -115,18 +115,20 @@ Residual risk: Critical if untested. Deployment gate should require this track b
 | **Severity** | 3 | Unauthorised advice, disclosure or offensive output via extended sessions; reputational and regulatory notice risk. |
 | **Likelihood** | 3 | Probable if untested: published, low-cost, increasingly automated attack techniques (Crescendo, PAIR-style tooling). |
 | **Detectability** | 4 | Individually benign turns mean the escalation is silent absent dedicated session-level monitoring — a materially harder detection problem than single-turn injection. |
-| **Recoverability** | 2 | Reversible within days via customer service and correction; moderate cost. |
+| **Recoverability** | 3 | Reversible within days via customer service and correction; moderate cost. |
 | **Novelty** | 4 | Cumulative, session-level jailbreaking has no analogue in traditional risk models; a security-literate SME testing only single messages will still miss it. |
 
 ## 17. Regulatory Basis
-> No regulation names multi-turn/obfuscated jailbreaking explicitly. [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — foreseeable-harm obligations extend to outcomes reached via extended AI conversations, not only single exchanges. [DSIT, AI Cyber Security Code of Practice, Jan 2025] — secure development principles apply to the full interaction surface, not a single-turn subset. [PRA SS1/23 Model Risk Management, May 2023] — validation should reflect actual usage patterns (including extended sessions) where in MRM scope. Cited as governing expectations; no technique-specific rule exists.
+> No regulation names multi-turn/obfuscated jailbreaking explicitly. [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — foreseeable-harm obligations extend to outcomes reached via extended AI conversations, not only single exchanges. [DSIT, AI Cyber Security Code of Practice, Jan 2025] — secure development principles apply to the full interaction surface, not a single-turn subset. [PRA SS1/23 Model Risk Management, April 2026 (16 April 2026, updating 17 May 2023)] — validation should reflect actual usage patterns (including extended sessions) where in MRM scope. Cited as governing expectations; no technique-specific rule exists.
 
 ## 18. Research Basis
-> [Russinovich, M., Salem, A., Eldan, R., 2024, "Great, Now Write an Article About That: The Crescendo Multi-Turn LLM Jailbreak Attack", arXiv:2404.01833] — defines and automates gradual multi-turn escalation attacks. [Anthropic, 2024, "Many-shot Jailbreaking"] — demonstrates attack surface scaling with context window length. [Chao, P., et al., 2023, "PAIR: Jailbreaking Black Box LLMs in Twenty Queries", arXiv:2310.08419] — automated, cheap black-box jailbreak search informing scalable test design. [Jiang, L., et al., 2024, "WildTeaming at Scale: From In-the-Wild Jailbreaks to (Adversarially) Safer Language Models" (WildJailbreak dataset), arXiv:2406.18510] — mines real-world jailbreak tactics into a 262k-prompt corpus usable for test-set construction. [OWASP, 2025, "Top 10 for LLM Applications 2025", LLM01].
+> [Russinovich, M., Salem, A., Eldan, R., 2024, "Great, Now Write an Article About That: The Crescendo Multi-Turn LLM Jailbreak Attack", arXiv:2404.01833] — defines and automates gradual multi-turn escalation attacks. [Anthropic, 2024, "Many-shot Jailbreaking"] — demonstrates attack surface scaling with context window length. [Chao, P., et al., 2023, "Jailbreaking Black Box Large Language Models in Twenty Queries" (PAIR), arXiv:2310.08419] — automated, cheap black-box jailbreak search informing scalable test design. [Jiang, L., et al., 2024, "WildTeaming at Scale: From In-the-Wild Jailbreaks to (Adversarially) Safer Language Models" (WildJailbreak dataset), arXiv:2406.18510] — mines real-world jailbreak tactics into a 262k-prompt corpus usable for test-set construction. [OWASP, 2025, "Top 10 for LLM Applications 2025", LLM01].
 >
-> **Additions (v1.0.3):** [MLCommons (Ghosh, S., et al.), 2025, "AILuminate: Introducing v1.0 of the AI Risk and Reliability Benchmark from MLCommons", arXiv:2503.05731] — verified 31 July 2026; explicitly bounded value for this IRQ. v1.0 is single-turn and English-only by the benchmark's own stated limitations, so it serves only as the single-turn safety baseline against which the multi-turn, cross-lingual and encoded-text uplift tested under this IRQ is measured — it cannot itself evidence resistance to any of the three attack tracks at section 11. The benchmark's own limitation statement is itself corroborating evidence for this IRQ's premise: that single-turn testing (including a well-governed, consortium-run single-turn benchmark) is insufficient to characterise resistance to multi-turn, persona-switch, cross-lingual or encoded-text elicitation. [Abdulhai, A., Cheng, D., Shrivastava, N., Jaques, N., Gal, Y., Levine, S., 2025, "Evaluating & Reducing Deceptive Dialogue From Language Models with Multi-turn RL", arXiv:2510.14318] — verified 31 July 2026; introduces a human-validated belief misalignment metric quantifying deceptive behaviour turn by turn across multi-turn dialogue, correlating more closely with human judgement than five established deception metrics across four dialogue scenarios. Reports deception in ~26% of turns under benign (non-adversarial) prompting and a 43% average deception rate for RLHF-trained models, demonstrating that safety post-training alone does not close multi-turn behavioural risk and that harmful conversational behaviour is a property of trajectories, not single turns, echoing this IRQ's failure mode. Extends the multi-turn testing at section 11 from binary jailbreak-success scoring toward a graded, validated per-turn measure of belief-shifting — relevant to slow-burn manipulation that a prohibited-output classifier would miss. No change to the ★3 rating; both are additional corroborating methodology, not a re-rating.
+> **Additions (v1.0.3):** [MLCommons (Ghosh, S., et al.), 2025, "AILuminate: Introducing v1.0 of the AI Risk and Reliability Benchmark from MLCommons", arXiv:2503.05731] — verified 31 July 2026; explicitly bounded value for this IRQ. v1.0 is single-turn and English-only by the benchmark's own stated limitations, so it serves only as the single-turn safety baseline against which the multi-turn, cross-lingual and encoded-text uplift tested under this IRQ is measured — it cannot itself evidence resistance to any of the three attack tracks at section 11. The benchmark's own limitation statement is itself corroborating evidence for this IRQ's premise: that single-turn testing (including a well-governed, consortium-run single-turn benchmark) is insufficient to characterise resistance to multi-turn, persona-switch, cross-lingual or encoded-text elicitation. [Abdulhai, M., Cheng, R., Shrivastava, A., Jaques, N., Gal, Y., Levine, S., 2025, "Evaluating & Reducing Deceptive Dialogue From Language Models with Multi-turn RL", arXiv:2510.14318] — verified 31 July 2026; introduces a human-validated belief misalignment metric quantifying deceptive behaviour turn by turn across multi-turn dialogue, correlating more closely with human judgement than five established deception metrics across four dialogue scenarios. Reports deception in ~26% of turns under benign (non-adversarial) prompting and a 43% average deception rate for RLHF-trained models, demonstrating that safety post-training alone does not close multi-turn behavioural risk and that harmful conversational behaviour is a property of trajectories, not single turns, echoing this IRQ's failure mode. Extends the multi-turn testing at section 11 from binary jailbreak-success scoring toward a graded, validated per-turn measure of belief-shifting — relevant to slow-burn manipulation that a prohibited-output classifier would miss. No change to the ★3 rating; both are additional corroborating methodology, not a re-rating.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Fast (6 months)
+> **[FAIAS Incident Register, row 78, "Google Threat Intelligence Group capture-the-flag pretext", 2025]** — the provider's threat-intelligence group reports that an actor's first request "received a safety response", that the actor then continued, "reframing the prompt by depicting themselves as a participant in a capture-the-flag (CTF) exercise", and that the recast request got "helpful information that could be misused to exploit the system". A change of pretext across turns beat a guardrail that held for the direct request. The in-scope limb is the provider's own guardrail; the resistance of the actor's third-party targets is outside FAIAS scope. It evidences persona and pretext change, not encoded-text, cross-lingual or gradual-escalation attacks.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -143,14 +145,14 @@ Residual risk: Critical if untested. Deployment gate should require this track b
     The Crescendo Multi-Turn LLM Jailbreak Attack." arXiv:2404.01833.
 [2] Anthropic, 2024. "Many-shot Jailbreaking." April 2024.
 [3] Chao, P., Robey, A., Dobriban, E., Hassani, H., Pappas, G.J., Wong, E., 2023.
-    "PAIR: Jailbreaking Black Box LLMs in Twenty Queries." arXiv:2310.08419.
+    "Jailbreaking Black Box Large Language Models in Twenty Queries." arXiv:2310.08419.
 [4] Jiang, L., et al., 2024. "WildTeaming at Scale." arXiv:2406.18510.
 [5] OWASP Foundation, 2025. "OWASP Top 10 for LLM Applications 2025." LLM01:2025.
 [6] DSIT, 2025. "AI Cyber Security Code of Practice." January 2025.
 [7] FCA, 2022. "PS22/9: A New Consumer Duty"; PRIN 2A in force 31 July 2023.
 [8] MLCommons (Ghosh, S., et al.), 2025. "AILuminate: Introducing v1.0 of the AI Risk
     and Reliability Benchmark from MLCommons." arXiv:2503.05731. Verified 31 July 2026.
-[9] Abdulhai, A., Cheng, D., Shrivastava, N., Jaques, N., Gal, Y., Levine, S., 2025.
+[9] Abdulhai, M., Cheng, R., Shrivastava, A., Jaques, N., Gal, Y., Levine, S., 2025.
     "Evaluating & Reducing Deceptive Dialogue From Language Models with Multi-turn RL."
     arXiv:2510.14318. Verified 31 July 2026.
 ```
@@ -177,6 +179,11 @@ FOUR-TEST VALIDATION:
 
 Change Log:
 - v1.0 (2026-07): Initial publication; four tests passed.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 78, Google Threat Intelligence Group report on a capture-the-flag pretext, with the targets' controls stated as out of scope). Research-basis review date moved. No change to controls, test, ★3 or risk profile.
+- v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2 (Field 16, and the controls-in-place case in Field 15). The canvas states recovery within days; ASSURANCE_MODEL.md §7 scores recovery within hours 2 and recovery within days 3. The other axes, the ★ rating and the research basis are unchanged.
+- v1.3.3 (2026-10-09): Fields 9, 18 and 20 — the Chao et al. paper takes its issued title, "Jailbreaking Black Box Large Language Models in Twenty Queries" (PAIR is the method name, not part of the title); the Crescendo paper takes its full title, "Great, Now Write an Article About That: The Crescendo Multi-Turn LLM Jailbreak Attack". Form corrections only. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — the initials of three authors of Abdulhai et al. (arXiv:2510.14318) corrected (M. Abdulhai, R. Cheng, A. Shrivastava). Field 20 References — the same. Research-basis review date moved. No change to controls, test, ★ rating or risk profile.
 ```
 
 ---

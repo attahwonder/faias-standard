@@ -60,9 +60,9 @@ Control Breakpoints:
 **AO-RES-005:** Quality, drift and behavioural anomaly metrics for every production AI system shall be monitored continuously against defined thresholds that automatically trigger a pre-agreed response playbook, not solely displayed for periodic human review.
 
 ## 9. Expected Controls (Traced)
-- **Threshold-driven continuous monitoring** — [PRA, SS1/21, March 2021, ongoing monitoring expectation for important business services] — extended to AI-specific quality/drift/anomaly metrics with defined thresholds, not dashboard-only visibility.
+- **Threshold-driven continuous monitoring** — [PRA, SS1/21, March 2022 (11 March 2022, updating 29 March 2021), para 4.16, operational resilience maintained as a dynamic activity for important business services] — extended to AI-specific quality/drift/anomaly metrics with defined thresholds, not dashboard-only visibility.
 - **Pre-agreed response playbooks per threshold breach** — [Regulation (EU) 2022/2554, DORA, Art. 10(2), detection mechanisms that define alert thresholds and criteria to trigger and initiate ICT-related incident response processes] — detection mechanisms should trigger defined response actions.
-- **Model risk ongoing performance monitoring** — [PRA, SS1/23, May 2023, ongoing monitoring principle] — monitoring is a continuous obligation, not a one-time validation event.
+- **Model risk ongoing performance monitoring** — [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023), ongoing monitoring principle] — monitoring is a continuous obligation, not a one-time validation event.
 - **Statistical process control / anomaly detection methodology** — [established general statistical monitoring practice; NIST AI RMF 1.0, January 2023, MEASURE function] — quantitative basis for setting meaningful thresholds distinguishing normal variance from concerning drift.
 - **Escalation trigger to governance** — [linked IRQ-GOV-008] — monitoring output must reach accountable governance bodies through a defined trigger, not rely on ad hoc awareness.
 
@@ -124,12 +124,16 @@ Residual risk interpretation: This IRQ is foundational — nearly every other de
 | **Novelty** | 3 | The distinction between "visible on a dashboard" and "actively monitored" is easy for non-specialist reviewers to miss |
 
 ## 17. Regulatory Basis
-> [PRA, SS1/21, March 2021] establishes an ongoing monitoring expectation for important business services. [Regulation (EU) 2022/2554, DORA, Art. 10] requires mechanisms to promptly detect ICT-related incidents, implying active detection rather than passive dashboard availability. [PRA, SS1/23, May 2023] establishes ongoing monitoring as a continuous model risk management obligation, not a one-time validation event.
+> [PRA, SS1/21, March 2022 (11 March 2022, updating 29 March 2021)] states that, after 31 March 2025, maintaining operational resilience will be a dynamic activity, and that firms should have strategies, processes and systems that enable them to address risks to their ability to remain within their impact tolerance for each important business service (para 4.16); it states no monitoring expectation, and this canvas reads threshold-driven monitoring as one such system. [Regulation (EU) 2022/2554, DORA, Art. 10] requires mechanisms to promptly detect ICT-related incidents, implying active detection rather than passive dashboard availability. [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] establishes ongoing monitoring as a continuous model risk management obligation, not a one-time validation event.
 
 ## 18. Research Basis
 > [NIST AI RMF 1.0, January 2023, MEASURE function] establishes the general expectation that AI system performance be continuously measured against defined criteria. No peer-reviewed research is required to establish the general distinction between passive dashboards and active threshold-triggered alerting, which is a long-established principle in site-reliability and statistical process control literature, applied here to AI-specific quality/drift metrics.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> [Rabanser, S., Günnemann, S., Lipton, Z., 2019, "Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift", Advances in Neural Information Processing Systems 32 (NeurIPS 2019); preprint arXiv:1810.11953] is the peer-reviewed method study closest to the detection step. It compares methods for detecting a shift in the data that a model receives, and finds that a two-sample test applied after dimensionality reduction with a pre-trained classifier performs best across the shifts it tests. Its main experiments use the MNIST and CIFAR-10 image datasets, and its authors name detection on online data, and other domains including natural language processing, as open work. It compares detection statistics. It does not test an alerting pipeline, so it informs the choice of detection method and not the alert-to-response chain that field 11 tests. The authors state that their code is at github.com/steverab/failing-loudly. No ★ change follows from this addition.
+>
+> **[FAIAS Incident Register, row 77, "Anthropic postmortem of three infrastructure bugs", 2025]** — the provider's own postmortem records that detection depended on people reading user reports: "These initial reports were difficult to distinguish from normal variation in user feedback", and the provider states that "we relied too heavily on noisy evaluations". A provider-side serving fault ran for weeks before it was found. The postmortem does not say whether the provider had automatic alert thresholds linked to a response. The provider is not a financial-services firm.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -142,21 +146,25 @@ Related IRQs:
 
 ## 20. References
 ```
-[1] Prudential Regulation Authority, 2021. "SS1/21 — Operational resilience: Impact tolerances for important business services."
-    Published: March 2021
+[1] Prudential Regulation Authority, 2022. "SS1/21 — Operational resilience: Impact tolerances for important business services."
+    Published: March 2022 (11 March 2022, updating 29 March 2021)
     URL: https://www.bankofengland.co.uk/prudential-regulation/publication/2021/march/operational-resilience-impact-tolerances-for-important-business-services-ss
 
 [2] European Union, 2022. "Regulation (EU) 2022/2554 (DORA)", Art. 10.
     Applied: 17 January 2025
     URL: https://eur-lex.europa.eu/eli/reg/2022/2554/oj
 
-[3] Prudential Regulation Authority, 2023. "SS1/23 — Model risk management principles for banks."
-    Published: May 2023
+[3] Prudential Regulation Authority, 2026. "SS1/23 — Model risk management principles for banks."
+    Published: April 2026 (16 April 2026, updating 17 May 2023)
     URL: https://www.bankofengland.co.uk/prudential-regulation/publication/2023/may/model-risk-management-principles-for-banks-ss
 
 [4] NIST, 2023. "Artificial Intelligence Risk Management Framework (AI RMF) Version 1.0."
     Published: January 2023
     URL: https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf
+
+[5] Rabanser, S., Günnemann, S., Lipton, Z., 2019. "Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift." Advances in Neural Information Processing Systems 32 (NeurIPS 2019). Preprint: arXiv:1810.11953. Code stated in the paper: github.com/steverab/failing-loudly.
+    Published: 2019
+    URL: https://proceedings.neurips.cc/paper/2019/hash/846c260d715e5b854ffad5f70a516c88-Abstract.html
 ```
 
 ## 21. Four-Test Validation Footer
@@ -168,7 +176,7 @@ Related IRQs:
 
 **FOUR-TEST VALIDATION:**
 ✓ Test 1 (SME Blind Spot): "We have a dashboard" is conflated with "we have monitoring"; the distinction is invisible without deliberate scrutiny.
-✓ Test 2 (Plausible Harm): Grounded in PRA SS1/21 ongoing monitoring and DORA Art. 10 detection obligations.
+✓ Test 2 (Plausible Harm): Grounded in PRA SS1/21 (operational resilience maintained as a dynamic activity, para 4.16) and DORA Art. 10 detection obligations.
 ✓ Test 3 (Testable): Answerable via staged breach-injection testing of the alert-to-response chain.
 ✓ Test 4 (Decision-Relevant): Outcome gates whether every downstream detection-dependent control can be relied upon.
 
@@ -176,6 +184,13 @@ Related IRQs:
 - v1.0 (2026-07): Initial publication.
 - v1.3.0 (2026-10): Field 9 — the DORA citation narrowed from "detection and response mechanisms" to Art. 10(2): detection mechanisms that define alert thresholds and criteria to trigger ICT-related incident response processes. Field 20 — reference [4], AI RMF 1.0, given the URL of NIST AI 100-1 in place of the URL of NIST AI 600-1. ★3 unchanged.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — the reference entry for PRA SS1/21 gives its current version, March 2022 (11 March 2022, updating 29 March 2021). No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 9, 17 and 21 — the PRA SS1/21 limb states what the statement says, that maintaining operational resilience is a dynamic activity (para 4.16), in place of an "ongoing monitoring expectation", which SS1/21 does not state; threshold-driven monitoring is stated as the canvas's reading. The DORA and SS1/23 limbs are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/21 cited as its March 2022 version (11 March 2022, updating 29 March 2021); the expectations cited are unchanged.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 77, Anthropic postmortem of three infrastructure bugs, in a provider's own serving infrastructure). Research-basis review date moved. No change to controls, test, ★3 or risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — Rabanser, Günnemann and Lipton (NeurIPS 2019) cited as the peer-reviewed method study for dataset-shift detection, with its limits stated. Field 20 References — entry [5] added. Research-basis review date moved. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 ```
 
 ---

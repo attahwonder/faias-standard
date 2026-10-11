@@ -59,7 +59,7 @@ Control Breakpoints:
 - **Task-representative hallucination measurement** — [Ji et al., 2023, "Survey of Hallucination in Natural Language Generation", ACM Comput. Surv., arXiv:2202.03629; Huang et al., 2023/25, ACM TOIS survey, arXiv:2311.05232] — hallucination rate is measured on FS-domain-specific prompts and documents, not generic benchmarks.
 - **Atomic-fact precision scoring** — [Min et al., 2023, "FActScore", arXiv:2305.14251] — outputs are decomposed into atomic factual claims and each independently verified against source documents.
 - **Zero-resource/black-box detection where logits are unavailable** — [Manakul et al., 2023, "SelfCheckGPT", arXiv:2303.08896] — sampling-consistency-based hallucination detection usable for hosted/API models where internal probabilities are inaccessible.
-- **Documented tolerance threshold approved by governance** — [PRA SS1/23, May 2023, development/validation principles; linked IRQ-GOV-006 risk appetite] — a measured, explicit tolerance (e.g. maximum acceptable rate of material factual error per task class) is set and approved, not assumed.
+- **Documented tolerance threshold approved by governance** — [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), development/validation principles; linked IRQ-GOV-006 risk appetite] — a measured, explicit tolerance (e.g. maximum acceptable rate of material factual error per task class) is set and approved, not assumed.
 - **Independent, firm-relevant validation rather than reliance on vendor/public benchmark claims** — [linked IRQ-GOV-007, IRQ-MOD-011] — validation uses the firm's own documents and task framing, contamination-checked.
 
 ## 10. Expected Evidence (Tagged L1–L5)
@@ -133,7 +133,7 @@ measurement.
 | **Novelty** | 3 | FS SMEs are unfamiliar with hallucination as a probabilistic, task-dependent property requiring bespoke measurement rather than a single pass/fail accuracy check. |
 
 ## 17. Regulatory Basis
-> [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — the products & services and consumer understanding outcomes require that customer-facing communications and decisions are accurate and not foreseeably harmful; fabricated facts breach this directly. [PRA SS1/23, May 2023, effective 17 May 2024, Principle 3/4] — development/validation principles require that model risk (including generative fabrication) is identified, measured and mitigated before use. No regulation names "hallucination rate measurement" explicitly; this IRQ operationalises the above via task-representative testing. (verified 29 Jul 2026)
+> [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — the products & services and consumer understanding outcomes require that customer-facing communications and decisions are accurate and not foreseeably harmful; fabricated facts breach this directly. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024, Principle 3/4] — development/validation principles require that model risk (including generative fabrication) is identified, measured and mitigated before use. No regulation names "hallucination rate measurement" explicitly; this IRQ operationalises the above via task-representative testing. (verified 29 Jul 2026)
 
 ## 18. Research Basis
 > [Ji, Z., et al., 2023, "Survey of Hallucination in Natural Language Generation", ACM Computing Surveys (arXiv:2202.03629)] — canonical taxonomy of intrinsic/extrinsic hallucination. [Huang, L., et al., 2023/25, "A Survey on Hallucination in Large Language Models", ACM TOIS (arXiv:2311.05232)] — comprehensive causes/detection/mitigation taxonomy. [Min, S., et al., 2023, "FActScore", arXiv:2305.14251] — atomic-fact precision metric enabling quantitative measurement. [Manakul, P., et al., 2023, "SelfCheckGPT", arXiv:2303.08896] — zero-resource, black-box-compatible hallucination detection. [Incident register: Air Canada tribunal ruling (Feb 2024); CNET AI-written finance articles (Jan 2023); Mata v. Avianca (Jun 2023); Deloitte Australia report refund (Oct 2025)] — real, documented hallucination-driven harm, one instance in finance journalism and three outside financial services.
@@ -169,8 +169,8 @@ measurement.
 [4] Manakul, P., Liusie, A., Gales, M., 2023. "SelfCheckGPT: Zero-Resource Black-Box
     Hallucination Detection for Generative Large Language Models." arXiv:2303.08896.
 [5] FCA, 2022. "PS22/9: A New Consumer Duty." PRIN 2A in force 31 July 2023.
-[6] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023, effective
-    17 May 2024.
+[6] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
 [7] Civil Resolution Tribunal (British Columbia), 2024. Moffatt v. Air Canada, 2024 BCCRT
     149. Ruling 14 Feb 2024.
 [8] Roadzen Inc., 2025. "Roadzen Addresses Inaccurate Reporting of Analyst
@@ -203,6 +203,8 @@ Change Log:
 - v1.0 (2026-07): Initial publication; four tests passed.
 - v1.2.0 (2026-09-12): Field 10 — the illustrative sample size harmonised to the design minimum already used in §11 ("e.g. n=200 customer queries or claims summaries" → "e.g. n≥150 …, the design minimum used in §11"), attributed to this standard's own test design and not to the FActScore paper, which states no such recommendation. No change to controls, test, ★3 or risk profile.
 - v1.2.1 (2026-09-19): Field 18 — incident-register citation added in the reserved form (row 45, Roadzen / The Motley Fool analyst-estimate misstatement), carrying both parties' own figures and the pre-correction wording as the article's syndicated copy preserves it; reference entries [8] and [9] added at Field 20. Field 18 — erratum: the four incidents cited from the register are no longer described as FS-adjacent; three are outside financial services and one is finance journalism. Field 16 — erratum: the three incidents cited as documenting Consumer Duty and FOS exposure are now cited by analogy, one in finance journalism and two outside financial services. Research-basis review date moved. No change to controls, test, ★3 or any five-axis rating.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 ```
 
 ---

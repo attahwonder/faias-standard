@@ -49,7 +49,7 @@ Control Breakpoints:
 
 ## 7. Why a Domain Expert May Miss It
 - FS data-quality teams check for completeness, format and business-rule validity, not for deliberately crafted adversarial content designed to look statistically normal.
-- The scale finding that poisoning requires only a small, near-constant number of documents regardless of model size (Souly/Anthropic et al., 2025) overturns the intuitive "dilution" assumption that large training sets are naturally protected — an assumption most SMEs still hold.
+- The scale finding that poisoning requires only a small, near-constant number of documents regardless of model size (Souly et al., 2025) overturns the intuitive "dilution" assumption that large training sets are naturally protected — an assumption most SMEs still hold.
 - Backdoors can survive standard safety/fine-tuning processes (Hubinger et al., "Sleeper Agents"), so "we retrained/fine-tuned since" is not the reassurance it intuitively seems.
 - Crowdsourced or outsourced labelling is a normal, budget-driven practice; the security implications of who contributes labels are rarely part of the vendor-selection conversation.
 
@@ -61,7 +61,7 @@ Control Breakpoints:
 - **Statistical anomaly detection on incoming records** — [Carlini et al., 2023, "Poisoning Web-Scale Training Datasets is Practical"] — outlier/anomaly screening applied to detect statistically unusual records consistent with poisoning patterns.
 - **Checksum and provenance consistency checks** — [linked IRQ-DAT-001] — records without a traceable, consistent source are quarantined pending review.
 - **Backdoor/trigger-condition testing at evaluation** — [Hubinger et al., 2024, "Sleeper Agents", arXiv:2401.05566; Gu et al., 2017, "BadNets"] — evaluation specifically probes for anomalous trigger-conditioned behaviour, not just aggregate accuracy.
-- **Minimum poison-resistance awareness in scaling assumptions** — [Souly et al., 2025, "Poisoning Attacks on LLMs Require a Near-Constant Number of Poison Samples", arXiv:2510.07192] — data-governance policy explicitly rejects the assumption that larger training sets dilute poisoning risk.
+- **Minimum poison-resistance awareness in scaling assumptions** — [Souly et al., 2025, "Poisoning Attacks on LLMs Require a Near-constant Number of Poison Samples", arXiv:2510.07192] — data-governance policy explicitly rejects the assumption that larger training sets dilute poisoning risk.
 
 ## 10. Expected Evidence (Tagged L1–L5)
 - Statement that "our data pipeline is secure" with no detail — **L1**.
@@ -126,12 +126,12 @@ Residual risk: Critical for materially important models (fraud/AML/credit) witho
 | **Novelty** | 4 | The "large training sets dilute poison" intuition is false and well-documented as false — a genuine AI-security blind spot for FS SMEs. |
 
 ## 17. Regulatory Basis
-> [EU AI Act, Regulation (EU) 2024/1689, Art. 10(2)(f), data governance and Art. 15(5), cybersecurity resilience against data poisoning] requires examination of data for possible biases and appropriate measures against attempts to alter use, behaviour or performance including data poisoning. [PRA SS1/23, Principle 3] data-governance expectations extend to supply-chain integrity of model-feeding data. [NIST AI 100-2 E2025, "Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations"] provides the authoritative taxonomy for poisoning attacks referenced above. (verified 29 Jul 2026)
+> [EU AI Act, Regulation (EU) 2024/1689, Art. 10(2)(f), data governance and Art. 15(5), cybersecurity resilience against data poisoning] requires examination of data for possible biases and appropriate measures against attempts to alter use, behaviour or performance including data poisoning. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), Principle 3] data-governance expectations extend to supply-chain integrity of model-feeding data. [NIST AI 100-2 E2025, "Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations"] provides the authoritative taxonomy for poisoning attacks referenced above. (verified 29 Jul 2026)
 
 ## 18. Research Basis
-> [Gu, T., Dolan-Gavitt, B., Garg, S., 2017, "BadNets: Identifying Vulnerabilities in the Machine Learning Model Supply Chain", arXiv:1708.06733] — foundational backdoor demonstration. [Carlini, N., et al., 2023, "Poisoning Web-Scale Training Datasets is Practical", arXiv:2302.10149] — web-scale datasets poisonable for ~$60 via split-view/frontrunning. [Wan, A., et al., 2023, "Poisoning Language Models During Instruction Tuning", arXiv:2305.00944] — ~100 poisoned examples manipulate instruction-tuned behaviour. [Hubinger, E., et al., 2024, "Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training", arXiv:2401.05566] — backdoors survive standard safety fine-tuning, especially in larger models. [Souly, A., et al. (Anthropic-affiliated), 2025, "Poisoning Attacks on LLMs Require a Near-Constant Number of Poison Samples", arXiv:2510.07192] — overturns the dilution-by-scale assumption.
+> [Gu, T., Dolan-Gavitt, B., Garg, S., 2017, "BadNets: Identifying Vulnerabilities in the Machine Learning Model Supply Chain", arXiv:1708.06733] — foundational backdoor demonstration. [Carlini, N., et al., 2023, "Poisoning Web-Scale Training Datasets is Practical", arXiv:2302.10149] — web-scale datasets poisonable for ~$60 via split-view/frontrunning. [Wan, A., et al., 2023, "Poisoning Language Models During Instruction Tuning", arXiv:2305.00944] — ~100 poisoned examples manipulate instruction-tuned behaviour. [Hubinger, E., et al., 2024, "Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training", arXiv:2401.05566] — backdoors survive standard safety fine-tuning, especially in larger models. [Souly, A., et al. (UK AI Security Institute, Anthropic, Alan Turing Institute), 2025, "Poisoning Attacks on LLMs Require a Near-constant Number of Poison Samples", arXiv:2510.07192] — overturns the dilution-by-scale assumption. Two published benchmarks of backdoor attacks and defences and one evaluation programme for trojan detectors are cited as related work; none is specific to financial services. [Wu, B., et al., 2022, "BackdoorBench: A Comprehensive Benchmark of Backdoor Learning," NeurIPS 2022 Datasets and Benchmarks Track, arXiv:2206.12654] — evaluates 8 attacks against 9 defences at 5 poisoning ratios, on 5 models and 4 datasets (CIFAR-10, CIFAR-100, GTSRB and Tiny ImageNet), under one standardised protocol; code and evaluations are public. Two of its defences, activation clustering and spectral signatures, identify poisoned training samples from the feature representations of a model already trained on them; the benchmark does not test a firm's ingestion, labelling or curation pipeline. [Li, Y., et al., 2025, "BackdoorLLM: A Comprehensive Benchmark for Backdoor Attacks and Defenses on Large Language Models," NeurIPS 2025 Datasets and Benchmarks Track (poster), arXiv:2408.12798] — covers four attack modalities on text-generation models (data poisoning, weight poisoning, hidden-state manipulation and chain-of-thought hijacking) and seven mitigation techniques; code and datasets are public. Its mitigation techniques, such as fine-tuning, quantisation, pruning, decoding-time defences, CleanGen, CROW and a response-level judge, act on the trained model or at inference time, not on a record before it enters a training set or knowledge store. [National Institute of Standards and Technology, TrojAI, "Overview," pages.nist.gov/trojai] — evaluates submitted detectors on how accurately they identify whether a trained model carries a trojan, using sequestered data, in leaderboard rounds from June 2020 to October 2024; the competition is closed and its evaluation server is offline. It bears on step (3) of the test in field 11 only.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -150,11 +150,19 @@ Residual risk: Critical for materially important models (fraud/AML/credit) witho
 [3] Wan, A., et al., 2023. "Poisoning Language Models During Instruction Tuning." arXiv:2305.00944.
 [4] Hubinger, E., et al., 2024. "Sleeper Agents: Training Deceptive LLMs that Persist Through
     Safety Training." arXiv:2401.05566.
-[5] Souly, A., et al., 2025. "Poisoning Attacks on LLMs Require a Near-Constant Number of
+[5] Souly, A., et al., 2025. "Poisoning Attacks on LLMs Require a Near-constant Number of
     Poison Samples." arXiv:2510.07192.
 [6] NIST, 2025. "NIST AI 100-2 E2025: Adversarial Machine Learning: A Taxonomy and
     Terminology of Attacks and Mitigations." March 2025.
 [7] European Union, 2024. "Regulation (EU) 2024/1689 — Artificial Intelligence Act." Art. 10, Art. 15.
+[8] Wu, B., et al., 2022. "BackdoorBench: A Comprehensive Benchmark of Backdoor
+    Learning." NeurIPS 2022 Datasets and Benchmarks Track. arXiv:2206.12654.
+[9] Li, Y., Huang, H., Zhao, Y., Ma, X., Sun, J., 2025. "BackdoorLLM: A Comprehensive
+    Benchmark for Backdoor Attacks and Defenses on Large Language Models." NeurIPS 2025
+    Datasets and Benchmarks Track. arXiv:2408.12798.
+[10] National Institute of Standards and Technology. "TrojAI: Overview." TrojAI
+    leaderboard documentation, https://pages.nist.gov/trojai/docs/overview.html.
+    Competition closed.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -177,6 +185,12 @@ FOUR-TEST VALIDATION:
 
 Change Log:
 - v1.0 (2026-07): Initial publication.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 7, 9, 18 and 20 — the Souly et al. paper is cited by its authors as issued (the first author is at the UK AI Security Institute; Anthropic is one of five affiliations) and under its title as issued, "Poisoning Attacks on LLMs Require a Near-constant Number of Poison Samples". Form corrections only. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — BackdoorBench, BackdoorLLM and the NIST
+  TrojAI evaluation added as related work on backdoor attacks and defences, each with
+  its limits. Field 20 — entries [8] to [10] added. Research-basis review date moved. No
+  change to controls, test, ★2 or risk profile.
 ```
 
 ---

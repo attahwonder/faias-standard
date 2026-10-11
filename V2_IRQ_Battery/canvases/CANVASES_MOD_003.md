@@ -135,7 +135,7 @@ without degradation testing.
 | **Novelty** | 4 | The failure direction — apparent thoroughness masking lower reliability — directly inverts the SME's usual quality heuristic; highly likely to be missed without AI-specific knowledge. |
 
 ## 17. Regulatory Basis
-> [PRA SS1/23, May 2023, effective 17 May 2024, Principle 3/4 — validation must reflect the actual conditions of use, including task complexity] — the primary anchor; no explicit regulatory text addresses "reasoning-length degradation" as such. [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — foreseeable-harm obligation is engaged where complex-case decisions are systematically less reliable without disclosure or mitigation. This IRQ operationalises SS1/23's use-fidelity expectation for a failure mode specific to reasoning models. [UNVERIFIED — no further pinpoint exists for a mechanism not named in the regulatory text] (verified 29 Jul 2026).
+> [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024, Principle 3/4 — validation must reflect the actual conditions of use, including task complexity] — the primary anchor; no explicit regulatory text addresses "reasoning-length degradation" as such. [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — foreseeable-harm obligation is engaged where complex-case decisions are systematically less reliable without disclosure or mitigation. This IRQ operationalises SS1/23's use-fidelity expectation for a failure mode specific to reasoning models. [UNVERIFIED — no further pinpoint exists for a mechanism not named in the regulatory text] (verified 29 Jul 2026).
 
 ## 18. Research Basis
 > [Liu, N.F., et al., 2023, "Lost in the Middle: How Language Models Use Long Contexts", arXiv:2307.03172] — demonstrates a U-shaped performance curve over long contexts: information in the middle of a long input (such as a constraint stated among several others) is used less reliably than information at its start or end. [Shi, F., et al., 2023, "Large Language Models Can Be Easily Distracted by Irrelevant Context", arXiv:2302.00093] — shows accuracy degrades sharply when irrelevant information is added to the problem context, supporting the general mechanism of context-driven degradation.
@@ -157,8 +157,8 @@ without degradation testing.
     Use Long Contexts." arXiv:2307.03172.
 [2] Shi, F., Chen, X., Misra, K., et al., 2023. "Large Language Models Can Be Easily
     Distracted by Irrelevant Context." arXiv:2302.00093.
-[3] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023, effective
-    17 May 2024.
+[3] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
 [4] FCA, 2022. "PS22/9: A New Consumer Duty." PRIN 2A in force 31 July 2023.
 ```
 
@@ -182,6 +182,8 @@ FOUR-TEST VALIDATION:
 Change Log:
 - v1.0 (2026-07): Initial publication; four tests passed.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 ```
 
 ---

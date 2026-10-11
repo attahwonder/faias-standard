@@ -122,7 +122,8 @@ Assuming controls are well-implemented and monitored:
 
 Interpretation: acceptable residual risk where the applicability assessment is genuinely
 performed and, where in scope, a register and refusal design exist. Highest concern:
-Novelty combined with the thin, structural (rather than incident-documented) evidence base
+Novelty combined with the thin, structural evidence base (one non-financial-services
+incident, none located in a customer-facing financial-services tool)
 — reflected in the ★1 rating — meaning this control area depends more on the assessor's
 own reasoning than on a benchmarked test.
 
@@ -155,9 +156,9 @@ section 1 trigger conditions.
 > No UK regulation directly addresses the harm this IRQ tests. [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] foreseeable-harm obligations run to the firm's own customers, not to unconnected third parties harmed by a customer's downstream misuse of the firm's tool — this is recorded as a genuine regulatory gap, not stretched to fit. [CFPB, "Chatbots in Consumer Finance", 6 June 2023, consumerfinance.gov] was verified against the primary source at consumerfinance.gov on 1 August 2026: it documents that deficient chatbots preventing access to live human support "can lead to law violations, diminished service, and other harms," and that inaccurate information or failure to recognise dispute/complaint signals engages federal consumer-financial-law obligations. Its own finding addresses harm to the firm's **own** customer — the opposite direction to the third-party misuse this IRQ tests — so it is cited as evidence of active regulatory attention to chatbot-mediated harm channels generally, not as direct authority for the specific direction tested here.
 
 ## 18. Research Basis
-> No peer-reviewed research specifically addresses AI-enabled dual-use misuse of customer-facing financial-services generative tools against third parties; this is recorded as a genuine evidentiary gap rather than filled with an adjacent-but-inapplicable citation. The CFPB report at section 17 is the only verified anchor for this IRQ and is limited as described there. This thin evidence base — structural plausibility without an incident or research corpus — is the basis for the ★1 rating (as distinct from ★2, "research exists, method bespoke") and is recorded plainly rather than inflated.
+> One peer-reviewed study bears on this IRQ in part: [Hou et al., 2026, "FinSafetyBench: Evaluating LLM Safety in Real-World Financial Scenarios," Findings of the Association for Computational Linguistics: ACL 2026, pp. 14181–14208] is a bilingual (English–Chinese) red-teaming benchmark, with a released dataset, that tests whether a model refuses requests that violate financial compliance, across 14 subcategories of financial crime and ethical violation and under three attack settings. It tests model refusal and not misuse against third parties as such; its attack settings test whether a refusal can be defeated, which is the jailbreak side of the boundary at section 4, so it bears on this IRQ only through refusal design. It does not test a deployed customer-facing tool, a misuse-case register, rate or volume controls, or the repurposing of a legitimate output, and it is partial evidence on the refusal limb only (read 7 October 2026). Beyond that limb, no peer-reviewed research was located that specifically addresses AI-enabled dual-use misuse of customer-facing financial-services generative tools against third parties; this is recorded as a genuine evidentiary gap rather than filled with an adjacent-but-inapplicable citation. The CFPB report at section 17 is the only verified regulatory anchor for this IRQ and is limited as described there. **[FAIAS Incident Register, row 85, "North Korean remote-worker fraud using Claude", 2025]**, citing [Anthropic, 2025, "Detecting and countering misuse of AI: August 2025," 27 August 2025] — the provider reports that operatives used its model to build false identities, pass technical assessments and do the work, in order to secure and keep remote jobs at US technology companies, so a provider's working capability was used by its users against third parties. The victims were employers and the case is not financial-services; the report does not say whether any control failed, which the boundary test at section 4 requires, so it evidences the mechanism and is not classified as misuse or jailbreak here. This thin evidence base — structural plausibility with one documented non-financial-services instance, and no incident or research corpus located for a customer-facing financial-services tool — is the basis for the ★1 rating (as distinct from ★2, "research exists, method bespoke") and is recorded plainly rather than inflated.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Fast (6 months)
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -190,10 +191,13 @@ FOUR-TEST VALIDATION:
 ✓ Test 1 (SME Blind Spot): Misuse of a working system falls between security (tests whether
   controls held — they did) and conduct (tests harm to the firm's own customer — this
   targets someone else); neither function owns it without the dedicated taxonomy ruling.
-✓ Test 2 (Plausible Harm): Evidence base is thin and structural rather than
-  incident-documented — CFPB (6 Jun 2023) evidences active regulatory attention to
-  chatbot-mediated consumer-finance harm generally, though not this exact direction; rated
-  ★1 accordingly, not asserted as heavily evidenced.
+✓ Test 2 (Plausible Harm): Evidence base is thin and structural: one non-financial-services
+  incident is recorded (incident register, row 85) and none was located in a customer-facing
+  financial-services tool — CFPB (6 Jun 2023) evidences active regulatory attention to
+  chatbot-mediated consumer-finance harm generally, though not this exact direction;
+  FinSafetyBench (Findings of ACL 2026) evidences that adversarial prompts can bypass a
+  model's financial-compliance refusals, which is partial evidence on the refusal limb
+  only; rated ★1 accordingly, not asserted as heavily evidenced.
 ✓ Test 3 (Testable): Partially — answerable via documentation review of the misuse-case
   register and interview, not adversarial testing; no published protocol exists, stated
   plainly rather than invented.
@@ -206,6 +210,12 @@ Change Log:
   applicability-conditional by design (confirmed at adoption, 31 Jul 2026) and
   TAXONOMY boundary ruling 16 (misuse vs jailbreak: did a control fail?). Four tests passed,
   with the Test 2 thin-evidence-base caveat recorded explicitly rather than smoothed over.
+- v1.3.3 (2026-10-09): Fields 15, 18 and 21 — FinSafetyBench (Findings of
+  ACL 2026) added as partial evidence on the refusal limb only, with its limits; the
+  statement that no peer-reviewed research addresses the IRQ qualified accordingly; the CFPB
+  report described as the only verified regulatory anchor; incident register row 85 cited
+  as a non-financial-services instance of the mechanism, with the financial-services gap
+  kept. Research-basis review date moved. ★1 unchanged.
 ```
 
 ---

@@ -19,7 +19,7 @@ Register question: "Was validation performed by a party independent of developme
 ## 5. Potential Consequences
 - **Customer:** A system with material weaknesses (bias, hallucination rate, capability boundary failures) that self-assessment did not surface, or that benchmark scores did not reveal for the firm's specific use case, reaches customers without having been genuinely tested against it.
 - **Institution:** The firm's approval records give false comfort — an approval paper that cites "validation complete" without genuine independence is not evidence of the safety it claims to represent, and cannot be relied upon in a subsequent incident investigation or regulatory challenge.
-- **Regulator/market:** Independent validation is a cornerstone expectation of PRA SS1/23's model risk management principles; its absence for AI systems specifically is a direct, easily-identified supervisory finding, especially given the PRA's explicit October 2025 roundtable focus on validating non-deterministic models.
+- **Regulator/market:** Independent validation is a cornerstone expectation of PRA SS1/23's model risk management principles; its absence for AI systems specifically is a direct, easily-identified supervisory finding, especially given the PRA's October 2025 roundtable presentation of its current thinking on AI and ML model risk under SS1/23.
 
 ## 6. Failure Chain
 ```
@@ -57,8 +57,8 @@ Control Breakpoints:
 **AO-GOV-007:** Validation of AI systems prior to deployment shall be performed by a function structurally and substantively independent of development and procurement, with genuine authority to reject, and shall be based on firm-relevant evaluation evidence rather than vendor or public benchmark claims alone.
 
 ## 9. Expected Controls (Traced)
-- **Independent validation function organisationally and reporting-line separated from development/procurement, with documented authority to reject deployment** — [PRA, SS1/23, May 2023, Principle 4 — Independent Model Validation] — the direct, primary anchor for this control; SS1/23 explicitly requires validation independence for models, extended to AI/ML.
-- **Firm-relevant evaluation on the firm's own data, use cases and customer population, distinct from vendor safety-card claims or public benchmark scores** — [linked IRQ-MOD-011; PRA MRM AI and ML Roundtable note, Nov 2025, recording supervisory expectation that validation of non-deterministic/GenAI models be firm-relevant, not vendor-reliant] — closes the gap between "the vendor says it's safe" and "we tested it against our own risk."
+- **Independent validation function organisationally and reporting-line separated from development/procurement, with documented authority to reject deployment** — [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023), Principle 4 — Independent Model Validation] — the direct, primary anchor for this control; SS1/23 explicitly requires validation independence for models, extended to AI/ML.
+- **Firm-relevant evaluation on the firm's own data, use cases and customer population, distinct from vendor safety-card claims or public benchmark scores** — [linked IRQ-MOD-011; PRA MRM AI and ML roundtable presentation slides, October 2025, on development datasets that may not represent the target population and on testing in conditions unlike deployment; the extension to vendor-reported evidence is FAIAS's own] — closes the gap between "the vendor says it's safe" and "we tested it against our own risk."
 - **Benchmark contamination screening where public benchmark scores are used as supplementary evidence** — [linked IRQ-MOD-011; academic literature on benchmark contamination] — where benchmark evidence is used at all, it is screened for the risk that test items appeared in training data.
 - **Documented instances of validation exercising reject/restrict authority, evidencing the function is substantively (not just structurally) independent** — [ISO/IEC 42001:2023, clause 9 (performance evaluation)] — a functioning independence control produces a track record of actual challenge outcomes, not only pass records.
 - **ECB revised Guide to Internal Models (2025) explicit machine-learning validation expectations** — [ECB, "Guide to Internal Models," revised Jul 2025] — for EU-supervised entities, provides an explicit supervisory analogue requiring independent human oversight and documentation of complex ML validation; cited as reinforcing evidence of the direction of supervisory expectation even where not directly binding on a UK-only firm.
@@ -140,12 +140,14 @@ failure silently undermines confidence in every other governance and technical c
 | **Novelty** | 3 | Benchmark contamination risk and the gap between vendor safety-card claims and firm-relevant evidence are AI-native blind spots a traditional-model-trained validation reviewer would likely not anticipate. |
 
 ## 17. Regulatory Basis
-> [PRA, SS1/23, May 2023, Principle 4 — Independent Model Validation] is the direct, primary anchor: validation must be performed by staff independent of development, with authority to require remediation or reject use, and this principle is confirmed to extend to AI/ML by PRA's April 2024 mapping letter. [PRA, "PRA model risk management roundtable on AI and ML technologies," meeting note, published Nov 2025] records supervisory dialogue specifically on validating non-deterministic/GenAI models under SS1/23, evidencing this is an active area of supervisory attention. [ECB, "Guide to Internal Models," revised Jul 2025] provides explicit machine-learning validation expectations (explainability, human oversight, documentation) for EU-supervised entities, reinforcing the direction of expectation.
+> [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023), Principle 4 — Independent Model Validation] is the direct, primary anchor: validation must be performed by staff independent of development, with authority to require remediation or reject use, and this principle is confirmed to extend to AI/ML by the Bank of England and PRA letter of 22 April 2024. [PRA, "The PRA holds model risk management roundtable on artificial intelligence and machine learning technologies," published Nov 2025] reports two roundtable sessions (20 and 22 October 2025) at which the PRA presented its thinking on AI and ML model risk under SS1/23, and its presentation slides cover model tiering, development testing, independent validation and monitoring, evidencing this is an active area of supervisory attention. [ECB, "Guide to Internal Models," revised Jul 2025] provides explicit machine-learning validation expectations (explainability, human oversight, documentation) for EU-supervised entities, reinforcing the direction of expectation.
 
 ## 18. Research Basis
 > No peer-reviewed academic literature specifically evaluates independent-validation-function adequacy for enterprise GenAI deployment; this control area is regulatory/audit practice rather than a research literature, consistent with this domain's evidentiary profile. Benchmark contamination as a distinct evidentiary risk (test items present in training data, undermining public benchmark score reliability) is well-documented in the broader machine-learning evaluation literature and is treated in this canvas as the AI-specific extension of the traditional "vendor claims are not independent evidence" validation principle [specific contamination-study citations retained in IRQ-MOD-011, this canvas's linked evidentiary anchor, to avoid duplication].
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 68, "Epic Sepsis Model external validation", 2021]** — an external validation of a vendor's sepsis-prediction model, already in wide use in hospitals, found poor discrimination (AUC 0.63): at an alert threshold of a score of 6 or higher, the model did not identify 67% of patients with sepsis (1,709 of 2,552) and alerted on 18% of hospitalisations (6,971 of 38,455), and the authors state that its ability to identify patients with sepsis "has not been adequately evaluated despite widespread use". Carried as a secondary row: a peer-reviewed study, abstract only, which does not say what the adopting hospitals relied on. The setting is healthcare, not financial services.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -160,15 +162,15 @@ failure silently undermines confidence in every other governance and technical c
 
 ## 20. References
 ```
-[1] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023, effective
-    17 May 2024. Principle 4 — Independent Model Validation.
-[2] Bank of England/PRA, 2025. "PRA model risk management roundtable on AI and ML
-    technologies." Meeting note, published November 2025.
-[3] Bank of England/PRA, 2025. "October 2025 MRM AI and ML Roundtable — meeting note." PDF,
+[1] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024. Principle 4 — Independent Model Validation.
+[2] Bank of England/PRA, 2025. "The PRA holds model risk management roundtable on artificial
+    intelligence and machine learning technologies." Published November 2025.
+[3] Bank of England/PRA, 2025. "October 2025 MRM AI and ML Roundtable — presentation slides." PDF,
     October 2025.
 [4] European Central Bank, 2025. "ECB revised Guide to Internal Models (incl. ML
     expectations)." Revised July 2025.
-[5] Bank of England/PRA, 2024. "PRA response to Government on AI regulation." April 2024.
+[5] Bank of England/PRA, 2024. "The Bank and the PRA's response to DSIT/HMT: update on our approach to AI." 22 April 2024.
 [6] OpenAI, 2026. "GPT-6 Astra System Card." 3 September 2026, amended 9 September 2026.
     URL: https://deploymentsafety.openai.com/gpt-6-astra
 ```
@@ -198,6 +200,13 @@ Change Log:
 - v1.0 (2026-07): Initial publication; all four tests passed.
 - v1.2.0 (2026-09-12): Field 10 — the GPT-6 Astra System Card §8.2.3 zero-attack-rate statement added as a worked example of a vendor-reported result correctly caveated (the card disclaims the inference itself, and was amended 9 Sep 2026 to expand those limits), with the propensity-versus-capability distinction from §9.2.2.2 stated and the conclusion that a well-caveated vendor result is still not firm-relevant validation evidence. ★3 · P3 unchanged.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 17 — the SS1/23 sentence names the Bank of England and PRA letter of 22 April 2024, in place of the PRA's April 2024 mapping. Form corrections only. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 17 and 20 — the PRA roundtable page is cited by its heading as published, "The PRA holds model risk management roundtable on artificial intelligence and machine learning technologies". Form corrections only. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 68, Epic Sepsis Model external validation, carried as a secondary row: a peer-reviewed study read at its abstract, in a healthcare setting). Research-basis review date moved. No change to controls, test, ★3 or risk profile.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.3 (2026-10-09): Field 20 References — the Bank of England and PRA letter of 22 April 2024 cited by its title, The Bank and the PRA's response to DSIT/HMT: update on our approach to AI. No change to controls, test, ★ rating or risk profile.
+- v1.3.3 (2026-10-09): Fields 5, 9, 17 and 20 — the PRA's October 2025 roundtable page and slides are described as what they are: the page reports two roundtable sessions, and the slides cover model tiering, development testing, independent validation and monitoring under SS1/23. The statements that they addressed validation of non-deterministic or generative AI models are removed, and references [2] and [3] describe the page and the slides as what they are. ★3 and the risk profile unchanged.
 ```
 
 ---

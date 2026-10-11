@@ -62,7 +62,7 @@ Control Breakpoints:
 **AO-HUM-003:** The organisation shall periodically and genuinely assess staff competency to perform each AI-supported critical task without AI assistance, and shall not assume retained competency based on prior training or documented procedures alone.
 
 ## 9. Expected Controls (Traced)
-- **Periodic AI-free competency assessment** — [FCA, Handbook SYSC 15A.2.9R, per PS21/3, 2021; PRA SS1/21, Mar 2021] — scheduled assessment of staff performing the critical task entirely without AI assistance, scored against the same quality standard as the AI-assisted process.
+- **Periodic AI-free competency assessment** — [FCA, Handbook SYSC 15A.2.9R, per PS21/3, 2021; PRA SS1/21, March 2022 (11 March 2022, updating 29 March 2021)] — scheduled assessment of staff performing the critical task entirely without AI assistance, scored against the same quality standard as the AI-assisted process.
 - **Fallback mode fire-drilling, not documentation-only testing** — [linked IRQ-RES-001; PRA SS1/21, section on scenario testing] — the documented fallback process is periodically actually exercised end-to-end by the staff who would perform it in a real event.
 - **Skill-decay-informed refresher training cadence** — [Arthur, Bennett, Stanush & McNelly, 1998, "Factors that Influence Skill Decay and Retention: A Quantitative Review and Analysis", Human Performance, 11(1)] — refresher training cadence calibrated to task-specific skill-decay rates rather than a generic annual schedule.
 - **Risk-appetite threshold for maximum AI-assisted tenure before mandatory unaided reassessment** — [linked IRQ-GOV-006; Emerging Practice, no direct FS-specific published standard identified for AI-driven skill atrophy specifically] — board-approved threshold triggering reassessment, documented as emerging practice pending sector-specific research maturation.
@@ -112,7 +112,7 @@ Assuming controls are well-implemented and monitored:
   Detectability: 3 (only becomes visible during an actual outage/
     suspension event or a deliberate assessment — not observable in
     normal-course operation)
-  Recoverability: 2 (reversible via targeted refresher training once
+  Recoverability: 3 (reversible via targeted refresher training once
     identified; days-to-weeks)
   Novelty: 3 (domain expert would assume fallback SOPs are sufficient;
     the AI-specific skill-decay-through-disuse mechanism is not
@@ -149,11 +149,11 @@ untested.
 | **Severity** | 2 | Single important-business-service disruption if fallback underperforms; escalates to 3 only if coincident with a genuine AI-unavailability event |
 | **Likelihood** | 2 | Unlikely to be exposed with active periodic assessment; skill decay is well-documented but its business impact depends on an unavailability event occurring |
 | **Detectability** | 3 | Not observable in normal-course operation; only surfaces during an actual outage/suspension or a deliberate unaided assessment |
-| **Recoverability** | 2 | Reversible via targeted refresher training once identified, typically within weeks |
+| **Recoverability** | 3 | Reversible via targeted refresher training once identified, typically within weeks |
 | **Novelty** | 3 | Domain expert assumes documented fallback SOPs are sufficient; the disuse-driven skill-decay mechanism specific to continuous AI assistance is not standard operational-resilience testing practice |
 
 ## 17. Regulatory Basis
-> [FCA, Handbook SYSC 15A.2.1R, 15A.2.5R and 15A.2.9R, per PS21/3, Mar 2021] and [PRA, SS1/21, "Operational Resilience: Impact Tolerances for Important Business Services", Mar 2021] require firms to identify important business services, set impact tolerances, and demonstrate they can remain within tolerance during severe-but-plausible disruption — which extends to AI-component unavailability and the human fallback's genuine capability to deliver the service. [FCA, PS21/3, Mar 2021] requires scenario testing of these fallback arrangements. Section pinpoints on AI-specific application [UNVERIFIED — SYSC 15A, SS1/21 and PS21/3 confirmed extant and in force; no AI-component-specific sub-clause published by FCA/PRA to cite beyond general IBS/impact-tolerance module reference] (verified 29 Jul 2026).
+> [FCA, Handbook SYSC 15A.2.1R, 15A.2.5R and 15A.2.9R, per PS21/3, Mar 2021] and [PRA, SS1/21, "Operational Resilience: Impact Tolerances for Important Business Services", March 2022 (11 March 2022, updating 29 March 2021)] require firms to identify important business services, set impact tolerances, and demonstrate they can remain within tolerance during severe-but-plausible disruption — which extends to AI-component unavailability and the human fallback's genuine capability to deliver the service. [FCA, PS21/3, Mar 2021] requires scenario testing of these fallback arrangements. Section pinpoints on AI-specific application [UNVERIFIED — SYSC 15A, SS1/21 and PS21/3 confirmed extant and in force; no AI-component-specific sub-clause published by FCA/PRA to cite beyond general IBS/impact-tolerance module reference] (verified 29 Jul 2026).
 
 ## 18. Research Basis
 > [Arthur, W., Bennett, W., Stanush, P.L. & McNelly, T.L., 1998, "Factors that Influence Skill Decay and Retention: A Quantitative Review and Analysis", Human Performance, 11(1), 57–101] provides the meta-analytic basis for skill-decay rates and refresher-training calibration used in this canvas's controls. [Bainbridge, L., 1983, "Ironies of Automation", Automatica, 19(6)] is the originating account of automation degrading the operator's own capability to intervene effectively — the mechanism this IRQ addresses at the organisational-competency level rather than the single-decision level addressed by IRQ-HUM-001/002.
@@ -184,8 +184,8 @@ Related IRQs:
     Published: 2021-03-29
     URL: https://www.handbook.fca.org.uk/handbook/SYSC/15A/
 
-[4] Prudential Regulation Authority, 2021. "Supervisory Statement SS1/21: Operational Resilience: Impact Tolerances for Important Business Services."
-    Published: 2021-03-29
+[4] Prudential Regulation Authority, 2022. "Supervisory Statement SS1/21: Operational Resilience: Impact Tolerances for Important Business Services."
+    Published: 2022-03-11 (updating 2021-03-29)
     URL: https://www.bankofengland.co.uk/prudential-regulation/publication/2021/march/operational-resilience-impact-tolerances-for-important-business-services-ss
 ```
 
@@ -205,6 +205,9 @@ Related IRQs:
 **Change Log:**
 - v1.0 (2026-07): Initial publication; all four tests passed.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — the reference entry for PRA SS1/21 gives its current version, March 2022 (11 March 2022, updating 29 March 2021). No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/21 cited as its March 2022 version (11 March 2022, updating 29 March 2021); the expectations cited are unchanged.
+- v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2 (Field 16, and the controls-in-place case in Field 15). The canvas states recovery typically within weeks, which is beyond the within-hours level that ASSURANCE_MODEL.md §7 scores 2; the scale names no band between days and years, and 3 (reversible within days) is the nearest anchor. The other axes, the ★ rating and the research basis are unchanged.
 ```
 
 ---

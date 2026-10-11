@@ -64,9 +64,9 @@ Control Breakpoints:
 
 ## 9. Expected Controls (Traced)
 - **Per-system EU AI Act risk classification determination (prohibited / high-risk-Annex III / limited-risk / minimal-risk), documented and re-assessed on material change** — [EU AI Act, Regulation (EU) 2024/1689, Art. 6 and Annex III] — the direct, binding classification obligation for firms operating in or serving the EU market, with credit-scoring and life/health insurance pricing named explicitly in Annex III.
-- **Outsourcing and Critical Third Party (CTP) register cross-check for every AI system involving a vendor, cloud provider or embedded third-party AI component** — [PRA, SS2/21 — Outsourcing and third-party risk management, Mar 2021] — ensures AI-enabled vendor relationships are assessed against the firm's existing outsourcing-register criteria, not assumed out of scope because the arrangement is framed as "software" rather than "outsourcing."
+- **Outsourcing and Critical Third Party (CTP) register cross-check for every AI system involving a vendor, cloud provider or embedded third-party AI component** — [PRA, SS2/21 — Outsourcing and third party risk management, November 2024 (15 November 2024, updating 29 March 2021)] — ensures AI-enabled vendor relationships are assessed against the firm's existing outsourcing-register criteria, not assumed out of scope because the arrangement is framed as "software" rather than "outsourcing."
 - **Consumer Duty MI mapping identifying which AI systems influence customer outcomes and therefore require Consumer Duty MI reporting** — [FCA, PRIN 2A Consumer Duty, in force 31 Jul 2023; FCA, "AI Update," Apr 2024] — closes the gap between "the firm has a Consumer Duty MI process" and "this specific AI system's outcomes feed into it."
-- **Model risk management scope determination confirming whether a given AI system falls within SS1/23's MRM definition of a model** — [PRA, SS1/23, May 2023] — ensures the firm has made and documented an explicit in-scope/out-of-scope determination, rather than defaulting a novel system type (e.g. an agentic workflow orchestrator) to "not a model" without assessment.
+- **Model risk management scope determination confirming whether a given AI system falls within SS1/23's MRM definition of a model** — [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] — ensures the firm has made and documented an explicit in-scope/out-of-scope determination, rather than defaulting a novel system type (e.g. an agentic workflow orchestrator) to "not a model" without assessment.
 - **Named, evidenced compliance owner for the complete regulatory-obligation map per system, distinct from (and reconciled with) the technical/business system owner under IRQ-GOV-001** — [FCA/PRA SM&CR] — gives the mapping itself an accountable individual, closing the diffuse-ownership gap.
 
 ## 10. Expected Evidence (Tagged L1–L5)
@@ -152,7 +152,7 @@ governance-process finding but with direct, examinable compliance consequences.
 | **Novelty** | 3 | Compliance SMEs versed in traditional outsourcing/MRM registers may not recognise that EU AI Act Annex III classification requires a fresh, AI-specific determination. |
 
 ## 17. Regulatory Basis
-> [EU AI Act, Regulation (EU) 2024/1689, Art. 6 and Annex III] establishes the binding high-risk classification obligation, naming credit-scoring/creditworthiness and life/health insurance pricing/risk-assessment AI explicitly, with obligations applying from 2 Dec 2027 for Annex III systems (postponed from 2 Aug 2026 by the Digital Omnibus, Regulation (EU) 2026/1744, in force 27 Jul 2026). [PRA, SS2/21 — Outsourcing and third-party risk management, Mar 2021] requires outsourcing/CTP register capture of relevant third-party arrangements, applicable to AI-enabled vendor services meeting the register's trigger criteria. [FCA, PRIN 2A Consumer Duty, in force 31 Jul 2023] requires MI on customer outcomes, engaging any AI system materially influencing those outcomes. [PRA, SS1/23, May 2023] requires an explicit scope determination of what constitutes a "model" for MRM purposes, extended to AI/ML. Section pinpoints [UNVERIFIED — cited modules/articles confirmed extant (PRA SS1/23, SS1/21, PS21/3, ISO/IEC 42001:2023, EU AI Act Arts. 9/11/12/19); no AI-specific sub-clause pinpoint published by the regulator beyond module/clause level cited] (verified 29 Jul 2026).
+> [EU AI Act, Regulation (EU) 2024/1689, Art. 6 and Annex III] establishes the binding high-risk classification obligation, naming credit-scoring/creditworthiness and life/health insurance pricing/risk-assessment AI explicitly, with obligations applying from 2 Dec 2027 for Annex III systems (postponed from 2 Aug 2026 by the Digital Omnibus, Regulation (EU) 2026/1744, in force 27 Jul 2026). [PRA, SS2/21 — Outsourcing and third party risk management, November 2024 (15 November 2024, updating 29 March 2021)] expects all firms to keep appropriate records of their outsourcing arrangements (para 4.15), and states that the EBA Outsourcing Guidelines expect banks to maintain an up-to-date register of information on all their outsourcing arrangements, distinguishing those that are material from those that are not (para 4.16). The register cross-check this canvas describes, including its critical third party (CTP) element and its reach to AI-enabled vendor services, is the canvas's extension of those expectations. [FCA, PRIN 2A Consumer Duty, in force 31 Jul 2023] requires MI on customer outcomes, engaging any AI system materially influencing those outcomes. [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] requires an explicit scope determination of what constitutes a "model" for MRM purposes, extended to AI/ML. Section pinpoints [UNVERIFIED — cited modules/articles confirmed extant (PRA SS1/23, SS1/21, PS21/3, ISO/IEC 42001:2023, EU AI Act Arts. 9/11/12/19); no AI-specific sub-clause pinpoint published by the regulator beyond module/clause level cited] (verified 29 Jul 2026).
 
 ## 18. Research Basis
 > No peer-reviewed academic literature specifically evaluates regulatory-obligation-mapping completeness practice for enterprise AI deployment; this control area is compliance and regulatory practice rather than a research literature, consistent with this domain's evidentiary profile. The MAS AI Risk Management Guidelines consultation [MAS, "Consultation Paper: Proposed Guidelines on Artificial Intelligence Risk Management (AIRG)," Nov 2025] is the closest published cross-sector regulatory analogue explicitly requiring firms to map AI systems against a defined risk/materiality/proportionality framework, and is cited here as reinforcing evidence of the direction of international regulatory expectation.
@@ -177,10 +177,11 @@ governance-process finding but with direct, examinable compliance consequences.
 ```
 [1] European Union, 2024. "Regulation (EU) 2024/1689 — Artificial Intelligence Act."
     OJ L 12.7.2024. Art. 6 and Annex III, High-Risk Classification.
-[2] PRA, 2021. "SS2/21 — Outsourcing and third-party risk management." March 2021.
+[2] PRA, 2024. "SS2/21 — Outsourcing and third party risk management."
+    November 2024 (15 November 2024, updating 29 March 2021).
 [3] FCA, 2022/2023. "PS22/9 / FG22/5: A New Consumer Duty." PRIN 2A in force 31 July 2023.
-[4] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023, effective
-    17 May 2024.
+[4] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
 [5] Monetary Authority of Singapore, 2025. "Consultation Paper: Proposed Guidelines on
     Artificial Intelligence Risk Management (AIRG)." November 2025.
 ```
@@ -208,6 +209,12 @@ FOUR-TEST VALIDATION:
 
 Change Log:
 - v1.0 (2026-07): Initial publication; all four tests passed.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS2/21 cited by its title as published, "Outsourcing and third party risk management". No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — the reference entry for PRA SS2/21 gives its current version, November 2024 (15 November 2024, updating 29 March 2021), and its title as published, "Outsourcing and third party risk management". No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 17 — the PRA SS2/21 sentence states what the statement says: all firms keep appropriate records of their outsourcing arrangements (para 4.15), and the EBA Outsourcing Guidelines expect banks to keep a register of all their outsourcing arrangements (para 4.16). It no longer says that SS2/21 requires "outsourcing/CTP register capture" for arrangements that meet trigger criteria; the cross-check, with its critical third party element, is stated as the canvas's extension. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS2/21 cited as its November 2024 version (15 November 2024, updating 29 March 2021); the expectations cited are unchanged.
+- v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 ```
 
 ---

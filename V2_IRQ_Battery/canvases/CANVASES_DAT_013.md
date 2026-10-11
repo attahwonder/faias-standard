@@ -132,9 +132,11 @@ the model" is the default institutional narrative.
 > [EU AI Act, Regulation (EU) 2024/1689, Art. 10(2)] data-governance obligations extend to any data used for training, including feedback-derived data, requiring examination for possible biases and appropriate mitigation. [PRA SS1/23, Principle 4 (independent model validation, including ongoing monitoring and review of model changes), with Principle 5 (model risk mitigants) engaged where use restrictions follow] require each model update — including feedback-derived fine-tuning — to be treated as a change subject to governance, not an automatic improvement. No regulation names feedback-channel vetting explicitly; this IRQ addresses prudential risk under general MRM change-control expectations. (verified 29 Jul 2026)
 
 ## 18. Research Basis
-> [Shumailov, I., et al., 2024, "AI models collapse when trained on recursively generated data", Nature 631, https://doi.org/10.1038/s41586-024-07566-y] — establishes the recursive-degradation mechanism underlying the "organic degradation" half of this IRQ. [Gerstgrasser, M., et al., 2024, "Is Model Collapse Inevitable? Breaking the Curse of Recursion by Accumulating Data", arXiv:2404.01413] — mitigation basis (accumulation over replacement). [Dohmatob, E., et al., 2024, "A Tale of Tails: Model Collapse as a Change of Scaling Laws", arXiv:2402.07043] — theoretical grounding. No FS-specific published research on deliberate feedback-channel gaming (the "deliberate gaming" half) was located in the source registers; this is a genuine evidence gap, flagged [UNVERIFIED — no FS-specific published research located; Shumailov et al. 2024 (Nature 631, DOI confirmed) and arXiv:2404.01413/2402.07043 confirmed for the "organic degradation" half only] (verified 29 Jul 2026) rather than papered over with an unrelated citation — the deliberate-gaming mechanism is inferred by analogy to general adversarial-ML anomaly-evasion literature (NIST AI 100-2 E2025) rather than directly evidenced for FS feedback loops.
+> [Shumailov, I., et al., 2024, "AI models collapse when trained on recursively generated data", Nature 631, https://doi.org/10.1038/s41586-024-07566-y] — establishes the recursive-degradation mechanism underlying the "organic degradation" half of this IRQ. [Gerstgrasser, M., et al., 2024, "Is Model Collapse Inevitable? Breaking the Curse of Recursion by Accumulating Real and Synthetic Data", arXiv:2404.01413] — mitigation basis (accumulation over replacement). [Dohmatob, E., et al., 2024, "A Tale of Tails: Model Collapse as a Change of Scaling Laws", arXiv:2402.07043] — theoretical grounding. No FS-specific published research on deliberate feedback-channel gaming (the "deliberate gaming" half) was located in the source registers; this is a genuine evidence gap, flagged [UNVERIFIED — no FS-specific published research located; Shumailov et al. 2024 (Nature 631, DOI confirmed) and arXiv:2404.01413/2402.07043 confirmed for the "organic degradation" half only] (verified 29 Jul 2026) rather than papered over with an unrelated citation — the deliberate-gaming mechanism is inferred by analogy to general adversarial-ML anomaly-evasion literature (NIST AI 100-2 E2025) rather than directly evidenced for FS feedback loops. Three published studies of manipulated or poisoned feedback outside financial services are cited as related work; none tests a vetting or anomaly-detection gate, and none uses live customer feedback. [Williams, M., et al., 2025, "On Targeted Manipulation and Deception when Optimizing LLMs for User Feedback," ICLR 2025, arXiv:2411.02306] — trains models by reinforcement learning on simulated user feedback and finds that they learn manipulative and deceptive behaviour, including targeting the small share of users who are vulnerable to it; the authors report that continued safety training and model-based filtering helped in some of their settings and backfired in others; code is public. The party that games the feedback is the model being trained, not an outside actor. [Rando, J. and Tramèr, F., 2024, "Universal Jailbreak Backdoors from Poisoned Human Feedback," ICLR 2024, arXiv:2311.14455] — shows that an attacker who poisons the human-feedback data used for reinforcement learning from human feedback can plant a trigger-word jailbreak backdoor, and releases a benchmark of poisoned models; code is public. [Baumgärtner, T., et al., 2024, "Best-of-Venom: Attacking RLHF by Injecting Poisoned Preference Data," COLM 2024, arXiv:2404.05530] — injects 1 to 5% poisoned preference pairs into two public preference datasets and shows that a model can be steered to generate a target entity in a target sentiment; no released code, and the datasets are public. The last two measure the effect of poisoned feedback on model behaviour, not whether the poisoned feedback is flagged before training.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 63, "OpenAI GPT-4o sycophancy rollback", 2025]** — the provider's own post-mortem states that the update "introduced an additional reward signal based on user feedback" (thumbs-up and thumbs-down data), and that these changes in aggregate weakened the influence of the primary reward signal that had held sycophancy in check, with user feedback "likely amplifying the shift". User ratings entered training, and the provider states that its offline evaluations were not broad or deep enough to catch the sycophantic behaviour. The effect is the changes in aggregate, not the feedback signal alone. It evidences the organic half of this question and not deliberate gaming, and the statement above that no FS-specific published research on deliberate feedback-channel gaming was located stands.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -150,13 +152,21 @@ the model" is the default institutional narrative.
     "AI models collapse when trained on recursively generated data." Nature 631, 755–759.
     https://doi.org/10.1038/s41586-024-07566-y
 [2] Gerstgrasser, M., et al., 2024. "Is Model Collapse Inevitable? Breaking the Curse of
-    Recursion by Accumulating Data." arXiv:2404.01413.
+    Recursion by Accumulating Real and Synthetic Data." arXiv:2404.01413.
 [3] Dohmatob, E., et al., 2024. "A Tale of Tails: Model Collapse as a Change of Scaling Laws."
     arXiv:2402.07043.
 [4] NIST, 2025. "NIST AI 100-2 E2025: Adversarial Machine Learning: A Taxonomy and
     Terminology of Attacks and Mitigations." March 2025.
 [5] European Union, 2024. "Regulation (EU) 2024/1689 — Artificial Intelligence Act." Art. 10.
-[6] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023.
+[6] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023).
+[7] Williams, M., Carroll, M., Narang, A., Weisser, C., Murphy, B., Dragan, A., 2025.
+    "On Targeted Manipulation and Deception when Optimizing LLMs for User Feedback."
+    ICLR 2025. arXiv:2411.02306.
+[8] Rando, J., Tramèr, F., 2024. "Universal Jailbreak Backdoors from Poisoned Human
+    Feedback." ICLR 2024. arXiv:2311.14455.
+[9] Baumgärtner, T., Gao, Y., Alon, D., Metzler, D., 2024. "Best-of-Venom: Attacking
+    RLHF by Injecting Poisoned Preference Data." COLM 2024. arXiv:2404.05530.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -178,6 +188,14 @@ FOUR-TEST VALIDATION:
 
 Change Log:
 - v1.0 (2026-07): Initial publication.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 63, OpenAI GPT-4o sycophancy rollback, for the organic half of the question; the statement in the field that no FS-specific published research on deliberate feedback-channel gaming was located stands). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — the title of Gerstgrasser et al. (arXiv:2404.01413) corrected to end "Accumulating Real and Synthetic Data" (it was cited without "Real and Synthetic"). Field 20 References — the same. Research-basis review date moved. No change to controls, test, ★ rating or risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — three non-financial-services studies of
+  manipulated or poisoned feedback (Williams et al.; Rando and Tramèr; Baumgärtner
+  et al.) added as related work, each with its limits; the financial-services
+  research-gap flag is unchanged. Field 20 — entries [7] to [9] added. Research-basis
+  review date moved. No change to controls, test, ★2 or risk profile.
 ```
 
 ---

@@ -287,7 +287,7 @@ For each failure mode, assign **priority** based on:
 2. **Likelihood:** How easily could this happen in production? (high/medium/low)
 3. **Detectability:** How easy is it to catch (with current controls)? (easy/medium/hard)
 
-**Priority = Severity + Likelihood − Detectability** (conceptually; use FAIAS 5-axis risk weighting if finer granularity needed)
+**Priority rises with severity, with likelihood and with difficulty of detection.** Rank failure modes by this profile, not by a sum or difference of scores: ASSURANCE_MODEL.md §7 forms no composite risk score. Where finer granularity is needed, use its five-axis risk weighting, on which Detectability 4 is the hardest to detect (a silent failure).
 
 ### Deliverable: Prioritised IRQ Set
 
@@ -329,12 +329,12 @@ Execute non-production testing per Component 5 Testing Playbook, collect evidenc
 - Comprehensive staged testing (all IRQs in scope)
 - Benchmarked test methods (OWASP, NIST)
 - Evidence: L4 (independent testing)
-- Testing confidence: ★4 or above on material tests for reasonable assurance; a material test rated ★1–★3 runs with disclosure, and the opinion is then given at limited assurance
+- Testing confidence: ★4 or above on material tests for reasonable assurance; a material test rated ★1–★3 runs with disclosure, and the opinion is then given at limited assurance (ASSURANCE_ARCHITECTURE.md, the assurance-level rule, which states what the register's ratings support at this version)
 
 **Tier 3:**
 - Exhaustive staged testing (all IRQs, multiple tests per IRQ)
 - L4 evidence from staging
-- L5 evidence post-deployment (operational validation)
+- L5 evidence before the opinion, from a production-like system or a similar deployment (TIERING_MODEL.md, Tier 3; ASSURANCE_MODEL.md §5); post-deployment operational validation supplies L5 for the first re-assurance
 - Testing confidence: ★4 or above on all material tests for reasonable assurance; otherwise as Tier 2
 
 ### Deliverable: Evidence Catalogue (Component 4)
@@ -355,10 +355,10 @@ Structured inventory of all evidence collected, per FAIAS template:
 **Decision:** Proceed to Phase 5 (Claims Assessment & Opinion)
 **Gate Owner:** QA Lead
 **Criteria:**
-- All priority IRQs tested
+- All priority IRQs tested, or formally scoped out with rationale (PLAYBOOK_OVERVIEW.md §6, Gate 4); at Tier 0 the review is design review only, and no test is required (TIERING_MODEL.md)
 - Evidence levels assigned per METHODOLOGY_STANDARDS.md
-- Testing confidence rated (★1–★5)
-- No critical gaps in evidence (L1–L2 only on low-priority IRQs)
+- Testing confidence rated (★1–★5) for every test run
+- No critical gaps in evidence: at Tier 2 or above, no material claim rests solely on L1–L2 evidence
 - Test results peer-reviewed
 
 ---
@@ -377,7 +377,7 @@ Evaluate each core assurance claim against evidence and test results. Determine 
 **Step 2: Per-Claim Assessment**
 For each claim:
 - Did supporting IRQs pass testing? (Yes/No/Conditional)
-- Is evidence level sufficient? (L4–L5 on core claims for Tier 2–3)
+- Is evidence level sufficient? (the evidence minimum for the engagement's tier: TIERING_MODEL.md, Per-Tier Scope & Governance)
 - Any testing confidence concerns? (Low ★1–★2 confidence?)
 - Residual risk: what risk remains after control validation?
 
@@ -389,7 +389,7 @@ Per ASSURANCE_ARCHITECTURE.md section 3 (10 materiality lenses):
 
 **Step 4: Opinion Formation**
 Select one of four conclusions per OPINION_TEMPLATE.md:
-1. **Should Proceed** — No material deficiencies
+1. **Should Proceed** — No material deficiencies, on evidence that meets the tier's evidence minimum (ASSURANCE_ARCHITECTURE.md, Layer 2)
 2. **Should Proceed With Conditions** — Conditions specified; must be met within timeline
 3. **Should Not Proceed** — Material deficiencies require remediation
 4. **Unable to Form Opinion** — Insufficient evidence
@@ -401,10 +401,7 @@ For conditions, document:
 - Who verifies satisfaction
 
 **Step 5: Review Confidence Assessment**
-Assign High/Medium/Low review confidence per ASSURANCE_ARCHITECTURE.md (an internal assessment, never issued as a grade; the issued report carries the statement on the basis of the review, OPINION_TEMPLATE.md Part G):
-- High = mature methods, L4–L5 evidence, ★4 tests
-- Medium = emerging techniques, mixed evidence
-- Low = frontier capability, ★1–★2 tests
+Assign High/Medium/Low review confidence by the rule in ASSURANCE_ARCHITECTURE.md (Final Layer: the tie to testing confidence), which sets the levels and their thresholds once. It is an internal assessment, never issued as a grade; the issued report carries the statement on the basis of the review (OPINION_TEMPLATE.md Part G).
 
 ### Deliverable: Independent Assurance Opinion (Component 7)
 
@@ -438,7 +435,7 @@ Per OPINION_TEMPLATE.md:
 ## Phase 6: Continuous Assurance & Lifecycle Governance
 
 ### Objective
-Establish post-deployment monitoring, define re-assessment triggers, and manage system through its operational lifecycle (Design → Build → Validate → Deploy → Monitor → Change → Retire).
+Establish post-deployment monitoring, define re-assessment triggers, and manage the system through the eight-phase assurance lifecycle in ASSURANCE_ARCHITECTURE.md (Layer 4, Assurance Lifecycle): Design → Architecture Review → Independent Testing → Deployment Opinion → Early Life Monitoring → Periodic Assurance → Major Change Review → Retirement.
 
 ### Continuous Assurance Plan
 
@@ -455,7 +452,7 @@ For Tier 2–3 systems, weekly operational dashboards:
 - Attestation for Tier 1
 - Policy review for Tier 0
 
-**Major-Change Re-Assessment Triggers** (tied to IRQ-GOV-012 envelope drift):
+**Major-Change Re-Assessment Triggers** (tied to IRQ-GOV-012 envelope drift). They apply at every tier, together with the tier's own re-assessment triggers in TIERING_MODEL.md. For each trigger, the IRQs named are the minimum re-tested, within the engagement's scope:
 
 1. **Model Version Change** — New base model or fine-tuning on new data → trigger re-test of model-domain IRQs (B series)
 2. **Training Data Change** — New data source or rebalancing → trigger re-test of data IRQs (A series) + fairness IRQs (H series)
@@ -464,18 +461,20 @@ For Tier 2–3 systems, weekly operational dashboards:
 5. **Tool/API Access Change** — New integrations, new external data sources → trigger security + third-party IRQs (E, F series)
 6. **Governance Change** — Changed escalation procedure, changed accountability → trigger governance IRQs (I series)
 7. **Incident Triggering Material Finding** — Incident revealing control failure → trigger immediate re-assessment of affected claims
+8. **Regulatory Change** — New regulation or guidance, or supervisory feedback, affecting a material claim → trigger re-assessment of the affected claims
 
 **Lifecycle Phases:**
 
 | Phase | Assurance Activities | Gate Criteria |
 |---|---|---|
 | **Design** | IRQ scoping, failure tree workshop | Threat analysis complete |
-| **Build** | Architecture review, control design validation | Design meets assurance objectives |
-| **Validate** | Phase 4–5 testing, evidence collection, opinion formation | Opinion issued; conditions (if any) met |
-| **Deploy** | Pre-go-live confirmation, monitoring setup | Monitoring dashboard live |
-| **Monitor** | Weekly KPI tracking, early-life analysis (weeks 1–12), escalation response | KPIs within expected ranges; escalations managed |
-| **Change** | Re-assessment trigger evaluation; if triggered, return to Scoping (Phase 2) | Change approved against updated risk profile |
-| **Retire** | Archival of evidence, lessons learned documentation | System decommissioned; knowledge captured |
+| **Architecture Review** | Architecture review, control design validation | Design meets assurance objectives |
+| **Independent Testing** | Phase 4 testing, evidence collection | Testing complete; evidence levels assigned |
+| **Deployment Opinion** | Phase 5 opinion formation; pre-go-live confirmation, monitoring setup | Opinion issued; conditions (if any) met; monitoring dashboard live |
+| **Early Life Monitoring** | Weekly KPI tracking, early-life analysis (weeks 1–12), escalation response | KPIs within expected ranges; escalations managed |
+| **Periodic Assurance** | Annual re-assessment at the depth set for the tier (Periodic Assurance, above) | Re-assessment complete; opinion updated |
+| **Major Change Review** | Re-assessment trigger evaluation; if triggered, return to Scoping (Phase 2) | Change approved against updated risk profile |
+| **Retirement** | Archival of evidence, lessons learned documentation | System decommissioned; knowledge captured |
 
 ### Deliverable: Continuous Assurance Plan
 

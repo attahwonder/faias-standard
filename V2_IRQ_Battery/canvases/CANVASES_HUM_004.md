@@ -109,7 +109,7 @@ Assuming controls are well-implemented and monitored:
     capacity monitoring; requires workflow change to go unmapped)
   Detectability: 2 (detectable via throughput/backlog monitoring and
     periodic irreversibility-point audit)
-  Recoverability: 2 (reversible in most cases within days via manual
+  Recoverability: 3 (reversible in most cases within days via manual
     unwind/correction; some cases — e.g. executed payments — carry
     genuine irreversibility)
   Novelty: 3 (domain expert recognises "there must be a sign-off step"
@@ -150,7 +150,7 @@ outpacing capacity.
 | **Severity** | 3 | Irreversible actions taken without effective prior human oversight directly risk financial or customer harm |
 | **Likelihood** | 3 | Probable once AI throughput exceeds original review-capacity assumptions, a foreseeable and common drift pattern |
 | **Detectability** | 2 | Detectable via backlog and irreversibility-point monitoring, but requires deliberate mapping design |
-| **Recoverability** | 2 | Most cases reversible within days via manual unwind; some individual actions (executed payments) carry genuine irreversibility, pulling toward 3 in specific cases |
+| **Recoverability** | 3 | Most cases reversible within days via manual unwind; some individual actions (executed payments) carry genuine irreversibility, pulling toward 4 in specific cases |
 | **Novelty** | 3 | Domain expert assumes a sign-off step is sufficient without analysing its position relative to irreversibility or its capacity dimensioning against AI-specific throughput |
 
 ## 17. Regulatory Basis
@@ -159,7 +159,9 @@ outpacing capacity.
 ## 18. Research Basis
 > [OWASP GenAI Security Project, "Agentic AI: Threats and Mitigations", Feb 2025] documents the general pattern of human-in-the-loop controls being rendered ineffective by positioning or throughput mismatch in agentic systems. [Amershi, S. et al., 2019, "Guidelines for Human-AI Interaction", CHI 2019] provides established interaction-design guidance (notably G9: "Support efficient correction") relevant to positioning intervention points where correction remains practically possible. Public financial-services-adjacent incident: [Knight Capital Americas LLC, incident of 1 August 2012; SEC Release No. 70694, 16 October 2013] illustrates the consequence of an automated system executing high volumes of irreversible actions faster than any human checkpoint could intervene, the closest available real-world analogue for this failure mode.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> [ISO/IEC TS 8200:2024, "Information technology — Artificial intelligence — Controllability of automated artificial intelligence systems", Edition 1.0, 10 April 2024, ISO/IEC JTC 1/SC 42] is a technical specification whose published scope covers state observability and state transition, the control transfer process and its cost, reaction to uncertainty during control transfer, and verification and validation approaches. Its scope is close to the subject of this IRQ, the point at which a person can take control from an automated system. The clauses are not freely published, so this canvas relies on the scope text alone. What the verification and validation approaches require is not stated here, and the specification is not used as a test method. No ★ change follows from this addition.
+>
+> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -193,6 +195,10 @@ Related IRQs:
 
 [5] Financial Conduct Authority. "Handbook SYSC 4" and "Handbook SYSC 9."
     URL: https://www.handbook.fca.org.uk/
+
+[6] ISO/IEC, 2024. "ISO/IEC TS 8200:2024 — Information technology — Artificial intelligence — Controllability of automated artificial intelligence systems." Edition 1.0. (Cited for its published scope only.)
+    Published: 2024-04-10
+    URL: https://webstore.iec.ch/publication/94106
 ```
 
 ## 21. Four-Test Validation Footer
@@ -211,6 +217,8 @@ Related IRQs:
 **Change Log:**
 - v1.0 (2026-07): Initial publication; all four tests passed.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 18 Research Basis — ISO/IEC TS 8200:2024 cited for its published scope only, with the limit stated. Field 20 References — entry [6] added. Research-basis review date moved. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2 (Field 16, and the controls-in-place case in Field 15). The canvas states recovery within days; ASSURANCE_MODEL.md §7 scores recovery within hours 2 and recovery within days 3. The Field 16 justification now says that the irreversible cases pull toward 4, in place of 3. The controls-absent case, the other axes, the ★ rating and the research basis are unchanged.
 ```
 
 ---

@@ -130,7 +130,7 @@ Residual risk: High. Tool inventory governance should be a deployment gate condi
 | **Novelty** | 3 | Requires treating AI tool grants as an access-governance discipline, which most engineering teams do not natively apply. |
 
 ## 17. Regulatory Basis
-> No regulation names "AI tool least privilege" explicitly. [PRA SS1/23, May 2023] requires governance and control of model risk drivers, extending by principle to agentic tool configuration. [FCA AI Update, Apr 2024] confirms AI risk is governed through existing SYSC and Consumer Duty frameworks, applicable to unreviewed capability surfaces affecting customer outcomes. [OWASP Top 10 for LLM Applications 2025, LLM06 Excessive Agency] and [OWASP Agentic AI: Threats and Mitigations, Feb 2025] are cited as accepted industry practice rather than binding regulation. [MAS Consultation Paper on AI Risk Management, Nov 2025] explicitly proposes agentic tool-governance expectations, the closest emerging regulatory analogue.
+> No regulation names "AI tool least privilege" explicitly. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] requires governance and control of model risk drivers, extending by principle to agentic tool configuration. [FCA AI Update, Apr 2024] confirms AI risk is governed through existing SYSC and Consumer Duty frameworks, applicable to unreviewed capability surfaces affecting customer outcomes. [OWASP Top 10 for LLM Applications 2025, LLM06 Excessive Agency] and [OWASP Agentic AI: Threats and Mitigations, Feb 2025] are cited as accepted industry practice rather than binding regulation. [MAS Consultation Paper on AI Risk Management, Nov 2025] names an AI agent's access to tools as a source of risk (proposed Guidelines, paragraph 1.10) and proposes two general controls that reach those tools: a review of the AI system architecture, including APIs, plugins and third-party services, for access controls based on the principle of least privilege (paragraph 4.22(a)), and monitoring that, where relevant, covers the tools used (paragraph 4.23(a)). MAS issued the final Guidelines on 7 Oct 2026, effective 7 Oct 2027; FIs may meet the expectations of Sections 5 and 6 by 7 Oct 2028 (paragraph 1.8). They keep both controls (paragraphs 5.22(a) and 5.23(a)) and give the tools and systems an agent can access as an example attribute for the AI inventory (paragraph 4.8, footnote 25). Neither control is specific to AI agents; together they are the closest regulatory analogue (verified 10 Oct 2026).
 
 ## 18. Research Basis
 > [OWASP, 2025, "Agentic AI: Threats and Mitigations," OWASP Agentic Security Initiative v1.0] — first structured threat model for agentic systems, naming tool misuse and excessive-permission patterns as core agentic risks. [OWASP, 2025, "Top 10 for LLM Applications 2025," LLM06 Excessive Agency] — defines excessive functionality, permissions and autonomy as a named vulnerability class. [Chan et al., "Harms from Increasingly Agentic Algorithmic Systems," FAccT 2023, arXiv:2302.10329] — establishes that harm scales with the agent's action space, not merely its intelligence, supporting least-privilege as a primary control.
@@ -156,10 +156,11 @@ Residual risk: High. Tool inventory governance should be a deployment gate condi
     Excessive Agency.
 [3] Chan, A., et al., 2023. "Harms from Increasingly Agentic Algorithmic Systems."
     Proc. FAccT 2023. arXiv:2302.10329.
-[4] PRA, 2023. "SS1/23 — Model risk management principles for banks." May 2023.
+[4] PRA, 2026. "SS1/23 — Model risk management principles for banks."
+    April 2026 (16 April 2026, updating 17 May 2023).
 [5] FCA, 2024. "AI Update." April 2024.
 [6] MAS, 2025. "Consultation Paper: Proposed Guidelines on Artificial Intelligence Risk
-    Management." November 2025.
+    Management." November 2025. Consultation Paper P017-2025; final Guidelines issued 7 Oct 2026 and effective 7 Oct 2027.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -194,6 +195,9 @@ Change Log:
   agent's environment added, with its two separate four-level maturity models (network
   access; compute and host isolation) cited as distinct scales. Interim blog guidance,
   to be superseded. No change to test, ★ or risk profile.
+- v1.3.3 (2026-10-09): Fields 17 and 20 — the MAS consultation paper sentence no longer says that the paper proposes agentic tool-governance expectations, which it does not: the paper names tool access as a risk (paragraph 1.10 of the proposed Guidelines) and proposes two general controls that reach tools, a least-privilege review of the AI system architecture (paragraph 4.22(a)) and monitoring of the tools used (paragraph 4.23(a)). The final Guidelines of 7 Oct 2026 are cited for the same controls (paragraphs 5.22(a) and 5.23(a)), for tool access as an example inventory attribute (paragraph 4.8, footnote 25) and for their dates (paragraph 1.8), with the expectations of Sections 5 and 6 to be met by 7 Oct 2028. Reference [6] carries the paper's number, P017-2025, and the dates of the final Guidelines. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 ```
 
 ---
