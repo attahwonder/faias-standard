@@ -91,7 +91,7 @@ Signed attestations for releases before v1.3.0 are kept privately by the maintai
 
 ### Anchoring the date — status
 
-**Done, and Bitcoin-attested for every signing from v1.0.1 to v1.3.2; the v1.3.3 proof is submitted at signing and upgraded once confirmed.** Every signing from v1.0.1 onward carries an OpenTimestamps commitment over its attestation, submitted to four independent calendars at signing. The proofs for releases before v1.3.0 are kept privately with their attestations.
+**Done, and Bitcoin-attested for every signing from v1.0.1 to v1.3.3; the proof of each new signing is submitted at signing and upgraded once confirmed.** Every signing from v1.0.1 onward carries an OpenTimestamps commitment over its attestation, submitted to four independent calendars at signing. The proofs for releases before v1.3.0 are kept privately with their attestations.
 
 - **v1.0.1** — submitted 30 July 2026, `ots upgrade` run 31 July 2026; the proof, kept privately with the superseded attestation as `ATTESTATION_v1.0.1.txt.ots`, carries **three Bitcoin block attestations (blocks 960309, 960311 and 960337)**.
 - **v1.0.2** — **blocks 960360 and 960362** (kept privately as `ATTESTATION_v1.0.2.txt.ots`).
@@ -102,9 +102,9 @@ Signed attestations for releases before v1.3.0 are kept privately by the maintai
 - **v1.3.0** — upgraded on **4 October 2026**, carrying **three Bitcoin block attestations**: blocks 969736, 969747 and 969761 (`ATTESTATION_v1.3.0.txt.ots`).
 - **v1.3.1** — upgraded on **4 October 2026**, carrying **two Bitcoin block attestations**: blocks 969756 and 969763 (`ATTESTATION_v1.3.1.txt.ots`).
 - **v1.3.2** — upgraded on **4 October 2026**, carrying **three Bitcoin block attestations**: blocks 969761, 969762 and 969763 (`ATTESTATION_v1.3.2.txt.ots`).
-- **v1.3.3** — submitted to the four calendars at signing (`ATTESTATION.txt.ots`); it depends on the calendars until it is upgraded once the commitments are confirmed in Bitcoin blocks.
+- **v1.3.3** — upgraded on **11 October 2026**, carrying **one Bitcoin block attestation**: block 970979 (`ATTESTATION.txt.ots`). The other three calendars had not returned a Bitcoin attestation at the upgrade. The merkle root that the proof commits to equals the merkle root of block 970979 at two public block explorers (mempool.space and blockstream.info, read 11 October 2026).
 
-No proof before v1.3.3 now depends on a calendar server remaining available, and each remains valid evidence for its own root, superseded or current. **One limit is stated rather than glossed:** the block heights above are those the four calendars returned on `ots verify` and `ots upgrade`; no local Bitcoin node was available on the machine the upgrade was run from, so the block headers themselves have not been independently verified here.
+No proof now depends on a calendar server remaining available, and each remains valid evidence for its own root, superseded or current. **One limit is stated rather than glossed:** the block heights above are those the four calendars returned on `ots verify` and `ots upgrade`; no local Bitcoin node was available on the machine the upgrade was run from, so the block headers themselves have not been independently verified here. For v1.3.3 the block's merkle root was compared with two public block explorers; that is a check against third parties, not against a node.
 
 
 ---
