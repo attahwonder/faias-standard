@@ -396,7 +396,7 @@ Component 5 is the complete specification of all testing procedures, test enviro
 **Length:** 40–60 pages  
 
 ### Purpose
-Component 6 presents the structured safety argument (per ISO/IEC 15026-2, Goal Structuring Notation) that underpins the independent assurance opinion. It declares the operating envelope, names key risk vectors, and documents the assurance lifecycle.
+Component 6 presents the structured safety argument (an assurance case, ISO/IEC 15026-2, set out in Goal Structuring Notation, GSN Community Standard Version 2) that underpins the independent assurance opinion. It declares the operating envelope, names key risk vectors, and documents the assurance lifecycle.
 
 ### Structure
 
@@ -432,7 +432,7 @@ Component 6 presents the structured safety argument (per ISO/IEC 15026-2, Goal S
 
 **Top-Level Claim:** "This AI system is safe to deploy for [specific business activity] within the declared operating envelope, subject to stated conditions and monitoring protocols."
 
-**Sub-claims (5–10 major claims):**
+**Sub-claims (5–10 major claims):** these sub-claims are a separate, illustrative argument. They are not the core claims of CLAIMS_REGISTER.md, and the opinion's Part C reports against the register's claims.
 1. "System capability is bounded within tested limits"
 2. "Human reviewers maintain independent decision authority without automation bias"
 3. "Failure modes are detectable before customer impact"
@@ -569,8 +569,8 @@ Component 7 is the formal Independent Assurance Opinion; it draws on the conclus
 - Frontier capability risks (novel attack vectors with no published defence)
 
 #### Part H: Regulatory Alignment & Governance
-1. **Compliance Status** (per major regulator)
-   - Summary table: FCA / PRA / ECB / EU AI Act — compliant / conditionally compliant / non-compliant
+1. **Alignment Status** (per major regulator)
+   - Summary table: FCA / PRA / ECB / EU AI Act — aligned / conditionally aligned / not aligned; the table records the reviewer's view of alignment, not a determination of compliance
    - Explanation (brief, 1–2 sentences per jurisdiction)
 
 2. **Recommended Governance**

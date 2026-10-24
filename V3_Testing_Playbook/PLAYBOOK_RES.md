@@ -2,7 +2,7 @@
 
 **Domain:** RES — Operational Resilience (subdomains G.1–G.4)
 **Procedures:** TP-RES-001 … TP-RES-007 (7 of 7; 1:1 with IRQ-RES-001 … IRQ-RES-007)
-**Compiled:** 2026-07
+**Compiled:** 2026-07; revised since (see the change log at the end of this file)
 **Authority:** CANVASES_RES.md is authoritative on assurance objective, pass/fail/partial interpretation and ★ confidence. This playbook adds execution detail only; where the two appear to conflict, the canvas governs.
 **Universal preconditions:** PLAYBOOK_OVERVIEW.md §3 (non-production rule, benign payloads, test-data handling) applies to every procedure below and is not repeated in each sheet.
 **Spelling:** UK throughout.
@@ -69,3 +69,4 @@ v1.3.3 (2026-10-09) — TP-RES-007 §6, as IRQ-RES-007 field 14 now states: wher
 v1.3.3 (2026-10-09) — Domain Testing Posture: PRA SS1/21 cited as its March 2022 version (11 March 2022, updating 29 March 2021); the expectations cited are unchanged. ★ ratings, steps, tier applicability and reviewer-days are unchanged.
 v1.3.3 (2026-10-09) — TP-RES-007 §6, as IRQ-RES-007 field 13 now states: a scenario library that holds none of the provider outage, model behavioural drift and agentic misbehaviour types is a Fail, whatever other AI-specific scenarios it holds; the Partial now covers a library that holds the synthetic-media scenario and one or two of those three types, in place of provider outage alone; and a new §6 paragraph states that the correlated concentration event, which the assurance objective names, is recorded and reported but not graded. The grading of these cases changes. ★3, method classification, tier applicability and reviewer-days are unchanged; the assurance objective is unchanged.
 v1.3.3 (2026-10-09) — Tier applicability: at Tier 3, the L5 evidence for TP-RES-003 and TP-RES-004 follows TIERING_MODEL.md (Tier 3), which names its source before the opinion; steps, ★ ratings and reviewer-days are unchanged.
+v1.3.4 (2026-10-22) — TP-RES-001 §6: the Partial interpretation no longer says that the canvas names it the most common outcome; the canvas ranks no outcome as the most common. §3 describes the untrusted-output trigger as a weak point whose trigger is often left undefined, in place of a statement that it is near-universal. Head: the Compiled line points to the change log for later changes. ★3, steps, tier applicability and reviewer-days are unchanged.

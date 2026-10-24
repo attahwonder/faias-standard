@@ -141,12 +141,14 @@ mandatory pre-deployment control.
 | **Novelty** | 3 | Distinguishing design intent ("built to follow the process") from structural enforcement is a non-obvious reframing for process SMEs. |
 
 ## 17. Regulatory Basis
-> No regulation names "agentic workflow conformance" explicitly. [MCOB 11.6 responsible-lending provisions] require documented affordability and disclosure steps to actually be performed, not merely intended. [FCA DISP 1.4 (complaint investigation) and DISP 1.6 (8-week final response time limit)] require defined procedural steps and timelines to be followed. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), Principle 2 (governance)] requires governance of model/process risk drivers. [FCA/PRA record-keeping expectations under SYSC 9 and DISP 1.9, and GOV-010's underlying regulatory basis] require reconstructable evidence of the process actually followed. [Microsoft, "Taxonomy of Failure Mode in Agentic AI Systems," Apr 2025] is cited as accepted practitioner guidance, not binding regulation. (verified 29 Jul 2026)
+> No regulation names "agentic workflow conformance" explicitly. [MCOB 11.6 responsible-lending provisions] require documented affordability and disclosure steps to actually be performed, not merely intended. [FCA DISP 1.4 (complaint investigation) and DISP 1.6 (8-week final response time limit)] require defined procedural steps and timelines to be followed. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026), Principle 2 (governance)] requires governance of model/process risk drivers. [FCA/PRA record-keeping expectations under SYSC 9 and DISP 1.9, and GOV-010's underlying regulatory basis] require reconstructable evidence of the process actually followed. [Microsoft, "Taxonomy of Failure Mode in Agentic AI Systems," Apr 2025] is cited as accepted practitioner guidance, not binding regulation. (verified 29 Jul 2026; SS1/23 dates read 22 Oct 2026)
 
 ## 18. Research Basis
 > [Microsoft AI Red Team, 2025, "Taxonomy of Failure Mode in Agentic AI Systems," April 2025] — practitioner taxonomy from Microsoft's AI Red Team. The taxonomy names no workflow-deviation category. Its failure mode "Agent flow manipulation" covers a threat actor who alters the flow of an agent system, for example by avoiding, adding or reordering actions (printed p. 18). Its effect "Agent misalignment" covers an agent that deviates in its actions from what the user or creator intends (printed p. 7). This IRQ's framing, steps omitted, reordered or invented, is FAIAS's own; the failure mode and the effect inform it. [Chan et al., "Visibility into AI Agents," FAccT 2024, arXiv:2401.13138] — establishes activity logging and identifiers as the evidentiary basis required for any process-conformance reconciliation. [Anthropic, 2025, "Project Vend: Can Claude run a small shop? (And why does that matter?)"] — a real-world example of an agent deviating from its intended operating procedure over an extended deployment, evidencing the plausibility of undetected workflow drift. [Nandi, S., et al., 2026, "SOP-Bench: Complex Industrial SOPs for Evaluating LLM Agents," Proc. 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining, Volume 2, pp. 9604-9615, DOI 10.1145/3770855.3817538, arXiv:2506.08119] — a benchmark of more than 2,000 tasks from expert-written standard operating procedures across 12 business domains, finance among them, with ground-truth outputs; the benchmark is public. The paper reports outcome metrics only (execution completion rate, conditional task success rate and task success rate), and its authors say that future research should add metrics for step planning, tool mapping and tool-calling accuracy, so it does not test whether an agent followed the documented steps. [Berti, A. and van der Aalst, W. M. P., 2021, "A Novel Token-Based Replay Technique to Speed Up Conformance Checking and Process Enhancement," Transactions on Petri Nets and Other Models of Concurrency XV, Springer, pp. 1-26, DOI 10.1007/978-3-662-63079-2_1, arXiv:2007.14237] — a process-mining technique that replays a recorded event log on a process model to discover deviations and obtain diagnostics, implemented in the PM4Py process mining library. It covers the reconciliation of an executed trace against a documented process model, which is the reconciliation step in this IRQ's test; it was developed for event logs of business processes, and it is not specific to AI agents.
 >
-> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
+> **[FAIAS Incident Register, row 47, "Project Vend phase one", 2025]** — in an AI laboratory's pilot office shop (not a production deployment), the shopkeeper agent "for a time instructed customers to remit payment to an account that it hallucinated", and described a conversation about restocking plans with a person who did not exist. People found these invented steps after the event; the pilot had no documented process map, so a reconciliation against one is not shown.
+>
+> **Research basis last reviewed:** 22 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -172,7 +174,7 @@ mandatory pre-deployment control.
     responsible lending provisions.
 [5] FCA. "DISP — Dispute Resolution: Complaints." Handbook.
 [6] PRA, 2026. "SS1/23 — Model risk management principles for banks."
-    April 2026 (16 April 2026, updating 17 May 2023).
+    April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026).
 [7] Nandi, S., et al., 2026. "SOP-Bench: Complex Industrial SOPs for Evaluating LLM
     Agents." Proc. 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining,
     Volume 2, pp. 9604-9615. DOI 10.1145/3770855.3817538. arXiv:2506.08119.
@@ -213,6 +215,7 @@ Change Log:
   process-mining token-based replay technique for conformance checking added as
   published methods, each with its limits. Field 20 — entries [7] and [8] added.
   Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.4 (2026-10-22): Field 18 Research Basis — incident-register citation added in the reserved form (row 47, Project Vend phase one, invented steps: a hallucinated payment account and a restocking contact who did not exist), beside the report already cited. Research-basis review date moved. Fields 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

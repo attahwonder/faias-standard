@@ -5,7 +5,7 @@
 **Procedures:** TP-DAT-001 … TP-DAT-014 (14, 1:1 with IRQ-DAT-001 … IRQ-DAT-014)
 **Source canvases:** `V2_IRQ_Battery/canvases/CANVASES_DAT.md`
 **Governing documents:** `00_Admin/ASSURANCE_MODEL.md` (★ anchors, L1–L5 evidence levels), `00_Admin/METHODOLOGY_STANDARDS.md` (source hierarchy, testing-method labelling, non-production rule)
-**Compiled:** 2026-07
+**Compiled:** 2026-07; revised since (see the change log at the end of this file)
 **Spelling:** UK throughout
 
 ---
@@ -22,7 +22,7 @@ Per METHODOLOGY_STANDARDS §3, every procedure in this playbook executes **only 
 
 ### Shared test-environment setup (build once, reuse across DAT)
 
-A single DAT test environment supports eleven of the original thirteen procedures. Establish it before the first procedure runs:
+A single DAT test environment supports twelve of the original thirteen procedures. Establish it before the first procedure runs:
 
 | Component | Purpose | Used by |
 |---|---|---|
@@ -68,7 +68,7 @@ Building test data is the largest cost in this domain. Six reuse opportunities m
 
 ### Domain-level evidence maturity caveat (state in every DAT report)
 
-Per the canvas set's own preamble, DAT test confidence is uneven and deliberately not levelled up: lineage, drift and representativeness testing sit at ★3 (credible standards-based methods, no agreed FS pass/fail benchmark); poisoning, synthetic fidelity, label quality, memory erasure, feedback-channel vetting and construct-validity testing of the modelled target variable sit at ★2 (research exists, test design is bespoke, professional judgement dominant). No DAT procedure reaches ★4 or ★5. Reports must carry the ★1–★2 judgement-based labelling required by METHODOLOGY_STANDARDS §3c wherever a ★2 procedure underpins a conclusion.
+Per the canvas set's own preamble, DAT test confidence is uneven and deliberately not levelled up; as the canvases rate them, lineage, input-drift and representativeness testing sit at ★3 (credible standards-based methods, no agreed FS pass/fail benchmark); poisoning, synthetic fidelity, label quality, memory erasure, feedback-channel vetting, retrieval and embedding drift and construct-validity testing of the modelled target variable sit at ★2 (research exists, test design is bespoke, professional judgement dominant). No DAT procedure reaches ★4 or ★5. Reports must carry the ★1–★2 judgement-based labelling required by METHODOLOGY_STANDARDS §3c wherever a ★2 procedure underpins a conclusion.
 
 ### Indicative total effort
 
@@ -132,3 +132,4 @@ v1.1 (2026-08-25) — TP-DAT-014 (construct-to-target mapping review and subgrou
 v1.3.0 (2026-10) — Domain preamble: the statement that no procedure permits production system access now reads that no procedure permits testing of production systems, in line with the non-production rule (METHODOLOGY_STANDARDS.md §3), under which read-only records retrieved through the firm's normal channels are admissible evidence. No procedure, ★ rating or reviewer-day estimate changes.
 v1.3.2 (2026-10-03) — TP-DAT-009's method class names the OWASP limb as control guidance, under review as URO-6 (00_Admin/CORRECTION_LOG_2026-10-03.md §8). No ★ rating or reviewer-day figure changes.
 v1.3.3 (2026-10-09) — TP-DAT-007's method classification line states that the seeded-supersession design is the canvas's own and cites Barnett et al. (2024) for RAG failure in general, whose seven failure points do not include superseded or stale documents, as IRQ-DAT-007 field 11 now does. No test step, ★ rating, method class or reviewer-day estimate changes.
+v1.3.4 (2026-10-22) — Shared test-environment setup: the environment supports twelve of the original thirteen procedures, in place of eleven, as the component table lists (all but TP-DAT-003). Domain-level evidence maturity caveat: input drift (TP-DAT-011) is placed at ★3 and retrieval and embedding drift (TP-DAT-012) at ★2, as the effort summary lists, in place of all drift testing at ★3. Head: the Compiled line points to the change log for later changes. No test step, ★ rating, method class or reviewer-day estimate changes.

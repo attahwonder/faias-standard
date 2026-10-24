@@ -67,10 +67,10 @@ Control Breakpoints:
 **AO-GOV-016:** Where AI-generated or AI-assisted output feeds the firm's risk-data aggregation estate, capital or provisioning calculations, or supervisory/regulatory returns, that output shall be subject to the same accuracy, completeness, timeliness, adaptability and traceability discipline as other risk data, and its AI origin shall be flagged and reconstructable within the aggregation record.
 
 ## 9. Expected Controls (Traced)
-- **Risk-data aggregation and reporting principles — accuracy and integrity, completeness, timeliness, adaptability, and the surrounding governance, infrastructure and reporting-practice principles — extended to apply to AI-originated contributions to the aggregation estate** — [Basel Committee on Banking Supervision, "Principles for effective risk data aggregation and risk reporting" (BCBS 239), January 2013; 14 principles across governance and infrastructure, risk data aggregation capabilities, risk reporting practices, and supervisory review; initially binding on global systemically important banks from 1 January 2016]. The principles were written for system-sourced risk data; this control is their explicit extension to AI-originated content, which is **reasoned analogy rather than settled practice** — stated as such, not as an existing requirement of the framework itself.
-- **Flagging or tagging mechanism identifying AI-originated content at the point it enters the aggregation chain, distinguishing it from system-sourced data** — [Emerging Practice] — no published standard defines this mechanism specifically for AI content; it follows from the traceability principle within the cited framework rather than from a prescriptive external standard.
+- **Risk-data aggregation and reporting principles — accuracy and integrity, completeness, timeliness, adaptability, and the surrounding governance, infrastructure and reporting-practice principles — extended to apply to AI-originated contributions to the aggregation estate** — [Basel Committee on Banking Supervision, "Principles for effective risk data aggregation and risk reporting" (BCBS 239), January 2013; 14 principles across governance and infrastructure, risk data aggregation capabilities, risk reporting practices, and supervisory review; global systemically important banks identified in 2011 or 2012 must meet them by January 2016, para 14]. The principles were written for system-sourced risk data; this control is their explicit extension to AI-originated content, which is **reasoned analogy rather than settled practice** — stated as such, not as an existing requirement of the framework itself.
+- **Flagging or tagging mechanism identifying AI-originated content at the point it enters the aggregation chain, distinguishing it from system-sourced data** — [Emerging Practice] — no published standard defines this mechanism specifically for AI content. BCBS 239 names no traceability principle; the mechanism extends its expectations of metadata on the characteristics of the data (Principle 2, para 33) and of documented aggregation processes (Principle 3, para 39), not a prescriptive external standard.
 - **Accuracy control applied to AI-originated content equivalent to that applied to system-sourced data, not assumed because the content is a summary or reconciliation rather than a raw figure** — [Emerging Practice, extending the cited framework's accuracy and integrity principle].
-- **Traceability through the aggregation record back to the AI system, version, and any human sign-off that produced or approved the content** — [Emerging Practice, extending the cited framework's traceability expectation].
+- **Traceability through the aggregation record back to the AI system, version, and any human sign-off that produced or approved the content** — [Emerging Practice, extending BCBS 239's reconciliation of risk data to the bank's sources (Principle 3, para 36(c)) and the data-lineage expectation of the ECB's guide on risk data aggregation and risk reporting (May 2024, Section 3.4); BCBS 239 names no traceability principle].
 - **Named ownership for extending aggregation discipline to AI-originated content, distinct from ownership of the aggregation framework generally** — [linked IRQ-GOV-001 ownership principle, extended].
 
 ## 10. Expected Evidence (Tagged L1–L5)
@@ -120,10 +120,11 @@ Assuming controls are well-implemented and monitored:
               and process fix, but a regulatory return already submitted
               incorporating unflagged content cannot be retrospectively
               corrected without a formal restatement)
-  Novelty: 4 (very likely to be missed: RDARR discipline has no established
-              tradition of distinguishing AI-originated content, and
-              input-side data controls elsewhere in the standard are easily,
-              but wrongly, assumed to already cover this)
+  Novelty: 4 (very likely to be missed: risk data aggregation and risk
+              reporting (RDARR) discipline has no established tradition of
+              distinguishing AI-originated content, and input-side data
+              controls elsewhere in the standard are easily, but wrongly,
+              assumed to already cover this)
 
 Interpretation: acceptable residual risk once AI-originated content is
 deliberately brought within aggregation-framework discipline and flagged;
@@ -164,7 +165,7 @@ controls and aggregation-framework controls.
 | **Novelty** | 4 | RDARR discipline has no established tradition of distinguishing AI-originated content; existing input-side data controls are easily but wrongly assumed to already cover this output-side gap. |
 
 ## 17. Regulatory Basis
-> [Basel Committee on Banking Supervision, "Principles for effective risk data aggregation and risk reporting" (BCBS 239), January 2013] sets 14 principles across governance and infrastructure, risk data aggregation capabilities, risk reporting practices, and supervisory review, initially binding on global systemically important banks from 1 January 2016. The principles' accuracy and integrity, completeness, timeliness, adaptability and traceability requirements were written for system-sourced risk data; no provision within the framework, and no subsequent regulatory instrument identified in the verified source set, explicitly extends these principles to AI-generated or AI-assisted content. This IRQ's control objective therefore rests on reasoned analogy — that content contributing to the same aggregation estate should meet the same discipline regardless of how it was produced — rather than a settled regulatory requirement specific to AI, and this is stated openly rather than an AI-specific anchor being invented.
+> [Basel Committee on Banking Supervision, "Principles for effective risk data aggregation and risk reporting" (BCBS 239), January 2013] sets 14 principles across governance and infrastructure, risk data aggregation capabilities, risk reporting practices, and supervisory review, which global systemically important banks identified in 2011 or 2012 must meet by January 2016 (para 14). Its principles of accuracy and integrity, completeness, timeliness and adaptability (Principles 3 to 6) were written for system-sourced risk data. It names no traceability principle; its nearest text is the reconciliation of risk data to the bank's sources (para 36(c)). No provision within the framework, and no subsequent regulatory instrument identified in the verified source set, explicitly extends these principles to AI-generated or AI-assisted content. This IRQ's control objective therefore rests on reasoned analogy — that content contributing to the same aggregation estate should meet the same discipline regardless of how it was produced — rather than a settled regulatory requirement specific to AI, and this is stated openly rather than an AI-specific anchor being invented. [European Central Bank, Banking Supervision, "Guide on effective risk data aggregation and risk reporting," May 2024] expects complete and up-to-date data lineages at data-attribute level (Section 3.4). It anchors the traceability control in field 9, and it does not address AI-originated content.
 
 ## 18. Research Basis
 > No peer-reviewed literature specifically evaluating the application of risk-data aggregation principles to AI-generated content in financial-services risk reporting was identified in the source registers; this control area is regulatory-instrument-led (the Basel Committee's aggregation and reporting principles) rather than research-led, extended by reasoned analogy rather than incident-evidenced, consistent with the honest confidence rating given at Independent Test. [European Central Bank, Banking Supervision, "Guide on effective risk data aggregation and risk reporting," May 2024] sets out supervisory expectations for risk data aggregation and reporting against the Basel Committee's principles (BCBS 239), including complete and up-to-date data lineages at data-attribute level, and records that the ECB's thematic review of 25 significant institutions was complemented by a data lineage exercise for credit risk and a fire drill exercise for liquidity risk. It is a supervisory source for the reverse trace in field 11, from a reported figure back through its lineage. It does not set out a protocol for either exercise, and it does not address AI-originated content.
@@ -188,8 +189,8 @@ controls and aggregation-framework controls.
 ```
 [1] Basel Committee on Banking Supervision, 2013. "Principles for effective
     risk data aggregation and risk reporting" (BCBS 239).
-    Published: January 2013. Initially binding on global systemically
-    important banks from 1 January 2016.
+    Published: January 2013. Global systemically important banks identified
+    in 2011 or 2012 must meet the Principles by January 2016 (para 14).
 [2] European Central Bank, Banking Supervision, 2024. "Guide on effective risk data aggregation and risk reporting."
     Published: May 2024
     URL: https://www.bankingsupervision.europa.eu/ecb/pub/pdf/ssm.supervisory_guides240503_riskreporting.en.pdf
@@ -209,9 +210,11 @@ FOUR-TEST VALIDATION:
   source system is not yet a common one, and existing input-side data
   controls are easily mistaken for already covering this output-side gap.
 ✓ Test 2 (Plausible Harm): grounded in BCBS 239, a mature, regulator-mandated
-  framework whose accuracy, completeness, timeliness, adaptability and
-  traceability principles are extended here to AI-originated content by
-  reasoned analogy, stated as such rather than as settled practice.
+  framework whose accuracy, completeness, timeliness and adaptability
+  principles are extended here to AI-originated content by reasoned analogy,
+  stated as such rather than as settled practice. BCBS 239 names no
+  traceability principle; the traceability limb rests on the ECB's
+  data-lineage expectation (May 2024).
 ✓ Test 3 (Testable): testable via a flagging-mechanism and sample-trace
   review against the aggregation record. ★2 methodology, honestly caveated —
   no published protocol specific to AI content exists.
@@ -222,5 +225,6 @@ FOUR-TEST VALIDATION:
 Change Log:
 - v1.0 (2026-07-31): Initial publication; all four tests passed.
 - v1.3.3 (2026-10-09): Field 18 Research Basis — the ECB's May 2024 guide on risk data aggregation and risk reporting added as a supervisory source for data lineage and the reverse trace, with its limits. Field 20 — entry [2] added. Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.4 (2026-10-22): Fields 9, 17 and 21 — BCBS 239 is no longer said to carry a traceability principle, requirement or expectation; the traceability control rests on the data-lineage expectation of the ECB's May 2024 guide (Section 3.4) and on BCBS 239's reconciliation of risk data to its sources (para 36(c)), and Field 17 cites the guide. Fields 9, 17 and 20 — the 2016 date states that global systemically important banks identified in 2011 or 2012 must meet the Principles by January 2016 (para 14), in place of "initially binding" from 1 January 2016. Field 15 — RDARR is spelled out at first use. ★2 unchanged; no change to the risk profile.
 ```
 

@@ -146,7 +146,7 @@ consumes model output without an accumulation policy and tail-case testing.
 | **Novelty** | 4 | Highly counter-intuitive: "retrain on more of our own data" is normally considered good MLOps practice, inverting the expected direction of the failure. |
 
 ## 17. Regulatory Basis
-> [FCA/PRA joint DP5/22 (Oct 2022) and FS2/23 feedback statement (Oct 2023); the key points made by respondents include that data regulation is fragmented and that closer collaboration between data management and model risk management teams would be beneficial] — supports governance attention to training-data pipeline integrity generally. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024, Principle 3 development principles] — a model's data lineage and quality, including recursive-feedback effects, falls within the development/validation scope. No regulation names "model collapse" or recursive-training risk explicitly; this IRQ is a forward-looking application of SS1/23 data-quality principles to an emerging, well-evidenced AI-specific mechanism. (verified 29 Jul 2026)
+> [FCA/PRA joint DP5/22 (Oct 2022) and FS2/23 feedback statement (Oct 2023); the key points made by respondents include that data regulation is fragmented and that closer collaboration between data management and model risk management teams would be beneficial] — supports governance attention to training-data pipeline integrity generally. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026; policy in effect since 17 May 2024, para 1.5), Principle 3 development principles] — a model's data lineage and quality, including recursive-feedback effects, falls within the development/validation scope. No regulation names "model collapse" or recursive-training risk explicitly; this IRQ is a forward-looking application of SS1/23 data-quality principles to an emerging, well-evidenced AI-specific mechanism. (verified 29 Jul 2026; SS1/23 dates read 22 Oct 2026)
 
 ## 18. Research Basis
 > [Shumailov, I., Shumaylov, Z., Zhao, Y., et al., 2024, "AI models collapse when trained on recursively generated data", Nature 631, 755–759] — the foundational, peer-reviewed demonstration that recursive training on model output progressively erases distributional tails. [Alemohammad, S., et al., 2023, "Self-Consuming Generative Models Go MAD", arXiv:2307.01850] — independent confirmation of quality/diversity degradation across generative modalities. [Gerstgrasser, M., et al., 2024, "Is Model Collapse Inevitable? Breaking the Curse of Recursion by Accumulating Real and Synthetic Data", arXiv:2404.01413] — shows accumulating (not replacing) real data with synthetic data avoids collapse, directly informing this IRQ's primary control. [Dohmatob, E., et al., 2024, "A Tale of Tails: Model Collapse as a Change of Scaling Laws", arXiv:2402.07043] — analytical scaling-law account supporting the risk statement's theoretical grounding.
@@ -179,7 +179,7 @@ consumes model output without an accumulation policy and tail-case testing.
 [4] Dohmatob, E., Feng, Y., Yang, P., Charton, F., Kempe, J., 2024. "A Tale of Tails: Model
     Collapse as a Change of Scaling Laws." arXiv:2402.07043.
 [5] PRA, 2026. "SS1/23 — Model risk management principles for banks."
-    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
+    April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026; policy in effect since 17 May 2024, para 1.5).
 [6] Bank of England/FCA, 2022–2023. "DP5/22: Artificial Intelligence and Machine Learning"
     and "FS2/23" feedback statement.
 ```
@@ -209,6 +209,7 @@ Change Log:
 - v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 - v1.3.3 (2026-10-09): Field 17 Regulatory Basis — the FS2/23 citation no longer says that the feedback statement identifies data management as a top AI risk concern; FS2/23 ranks no concerns, and the citation now gives two of the key points made by respondents. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Field 9 Expected Controls — the title of Gerstgrasser et al. (arXiv:2404.01413) corrected to end "Accumulating Real and Synthetic Data" (it was cited without "Real and Synthetic"). Field 18 Research Basis — the same. Research-basis review date moved. No change to controls, test, ★ rating or risk profile.
+- v1.3.4 (2026-10-22): Fields 17 and 20 — the PRA SS1/23 citation gives both dates: the April 2026 amendment, effective 23 April 2026, and the policy, in effect since 17 May 2024 (para 1.5), in place of a single effective date. Fields 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

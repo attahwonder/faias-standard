@@ -21,7 +21,7 @@ Register question: "Are quality, drift, and behavioural anomaly metrics monitore
 ## 5. Potential Consequences
 - **Institution:** A material quality or drift event goes unnoticed for an extended period because no one happened to review the relevant dashboard metric at the right time; downstream controls (fallback, rollback, escalation) that depend on monitoring as their trigger never fire.
 - **Customer:** Continued exposure to a degrading AI system for longer than necessary, because detection relied on passive observation rather than active alerting.
-- **Regulator:** Monitoring that exists only as a dashboard, without evidenced threshold-triggered response, does not meet the "continuous monitoring with defined triggers" expectation embedded in operational resilience and model risk management guidance.
+- **Regulator:** Monitoring that exists only as a dashboard, without evidenced threshold-triggered response, does not meet the model risk expectation that firms monitor model performance against thresholds and apply mitigants once defined triggers and thresholds are breached (PRA SS1/23, Principles 4.4(a) and 5.3(a)(ii)). PRA SS1/21 states no monitoring expectation; this canvas reads its statement that operational resilience is a dynamic activity (para 4.16) as extending to threshold-triggered response.
 
 ## 6. Failure Chain
 ```
@@ -51,7 +51,7 @@ Control Breakpoints:
 ```
 
 ## 7. Why a Domain Expert May Miss It
-- "We have a monitoring dashboard" is treated as equivalent to "we have monitoring," when the two are materially different — a dashboard is a display mechanism, monitoring (in the operational resilience sense) requires an active, threshold-triggered response capability.
+- "We have a monitoring dashboard" is treated as equivalent to "we have monitoring," when the two are materially different — a dashboard is a display mechanism, while monitoring, as this canvas reads it, requires an active, threshold-triggered response capability.
 - Traditional infrastructure monitoring (CPU, memory, uptime) has mature threshold-alerting tooling built in by default; AI-specific quality/drift metrics are newer and often bolted on without the same threshold-alerting discipline being applied by teams unfamiliar with the difference.
 - Dashboard reviews are often assigned as a periodic task (e.g. weekly) to a team member, creating a false sense that "someone is watching," when in practice competing priorities mean dashboards are reviewed inconsistently or superficially.
 - Setting meaningful thresholds for AI-specific metrics (what hallucination rate is "concerning" versus "normal variance") requires domain judgement that is harder to calibrate than infrastructure thresholds, so teams may defer defining them indefinitely rather than accept an imperfect threshold.
@@ -62,7 +62,7 @@ Control Breakpoints:
 ## 9. Expected Controls (Traced)
 - **Threshold-driven continuous monitoring** — [PRA, SS1/21, March 2022 (11 March 2022, updating 29 March 2021), para 4.16, operational resilience maintained as a dynamic activity for important business services] — extended to AI-specific quality/drift/anomaly metrics with defined thresholds, not dashboard-only visibility.
 - **Pre-agreed response playbooks per threshold breach** — [Regulation (EU) 2022/2554, DORA, Art. 10(2), detection mechanisms that define alert thresholds and criteria to trigger and initiate ICT-related incident response processes] — detection mechanisms should trigger defined response actions.
-- **Model risk ongoing performance monitoring** — [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023), ongoing monitoring principle] — monitoring is a continuous obligation, not a one-time validation event.
+- **Model risk ongoing performance monitoring** — [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026), ongoing monitoring principle] — monitoring is a continuous obligation, not a one-time validation event.
 - **Statistical process control / anomaly detection methodology** — [established general statistical monitoring practice; NIST AI RMF 1.0, January 2023, MEASURE function] — quantitative basis for setting meaningful thresholds distinguishing normal variance from concerning drift.
 - **Escalation trigger to governance** — [linked IRQ-GOV-008] — monitoring output must reach accountable governance bodies through a defined trigger, not rely on ad hoc awareness.
 
@@ -124,7 +124,7 @@ Residual risk interpretation: This IRQ is foundational — nearly every other de
 | **Novelty** | 3 | The distinction between "visible on a dashboard" and "actively monitored" is easy for non-specialist reviewers to miss |
 
 ## 17. Regulatory Basis
-> [PRA, SS1/21, March 2022 (11 March 2022, updating 29 March 2021)] states that, after 31 March 2025, maintaining operational resilience will be a dynamic activity, and that firms should have strategies, processes and systems that enable them to address risks to their ability to remain within their impact tolerance for each important business service (para 4.16); it states no monitoring expectation, and this canvas reads threshold-driven monitoring as one such system. [Regulation (EU) 2022/2554, DORA, Art. 10] requires mechanisms to promptly detect ICT-related incidents, implying active detection rather than passive dashboard availability. [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] establishes ongoing monitoring as a continuous model risk management obligation, not a one-time validation event.
+> [PRA, SS1/21, March 2022 (11 March 2022, updating 29 March 2021)] states that, after 31 March 2025, maintaining operational resilience will be a dynamic activity, and that firms should have strategies, processes and systems that enable them to address risks to their ability to remain within their impact tolerance for each important business service (para 4.16); it states no monitoring expectation, and this canvas reads threshold-driven monitoring as one such system. [Regulation (EU) 2022/2554, DORA, Art. 10] requires mechanisms to promptly detect ICT-related incidents, implying active detection rather than passive dashboard availability. [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026)] establishes ongoing monitoring as a continuous model risk management obligation, not a one-time validation event.
 
 ## 18. Research Basis
 > [NIST AI RMF 1.0, January 2023, MEASURE function] establishes the general expectation that AI system performance be continuously measured against defined criteria. No peer-reviewed research is required to establish the general distinction between passive dashboards and active threshold-triggered alerting, which is a long-established principle in site-reliability and statistical process control literature, applied here to AI-specific quality/drift metrics.
@@ -155,7 +155,7 @@ Related IRQs:
     URL: https://eur-lex.europa.eu/eli/reg/2022/2554/oj
 
 [3] Prudential Regulation Authority, 2026. "SS1/23 — Model risk management principles for banks."
-    Published: April 2026 (16 April 2026, updating 17 May 2023)
+    Published: April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026)
     URL: https://www.bankofengland.co.uk/prudential-regulation/publication/2023/may/model-risk-management-principles-for-banks-ss
 
 [4] NIST, 2023. "Artificial Intelligence Risk Management Framework (AI RMF) Version 1.0."
@@ -191,6 +191,7 @@ Related IRQs:
 - v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 77, Anthropic postmortem of three infrastructure bugs, in a provider's own serving infrastructure). Research-basis review date moved. No change to controls, test, ★3 or risk profile.
 - v1.3.3 (2026-10-09): Field 18 Research Basis — Rabanser, Günnemann and Lipton (NeurIPS 2019) cited as the peer-reviewed method study for dataset-shift detection, with its limits stated. Field 20 References — entry [5] added. Research-basis review date moved. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.4 (2026-10-22): Fields 5 and 7 — the quoted monitoring expectation, which no source states in those words, is replaced by the PRA SS1/23 expectations it rests on (Principles 4.4(a) and 5.3(a)(ii)); PRA SS1/21 states no monitoring expectation, and threshold-triggered response is stated as this canvas's reading of para 4.16, as fields 9, 17 and 21 state. Fields 9 Expected Controls, 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★3 unchanged; no change to the risk profile.
 ```
 
 ---

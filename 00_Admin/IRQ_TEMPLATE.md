@@ -118,11 +118,11 @@ Control Breakpoints (can interrupt chain):
 **Important:** Every control must trace per METHODOLOGY_STANDARDS; no invented controls. If a plausible control has no published precedent, mark as **Emerging Practice** and document rationale.
 
 **Example:**
-- **IRQ-DAT-007 (Retrieval Data Staleness Detection)** — [NIST AI RMF, MEASURE-2, January 2023] — Detect when retrieval corpus exceeds age threshold; flag to escalation workflow.
+- **IRQ-DAT-007 (Retrieval Data Staleness Detection)** — [NIST AI RMF, MEASURE 2, January 2023] — Detect when retrieval corpus exceeds age threshold; flag to escalation workflow.
 - **IRQ-MOD-004 (Hallucination Detection & Filtering)** — [OWASP Top 10 for LLM Applications, 2025] — Apply output fact-checking against known knowledge base; low-confidence filter.
 - **IRQ-MOD-006 (Confidence Calibration Validation)** — [ISO/IEC 42001:2023, section 6.2] — Periodic validation of confidence estimates against held-out ground truth; detect drift.
 - **IRQ-HUM-004 (Escalation for Uncertainty)** — [FCA, Handbook SYSC 4.1.1R — robust governance arrangements, current at 26 June 2026] — Route low-confidence outputs to human review with SLA.
-- **IRQ-HUM-001 (Automation Bias Training)** — [NIST AI RMF, MANAGE-4, January 2023] — Train human reviewers to challenge system output; measure disagreement rates.
+- **IRQ-HUM-001 (Automation Bias Training)** — [NIST AI RMF, MANAGE 4, January 2023] — Train human reviewers to challenge system output; measure disagreement rates.
 
 ---
 

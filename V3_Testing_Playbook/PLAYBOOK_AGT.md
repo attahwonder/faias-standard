@@ -5,7 +5,7 @@
 **Procedures:** TP-AGT-001 … TP-AGT-014 (14, 1:1 with IRQ-AGT-001 … IRQ-AGT-014)
 **Source canvases:** `V2_IRQ_Battery/canvases/CANVASES_AGT.md`
 **Governing documents:** `00_Admin/ASSURANCE_MODEL.md` (★ anchors, L1–L5 evidence levels), `00_Admin/METHODOLOGY_STANDARDS.md` (source hierarchy, testing-method labelling, non-production rule)
-**Compiled:** 2026-07
+**Compiled:** 2026-07; revised since (see the change log at the end of this file)
 **Spelling:** UK throughout
 
 ---
@@ -150,3 +150,4 @@ v1.3.0 (2026-10) — TP-AGT-014's ★ summary places AISI's statement that the t
 v1.3.2 (2026-10-03) — TP-AGT-014 corrected (00_Admin/CORRECTION_LOG_2026-10-03.md §8). No ★ rating or reviewer-day figure changes.
 v1.3.3 (2026-10-09) — Domain-level evidence maturity caveat and TP-AGT-010's ★ summary: the Microsoft AI Red Team whitepaper cited by its title as issued on its cover, "Taxonomy of Failure Mode in Agentic AI Systems". No test step, ★ rating, method class or reviewer-day estimate changes.
 v1.3.3 (2026-10-09) — TP-AGT-010's ★ summary and method classification: the Microsoft taxonomy is cited for its failure mode "Agent flow manipulation" and its effect "Agent misalignment", in place of a "workflow-deviation category", which it does not name. No test step, ★ rating, method class or reviewer-day estimate changes.
+v1.3.4 (2026-10-22) — TP-AGT-003, TP-AGT-005 and TP-AGT-006, ★ summary and method classification: the OWASP sources are cited for the risks and mitigations they describe (LLM06:2025, LLM10:2025, and the Agentic AI Threats and Mitigations threats T2 Tool Misuse and T4 Resource Overload), in place of test guidance, test patterns and a category name that the sources do not contain. TP-AGT-003's method class is Emerging Practice, in place of Adapted Industry Practice, because neither source sets out a test method; TP-AGT-006's method class names its two classes, Adapted Industry Practice / Emerging Practice. TP-AGT-012's ★ statement, method classification and canvas-limitation pitfall refer to two published worked examples of layered gate design, as the canvas does, in place of one. Head: the Compiled line points to the change log for later changes. No test step, ★ rating or reviewer-day estimate changes.

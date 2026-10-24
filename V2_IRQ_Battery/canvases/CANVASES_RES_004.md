@@ -136,7 +136,9 @@ Residual risk interpretation: Recoverability is the standout concern for the age
 >
 > [Swanson, M., Bowen, P., Phillips, A.W., Gallup, D., Lynes, D., 2010, "Contingency Planning Guide for Federal Information Systems", NIST Special Publication 800-34 Revision 1, May 2010 (updated November 2010), section 3.5 "Plan Testing, Training, and Exercises (TT&E)"] is the published standards-body method for testing recovery procedures in general. Its section 3.5.1 describes a test as an evaluation tool that uses quantifiable metrics to validate the operability of an information system or system component in an operational environment. It lists system recovery on an alternate platform from backup media and restoration of normal operations among the areas that a contingency plan test should address. The guide does not mention artificial intelligence, machine learning or agents, and it does not address the rollback of prompts, model version pins, indexes or agent memory. It is cited for the form of a recovery test only; it is not research on the rollback of AI components. No ★ change follows from this addition.
 >
-> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 63, "OpenAI GPT-4o sycophancy rollback", 2025]** — the developer first changed the system prompt to reduce the harm, and then rolled the model back to the previous version: "The full rollback took around 24 hours to manage stability and avoid introducing new issues across the deployment." It shows a rollback of a model version and a prompt in production, with its duration. A single instance; the developer states no recovery objective and no rehearsal.
+>
+> **Research basis last reviewed:** 22 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -208,6 +210,7 @@ Related IRQs:
 - v1.3.3 (2026-10-09): Field 20 — the reference entry for PRA SS1/21 gives its current version, March 2022 (11 March 2022, updating 29 March 2021). No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/21 cited as its March 2022 version (11 March 2022, updating 29 March 2021); the expectations cited are unchanged.
 - v1.3.3 (2026-10-09): Field 18 Research Basis — NIST SP 800-34 Rev. 1, section 3.5, cited as the standards-body method for the form of a recovery test, with the limit that it does not address AI components. Field 20 References — entry [10] added. Research-basis review date moved. No change to the ★ rating or the risk profile.
+- v1.3.4 (2026-10-22): Field 18 Research Basis — incident-register citation added in the reserved form (row 63, OpenAI GPT-4o rollback: a system-prompt change, then a model rollback that took around 24 hours; a single instance). Research-basis review date moved. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

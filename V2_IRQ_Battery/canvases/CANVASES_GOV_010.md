@@ -154,7 +154,7 @@ past-decision component elevates this beyond a routine documentation finding.
 | **Novelty** | 3 | A governance SME versed in structured decision-system logging may not anticipate the four-artefact-type, cross-linked nature of a GenAI/agentic decision record. |
 
 ## 17. Regulatory Basis
-> [EU AI Act, Regulation (EU) 2024/1689, Art. 12 (record-keeping) and Art. 19 (log retention)] requires automatic logging capable of ensuring a level of traceability of the AI system's functioning throughout its lifecycle, for high-risk systems, with logs retained per Art. 19 for a period appropriate to the system's purpose. [FCA/PRA record-keeping expectations under SYSC and DISP] require firms to retain records sufficient to reconstruct decisions for audit, complaint and regulatory purposes across all regulated activities, applicable regardless of EU AI Act in-scope status. [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] governance and monitoring principles require evidence sufficient to support ongoing oversight, which presupposes reconstructable records. Section pinpoints [UNVERIFIED — cited modules/articles confirmed extant (PRA SS1/23, SS1/21, PS21/3, ISO/IEC 42001:2023, EU AI Act Arts. 9/11/12/19); no AI-specific sub-clause pinpoint published by the regulator beyond module/clause level cited] (verified 29 Jul 2026).
+> [EU AI Act, Regulation (EU) 2024/1689, Art. 12 (record-keeping) and Art. 19 (log retention)] requires automatic logging capable of ensuring a level of traceability of the AI system's functioning throughout its lifecycle, for high-risk systems, with logs retained per Art. 19 for a period appropriate to the system's purpose. [FCA/PRA record-keeping expectations under SYSC and DISP] require firms to retain records sufficient to reconstruct decisions for audit, complaint and regulatory purposes across all regulated activities, applicable regardless of EU AI Act in-scope status. [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026)] governance and monitoring principles require evidence sufficient to support ongoing oversight, which presupposes reconstructable records. Section pinpoints [UNVERIFIED — cited modules/articles confirmed extant (PRA SS1/23, EU AI Act Arts. 12/19); no AI-specific sub-clause pinpoint published by the regulator beyond module/clause level cited] (verified 29 Jul 2026; SS1/23 dates read 22 Oct 2026).
 
 ## 18. Research Basis
 > [Chan, A., et al., 2024, "Visibility into AI Agents," Proc. FAccT 2024 (arXiv:2401.13138)] assesses activity logging (logs of tool use, internal reasoning, self-critique and memory management) as a measure to increase visibility into AI agents, directly relevant to this IRQ's agentic-trace component. No FS-specific empirical literature quantifies record-reconstruction failure rates for deployed GenAI/agentic decision systems; this control area otherwise draws on internal-audit evidentiary-sufficiency practice rather than a dedicated research literature.
@@ -184,7 +184,7 @@ past-decision component elevates this beyond a routine documentation finding.
 [1] European Union, 2024. "Regulation (EU) 2024/1689 — Artificial Intelligence Act."
     OJ L 12.7.2024. Art. 12 (Record-Keeping) and Art. 19 (Automatically Generated Logs).
 [2] PRA, 2026. "SS1/23 — Model risk management principles for banks."
-    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
+    April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026; policy in effect since 17 May 2024, para 1.5).
 [3] Chan, A., Ezell, C., Kaufmann, M., et al., 2024. "Visibility into AI Agents."
     Proc. ACM FAccT 2024. arXiv:2401.13138.
 [4] FCA. "DISP — Dispute Resolution: Complaints." FCA Handbook (complaint time-limit
@@ -220,6 +220,7 @@ Change Log:
 - v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 - v1.3.3 (2026-10-09): Field 18 Research Basis — the Chan et al. entry corrected: the paper assesses activity logging (logs of tool use, internal reasoning, self-critique and memory management) as a visibility measure and does not discuss intermediate or abandoned steps. Research-basis review date moved. No change to controls, test, ★ rating or risk profile.
 - v1.3.3 (2026-10-09): Field 20 References — reference [3], "Visibility into AI Agents": the co-authors corrected to Chan, A., Ezell, C., Kaufmann, M., et al. No change to the ★ rating or the risk profile.
+- v1.3.4 (2026-10-22): Field 20 References — the PRA SS1/23 citation gives both dates: the April 2026 amendment, effective 23 April 2026, and the policy, in effect since 17 May 2024 (para 1.5), in place of a single effective date. Field 17 Regulatory Basis — the section-pinpoint marker lists only the instruments this canvas cites, in place of a list that also named instruments it does not cite. Fields 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★3 unchanged; no change to the risk profile.
 ```
 
 ---

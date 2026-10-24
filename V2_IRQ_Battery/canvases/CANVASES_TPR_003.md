@@ -118,12 +118,14 @@ Residual risk interpretation: Detectability and novelty are the dominant concern
 | **Novelty** | 4 | Domain and vendor-management experts are structurally unlikely to recognise embedded AI as a governance trigger |
 
 ## 17. Regulatory Basis
-> [EBA Guidelines on outsourcing arrangements, EBA/GL/2019/02] extend governance obligations to material outsourced functions, arguably including embedded capabilities within procured software [UNVERIFIED — no EBA text confirmed extending outsourcing governance explicitly to feature-level embedded AI; this remains FAIAS's interpretive extension] (verified 29 Jul 2026). No FS regulator has published AI-specific guidance mandating discovery of embedded vendor AI at feature level; this IRQ is grounded in the general AI governance expectation (FCA AI Update, April 2024; PRA/BoE response to DSIT AI principles, April 2024) that firms maintain a complete inventory of AI use, however delivered.
+> [EBA Guidelines on outsourcing arrangements, EBA/GL/2019/02] extend governance obligations to material outsourced functions, arguably including embedded capabilities within procured software [UNVERIFIED — no EBA text confirmed extending outsourcing governance explicitly to feature-level embedded AI; this remains FAIAS's interpretive extension] (verified 29 Jul 2026). No FS regulator has published AI-specific guidance mandating discovery of embedded vendor AI at feature level; this IRQ is grounded in the PRA expectation that banks keep a comprehensive model inventory, which includes AI/ML models (PRA SS1/23, as the Bank of England and PRA letter of 22 April 2024 states). The FCA AI Update (April 2024) names no inventory. This canvas interprets the model-inventory expectation as extending to a complete inventory of AI use, however delivered. (Bank of England and PRA letter and FCA AI Update read 22 Oct 2026).
 
 ## 18. Research Basis
 > No peer-reviewed research specifically addresses "embedded/shadow AI in procured software" in FS; the phenomenon is documented in general enterprise AI governance commentary [UNVERIFIED — no single citable peer-reviewed or regulator source specifically on 'embedded/shadow AI in procured FS software' was located; commentary exists at vendor/analyst level (e.g. Gartner, industry blogs) but not as an academically citable source] (verified 29 Jul 2026). This IRQ is grounded in the general shadow-AI/AI-inventory-completeness problem recognised across governance frameworks (NIST AI RMF MAP function; ISO/IEC 42001 inventory requirement) rather than a single empirical study.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 66, "ANAO audit of AI governance at the Australian Taxation Office", 2025]** — carried as an audit finding of control gaps, not a harm event: in January 2025 the tax office said that it "currently uses commercial software which incorporates AI", and the audit records: "This use is not included in Table 2.1", the audit's list of the office's AI uses. It evidences AI embedded in procured software that the organisation's list of AI uses did not include; the audit does not state whether that software's AI was risk-assessed.
+>
+> **Research basis last reviewed:** 22 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -157,7 +159,7 @@ Related IRQs:
 
 **FOUR-TEST VALIDATION:**
 ✓ Test 1 (SME Blind Spot): Vendor management SMEs categorise by product function, not AI content; embedded AI arrives via routine update.
-✓ Test 2 (Plausible Harm): Grounded in the AI inventory completeness expectation across FS AI governance guidance.
+✓ Test 2 (Plausible Harm): Grounded in the PRA model-inventory expectation (SS1/23), which this canvas reads as extending to all AI use.
 ✓ Test 3 (Testable): Answerable via sampled technical inspection plus vendor re-questionnaire.
 ✓ Test 4 (Decision-Relevant): Outcome determines whether the AI governance perimeter is trustworthy.
 
@@ -166,6 +168,8 @@ Related IRQs:
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Field 20 References — the URL of EBA/GL/2019/02 points to the Final Report PDF, in place of a page that now shows the EBA third-party risk management guidelines; the note "source confirmed live and current as at this date" says that it covers the earlier URL. No change to controls, test, ★ rating or risk profile.
 - v1.3.3 (2026-10-09): Field 20 References — the title of the Bank of England and PRA letter of 22 April 2024 corrected to The Bank and the PRA's response to DSIT/HMT: update on our approach to AI. No change to controls, test, ★ rating or risk profile.
+- v1.3.4 (2026-10-22): Field 18 Research Basis — incident-register citation added in the reserved form (row 66, the ANAO audit: commercial software that incorporates AI was not in the tax office's list of AI uses; carried as an audit finding of control gaps and not a harm event). Research-basis review date moved. ★2 unchanged; no change to the risk profile.
+- v1.3.4 (2026-10-22): Fields 17 and 21 — the inventory limb rests on the PRA expectation of a comprehensive model inventory that includes AI/ML models (SS1/23, as the Bank of England and PRA letter of 22 April 2024 states), in place of an expectation attributed to the FCA AI Update, which names no inventory; an inventory of all AI use, however delivered, is stated as this canvas's reading. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

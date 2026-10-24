@@ -4,7 +4,7 @@
 **IRQ:** IRQ-AGT-006 — Unbounded Recursion Depth, Aggregate Permissions and Resource Consumption in Sub-Agent Delegation
 **Assurance objective:** AO-AGT-006 — sub-agent delegation shall be bounded by enforced, technically-implemented limits on recursion depth, aggregate permission scope across the full delegation tree, and total resource/cost consumption per task, with tested circuit breakers halting any breach.
 **★ Confidence:** ★2 (carried from canvas — OWASP guidance is published and reasonably specific for cost/resource limits; aggregate-permission-tree testing is bespoke with no agreed benchmark; assessor judgement is significant)
-**Method classification:** Mixed — cost/resource limits follow OWASP (2025) LLM10 (Unbounded Consumption) test guidance and the Agentic Security Initiative resource-exhaustion category, as cited in the canvas; **aggregate-permission-tree testing is Emerging Practice with no benchmark** and is labelled as such.
+**Method classification:** Adapted Industry Practice / Emerging Practice — cost/resource limits follow OWASP (2025) LLM10 (Unbounded Consumption) mitigation guidance and the Agentic Security Initiative's Resource Overload threat (T4), as cited in the canvas; **aggregate-permission-tree testing is Emerging Practice with no benchmark** and is labelled as such.
 
 ## Preconditions
 

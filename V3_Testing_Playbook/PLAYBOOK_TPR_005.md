@@ -2,7 +2,7 @@
 
 **IRQ:** IRQ-TPR-005 — Unverified Open-Source Model Provenance.
 **Assurance objective:** AO-TPR-005 — the firm shall verify publisher authenticity, weight integrity, licence compatibility and freedom from known backdoors or unsafe fine-tunes for every open-source model before deployment, and shall use safe serialisation and loading practices.
-**Confidence:** ★2 (carried unchanged). Method class: Mixed. OWASP ML Top 10 provides a structured checklist for supply-chain and deserialisation risk (that component alone would rate ★3); backdoor and unsafe-fine-tune behavioural screening remains bespoke research-grade testing (★1–2). **The weaker component governs the blended rating**, per the canvas — state this in reporting rather than averaging.
+**Confidence:** ★2 (carried unchanged). Method class: Adapted Industry Practice / Emerging Practice. OWASP ML Top 10 provides a structured checklist for supply-chain risk, with no item on deserialisation (that component alone would rate ★3); backdoor and unsafe-fine-tune behavioural screening remains bespoke research-grade testing (★1–2). **The weaker component governs the blended rating**, per the canvas — state this in reporting rather than averaging.
 
 ### Preconditions
 - **Applicability check.** This procedure applies only where the firm deploys open-source or externally-sourced model weights. Where all models are accessed via provider APIs, record that finding and close.

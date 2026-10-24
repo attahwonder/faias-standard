@@ -67,7 +67,7 @@ Control Breakpoints:
 - **Two-sample statistical shift detection for input-side shift** — [Rabanser et al., 2019, "Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift", arXiv:1810.11953] — implementable statistical methods for population/covariate shift detection at the input level.
 - **Concept/label shift assessment via outcome monitoring** — [D'Amour et al., 2020/22, "Underspecification...", arXiv:2011.03395] — periodic re-measurement of the true input-output relationship against fresh ground truth, since concept/label shift is invisible to input-only monitoring.
 - **Policy-shift mapping to model revalidation triggers** — [linked IRQ-GOV-011; PRA SS1/23 ongoing-validation principle] — regulatory or internal policy changes affecting permissible features, thresholds or rules are mapped to a mandatory model revalidation trigger.
-- **Defined revalidation cadence and triggers per shift type** — [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), ongoing monitoring principle; linked IRQ-RES-005] — each shift type has a documented detection method, threshold, and revalidation response, not a single blanket "annual review."
+- **Defined revalidation cadence and triggers per shift type** — [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026), ongoing monitoring principle; linked IRQ-RES-005] — each shift type has a documented detection method, threshold, and revalidation response, not a single blanket "annual review."
 
 ## 10. Expected Evidence (Tagged L1–L5)
 - Vendor/internal claim that "the model is monitored for drift" — **L1** (assertion only; does not specify shift-type coverage).
@@ -141,7 +141,7 @@ coverage, not only input-side drift monitoring.
 | **Novelty** | 3 | The six-way shift taxonomy, and particularly concept/label/policy shift's invisibility to input-monitoring, is a level of precision beyond typical model risk practice. |
 
 ## 17. Regulatory Basis
-> [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024, Principle 4 (independent model validation, including ongoing monitoring)] — the primary anchor; requires monitoring proportionate to the model's risk and use, which this IRQ interprets to require shift-type-specific coverage rather than a single generic metric. [Bank of England FPC, "Financial Stability in Focus: Artificial intelligence in the financial system", Apr 2025] — systemic concern about correlated model behaviour under shifting conditions supports the case for robust shift-type monitoring at firm level. No regulation names the six-way shift taxonomy explicitly; this IRQ operationalises SS1/23 for AI-specific shift mechanisms. (verified 29 Jul 2026)
+> [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026; policy in effect since 17 May 2024, para 1.5), Principle 4 (independent model validation, including ongoing monitoring)] — the primary anchor; requires monitoring proportionate to the model's risk and use, which this IRQ interprets to require shift-type-specific coverage rather than a single generic metric. [Bank of England FPC, "Financial Stability in Focus: Artificial intelligence in the financial system", Apr 2025] — systemic concern about correlated model behaviour under shifting conditions supports the case for robust shift-type monitoring at firm level. No regulation names the six-way shift taxonomy explicitly; this IRQ operationalises SS1/23 for AI-specific shift mechanisms. (verified 29 Jul 2026; SS1/23 dates read 22 Oct 2026)
 
 ## 18. Research Basis
 > [Koh, P.W., et al., 2021, "WILDS: A Benchmark of in-the-Wild Distribution Shifts", arXiv:2012.07421] — real-world shift benchmarks demonstrating large, shift-type-specific performance drops. [D'Amour, A., et al., 2020/22, "Underspecification Presents Challenges for Credibility in Modern Machine Learning", arXiv:2011.03395] — evidences that identical held-out performance can mask divergent deployment behaviour under shift. [Gama, J., et al., 2014, "A Survey on Concept Drift Adaptation", ACM Computing Surveys] — canonical taxonomy and detection methods for concept drift specifically. [Rabanser, S., Günnemann, S., Lipton, Z., 2019, "Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift", arXiv:1810.11953] — practical, implementable two-sample-test shift-detection methodology. [Chen, L., Zaharia, M., Zou, J., 2023, "How Is ChatGPT's Behavior Changing over Time?", arXiv:2307.09009; Harvard Data Science Review 6(2), 2024] — temporal shift evidenced directly in a deployed LLM API.
@@ -176,7 +176,7 @@ coverage, not only input-side drift monitoring.
     arXiv:2307.09009. Published in Harvard Data Science Review 6(2), 12 March 2024,
     https://doi.org/10.1162/99608f92.5317da47.
 [6] PRA, 2026. "SS1/23 — Model risk management principles for banks."
-    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
+    April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026; policy in effect since 17 May 2024, para 1.5).
 [7] Bank of England, Financial Policy Committee, 2025. "Financial Stability in Focus:
     Artificial intelligence in the financial system." April 2025.
 [8] Zillow Group, Inc., 2021. "Zillow Group Reports Third-Quarter 2021 Financial
@@ -213,6 +213,7 @@ Change Log:
 - v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 - v1.3.3 (2026-10-09): Field 9 Expected Controls — the title of Rabanser et al. (arXiv:1810.11953) corrected to Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift (six words had been dropped). No change to controls, test, ★ rating or risk profile.
 - v1.3.3 (2026-10-09): Fields 18 and 20 — the Chen, Zaharia and Zou citation (arXiv:2307.09009) now also gives its publication in Harvard Data Science Review 6(2), 2024. Research-basis review date moved. No change to the ★ rating or the risk profile.
+- v1.3.4 (2026-10-22): Fields 17 and 20 — the PRA SS1/23 citation gives both dates: the April 2026 amendment, effective 23 April 2026, and the policy, in effect since 17 May 2024 (para 1.5), in place of a single effective date. Change log — the v1.2.0 entry above is dated 2026-09-14, the date of its erratum; every other v1.2.0 change-log entry in the standard is dated 2026-09-12, and v1.2.0 was signed on 15 September 2026. The dated entry stays as written. Fields 9 Expected Controls, 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★3 unchanged; no change to the risk profile.
 ```
 
 ---

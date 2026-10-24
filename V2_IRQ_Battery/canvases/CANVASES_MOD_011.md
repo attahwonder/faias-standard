@@ -54,7 +54,7 @@ Control Breakpoints:
 - FS SMEs are accustomed to trusting published performance figures (credit-bureau scorecards, actuarial tables) that are not vulnerable to this failure mode; the idea that a benchmark score can be inflated because the model "saw the answers during training" is specific to how LLMs are trained on scraped internet-scale corpora.
 - A high, well-publicised benchmark score is reassuring and often used directly in board papers as evidence of safety — the incentive to interrogate it further is weak, especially where the vendor is a reputable frontier lab.
 - Contamination detection is a specialist technical exercise (guided-prompting, temporal analysis, near-duplicate detection) unfamiliar to model risk teams whose training is in statistical/credit-risk model validation, not LLM evaluation methodology.
-- Public benchmarks are widely treated as a neutral "ground truth" for capability; the fact that widely-used benchmarks (e.g. GSM8K) have been shown to be substantially contaminated in frontier models is not widely known outside AI research circles.
+- Public benchmarks are widely treated as a neutral "ground truth" for capability; the fact that scores on widely-used benchmarks can be inflated by contamination (e.g. on GSM8K, a fresh re-creation of the test found score drops in some model families, though frontier models showed little or no sign of overfitting) is not widely known outside AI research circles.
 
 ## 8. Assurance Objective
 **AO-MOD-011:** Approval shall rely on held-out, contamination-checked, firm-relevant evaluation evidence; vendor-reported or public-benchmark scores shall not be accepted as sufficient evidence of capability or safety without an independent contamination check and, where feasible, corroboration on genuinely held-out firm-relevant data.
@@ -139,7 +139,7 @@ contaminated evidence.
 | **Novelty** | 4 | Benchmark contamination via training-data memorisation is a mechanism specific to how LLMs are trained on scraped corpora, essentially unknown to traditional model risk practice. |
 
 ## 17. Regulatory Basis
-> [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024, Principle 4 (independent model validation) — validation must be performed by a party independent of development, using evidence adequate to the model's risk] — directly engaged: reliance on unchecked vendor/public benchmark claims fails the independence and adequacy test. [FCA, AI Update, Apr 2024] — signals that AI risk is assessed through existing governance and validation frameworks, which this IRQ interprets to require contamination-aware evaluation practice. No regulation names "benchmark contamination" explicitly; this IRQ operationalises SS1/23's independent-validation principle for an LLM-specific evidence-integrity failure. (verified 29 Jul 2026)
+> [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026; policy in effect since 17 May 2024, para 1.5), Principle 4 (independent model validation) — validation must be performed by a party independent of development, using evidence adequate to the model's risk] — directly engaged: reliance on unchecked vendor/public benchmark claims fails the independence and adequacy test. [FCA, AI Update, Apr 2024] — signals that AI risk is assessed through existing governance and validation frameworks, which this IRQ interprets to require contamination-aware evaluation practice. No regulation names "benchmark contamination" explicitly; this IRQ operationalises SS1/23's independent-validation principle for an LLM-specific evidence-integrity failure. (verified 29 Jul 2026; SS1/23 dates read 22 Oct 2026)
 
 ## 18. Research Basis
 > [Sainz, O., et al., 2023, "NLP Evaluation in Trouble: On the Need to Measure LLM Data Contamination for Each Benchmark", EMNLP Findings, arXiv:2310.18018] — names and documents the contamination problem for the LLM era. [Golchin, S., Surdeanu, M., 2023, "Time Travel in LLMs: Tracing Data Contamination in Large Language Models", arXiv:2308.08493] — practical guided-prompting contamination-detection technique used in this IRQ's independent test. [Zhang, H., et al. (Scale AI), 2024, "A Careful Examination of Large Language Model Performance on Grade School Arithmetic" (GSM1k), arXiv:2405.00332] — hard empirical evidence of accuracy drops of up to 13% (arXiv v1; up to 8% in v4) on an uncontaminated recreation of a widely-cited benchmark. [White, C., et al., 2024, "LiveBench: A Challenging, Contamination-Limited LLM Benchmark", arXiv:2406.19314] — a continuously-refreshed benchmark design resisting contamination by construction. [Singh, S., et al., 2025, "The Leaderboard Illusion", arXiv:2504.20879] — documents private testing/data asymmetries distorting public leaderboard rankings such as Chatbot Arena.
@@ -186,7 +186,7 @@ contaminated evidence.
     Contamination-Limited LLM Benchmark." arXiv:2406.19314.
 [5] Singh, S., et al., 2025. "The Leaderboard Illusion." arXiv:2504.20879.
 [6] PRA, 2026. "SS1/23 — Model risk management principles for banks."
-    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
+    April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026; policy in effect since 17 May 2024, para 1.5).
 [7] FCA, 2024. "AI Update." April 2024.
 ```
 
@@ -217,6 +217,7 @@ Change Log:
 - v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citations added in the reserved form (row 74, Soofi S GPQA contamination; row 75, OpenAI on SWE-bench Verified; both from the developers' own reports, in non-financial settings). Research-basis review date moved. No change to controls, test, ★3 or risk profile.
 - v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 - v1.3.3 (2026-10-09): Fields 9, 18 and 20 — the LiveBench citation takes the title of the current version, "LiveBench: A Challenging, Contamination-Limited LLM Benchmark", which narrows the earlier Contamination-Free claim as its authors did. No change to the ★ rating or the risk profile.
+- v1.3.4 (2026-10-22): Field 7 Why a Domain Expert May Miss It — the GSM8K example now states what the GSM1k re-creation found: score drops in some model families, and little or no overfitting in frontier models. Fields 17 and 20 — the PRA SS1/23 citation gives both dates: the April 2026 amendment, effective 23 April 2026, and the policy, in effect since 17 May 2024 (para 1.5), in place of a single effective date. Fields 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★3 unchanged; no change to the risk profile.
 ```
 
 ---

@@ -12,7 +12,7 @@
 
 ### What this playbook does
 
-Each Review Canvas in the SEC domain contains a field 11 *Independent Test* — a paragraph describing what should be tested and to what published methodology. This playbook expands each of those paragraphs into an **executable procedure**: preconditions, test design, numbered steps, what to record, how to measure, and how the result maps to the canvas's pass/fail/partial indicators. Nothing in this playbook changes the canvas. Assurance objectives, ★ confidence ratings, pass and fail indicators are carried across **unchanged**; where this playbook adds anything, it adds procedural detail, not new risk assertions and not new citations.
+Each Review Canvas in the SEC domain contains a field 11 *Independent Test* — a paragraph describing what should be tested and, where one exists, to what published methodology. This playbook expands each of those paragraphs into an **executable procedure**: preconditions, test design, numbered steps, what to record, how to measure, and how the result maps to the canvas's pass and fail indicators and its reporting language. Nothing in this playbook changes the canvas. ★ confidence ratings are carried across **unchanged**. Assurance objectives and pass and fail indicators are restated from the canvases. Some objectives and some indicators keep the canvas's words, and the rest are reworded. Where a procedure and its canvas differ, the canvas governs (PLAYBOOK_OVERVIEW.md §2). Where this playbook adds anything, it adds procedural detail, not new risk assertions and not new citations.
 
 ### Non-negotiable operating rules
 
@@ -55,7 +55,7 @@ Three further roles are required by the additions. **TP-SEC-012** needs the **pr
 
 ### Total indicative effort
 
-**57.0 reviewer-days** across the fourteen procedures, excluding report drafting and firm-side effort. See per-procedure estimates.
+**57.5 reviewer-days** across the fourteen procedures, excluding report drafting and firm-side effort. See per-procedure estimates.
 
 ---
 ---
@@ -89,7 +89,7 @@ The procedures, in order:
 | Procedure | ★ | Reviewer-days |
 |---|---|---|
 | TP-SEC-001 | ★4 | 4.0 |
-| TP-SEC-002 | ★3 | 5.0 |
+| TP-SEC-002 | ★3 | 5.5 |
 | TP-SEC-003 | ★4 | 5.0 |
 | TP-SEC-004 | ★2 | 6.0 |
 | TP-SEC-005 | ★3 | 4.0 |
@@ -102,7 +102,7 @@ The procedures, in order:
 | TP-SEC-012 | **★1** | 2.0 |
 | TP-SEC-013 | ★2 | 4.5 |
 | TP-SEC-014 | ★2 | 4.0 |
-| **Total** | | **57.0** |
+| **Total** | | **57.5** |
 
 Excludes report drafting, firm-side effort, environment build by the firm, and compute wall-time for TP-SEC-007. Savings of roughly 1.0 day in total are available by scheduling TP-SEC-003 with TP-SEC-005 (shared knowledge store) and TP-SEC-004 with TP-SEC-010 (shared agentic harness). None of TP-SEC-012, TP-SEC-013 or TP-SEC-014 shares an environment with an existing SEC procedure, so the scheduling saving above is unaffected by them.
 
@@ -116,3 +116,6 @@ Excludes report drafting, firm-side effort, environment build by the firm, and c
 - v1.3.3 (2026-10-09): TP-SEC-003 — the method class points to URO-7, opened on IRQ-SEC-003 (REGISTER_STATS.md): whether the OWASP LLM01:2025 limb holds as a test method. The ★4 rating and the reviewer-day estimate are unchanged.
 - v1.3.3 (2026-10-09): TP-SEC-012 — the ★1 honesty note brought into line with the canvas (Fields 18 and 21). The ★1 rating and the reviewer-day estimate are unchanged; no new citations introduced beyond those the canvas carries.
 - v1.3.3 (2026-10-09): TP-SEC-001 — Observations and measures: the override-rate threshold of 0% rests on the canvas pass indicator; OWASP LLM01:2025 gives mitigation strategies and sets no numeric threshold (URO-8). The ★4 rating and the reviewer-day estimate are unchanged.
+- v1.3.4 (2026-10-22): TP-SEC-004 — Common pitfalls: the ★2 note gives the date of the threat model, February 2025, as the canvas now does (Field 11). The ★2 rating and the reviewer-day estimate are unchanged.
+- v1.3.4 (2026-10-22): TP-SEC-008 and TP-SEC-011 — in the confidence line, the DSIT AI Cyber Security Code of Practice is cited for what it contains: provision 5.1 for TP-SEC-008, in place of a data-flow mapping principle, and provision 2.6 for TP-SEC-011, in place of secure-by-design principles named beside the method. The ★2 ratings and the reviewer-day estimates are unchanged.
+- v1.3.4 (2026-10-22): TP-SEC-002 — the time estimate is 5.5 reviewer-days, the sum of its stated parts, in place of 5.0; the domain total moves from 57.0 to 57.5 reviewer-days (total indicative effort and the effort table). Domain overview — the playbook no longer states that assurance objectives and pass and fail indicators are carried across unchanged: they are restated from the canvases, some in the canvas's words and the rest reworded; ★ ratings are carried unchanged. Domain overview — field 11 is described as naming a published methodology where one exists, since TP-SEC-012 runs no technical test. Domain overview — a result maps to the canvas's pass and fail indicators and its reporting language, in place of pass/fail/partial indicators. No ★ rating changes.

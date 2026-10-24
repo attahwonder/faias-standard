@@ -4,7 +4,7 @@
 **IRQ:** IRQ-AGT-005 — Unvalidated Tool Calls — Hallucinated Tools, Manipulated Parameters and Untrusted Outputs
 **Assurance objective:** AO-AGT-005 — tool invocations shall be validated for schema and semantic plausibility before execution, and tool/external API responses shall be integrity-checked before being trusted as input to further agent reasoning or action, across all invocation paths.
 **★ Confidence:** ★2 (carried from canvas — ToolEmu provides a credible, published sandbox methodology; no agreed benchmark covers this exact fault combination for FS tool chains; test design is bespoke)
-**Method classification:** Adapted Industry Practice — ToolEmu-style sandbox emulation (Ruan et al.) and OWASP Agentic AI Threats and Mitigations test patterns, both as cited in the canvas.
+**Method classification:** Adapted Industry Practice — ToolEmu-style sandbox emulation (Ruan et al.), as cited in the canvas, with the threats and mitigations that OWASP Agentic AI Threats and Mitigations describes; the OWASP document sets out no test method.
 
 ## Preconditions
 

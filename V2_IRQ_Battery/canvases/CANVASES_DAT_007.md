@@ -148,7 +148,7 @@ Residual risk: material and cumulative; scales with knowledge-store size and upd
     Legal Research Tools." arXiv:2405.20362.
 [4] FCA, 2022. "PS22/9: A New Consumer Duty" and "FG22/5." PRIN 2A in force 31 July 2023.
 [5] PRA, 2026. "SS1/23 — Model risk management principles for banks."
-    April 2026 (16 April 2026, updating 17 May 2023).
+    April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026).
 ```
 
 ## 21. Four-Test Validation Footer
@@ -174,6 +174,7 @@ Change Log:
 - v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Fields 9, 18 and 20 — the Ragas and Seven Failure Points citations take their titles as issued ("Ragas: Automated Evaluation of Retrieval Augmented Generation"; "Seven Failure Points When Engineering a Retrieval Augmented Generation System"). Form corrections only. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Fields 9, 11, 18 and 21 — the deduplication and version-supersession control no longer cites Barnett et al. and is labelled Emerging Practice, since the paper's seven failure points do not include duplicate, superseded or stale documents; the Field 18 description of the paper corrected to the failure points it names; Field 11 states that the seeded-supersession design is the canvas's own and cites the paper for RAG failure in general; Field 21 Test 2 cites the paper for RAG failure in general and rests the stale-policy harm on the Field 17 anchors. Research-basis review date moved. ★3 unchanged.
+- v1.3.4 (2026-10-22): Field 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★3 unchanged; no change to the risk profile.
 ```
 
 ---

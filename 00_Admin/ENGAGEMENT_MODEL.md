@@ -327,7 +327,7 @@ Execute non-production testing per Component 5 Testing Playbook, collect evidenc
 
 **Tier 2:**
 - Comprehensive staged testing (all IRQs in scope)
-- Benchmarked test methods (OWASP, NIST)
+- Benchmarked test methods (a published methodology, such as an OWASP testing guide or a NIST SP 800-53 control assessment; METHODOLOGY_STANDARDS.md §3)
 - Evidence: L4 (independent testing)
 - Testing confidence: ★4 or above on material tests for reasonable assurance; a material test rated ★1–★3 runs with disclosure, and the opinion is then given at limited assurance (ASSURANCE_ARCHITECTURE.md, the assurance-level rule, which states what the register's ratings support at this version)
 
@@ -420,7 +420,7 @@ Per OPINION_TEMPLATE.md:
 **Decision:** Present to sponsor
 **Gate Owner:** QA Lead + Assurance Lead
 **Criteria:**
-- Opinion signed by authorized auditor (independence confirmed)
+- Opinion signed, and the signing auditor's independence confirmed
 - Claims-IRQ mapping complete (no orphans)
 - Conditions are specific and verifiable
 - Opinion conclusion is defensible (evidence supports conclusion)

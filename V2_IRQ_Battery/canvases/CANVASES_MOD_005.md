@@ -75,7 +75,7 @@ Control Breakpoints:
 - Production data: referral/escalation rates by evidential-coverage or conflict-flag category; post-decision QA findings of silently-resolved conflicts — **L5**.
 
 ## 11. Independent Test
-> In a non-production environment, construct five parallel test sets from a representative FS task (e.g. underwriting evidence review), one for each epistemic-state condition: (a) genuinely uncertain (evidence supports multiple plausible answers), (b) ambiguous question (query itself is underspecified), (c) missing evidence (key document absent), (d) conflicting evidence (two contradictory source documents), (e) impossible request (no evidentiary basis exists for an answer at all). Run the pipeline on each and measure whether the system's output is (i) a fabricated confident single answer, or (ii) a correctly distinguishing signal appropriate to the condition (flagged uncertainty, request for clarification, explicit absence statement, surfaced conflict, or refusal/referral). Compare against RGB-style robustness testing dimensions (Chen et al., 2023) and self-knowledge probing methodology (Kadavath et al., 2022). Executed entirely on synthetic/anonymised cases in staging. — **★3 Confidence — as at FAIAS v1.1.0 (25 August 2026)** (credible, peer-reviewed measurement approaches exist for uncertainty expression and self-knowledge; no single canonical benchmark spans all five FS-relevant epistemic-state classes together, so the combined test design rests on professional judgement).
+> In a non-production environment, construct five parallel test sets from a representative FS task (e.g. underwriting evidence review), one for each epistemic-state condition: (a) genuinely uncertain (evidence supports multiple plausible answers), (b) ambiguous question (query itself is underspecified), (c) missing evidence (key document absent), (d) conflicting evidence (two contradictory source documents), (e) impossible request (no evidentiary basis exists for an answer at all). Run the pipeline on each and measure whether the system's output is (i) a fabricated confident single answer, or (ii) a correctly distinguishing signal appropriate to the condition (flagged uncertainty, request for clarification, explicit absence statement, surfaced conflict, or refusal/referral). Compare against RGB-style robustness testing dimensions (Chen et al., 2023) and self-knowledge probing methodology (Kadavath et al., 2022). Executed entirely on synthetic/anonymised cases in staging. — **★3 Confidence — as at FAIAS v1.1.0 (25 August 2026)** (credible measurement approaches exist for uncertainty expression, in peer-reviewed research, and for self-knowledge, in an arXiv preprint (Kadavath et al., 2022); no single canonical benchmark spans all five FS-relevant epistemic-state classes together, so the combined test design rests on professional judgement).
 
 ## 12. Pass Indicators
 - Across all five conditions, the system produces a correctly distinguishing signal (not a fabricated confident answer) in ≥ the firm's defined threshold (e.g. ≥90%) of cases.
@@ -137,7 +137,7 @@ Residual risk: Critical. Deployment gate should not be passed without epistemic-
 | **Novelty** | 4 | The five-way epistemic-state distinction is genuinely AI-specific; a domain expert's mental model of "the system would say if it didn't know" does not hold for generative models by default. |
 
 ## 17. Regulatory Basis
-> [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — decisions affecting retail customers must be properly evidenced; fabricated resolution of missing or conflicting evidence is a direct foreseeable-harm failure. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024, Principle 3/4] — development and validation principles require that model behaviour under degraded or ambiguous input conditions is understood and controlled, not merely under clean test conditions. No regulation names "epistemic-state behavioural distinction" explicitly; this IRQ operationalises the above principles for a failure mode specific to generative models. (verified 29 Jul 2026)
+> [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — decisions affecting retail customers must be properly evidenced; fabricated resolution of missing or conflicting evidence is a direct foreseeable-harm failure. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026; policy in effect since 17 May 2024, para 1.5), Principle 3/4] — development and validation principles require that model behaviour under degraded or ambiguous input conditions is understood and controlled, not merely under clean test conditions. No regulation names "epistemic-state behavioural distinction" explicitly; this IRQ operationalises the above principles for a failure mode specific to generative models. (verified 29 Jul 2026; SS1/23 dates read 22 Oct 2026)
 
 ## 18. Research Basis
 > [Xiong, M., et al., 2023, "Can LLMs Express Their Uncertainty? An Empirical Evaluation of Confidence Elicitation in LLMs", arXiv:2306.13063] — demonstrates systematic overconfidence when models verbalise uncertainty, evidencing the core mechanism. [Tian, K., et al., 2023, "Just Ask for Calibration", arXiv:2305.14975] — shows verbalised confidence can be elicited more reliably than raw token probabilities, informing the control design. [Kadavath, S., et al., 2022, "Language Models (Mostly) Know What They Know", arXiv:2207.05221] — self-assessment carries signal but degrades out of distribution, supporting the need for explicit testing rather than assumed abstention. [Wu, K., et al., 2024, "ClashEval", arXiv:2404.10198] — quantifies how models resolve tension between retrieved evidence and prior belief, directly relevant to the conflicting-evidence condition. [Chen, J., et al., 2023, "Benchmarking Large Language Models in Retrieval-Augmented Generation" (RGB), arXiv:2309.01431] — provides tested dimensions (noise robustness, negative rejection, counterfactual robustness) directly mapping to this IRQ's five conditions.
@@ -172,7 +172,7 @@ Residual risk: Critical. Deployment gate should not be passed without epistemic-
     Retrieval-Augmented Generation." arXiv:2309.01431.
 [6] FCA, 2022. "PS22/9: A New Consumer Duty." PRIN 2A in force 31 July 2023.
 [7] PRA, 2026. "SS1/23 — Model risk management principles for banks."
-    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
+    April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026; policy in effect since 17 May 2024, para 1.5).
 ```
 
 ## 21. Four-Test Validation Footer
@@ -186,8 +186,9 @@ FOUR-TEST VALIDATION:
 ✓ Test 1 (SME Blind Spot): SMEs assume "the system would say if it didn't know"; the
   requirement for five distinct engineered behaviours across uncertainty, ambiguity, absence,
   conflict and impossibility is AI-specific and easily conflated into one generic category.
-✓ Test 2 (Plausible Harm): Grounded in peer-reviewed uncertainty-expression and self-knowledge
-  research (Xiong et al., Tian et al., Kadavath et al.) and RAG-faithfulness studies (Wu et al.,
+✓ Test 2 (Plausible Harm): Grounded in peer-reviewed uncertainty-expression research (Xiong et al.,
+  Tian et al.), in self-knowledge research (Kadavath et al., an arXiv preprint) and in
+  RAG-faithfulness studies (Wu et al.,
   Chen et al.).
 ✓ Test 3 (Testable): Fully testable in staging via five constructed epistemic-state test sets;
   no production data required. ★3 methodology.
@@ -199,6 +200,7 @@ Change Log:
 - v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 73, Walters v. OpenAI, a defamation action and not a financial-services matter). Research-basis review date moved. No change to controls, test, ★3 or risk profile.
 - v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.4 (2026-10-22): Fields 11 and 21 Independent Test and Four-Test Validation Footer — Kadavath et al. (2022) is named as an arXiv preprint, not as peer-reviewed research; the peer-reviewed limb rests on Xiong et al. (ICLR 2024) and Tian et al. (EMNLP 2023). Fields 17 and 20 — the PRA SS1/23 citation gives both dates: the April 2026 amendment, effective 23 April 2026, and the policy, in effect since 17 May 2024 (para 1.5), in place of a single effective date. Fields 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★3 unchanged; no change to the risk profile.
 ```
 
 ---

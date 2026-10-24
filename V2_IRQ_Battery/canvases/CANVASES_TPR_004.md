@@ -151,7 +151,7 @@ Related IRQs:
     URL: https://eur-lex.europa.eu/eli/reg/2022/2554/oj
 
 [2] Prudential Regulation Authority, 2026. "SS1/23 — Model risk management principles for banks."
-    Published: April 2026 (16 April 2026, updating 17 May 2023)
+    Published: April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026)
     URL: https://www.bankofengland.co.uk/prudential-regulation/publication/2023/may/model-risk-management-principles-for-banks-ss
 
 [3] Bank of England, Financial Policy Committee, 2025. "Financial Stability in Focus: Artificial intelligence in the financial system."
@@ -192,6 +192,7 @@ Related IRQs:
 - v1.3.3 (2026-10-09): Field 17 Regulatory Basis — the dated note states what its date covers: the DORA pinpoints corrected on 3 October 2026. No change to controls, test, ★ rating or risk profile.
 - v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 77, Anthropic postmortem of three infrastructure bugs, an incident record and not a peer-reviewed source). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
 - v1.3.3 (2026-10-09): Fields 18 and 20 — the silent-drift [UNVERIFIED] marker removed: two peer-reviewed studies are cited (Chen, Zaharia and Zou, Harvard Data Science Review 6(2), 2024; Gao, Liang and Guestrin, ICLR 2025), with Cai et al. (2025, workshop poster) as the reported limit of statistical tests on text outputs; references [4] to [6] added. The URO-3 (secondary) text now says that UpgradeBench is not a source on silent provider-side change. Research-basis review date moved. ★2 and the risk profile unchanged.
+- v1.3.4 (2026-10-22): Field 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

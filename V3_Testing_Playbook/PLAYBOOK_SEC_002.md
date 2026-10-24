@@ -65,7 +65,7 @@ Two runs per sequence minimum (multi-turn runs are expensive; three is preferred
 - **No agreed combined benchmark.** This is the stated basis of the ★3 rating; the report must present results as professional assessment, not standardised evidence.
 
 ### Time/effort estimate
-**5.0 reviewer-days** — 0.5 baseline reconciliation and scoping; 1.5 sequence construction across three tracks; 1.5 execution (multi-turn sequences are slow); 0.5 linguist support coordination; 0.5 monitoring configuration review; 1.0 analysis, matrices and write-up. Add 0.5 day per supported language beyond three.
+**5.5 reviewer-days** — 0.5 baseline reconciliation and scoping; 1.5 sequence construction across three tracks; 1.5 execution (multi-turn sequences are slow); 0.5 linguist support coordination; 0.5 monitoring configuration review; 1.0 analysis, matrices and write-up. Add 0.5 day per supported language beyond three.
 
 ---
 ---

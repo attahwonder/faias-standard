@@ -157,7 +157,7 @@ Every FAIAS engagement produces an Evidence Catalogue (Component 4 deliverable) 
 - **Description:** GDPR/Data Protection assessment: lawful basis for processing, data subject rights (access, portability, erasure), privacy-preserving controls, consent management if applicable
 - **Evidence Level:** L2 (compliance document)
 - **Supporting Claims:** "Data processing is lawful and privacy-protective"
-- **Tier Applicability:** All tiers (required for GDPR compliance)
+- **Tier Applicability:** Any tier where the processing is likely to result in a high risk to individuals (UK GDPR Art. 35(1))
 - **Example Artefacts:** DPIA Report, Privacy Notice, Consent Form
 
 #### 4.4 Data Bias & Fairness Analysis

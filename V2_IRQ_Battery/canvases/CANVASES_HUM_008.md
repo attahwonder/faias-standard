@@ -67,7 +67,7 @@ Control Breakpoints:
 
 ## 9. Expected Controls (Traced)
 - **Structural separation of the appeal decision-maker and process from the original automated decisioning pipeline** — [FCA, DISP (Dispute Resolution: Complaints) Handbook] — the individual and process conducting the review are organisationally and procedurally distinct from the system that produced the original decision.
-- **Appeal-outcome divergence-rate monitoring** — [linked IRQ-HUM-001; NIST AI RMF 1.0, MANAGE-4, Jan 2023, adapted] — the rate at which appeal outcomes differ from original outcomes is tracked; a rate at or near zero on a system with a known non-zero error rate is a red flag for a non-genuine appeal process, mirroring the disagreement-rate logic of IRQ-HUM-001.
+- **Appeal-outcome divergence-rate monitoring** — [linked IRQ-HUM-001; NIST AI RMF 1.0, MANAGE 4, Jan 2023, adapted] — the rate at which appeal outcomes differ from original outcomes is tracked; a rate at or near zero on a system with a known non-zero error rate is a red flag for a non-genuine appeal process, mirroring the disagreement-rate logic of IRQ-HUM-001.
 - **Explanation of the AI system's role available to the affected person, where the EU AI Act applies** — [EU AI Act, Regulation (EU) 2024/1689, consolidated text of 27 July 2026, Article 86, with Article 13] — Article 86(1) gives a person subject to a decision taken by the deployer on the basis of the output from a high-risk AI system listed in Annex III (point 2 excepted), where the decision produces legal effects or similarly significantly affects that person in a way that they consider to have an adverse impact on their health, safety or fundamental rights, the right to obtain from the deployer "clear and meaningful explanations of the role of the AI system in the decision-making procedure and the main elements of the decision taken". Article 13 runs from provider to deployer: it requires a high-risk AI system to be sufficiently transparent "to enable deployers to interpret a system's output and use it appropriately", and gives the customer no right of its own. The Act gives a right to an explanation, not a right to contest the decision; this canvas reads the explanation as what lets a customer contest on substance. Scope and application dates are stated under Regulatory Basis.
 - **FCA Consumer Duty fair-value and good-outcomes standard applied to the appeal process itself** — [FCA, Handbook PRIN 2A, Consumer Duty, Jul 2023] — the appeal process itself is a customer-facing service subject to the Duty's good-outcomes expectation, not merely the original decision.
 - **Transparent disclosure of what the review process involves** — [linked IRQ-CON-008; FCA, Handbook PRIN 2A] — customers are told, in comprehensible terms, whether their appeal will involve genuine human reconsideration and what evidence will be re-examined.
@@ -160,7 +160,11 @@ firm and customers depend on when the primary controls fail.
 ## 18. Research Basis
 > [Vaccaro, K., Sandvig, C. & Karahalios, K., 2020, "'At the End of the Day Facebook Does What It Wants': How Users Experience Contesting Algorithmic Content Moderation", CSCW 2020] documents user experience of algorithmic-decision contestation processes that are procedurally present but substantively unresponsive, directly analogous to this IRQ's failure mode. [Lyons, H., Velloso, E. & Miller, T., 2021, "Conceptualising Contestability: Perspectives on Contesting Algorithmic Decisions", CSCW 2021] provides the conceptual framework distinguishing genuine contestability (ability to change the outcome) from mere notice-and-appeal-in-name, informing the pass/fail criteria used here.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 97, "Oversight Board breast-cancer post decision", 2021]** — an automated classifier removed a post; the user appealed, and the company had stated that "not all appeals will receive human review". The company restored the post only after the Board selected the case. The Board recommended that users can appeal decisions taken by automated systems "to human review", and that the company disclose "the proportion of those decisions subsequently reversed following human review". It evidences a contest route with no assured human re-decision and no published outcome data; the Board does not find that this appeal had no human review.
+>
+> **[FAIAS Incident Register, row 70, "Drivers v. Uber, Amsterdam Court of Appeal", 2023]** — the court found that the firm's evidence did not show its human step after an automated fraud signal to be more than a symbolic act, that the drivers were not heard, and that the firm could give no examples or numbers of cases in which a driver spoke with its risk team and a decision then followed (para 3.24). It evidences the tracked-outcomes limb, for colleagues; the court examined the check before the decision, not an appeal route as such.
+>
+> **Research basis last reviewed:** 22 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -192,7 +196,7 @@ Related IRQs:
     Consolidated text: http://publications.europa.eu/resource/celex/02024R1689-20260727
 
 [4] Financial Conduct Authority. "DISP: Dispute Resolution: Complaints" and "Handbook PRIN 2A: The Consumer Duty."
-    URL: https://www.handbook.fca.org.uk/
+    URL: https://handbook.fca.org.uk/handbook/disp (DISP); https://handbook.fca.org.uk/handbook/prin2a (PRIN 2A)
 ```
 
 ## 21. Four-Test Validation Footer
@@ -215,6 +219,7 @@ Related IRQs:
 - v1.3.3 (2026-10-09): Field 5 — the EU AI Act is no longer credited with contestability expectations: where it applies, it gives a right to an explanation (Article 86(1)), not a right to contest, as fields 9 and 17 state. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Fields 9, 17 and 20 — the EU AI Act limb restated. Article 13 is cited as the provider-to-deployer transparency duty it is, which gives the customer no right of its own; Article 86 (right to explanation of individual decision-making) is added with its scope and its application dates, read in the consolidated text of 27 July 2026; reference [3] names the articles cited. The Independent Test and the ★2 rating are unchanged.
 - v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2 (Field 16, and the controls-in-place case in Field 15). The canvas states recovery typically within weeks, which is beyond the within-hours level that ASSURANCE_MODEL.md §7 scores 2; the scale names no band between days and years, and 3 (reversible within days) is the nearest anchor. The other axes, the ★ rating and the research basis are unchanged.
+- v1.3.4 (2026-10-22): Field 18 Research Basis — incident-register citations added in the reserved form (row 97, the Oversight Board decision on an automated removal and an appeal with no assured human review; row 70, Drivers v. Uber, no outcome data for the firm's human check). Research-basis review date moved. Field 9 Expected Controls — the NIST AI RMF category is cited as MANAGE 4, as NIST AI 100-1 numbers it. Field 20 References — entry [4] gives the Handbook addresses of DISP and PRIN 2A, in place of the Handbook home page. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

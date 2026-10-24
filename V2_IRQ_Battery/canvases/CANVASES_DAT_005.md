@@ -140,7 +140,7 @@ Residual risk: material and cumulative; the primary danger is that aggregate met
 [1] European Union, 2024. "Regulation (EU) 2024/1689 — Artificial Intelligence Act." Art. 10(3).
 [2] FCA, 2022. "PS22/9: A New Consumer Duty" and "FG22/5." PRIN 2A in force 31 July 2023.
 [3] PRA, 2026. "SS1/23 — Model risk management principles for banks."
-    April 2026 (16 April 2026, updating 17 May 2023).
+    April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026).
 [4] Koh, P.W., et al., 2021. "WILDS: A Benchmark of in-the-Wild Distribution Shifts." arXiv:2012.07421.
 [5] D'Amour, A., et al., 2020. "Underspecification Presents Challenges for Credibility in
     Modern Machine Learning." JMLR. arXiv:2011.03395.
@@ -169,6 +169,7 @@ Change Log:
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 59, Upstart Holdings Form 10-K for 2022: the data-gap statement is the evidence, and the filing does not link the outcome to it). Research-basis review date moved. No change to controls, test, ★3 or risk profile.
+- v1.3.4 (2026-10-22): Field 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★3 unchanged; no change to the risk profile.
 ```
 
 ---

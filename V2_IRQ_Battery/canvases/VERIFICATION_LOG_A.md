@@ -12,10 +12,13 @@ invented citation.
 ## Headline finding
 
 The EU AI Act's Digital Omnibus (agreed and entered into force July 2026) **postponed the Annex
-III high-risk AI obligations (including credit-scoring and insurance-pricing systems) from 2
+III high-risk AI obligations (including credit-scoring and life/health insurance pricing systems) from 2
 August 2026 to 2 December 2027**. Several canvases had asserted the original 2 Aug 2026 date;
-these were corrected. Note: 2 Aug 2026 remains the applicable date for the separate Article 50
-transparency obligations only.
+these were corrected. Note (corrected 22 October 2026): 2 Aug 2026 remains the general date of
+application of the AI Act (Art. 113, second paragraph). The Article 50 transparency obligations
+apply from that date, as does every provision that Art. 113, third paragraph, points (a) to (d),
+does not date otherwise; providers of systems placed on the market before that date must comply
+with Art. 50(2) by 2 Dec 2026 (Art. 111(4)).
 
 | # | File | Canvas / line | Claim | Resolution | Source URL |
 |---|------|----|-------|------------|------------|

@@ -3,8 +3,8 @@
 **Procedure ID:** TP-AGT-003
 **IRQ:** IRQ-AGT-003 — Excessive Tool Access Beyond Approved Task Scope
 **Assurance objective:** AO-AGT-003 — every tool exposed to an agent shall carry an explicit, current, documented business justification tied to its approved task scope, verified at deployment and recertified periodically, with no tool retained beyond what the approved task requires.
-**★ Confidence:** ★2 (carried from canvas — published practitioner guidance exists in OWASP (2025) LLM06 (Excessive Agency) and the OWASP Agentic AI Threats and Mitigations tool-misuse test pattern, but no standardised benchmark for least-privilege verification exists; test design and materiality judgement are assessor-specific)
-**Method classification:** Adapted Industry Practice — OWASP (2025) LLM06 test guidance and the OWASP Agentic Security Initiative tool-misuse test pattern, as cited in the canvas.
+**★ Confidence:** ★2 (carried from canvas — published practitioner guidance exists in OWASP (2025) LLM06 (Excessive Agency) and in the tool-misuse threat (T2) of OWASP Agentic AI Threats and Mitigations, but no standardised benchmark for least-privilege verification exists; test design and materiality judgement are assessor-specific)
+**Method classification:** Emerging Practice — informed by OWASP (2025) LLM06 mitigation guidance and the tool-misuse threat (T2) of the OWASP Agentic Security Initiative, as cited in the canvas; neither sets out a test method.
 
 ## Preconditions
 

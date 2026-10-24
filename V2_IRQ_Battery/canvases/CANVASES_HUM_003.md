@@ -158,7 +158,9 @@ untested.
 ## 18. Research Basis
 > [Arthur, W., Bennett, W., Stanush, P.L. & McNelly, T.L., 1998, "Factors that Influence Skill Decay and Retention: A Quantitative Review and Analysis", Human Performance, 11(1), 57–101] provides the meta-analytic basis for skill-decay rates and refresher-training calibration used in this canvas's controls. [Bainbridge, L., 1983, "Ironies of Automation", Automatica, 19(6)] is the originating account of automation degrading the operator's own capability to intervene effectively — the mechanism this IRQ addresses at the organisational-competency level rather than the single-decision level addressed by IRQ-HUM-001/002.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 96, "ACCEPT endoscopist deskilling study", 2025]** — an observational study of a deployed practice, not a harm event: at four endoscopy centres, the adenoma detection rate of colonoscopy done without AI fell from 28·4% to 22·4% after the centres introduced AI, and exposure to AI was an independent factor (the authors' abstract). It measures the unaided performance of staff who routinely use an AI aid, which is the quantity this question asks about; it is an association in healthcare, not a proven cause, and it was read at its abstract.
+>
+> **Research basis last reviewed:** 22 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -208,6 +210,7 @@ Related IRQs:
 - v1.3.3 (2026-10-09): Field 20 — the reference entry for PRA SS1/21 gives its current version, March 2022 (11 March 2022, updating 29 March 2021). No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/21 cited as its March 2022 version (11 March 2022, updating 29 March 2021); the expectations cited are unchanged.
 - v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2 (Field 16, and the controls-in-place case in Field 15). The canvas states recovery typically within weeks, which is beyond the within-hours level that ASSURANCE_MODEL.md §7 scores 2; the scale names no band between days and years, and 3 (reversible within days) is the nearest anchor. The other axes, the ★ rating and the research basis are unchanged.
+- v1.3.4 (2026-10-22): Field 18 Research Basis — incident-register citation added in the reserved form (row 96, the ACCEPT endoscopist deskilling study, an observational study of a deployed practice and not a harm event, read at its abstract). Research-basis review date moved. ★3 unchanged; no change to the risk profile.
 ```
 
 ---

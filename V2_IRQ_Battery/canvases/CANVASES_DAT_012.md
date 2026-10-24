@@ -130,7 +130,7 @@ designed (by architecture, not intent) to be invisible in normal quality review.
 | **Novelty** | 4 | Embedding-geometry invalidation and corpus-drift effects are specialist RAG-engineering knowledge, well outside FS domain and even general technical review expertise. |
 
 ## 17. Regulatory Basis
-> [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), Principle 4/5 ongoing monitoring] extends to all model components influencing output, including the retrieval layer. [EU AI Act, Regulation (EU) 2024/1689, Art. 15(1)] robustness-maintenance obligation applies to the retrieval-augmented system as a whole, not the generative component alone. No regulation names embedding/retrieval drift explicitly. [UNVERIFIED — no further pinpoint exists; mechanism genuinely unaddressed by name] (verified 29 Jul 2026).
+> [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026), Principle 4.4 model performance monitoring and Principle 4.3 process verification] extend to the model components that influence output: 4.3(a) asks firms to confirm that all model components operate effectively. This canvas reads the retrieval layer as one of those components. [EU AI Act, Regulation (EU) 2024/1689, Art. 15(1)] robustness-maintenance obligation applies to the retrieval-augmented system as a whole, not the generative component alone. No regulation names embedding/retrieval drift explicitly. [UNVERIFIED — no further pinpoint exists; mechanism genuinely unaddressed by name] (verified 29 Jul 2026; SS1/23 read 22 Oct 2026).
 
 ## 18. Research Basis
 > [Chen, L., Zaharia, M., Zou, J., 2023, "How Is ChatGPT's Behavior Changing over Time?", arXiv:2307.09009; Harvard Data Science Review 6(2), 2024] — direct empirical evidence that a fixed vendor API endpoint drifts substantially over months, the closest documented analogue to silent vendor-side embedding-model change. [Es, S., et al., 2023, "Ragas: Automated Evaluation of Retrieval Augmented Generation", arXiv:2309.15217] — reference-free retrieval/faithfulness metrics enabling retrieval-quality monitoring independent of generation fluency. [Roychowdhury et al., 2024, "Evaluation of RAG Metrics for Question Answering in the Telecom Domain," ICML 2024 Workshop on Foundation Models in the Wild, arXiv:2407.12873] — a workshop paper that critiques the context-relevance and answer-relevance metrics, and the answer-similarity component of answer correctness, as unsuitable to serve as a reliable metric in an end-to-end RAG pipeline; this is a limit on the relevance comparator named in Field 11. It also reports faithfulness and factual correctness as good indicators of response correctness against expert evaluation. Its evidence is one non-financial domain: 715 test questions drawn from 3GPP telecom documents (read 7 October 2026). [Chen, J., et al., 2023, "Benchmarking Large Language Models in Retrieval-Augmented Generation" (RGB), arXiv:2309.01431] — robustness-testing dimensions applicable to corpus-drift scenarios.
@@ -155,7 +155,7 @@ designed (by architecture, not intent) to be invisible in normal quality review.
 [3] Chen, J., et al., 2023. "Benchmarking Large Language Models in Retrieval-Augmented
     Generation." arXiv:2309.01431.
 [4] PRA, 2026. "SS1/23 — Model risk management principles for banks."
-    April 2026 (16 April 2026, updating 17 May 2023).
+    April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026).
 [5] European Union, 2024. "Regulation (EU) 2024/1689 — Artificial Intelligence Act." Art. 15.
 [6] Roychowdhury, S., et al., 2024. "Evaluation of RAG Metrics for Question Answering in the
     Telecom Domain." ICML 2024 Workshop on Foundation Models in the Wild. arXiv:2407.12873.
@@ -185,6 +185,7 @@ Change Log:
 - v1.3.3 (2026-10-09): Fields 11, 18 and 20 — a published critique of the RAGAS relevance metrics added as a limit on the relevance comparator (Roychowdhury et al., 2024); reference [6] added. ★2 unchanged.
 - v1.3.3 (2026-10-09): Fields 9, 18 and 20 — the Ragas citation takes its title as issued, "Ragas: Automated Evaluation of Retrieval Augmented Generation". Form corrections only. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Fields 18 and 20 — the Chen, Zaharia and Zou citation (arXiv:2307.09009) now also gives its publication in Harvard Data Science Review 6(2), 2024. Research-basis review date moved. No change to the ★ rating or the risk profile.
+- v1.3.4 (2026-10-22): Field 17 Regulatory Basis — the SS1/23 pinpoint is Principles 4.4 (model performance monitoring) and 4.3 (process verification), in place of "Principle 4/5"; the retrieval layer is stated as this canvas's reading. Fields 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

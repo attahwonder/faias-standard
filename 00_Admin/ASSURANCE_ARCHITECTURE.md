@@ -2,7 +2,7 @@
 
 ## Governance
 
-This document describes four assurance layers that support one use of the FAIAS baseline: an evidence-based opinion on a financial AI deployment. Together with ASSURANCE_MODEL.md and the 7-component structure, these layers cover pre-deployment and lifecycle assurance.
+This document describes four assurance layers that support one use of the FAIAS baseline: an evidence-based opinion on a financial AI deployment. The headings number them Layer 2, Layer 3, Layer 4 and Final Layer; there is no Layer 1. Together with ASSURANCE_MODEL.md and the 7-component structure, these layers cover pre-deployment and lifecycle assurance.
 
 **Document Custodian:** the maintainer  
 **Version:** the release version in `README.md`; the signed manifest, `ownership/MANIFEST.sha256`, identifies the release.  
@@ -29,7 +29,7 @@ The engagement output is an **OPINION**, not a findings list. FAIAS draws on the
 
 **The assurance-level rule.** Reasonable assurance is available only where every material claim rests on tests rated ★4 or above (ASSURANCE_MODEL.md §6), in addition to the evidence requirements above. No reasonable assurance rests on a material test rated ★1–★3. Where a material claim can be tested only at ★1–★3, the test still runs, its rating is disclosed at the point of the conclusion (PLAYBOOK_OVERVIEW.md §8), and the opinion is given at limited assurance. An alternative rule, under which L4–L5 evidence with a disclosed ★2–★3 test method could support reasonable assurance, is not adopted in this version: no evidence test for it has yet been stated. At this version, two tests are rated ★4 (REGISTER_STATS.md), IRQ-SEC-001 and IRQ-SEC-003, and both support CLM-09 only (IRQ_CLAIM_MATRIX.md), so a Tier 2 or Tier 3 opinion, whose scope covers all nine domains (TIERING_MODEL.md), is given at limited assurance in practice.
 
-The four categories are deployment recommendations, not ISAE 3000 conclusion types. Should Proceed With Conditions is not a qualified conclusion: ISAE 3000 reserves a qualified conclusion for a material scope limitation or a material misstatement (ISAE 3000 (Revised), para 74).
+The four categories are deployment recommendations, not ISAE 3000 conclusion types. Should Proceed With Conditions is not a qualified conclusion: ISAE 3000 reserves a qualified conclusion for a material scope limitation or a material misstatement (ISAE 3000 (Revised), para 74), and for criteria found unsuitable, or subject matter found not appropriate, after the engagement is accepted (para 43).
 
 | Opinion Category | Assurance Level | Reporting Implication |
 |---|---|---|
@@ -125,7 +125,7 @@ Every IRQ finding is screened against **ten materiality lenses**. Reviewers chas
 | **Customer Outcomes** | Could failure harm a customer (financially, materially, emotionally)? | Hallucination leading to incorrect loan decision; discriminatory denial; data breach |
 | **Financial Statements** | Could failure distort regulatory capital, provisions, or audit line items? | Model-driven provisions underestimated; loss given default miscalculated; regulatory relief improperly claimed |
 | **Prudential Safety** | Could failure threaten solvency, liquidity, or capital adequacy? | Model concentration risk; hidden leverage; correlated failures across portfolio |
-| **Consumer Duty** | Could failure breach FCA Consumer Duty (fair value, needs-based advice, vulnerability protection)? | Inappropriate product recommendation; unsuitable pricing; inadequate disclosure |
+| **Consumer Duty** | Could failure breach FCA Consumer Duty (its outcomes on products and services, price and value, consumer understanding and consumer support; the treatment of customers with characteristics of vulnerability)? | Inappropriate product recommendation; unsuitable pricing; inadequate disclosure |
 | **Operational Resilience** | Could failure disrupt critical business services or breach RPO/RTO? | Model unavailability; silent degradation; cascading failures across dependent systems |
 | **Market Integrity** | Could failure distort market prices, insider information, or fair dealing? | Model-driven market manipulation (e.g., pricing algorithms colluding); information asymmetry exploitation |
 | **Financial Crime** | Could failure enable money laundering, fraud, sanctions evasion, or transaction patterns that evade detection? | AML model missing typologies; fraud detector disabled; sanctions screening bypassed |
@@ -180,7 +180,7 @@ A **per-deployment structured argument** ("acceptably safe, not perfectly safe")
 **NOT DESIGNED FOR (explicit no-list):**
 - Commercial mortgages, buy-to-let, bridging
 - Complex income (self-employed, dividend, foreign source)
-- Vulnerable customers (COBS 2.1R protections required)
+- Vulnerable customers (the Consumer Duty requires firms to take account of characteristics of vulnerability; PRIN 2A.2.25G)
 - Non-English applicants; multiple-language documents
 - Outsourced credit decisions (human authority must be retained)
 - Real-time pricing (model outputs static prices; does not respond to market rates)
@@ -260,7 +260,7 @@ An opinion under this architecture is **a conclusion under conditions, not a ver
 - Light re-assurance or full re-test depending on change scope
 - Publish an updated opinion — the OPINION_TEMPLATE form with a new basis date — or hold deployment
 
-**Dated Forward Obligation Trigger.** An opinion issued while a dated future legal obligation is already enacted carries that obligation as a **dated condition** — a calendar trigger, not a monitoring trigger — with re-assurance against that obligation scheduled at or before the date it becomes applicable, independent of other triggers. Worked examples (dates verified at drafting): EU AI Act Art 50 obligations → 2 Aug 2026 · EU AI Act Annex III high-risk obligations → 2 Dec 2027 (deferring instrument Reg (EU) 2026/1744) · UK Data (Use and Access) Act 2025 s.80 automated-decision regime → commenced 5 Feb 2026 (SI 2026/82 reg 2(j)) · AMLR (EU) 2024/1624 → applies 10 Jul 2027.
+**Dated Forward Obligation Trigger.** An opinion issued while a dated future legal obligation is already enacted carries that obligation as a **dated condition** — a calendar trigger, not a monitoring trigger — with re-assurance against that obligation scheduled at or before the date it becomes applicable, independent of other triggers. Worked examples (dates verified at drafting): EU AI Act Art 50 obligations → 2 Aug 2026, the date from which they apply (Art 113); for systems generating synthetic content placed on the market before that date, Art 50(2) → 2 Dec 2026 (Art 111(4)) · EU AI Act Annex III high-risk obligations → 2 Dec 2027 (deferring instrument Reg (EU) 2026/1744) · UK Data (Use and Access) Act 2025 s.80 automated-decision regime → commenced 5 Feb 2026 (SI 2026/82 reg 2(j)) · AMLR (EU) 2024/1624 → applies 10 Jul 2027.
 
 **Retirement Phase**
 - System is deprecated or replaced
@@ -361,7 +361,7 @@ This is the one statement of the review-confidence rule; ENGAGEMENT_MODEL.md and
 - GSN Community Standard, Version 2 (2018); Goal Structuring Notation for Safety Cases
 - UL 4600: Standard for Evaluation of Autonomous Products, Edition 3, 17 March 2023 (Underwriters Laboratories)
 - ISO/IEC 15026-2: Systems and Software Assurance — Part 2: Assurance Case
-- ARP 4761: Guidelines and Methods for Conducting the Safety Assessment Process on Civil Airborne Systems and Equipment (SAE International)
+- ARP 4761: Guidelines and Methods for Conducting the Safety Assessment Process on Civil Airborne Systems and Equipment (SAE International, December 1996; revised as ARP4761A, December 2023)
 - IEC 61508: Functional Safety of Electrical/Electronic/Programmable Electronic Safety-Related Systems (IEC)
 
 ---

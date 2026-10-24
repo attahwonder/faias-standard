@@ -129,7 +129,7 @@ Residual risk: material to critical in multi-tenant or high-DSAR-volume deployme
 | **Novelty** | 3 | Treating memory as a governed data asset, and the derived-index erasure gap, are AI-architecture-specific concerns outside standard DSAR-process scope. |
 
 ## 17. Regulatory Basis
-> [UK GDPR Art. 5(1)(e), storage limitation] requires personal data to be kept no longer than necessary. [UK GDPR Art. 17, right to erasure] requires verifiable deletion on request, extending to all copies including derived/technical stores. [UK GDPR Art. 30, records of processing] requires memory stores to be inventoried as processing activities. (verified 29 Jul 2026)
+> [UK GDPR Art. 5(1)(e), storage limitation] requires personal data to be kept no longer than necessary. [UK GDPR Art. 17, right to erasure] gives a data subject the right to have personal data erased without undue delay on the grounds it lists; this canvas reads it as requiring verifiable deletion of all copies, derived and technical stores included. [UK GDPR Art. 30, records of processing] requires a controller to keep a record of its processing activities; this canvas reads a memory store that holds personal data as a processing activity to record there. (verified 29 Jul 2026; UK GDPR Arts 17 and 30 read 22 Oct 2026)
 
 ## 18. Research Basis
 > No FS-specific peer-reviewed study of AI memory/conversation-store erasure completeness was located in the source registers; this reflects the genuinely emerging nature of persisted-memory governance as an AI-specific data-asset class, flagged [UNVERIFIED — no FS-specific study located] (verified 29 Jul 2026) rather than filled with an adjacent but non-supporting citation. The adversarial cross-tenant testing methodology draws on established multi-tenant access-control practice (ISO/IEC 27001) rather than AI-specific published research, which is itself part of why this IRQ's test is rated ★2 rather than higher.
@@ -173,6 +173,7 @@ FOUR-TEST VALIDATION:
 Change Log:
 - v1.0 (2026-07): Initial publication.
 - v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 60, the ChatGPT incident of 20 March 2023, in a consumer and enterprise AI service and not a financial-services firm). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.4 (2026-10-22): Field 17 Regulatory Basis — the UK GDPR Art. 17 and Art. 30 limbs state what the Articles say, the right to erasure without undue delay and a record of processing activities, and state verifiable deletion of all copies and the recording of memory stores as this canvas's reading. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

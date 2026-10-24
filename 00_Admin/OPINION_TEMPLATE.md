@@ -137,7 +137,7 @@ The Independent Assurance Opinion reads like an **operational resilience assessm
 
 This opinion is a statement of position **as at the opinion date, against the version of the FAIAS standard cited on the cover page**. Every ★ rating reproduced in it carries its own version anchor, in the form `★n — as at FAIAS vX.Y (date)`, so that a rating quoted out of this report still carries the basis on which it was given.
 
-Research into AI failure modes and into the methods available to test them continues to move, and the standard's ratings move with it. **Subsequent movement does not revise this opinion.** Later research, a newer edition of a cited framework, or a re-rating of an Independent Review Question in a later version of the standard is a non-adjusting event by construction: it does not make a conclusion reached here incorrect, and it is not of itself a basis for reopening one. This follows the established treatment of subsequent events in an assurance opinion (ISA 560; IAS 10), under which the opinion stays anchored to conditions as at its date and a later event adjusts it only where it evidences a condition that existed at that date.
+Research into AI failure modes and into the methods available to test them continues to move, and the standard's ratings move with it. **Subsequent movement does not revise this opinion.** Later research, a newer edition of a cited framework, or a re-rating of an Independent Review Question in a later version of the standard because research has moved is a non-adjusting event by construction: it does not make a conclusion reached here incorrect, and it is not of itself a basis for reopening one. This follows the treatment of subsequent events in an assurance engagement (ISAE 3000 (Revised), para 61), with the audit treatment (ISA 560; IAS 10) as its analogue: the opinion stays anchored to conditions as at its date, and a later event adjusts it only where it evidences a condition that existed at that date. A rating corrected because it was wrong when this opinion was issued is not research movement: the correction log names it, and the issuer considers whether the conclusion reached here still stands.
 
 Where the standard has moved since issue, **the register's version-anchor history and its open Under Research Observations are the context in which this opinion is read** — not a correction to it. A re-review under a newer anchor is the ordinary product of that mechanism rather than a revision of this one, and is the appropriate step where currency of method is material to the decision in hand.
 
@@ -206,7 +206,7 @@ We applied the FAIAS independent assurance standard, which comprises 7 interlink
 - **Passed w/ Conditions:** IRQs supporting this claim passed with caveats; condition specified in Section E (e.g., "confirm threshold tuning")
 - **Inconclusive:** Insufficient evidence or emerging practice; no published benchmark; condition specified or escalated to lifecycle monitoring
 - **Evidence Level:** L1 = assertion; L2 = documentation; L3 = demonstration, such as a design walkthrough or a staging test; L4 = independent evidence; L5 = operational evidence (ASSURANCE_MODEL.md §5)
-- **Confidence (★):** maturity of the test method (ASSURANCE_MODEL.md §6). ★5 = published, widely adopted methodology with a settled financial-services benchmark (no FAIAS test is rated ★5); ★3 = credible research methods, no agreed benchmark; ★1 = expert judgment only. The ★ values in the table are illustrative; on what the register's ratings support at this version, see ASSURANCE_ARCHITECTURE.md, the assurance-level rule
+- **Confidence (★):** maturity of the test method (ASSURANCE_MODEL.md §6). ★5 = published, widely adopted methodology with a settled financial-services benchmark (no FAIAS test is rated ★5); ★3 = credible research methods, no agreed benchmark; ★1 = expert judgment only. The ★ values in the table are illustrative and are not the register's: at this version the two tests rated ★4 (IRQ-SEC-001 and IRQ-SEC-003) support CLM-09 only, so no other claim can show ★4. On what the register's ratings support at this version, see ASSURANCE_ARCHITECTURE.md, the assurance-level rule
 - **Residual Risk:** After control implementation, what risk remains? Scale: Low / Medium / High
 
 ---
@@ -377,22 +377,22 @@ State the assurance level obtained in the conclusion. Reasonable assurance is av
 
 ### PART H: REGULATORY ALIGNMENT & GOVERNANCE
 
-#### H.1 Compliance Status Summary
+#### H.1 Regulatory Alignment Summary
 
 **Table: Regulatory Alignment** *(illustrative structure only — instruments, requirements and statuses are engagement-specific; every citation in a real table is verified against the primary instrument at the engagement, never carried from this template)*
 
-| Regulator | Jurisdiction | Key Requirements | Compliance Status | FAIAS IRQs Addressing |
+| Regulator | Jurisdiction | Key Requirements | Alignment Status | FAIAS IRQs Addressing |
 |---|---|---|---|---|
-| FCA | UK | [instrument and provision — verified at engagement]: governance framework expectations | Compliant | IRQ-GOV-001, -002, -003 |
-| FCA | UK | [instrument and provision — verified at engagement]: pre-deployment testing expectations | Compliant | IRQ-MOD-005, IRQ-SEC-009 |
-| PRA | UK | Operational Resilience: Availability & Recovery | Compliant | IRQ-RES-001 through -004 |
-| ECB | Eurozone | [instrument and provision — verified at engagement]: AI risk management expectations | Conditionally compliant | [Explain gaps if any] |
-| EU AI Act | EU | High-risk AI: Transparency & Human Oversight | Compliant | IRQ-HUM-007, -008 |
+| FCA | UK | [instrument and provision — verified at engagement]: governance framework expectations | Aligned | IRQ-GOV-001, -002, -003 |
+| FCA | UK | [instrument and provision — verified at engagement]: pre-deployment testing expectations | Aligned | IRQ-MOD-005, IRQ-SEC-009 |
+| PRA | UK | Operational Resilience: Availability & Recovery | Aligned | IRQ-RES-001 through -004 |
+| ECB | Eurozone | [instrument and provision — verified at engagement]: AI risk management expectations | Conditionally aligned | [Explain gaps if any] |
+| EU AI Act | EU | High-risk AI: Transparency & Human Oversight | Aligned | IRQ-HUM-007, -008 |
 
-**Interpretation:**
-- **Compliant:** Regulatory requirement fully addressed by control and verified via testing or design review
-- **Conditionally Compliant:** Requirement will be met upon condition satisfaction (Section E)
-- **Non-Compliant:** Requirement not met; requires remediation or exception escalation
+**Interpretation:** This table records the reviewer's view of alignment. It is not a determination of compliance.
+- **Aligned:** Regulatory requirement fully addressed by control and verified via testing or design review
+- **Conditionally aligned:** Requirement will be met upon condition satisfaction (Section E)
+- **Not aligned:** Requirement not met; requires remediation or exception escalation
 
 #### H.2 Recommended Governance & Monitoring
 
@@ -428,7 +428,7 @@ State the assurance level obtained in the conclusion. Reasonable assurance is av
   
 - **FAIAS:** Financial AI Independent Assurance Standard
   - 7-component architecture: Taxonomy, IRQs, Claims, Evidence, Testing, Safety Case, Opinion
-  - Claims-Argument-Evidence (CAE) structure per ISO/IEC 15026-2 Goal Structuring Notation
+  - Claims-Argument-Evidence (CAE) structure: an assurance case (ISO/IEC 15026-2), set out in Goal Structuring Notation (GSN Community Standard, Version 2)
   - Assurance lifecycle: 8 phases from design through retirement
 
 - **NIST AI Risk Management Framework 1.0 (NIST AI 100-1, January 2023)**
@@ -513,7 +513,7 @@ For each material finding:
 | Governance (GOV) | 12 | 12 | 0 | 0 | 0 | No gaps identified |
 | **TOTAL** | **90** | **84** | **4** | **2** | **0** | **4 conditions; 2 lifecycle monitor** |
 
-#### J.4 Test Results Summary (by Testing Confidence)
+#### J.4 Test Results Summary (by Testing Confidence; the illustrative engagement of J.3, so the counts are not the register's)
 
 | Confidence Level | # Tests | Method | Benchmark Used? | Pass Rate | Notes |
 |---|---|---|---|---|---|

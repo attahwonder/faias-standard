@@ -142,12 +142,14 @@ conservative deployment posture pending a stronger track record.
 | **Novelty** | 3 | Computer-use agent perception-action failure modes differ meaningfully from familiar RPA scripting failure modes and are not intuitively obvious to SMEs experienced with the latter. |
 
 ## 17. Regulatory Basis
-> No regulation names "computer-use agent GUI safety" explicitly. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] requires model/process risk governance extending to any automation touching regulated activities, including GUI-based automation of legacy systems. [FCA/PRA operational resilience regime, SS1/21, PS21/3] requires safe degradation and control over automated processes supporting important business services. [FCA PRIN 2A Consumer Duty, in force Jul 2023] is engaged where GUI-automation errors produce foreseeable customer harm. [OpenAI, "Operator System Card," 23 January 2025] is cited as an accepted industry practice example of layered computer-use agent controls, not binding regulation. [UNVERIFIED — general anchor confirmed (PRA SS1/21, FCA PS21/3, safe-degradation expectations), exact paragraph pinpoint not confirmed against the primary text] (verified 29 Jul 2026, general citation only).
+> No regulation names "computer-use agent GUI safety" explicitly. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026)] requires model/process risk governance extending to any automation touching regulated activities, including GUI-based automation of legacy systems. [FCA/PRA operational resilience regime, SS1/21, PS21/3] requires firms to map the people, processes, technology, facilities and information that deliver each important business service (SS1/21 para 5.1), and to remain within impact tolerance in a severe but plausible disruption (SS1/21 para 4.1; SYSC 15A.2.9R). Neither instrument requires safe degradation or names automated processes. This canvas interprets the regime as extending to safe degradation and control over automated processes that support important business services. [FCA PRIN 2A Consumer Duty, in force Jul 2023] is engaged where GUI-automation errors produce foreseeable customer harm. [OpenAI, "Operator System Card," 23 January 2025] is cited as an accepted industry practice example of layered computer-use agent controls, not binding regulation. (verified 29 Jul 2026, general citation only; SS1/21 and SYSC 15A paragraphs read 22 Oct 2026; SS1/23 dates read 22 Oct 2026).
 
 ## 18. Research Basis
 > [OpenAI, 2025, "Operator System Card," 23 January 2025] — the primary published worked example of mitigations for a computer-use agent (confirmations, watch mode, injection monitoring), directly informing this IRQ's control design given the absence of independent academic literature specifically on legacy-financial-system GUI-automation safety as of 2026. [Bullwinkel, B., et al. (Microsoft), 2025, "Lessons From Red Teaming 100 Generative AI Products," arXiv:2501.07238] — practitioner red-teaming lessons applicable to stress-testing computer-use agents against realistic, messy production conditions rather than idealised test environments. [Chan et al., 2024, "Visibility into AI Agents," FAccT 2024] — establishes the logging/observability requirements (here, screenshot-level) this IRQ's evidence base depends on.
 >
-> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
+> [Anthropic, 2024, "Developing a computer use model", 22 October 2024] — the developer records that, while it recorded demonstrations for the launch of its computer-use public beta, the model "accidentally clicked to stop a long-running screen recording, causing all footage to be lost", and that the model's "flipbook" view of the screen "can miss short-lived actions or notifications". It shows an irreversible click on an unintended control in a released beta; it does not state why the click happened, and it records no harm beyond the lost footage, so it is cited here and not as an incident-register row.
+>
+> **Research basis last reviewed:** 22 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -169,7 +171,7 @@ conservative deployment posture pending a stronger track record.
 [3] Chan, A., et al., 2024. "Visibility into AI Agents." Proc. FAccT 2024.
     arXiv:2401.13138.
 [4] PRA, 2026. "SS1/23 — Model risk management principles for banks."
-    April 2026 (16 April 2026, updating 17 May 2023).
+    April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026).
 [5] PRA, 2022. "SS1/21 — Operational resilience."
     March 2022 (11 March 2022, updating 29 March 2021). FCA, 2021. "PS21/3."
 [6] FCA, 2022. "PS22/9 / FG22/5: A New Consumer Duty." PRIN 2A in force 31 July
@@ -206,6 +208,8 @@ Change Log:
 - v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 - v1.3.3 (2026-10-09): Fields 9, 18 and 20 — the Microsoft red-teaming paper is cited with its authors (Bullwinkel et al.) and its arXiv title, "Lessons From Red Teaming 100 Generative AI Products". Form corrections only. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Fields 9, 17, 18 and 20 — the OpenAI card cited by its title, Operator System Card, 23 January 2025 (it was cited as Operator / Computer-Using Agent System Card; the Computer-Using Agent is the model the card describes). Research-basis review date moved. No change to controls, test, ★ rating or risk profile.
+- v1.3.4 (2026-10-22): Field 18 Research Basis — Anthropic's account of an unintended click during its computer-use launch demonstrations, and of the screenshot view that can miss short-lived changes, added as research basis. Research-basis review date moved. ★1 unchanged; no change to the risk profile.
+- v1.3.4 (2026-10-22): Field 17 Regulatory Basis — the operational resilience limb states what SS1/21 and SYSC 15A require, mapping (SS1/21 para 5.1) and that a firm remain within impact tolerance (para 4.1; SYSC 15A.2.9R); safe degradation and control over automated processes are stated as this canvas's reading, since neither instrument requires them. Paragraph pinpoints replace the tag that named a safe-degradation anchor. Fields 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★1 unchanged; no change to the risk profile.
 ```
 
 ---

@@ -140,7 +140,7 @@ control must demonstrate genuine independence before that claim is relied upon.
 | **Novelty** | 4 | The illusion of independence in shared-model multi-agent design directly contradicts governance SMEs' "four eyes" intuition; entirely AI-specific. |
 
 ## 17. Regulatory Basis
-> No regulation names "multi-agent illusory independence" explicitly. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] requires independent validation performed by a party genuinely independent of development — the same principle applies by extension to agents claiming to independently review each other. [UK Senior Managers and Certification Regime (SMCR)] requires named individual accountability for material decisions, which a multi-agent consensus with no attribution record cannot satisfy. [FCA AI Update, Apr 2024] confirms governance of AI decisions through existing SYSC/SMCR frameworks. [Hammond et al., 2025] and [OWASP Agentic AI: Threats and Mitigations, Feb 2025] are cited as accepted research/practice, not binding regulation.
+> No regulation names "multi-agent illusory independence" explicitly. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026)] requires independent validation performed by a party genuinely independent of development — the same principle applies by extension to agents claiming to independently review each other. [UK Senior Managers and Certification Regime (SMCR)] requires named individual accountability for material decisions, which a multi-agent consensus with no attribution record cannot satisfy. [FCA AI Update, Apr 2024] confirms governance of AI decisions through existing SYSC/SMCR frameworks. [Hammond et al., 2025] and [OWASP Agentic AI: Threats and Mitigations, Feb 2025] are cited as accepted research/practice, not binding regulation.
 
 ## 18. Research Basis
 > [Hammond, L., et al., 2025, "Multi-Agent Risks from Advanced AI," Cooperative AI Foundation, arXiv:2502.14143] — the reference taxonomy identifying miscoordination, conflict and collusion among multiple AI agents, including error-reinforcement dynamics. [Motwani, S., et al., 2024, "Secret Collusion among AI Agents: Multi-Agent Deception via Steganography," arXiv:2402.07510] — demonstrates that agents can coordinate (including steganographically) in ways hard to detect, informing the "illusory independence" framing. [Calvano, E., et al., 2020, "Artificial Intelligence, Algorithmic Pricing, and Collusion," American Economic Review] — regulator-recognised evidence that independently-trained algorithmic agents can converge on correlated behaviour without explicit communication, supporting caution about assuming independence from architectural separation alone. [Zhang, S., et al., 2025, "Which Agent Causes Task Failures and When? On Automated Failure Attribution of LLM Multi-Agent Systems," Proc. ICML 2025, PMLR 267:76583-76599, arXiv:2505.00212] — introduces the Who&When dataset of failure logs from 127 multi-agent systems, annotated with the responsible agent and the decisive error step, and evaluates three automated attribution methods; code and dataset are public. It bears on whether a contribution can be attributed to one agent from a trace. The best method identified the responsible agent in 53.5% of cases and the failing step in 14.2%, and the authors report that even state-of-the-art reasoning models did not reach practical usability. It tests attribution after the fact from logs, not the design of accountability, and it is not specific to financial services.
@@ -169,7 +169,7 @@ control must demonstrate genuine independence before that claim is relied upon.
 [3] Calvano, E., Calzolari, G., Denicolò, V., Pastorello, S., 2020. "Artificial
     Intelligence, Algorithmic Pricing, and Collusion." American Economic Review 110(10).
 [4] PRA, 2026. "SS1/23 — Model risk management principles for banks."
-    April 2026 (16 April 2026, updating 17 May 2023).
+    April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026).
 [5] FCA, 2024. "AI Update." April 2024.
 [6] FCA/PRA. "Senior Managers and Certification Regime (SMCR)."
 [7] Zhang, S., et al., 2025. "Which Agent Causes Task Failures and When? On Automated
@@ -207,6 +207,7 @@ Change Log:
   added as a published method for the attribution limb, with its limits. Field 20 —
   entry [7] added. Research-basis review date moved. No change to controls, test, ★2 or
   risk profile.
+- v1.3.4 (2026-10-22): Fields 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

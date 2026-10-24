@@ -134,7 +134,9 @@ in the shared knowledge store.
 ## 18. Research Basis
 > [OWASP, 2025, "Top 10 for LLM Applications 2025", vector and embedding weaknesses entry] — names inadequate access control on retrieval/embedding stores as a recognised LLM application risk. [OWASP Agentic Security Initiative, "Agentic AI: Threats and Mitigations", v1.0, Feb 2025 — the edition consulted; the list stands at v1.1, December 2025 (T16–T17 added, T1–T15 carried) as at 12 September 2026, and no entry is cited here by number, so the citation is unaffected] — first structured threat model covering agentic delegation and credential-substitution risk, directly applicable to the agent-retrieval failure mode described here.
 >
-> **Research basis last reviewed:** 12 September 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 95, "Open WebUI CVE-2026-45398", 2026]** — the project's own advisory records that its retrieval endpoints checked two collection types but not knowledge-base collections, so "Any authenticated user who knows a private knowledge base UUID can read its content through the retrieval query endpoints, even though the knowledge API correctly denies that user access"; the write endpoints had the same gap. It evidences an entitlement filter that is missing on one retrieval path while another path to the same data enforces it; no exploitation is recorded.
+>
+> **Research basis last reviewed:** 22 October 2026 · **review cadence:** Standard (12 months)
 >
 > **URO-6: OWASP Top 10 for LLM Applications 2025 — whether §11's ★3 and the method class hold once the OWASP limb is read as control guidance (LLM08:2025) rather than a test method, which the 2025 list does not name (LLM01:2025 asks for penetration testing of access controls without giving a method) — resolve by 2027-04-03.** The ★3 above stands untouched while this observation is open (§6A.2).
 
@@ -176,6 +178,7 @@ Change Log:
 - v1.0 (2026-07): Initial publication.
 - v1.2.0 (2026-09-12): Research Basis — the OWASP Agentic Security Initiative "Agentic AI: Threats and Mitigations" citation gains a dated currency note: v1.0, Feb 2025 is the edition consulted, the list stands at v1.1, December 2025 (T16–T17 added, T1–T15 carried) as at 12 September 2026, and no entry is cited here by number, so the citation is unaffected. No change to controls, test, ★ or risk profile.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; field 18 — URO-6 opened, resolve by 2027-04-03; the ★3 and the risk profile unchanged.
+- v1.3.4 (2026-10-22): Field 18 Research Basis — incident-register citation added in the reserved form (row 95, Open WebUI CVE-2026-45398, the project's own advisory). Research-basis review date moved. ★3 unchanged; no change to the risk profile.
 ```
 
 ---

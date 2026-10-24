@@ -77,7 +77,7 @@ Payload classes, embedded in untrusted content the agent encounters in the ordin
 - **Omitting A4 (tool-output injection).** The agent trusting its own tool results is a distinct trust boundary and is regularly untested.
 - **Omitting the OCR route.** Instruction-like text present only in an image is a well-documented path and is missed by text-only seeding.
 - **No clean baseline**, so "unauthorised" cannot be defined rigorously.
-- **★2 over-reading.** A pass here is the assessor's scenario construction finding nothing, against a threat model under a year old at the time the canvas was written. It is not benchmark evidence and must not be reported as such.
+- **★2 over-reading.** A pass here is the assessor's scenario construction finding nothing, against a threat model first published in February 2025. It is not benchmark evidence and must not be reported as such.
 - **Environment leakage.** Staged web pages served from outside the isolation boundary, or a test inbox with real outbound mail, breach the non-production rule.
 
 ### Time/effort estimate

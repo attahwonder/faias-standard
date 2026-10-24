@@ -135,12 +135,14 @@ an entire risk class rather than a single deployment.
 | **Novelty** | 3 | Autonomy, tool access and customer proximity as distinct risk drivers (separate from data sensitivity/materiality) are AI-specific dimensions a traditional model-risk SME would not default to weighting. |
 
 ## 17. Regulatory Basis
-> [Bank of England and PRA, "The Bank and the PRA's response to DSIT/HMT: update on our approach to AI," 22 April 2024] and [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] establish that model risk tiering/materiality assessment must extend to AI/ML, without prescribing the specific AI-relevant criteria — leaving this an area where firms must demonstrate their own methodology is fit for purpose. [Regulation (EU) 2024/1689 (EU AI Act), Annex III and Art. 6] provides an externally validated risk-tier classification (including credit scoring and life/health insurance pricing as named high-risk uses) that firms can cross-check internal tiering logic against, and which is directly binding for in-scope systems. [MAS, Information Paper ID 18/24, Dec 2024] documents materiality/proportionality as an observed good-practice dimension across surveyed institutions.
+> [Bank of England and PRA, "The Bank and the PRA's response to DSIT/HMT: update on our approach to AI," 22 April 2024] and [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026)] establish that model risk tiering/materiality assessment must extend to AI/ML, without prescribing the specific AI-relevant criteria — leaving this an area where firms must demonstrate their own methodology is fit for purpose. [Regulation (EU) 2024/1689 (EU AI Act), Annex III and Art. 6] provides an externally validated risk-tier classification (including credit scoring and life/health insurance pricing as named high-risk uses) that firms can cross-check internal tiering logic against, and which is directly binding for in-scope systems. [MAS, Information Paper ID 18/24, Dec 2024] documents materiality/proportionality as an observed good-practice dimension across surveyed institutions.
 
 ## 18. Research Basis
 > No peer-reviewed academic literature specifically validating an AI risk-tiering methodology for financial services was identified in the source registers; this control area is regulatory/audit practice rather than a research literature, consistent with this domain's evidentiary profile. The EU AI Act's Annex III classification structure and the MAS thematic review are treated as the most credible available reference points for what AI-aware tiering criteria should weight.
 >
-> **Research basis last reviewed:** 1 August 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 66, "ANAO audit of AI governance at the Australian Taxation Office", 2025]** — carried as an audit finding of control gaps, not a harm event: the audit records that, apart from a process for publicly available generative AI tools, "as of July 2024, the ATO did not have a defined process for assessing the risk level of AI models and systems" (para 2.65), and that the ATO had found that its current arrangements "do not sufficiently capture AI specific risks" (para 2.66). The ATO rated AI activities its highest-risk data and analytics activities "due to the combination of autonomy and adaptivity and lack of controls" (para 2.59). It evidences a risk-assessment method that the organisation itself found did not capture AI-specific drivers; the audit does not name tool access or customer proximity.
+>
+> **Research basis last reviewed:** 22 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -158,7 +160,7 @@ an entire risk class rather than a single deployment.
 ```
 [1] Bank of England/PRA, 2024. "The Bank and the PRA's response to DSIT/HMT: update on our approach to AI." 22 April 2024.
 [2] PRA, 2026. "SS1/23 — Model risk management principles for banks."
-    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
+    April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026; policy in effect since 17 May 2024, para 1.5).
 [3] European Union, 2024. "Regulation (EU) 2024/1689 — Artificial Intelligence Act."
     OJ L, 12 July 2024. Annex III, Art. 6.
 [4] Monetary Authority of Singapore, 2024. "Information Paper: Artificial Intelligence Model
@@ -193,6 +195,7 @@ Change Log:
 - v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 - v1.3.3 (2026-10-09): Field 9 Expected Controls — the Bank of England and PRA letter of 22 April 2024 cited by its title, The Bank and the PRA's response to DSIT/HMT: update on our approach to AI, with the Bank of England and the PRA as issuers; the statements that the final MAS Guidelines were not yet issued replaced by the fact that MAS issued them on 7 Oct 2026, effective 7 Oct 2027, with the risk materiality assessment expectation retained (paragraphs 2.1 and 4.10). Field 17 Regulatory Basis — the letter citation as in Field 9. Field 20 References — the letter citation as in Field 9; the MAS consultation paper entry carries its reference number, P017-2025, the statement that MAS published none is removed, and the issue date of the final Guidelines is added. No change to controls, test, ★ rating or risk profile.
+- v1.3.4 (2026-10-22): Field 18 Research Basis — incident-register citation added in the reserved form (row 66, the ANAO audit of the Australian Taxation Office, paras 2.59, 2.65 and 2.66, carried as an audit finding of control gaps and not a harm event). Research-basis review date moved. Field 20 References — the PRA SS1/23 citation gives both dates: the April 2026 amendment, effective 23 April 2026, and the policy, in effect since 17 May 2024 (para 1.5), in place of a single effective date. Fields 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★3 unchanged; no change to the risk profile.
 ```
 
 ---

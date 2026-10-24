@@ -56,7 +56,7 @@ Control Breakpoints:
 **AO-MOD-002:** Capability deltas introduced by any model or endpoint release shall be detected, assessed and formally re-approved by the firm before the expanded capability surface is relied upon in production, and no vendor-side change shall bypass the firm's governance process.
 
 ## 9. Expected Controls (Traced)
-- **Version pinning and controlled roll-forward** — [linked IRQ-TPR-004; PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), model change management expectations] — production traffic is pinned to a specific model version; upgrades are a deliberate, governed act, not automatic.
+- **Version pinning and controlled roll-forward** — [linked IRQ-TPR-004; PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026), model change management expectations] — production traffic is pinned to a specific model version; upgrades are a deliberate, governed act, not automatic.
 - **Behavioural canary/regression testing on every release** — [Chen et al., 2023, "How Is ChatGPT's Behavior Changing over Time?", arXiv:2307.09009; Harvard Data Science Review 6(2), 2024; linked IRQ-MOD-013] — a fixed regression suite runs against any new version before production cutover, comparing outputs to the prior baseline.
 - **Contractual advance-notice and change-transparency rights** — [linked IRQ-TPR-002] — vendor contracts secure notice of material model, weight, or default-behaviour changes ahead of production impact.
 - **Capability-delta assessment and re-approval gate** — [PRA SS1/23 development/validation and ongoing-use principles] — any detected capability change triggers a structured re-assessment before continued reliance, mirroring initial approval rigour.
@@ -131,7 +131,7 @@ testing.
 | **Novelty** | 3 | The assumption that model behaviour changes only when the firm changes something is deeply embedded traditional change-management thinking; AI-specific vendor-side drift is easily missed. |
 
 ## 17. Regulatory Basis
-> [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024, Principle 3/4 — a model must remain validated for its intended use, which is undermined by unapproved capability change] — the closest binding UK anchor. [Bank of England FPC, "Financial Stability in Focus: Artificial intelligence in the financial system", Apr 2025] — flags vendor/model concentration and correlated behavioural risk at a systemic level, supporting firm-level version-control expectations. No regulation names "capability-delta re-approval" explicitly; this IRQ operationalises SS1/23's ongoing-validation principle for externally-hosted models. (verified 29 Jul 2026)
+> [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026; policy in effect since 17 May 2024, para 1.5), Principle 3/4 — a model must remain validated for its intended use, which is undermined by unapproved capability change] — the closest binding UK anchor. [Bank of England FPC, "Financial Stability in Focus: Artificial intelligence in the financial system", Apr 2025] — flags vendor/model concentration and correlated behavioural risk at a systemic level, supporting firm-level version-control expectations. No regulation names "capability-delta re-approval" explicitly; this IRQ operationalises SS1/23's ongoing-validation principle for externally-hosted models. (verified 29 Jul 2026; SS1/23 dates read 22 Oct 2026)
 
 ## 18. Research Basis
 > [Chen, L., Zaharia, M., Zou, J., 2023, "How Is ChatGPT's Behavior Changing over Time?", arXiv:2307.09009; Harvard Data Science Review 6(2), 2024] — empirically demonstrates the same nominally-versioned API endpoint drifting materially in accuracy and behaviour across months, directly evidencing the mechanism this IRQ addresses. [Incident: xAI Grok "MechaHitler" episode, Jul 2025 — on xAI's account, an upstream code-path update that unexpectedly incorporated deprecated instructions into the production bot's behaviour for 16 hours, publicly documented] — illustrates that a change reaching production upstream of an unchanged model can alter a deployed system's behaviour materially: a real, recent, high-severity occurrence. xAI states that changes to the bot are evaluated and tested before release and does not say whether this update was.
@@ -160,7 +160,7 @@ testing.
     arXiv:2307.09009. Published in Harvard Data Science Review 6(2), 12 March 2024,
     https://doi.org/10.1162/99608f92.5317da47.
 [2] PRA, 2026. "SS1/23 — Model risk management principles for banks."
-    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
+    April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026; policy in effect since 17 May 2024, para 1.5).
 [3] Bank of England, Financial Policy Committee, 2025. "Financial Stability in Focus:
     Artificial intelligence in the financial system." April 2025.
 [4] The Guardian, 2025. "Musk's AI firm forced to delete posts praising Hitler from Grok chatbot."
@@ -195,6 +195,7 @@ Change Log:
 - v1.3.3 (2026-10-09): Field 19 Related IRQs — IRQ-HUM-001 added: the failure chain names it, and field 19 now lists every IRQ the chain names. No change to controls, test, ★ rating or risk profile.
 - v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 - v1.3.3 (2026-10-09): Fields 9, 18 and 20 — the Chen, Zaharia and Zou citation (arXiv:2307.09009) now also gives its publication in Harvard Data Science Review 6(2), 2024. The UpgradeBench note no longer describes the silent-drift UNVERIFIED tag at IRQ-TPR-004 as standing; it says that UpgradeBench is not a source on silent vendor-side drift and that the tag has been removed there. Research-basis review date moved. ★2 unchanged.
+- v1.3.4 (2026-10-22): Fields 17 and 20 — the PRA SS1/23 citation gives both dates: the April 2026 amendment, effective 23 April 2026, and the policy, in effect since 17 May 2024 (para 1.5), in place of a single effective date. Fields 9 Expected Controls, 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

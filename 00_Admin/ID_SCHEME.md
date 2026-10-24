@@ -77,8 +77,8 @@ Every IRQ is assigned to **exactly one subdomain** (and therefore to exactly one
 **Discipline:** Do not mix threat (what can go wrong) with vulnerability (why it happens) with control (how to prevent it) with consequence (what happens) across domains or subdomains in a single IRQ. Each sits in its primary subdomain; cross-domain impacts are listed in `Related IRQs`.
 
 ### Examples of correct allocation:
-- **IRQ-MOD-015** "Where a language model is used as a judge or evaluator to generate the institution's own evaluation evidence, has the judge itself been validated?" → MOD domain, B.5 (Distribution Shift & Evaluation Integrity subdomain)
-- **IRQ-HUM-004** "Is the human intervention point positioned where intervention is still effective — before irreversible agent actions?" → HUM domain, D.3 (Escalation & Override Design subdomain)
+- **IRQ-MOD-015** "Where a language model is used as a judge or evaluator to generate the institution's own evaluation evidence, has the judge itself been validated — known bias classes (position, verbosity, self-enhancement) tested; agreement with human judgement measured; judge version pinned so evaluation evidence stays comparable; and correlated error assessed where judge and assessed system share a model family?" → MOD domain, B.5 (Distribution Shift & Evaluation Integrity subdomain)
+- **IRQ-HUM-004** "Is the human intervention point positioned where intervention is still effective — before irreversible agent actions — with oversight capacity dimensioned against AI throughput and reconstructable behaviour?" → HUM domain, D.3 (Escalation & Override Design subdomain)
 - **IRQ-SEC-009** "Is the model artefact supply chain — weights, checkpoints, serialisation formats, dependencies — protected against tampering and known deserialisation exploits?" → SEC domain, E.3 (Supply Chain & Tool Security subdomain)
 - **IRQ-GOV-005** "Do firm policies address GenAI/agentic specifics — acceptable use, data entry restrictions, output reliance, agent permissions — or only legacy model risk?" → GOV domain, I.2 (Approval, Tiering & Policy subdomain; tiering itself is IRQ-GOV-004)
 
@@ -86,8 +86,8 @@ Every IRQ is assigned to **exactly one subdomain** (and therefore to exactly one
 If an IRQ has secondary impact in another domain, this is **not a violation of single-assignment**. Instead, document it in the template field `Related IRQs`.
 
 **Example:**
-- **IRQ-MOD-013** (Model, B.6 Model Updates & Configuration) has Related IRQ → **IRQ-HUM-007** (Human Oversight, D.4 Accountability & Contestability; because prompt changes require change control and decision traceability)
-- **IRQ-DAT-007** (Data, A.3 Retrieval Data) has Related IRQ → **IRQ-SEC-004** (Security, E.1 Prompt Injection & Jailbreak; because retrieval corruption enables injection attacks)
+- **IRQ-MOD-013** (Model, B.6 Model Updates & Configuration) has Related IRQ → **IRQ-RES-004** (Operational Resilience, G.2 Containment & Recovery; because rolling back prompts and configuration is part of full behavioural-component rollback)
+- **IRQ-DAT-007** (Data, A.3 Retrieval Data) has Related IRQ → **IRQ-SEC-003** (Security, E.1 Prompt Injection & Jailbreak; because retrieval corruption enables injection attacks)
 
 ---
 

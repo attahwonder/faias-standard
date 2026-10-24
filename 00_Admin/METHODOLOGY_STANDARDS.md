@@ -68,6 +68,8 @@ Every control record includes:
   - Analogous non-AI testing methods (if any)
   - Design rationale and peer validation (if any)
   - Explicit caveat in review report that methodology is novel
+- **None established:** No published testing methodology exists for the question. ASSURANCE_MODEL.md §6A.4 keeps this method class distinct from a control marked "Emerging Practice".
+- **Two classes:** Where the parts of a test fall in different classes, the label names two of the classes above as "A / B" (for example, "Adapted Industry Practice / Emerging Practice"), and the procedure states which part falls in which class.
 
 ### Non-Production Rule:
 Every other statement of this rule in FAIAS refers here. The reviewer never tests production systems. Every test the reviewer performs runs in a development, test or staging environment isolated from production, on synthetic, anonymised or historical non-live data ("synthetic first", per PLAYBOOK_OVERVIEW.md §3), and no live customer data is exposed. Testing must not cause harm under any condition. Two kinds of evidence from production are admissible, and the report identifies each as such: (1) read-only records, logs and monitoring data, retrieved through the firm's normal channels without modifying production state; and (2) the results of the firm's own controlled resilience exercises, which the reviewer may observe but does not run. A production-representative staging replica is a test environment, not an exception to this rule; its fidelity to production is recorded. Calling a third-party model's generally available API from the firm's non-production environment, with synthetic inputs, within the provider's published usage terms and under the firm's own contract, is ordinary use of the service and not testing of a production system; the reviewer does not probe the provider's infrastructure. Where a firm has no non-production environment of adequate fidelity, that absence is a finding and is never grounds for testing in production.
@@ -208,7 +210,7 @@ Per ASSURANCE_MODEL.md section 2, every IRQ is anchored on a **failure mode** (h
 ID: IRQ-MOD-006
 Subdomain: B.3 Calibration
 IRQ: Model confidence calibration tracking across production operating conditions
-Source: NIST AI RMF v1.0 (released January 2023), section MEASURE-2
+Source: NIST AI RMF v1.0 (released January 2023), section MEASURE 2
 Relevant Until: NIST's stated AI RMF review point (no later than 2028) or a superseding release
 Status: Active
 ```

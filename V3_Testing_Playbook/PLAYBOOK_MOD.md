@@ -5,7 +5,7 @@
 **Procedures:** TP-MOD-001 … TP-MOD-016 (16, 1:1 with IRQ-MOD-001 … IRQ-MOD-016)
 **Source canvases:** `V2_IRQ_Battery/canvases/CANVASES_MOD.md` (15 canvases) and `V2_IRQ_Battery/EXEMPLAR_CANVASES.md` Canvas 2 (IRQ-MOD-006)
 **Governing documents:** `00_Admin/ASSURANCE_MODEL.md` (★ anchors, L1–L5 evidence levels), `00_Admin/METHODOLOGY_STANDARDS.md` (source hierarchy, testing-method labelling, non-production rule)
-**Compiled:** 2026-07
+**Compiled:** 2026-07; revised since (see the change log at the end of this file)
 **Spelling:** UK throughout
 
 ---
@@ -133,3 +133,4 @@ v1.1 (2026-08-25) — TP-MOD-014 (pinned-configuration decision-flip rate and ex
 v1.2 (2026-09-12) — TP-MOD-016 (evaluation-to-deployment external validity) added, derived 1:1 from the IRQ-MOD-016 canvas; ★2 carried over unchanged; domain totals move to sixteen procedures and 72 reviewer-days; ★ distribution becomes six ★3 and ten ★2. No new citations introduced beyond those carried on the canvas.
 v1.3.2 (2026-10-03) — TP-MOD-002's call to the vendor's latest version stated under the non-production rule (METHODOLOGY_STANDARDS.md §3; 00_Admin/CORRECTION_LOG_2026-10-03.md §8). No ★ rating or reviewer-day figure changes.
 v1.3.3 (2026-10-09) — TP-MOD-014's ★ summary, method classification and carried limitation brought into line with the canvas: two published repeat-run methods, both workshop papers, replace the statement that no published methodology exists, with their limits. No ★ rating or reviewer-day figure changes.
+v1.3.4 (2026-10-22) — TP-MOD-005's ★ line names Kadavath et al. (2022) as an arXiv preprint, not as peer-reviewed; the peer-reviewed limb rests on Xiong et al. and Tian et al., as in the canvas. Head: the Compiled line points to the change log for later changes. No ★ rating or reviewer-day figure changes.

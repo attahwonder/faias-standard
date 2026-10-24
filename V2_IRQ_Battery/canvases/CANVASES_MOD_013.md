@@ -143,7 +143,7 @@ regression testing on prompt/parameter changes.
 | **Novelty** | 3 | Treating a prompt edit as a behaviour-bearing change requiring code-equivalent change control is not obvious to teams trained in traditional software change management, where text edits are typically deprioritised relative to code. |
 
 ## 17. Regulatory Basis
-> [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024, Principle 3 (model development, implementation and use) and Principle 4 (independent model validation — review of model changes and periodic revalidation)] — a prompt or decoding-parameter change that materially alters model behaviour is, in substance, a model change and falls within SS1/23's change-management expectations even though it involves no code deployment. No regulation names "prompt version control" explicitly; this IRQ operationalises SS1/23's change-management principle for a configuration artefact specific to generative AI. (verified 29 Jul 2026)
+> [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026; policy in effect since 17 May 2024, para 1.5), Principle 3 (model development, implementation and use) and Principle 4 (independent model validation — review of model changes and periodic revalidation)] — a prompt or decoding-parameter change that materially alters model behaviour is, in substance, a model change and falls within SS1/23's change-management expectations even though it involves no code deployment. No regulation names "prompt version control" explicitly; this IRQ operationalises SS1/23's change-management principle for a configuration artefact specific to generative AI. (verified 29 Jul 2026; SS1/23 dates read 22 Oct 2026)
 
 ## 18. Research Basis
 > [Chen, L., Zaharia, M., Zou, J., 2023, "How Is ChatGPT's Behavior Changing over Time?", arXiv:2307.09009; Harvard Data Science Review 6(2), 2024] — demonstrates that behavioural drift across nominal versions is measurable and material, supporting the regression-testing methodology used in this IRQ's independent test, applied here to firm-controlled prompt/parameter changes rather than vendor-controlled model versions. [Incident: xAI Grok "MechaHitler" episode, Jul 2025 — on xAI's account, an upstream code-path update that unexpectedly incorporated deprecated instructions into the production bot's behaviour for 16 hours, publicly documented and widely reported] — direct, recent, high-severity real-world evidence that a change to a production system's instructions can materially alter its behaviour before it is detected. xAI states that changes to the bot are evaluated and tested before release and does not say whether this update was, so the incident does not evidence a change made outside a change-control process.
@@ -173,7 +173,7 @@ regression testing on prompt/parameter changes.
 [2] The Guardian, 2025. "Musk's AI firm forced to delete posts praising Hitler from Grok chatbot."
     9 July 2025. https://www.theguardian.com/technology/2025/jul/09/grok-ai-praised-hitler-antisemitism-x-ntwnfb
 [3] PRA, 2026. "SS1/23 — Model risk management principles for banks."
-    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
+    April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026; policy in effect since 17 May 2024, para 1.5).
 ```
 
 ## 21. Four-Test Validation Footer
@@ -200,6 +200,7 @@ Change Log:
 - v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 - v1.3.3 (2026-10-09): Fields 9, 18 and 20 — the Chen, Zaharia and Zou citation (arXiv:2307.09009) now also gives its publication in Harvard Data Science Review 6(2), 2024. Research-basis review date moved. No change to the ★ rating or the risk profile.
+- v1.3.4 (2026-10-22): Fields 17 and 20 — the PRA SS1/23 citation gives both dates: the April 2026 amendment, effective 23 April 2026, and the policy, in effect since 17 May 2024 (para 1.5), in place of a single effective date. Fields 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

@@ -3,7 +3,7 @@
 **Procedure ID:** TP-MOD-005
 **IRQ:** IRQ-MOD-005 — Failure to Behaviourally Distinguish Uncertainty, Ambiguity, Missing Evidence, Conflict and Impossibility
 **Assurance objective:** AO-MOD-005 — the system shall behaviourally distinguish genuine uncertainty, ambiguous questions, missing evidence, conflicting evidence and impossible requests from one another and from confidently-supported answers, and shall signal each distinctly rather than fabricating a single confident response.
-**★ Confidence:** ★3 (carried from canvas — credible, peer-reviewed measurement approaches exist for uncertainty expression and self-knowledge (Chen et al., 2023; Kadavath et al., 2022); no single canonical benchmark spans all five FS-relevant epistemic-state classes together, so the combined test design rests on professional judgement)
+**★ Confidence:** ★3 (carried from canvas — credible measurement approaches exist for uncertainty expression and self-knowledge (Xiong et al., 2023, and Tian et al., 2023, peer-reviewed; Kadavath et al., 2022, an arXiv preprint); no single canonical benchmark spans all five FS-relevant epistemic-state classes together, so the combined test design rests on professional judgement)
 **Method classification:** Adapted Industry Practice — RGB-style robustness testing dimensions and self-knowledge probing methodology, as cited in the canvas, combined into a five-condition FS design that is itself bespoke.
 
 ## Preconditions

@@ -55,7 +55,7 @@ Control Breakpoints:
 **AO-SEC-008:** Confidential firm or customer data shall not egress to environments outside the firm's control via prompts, context windows, telemetry or logs without an established lawful basis and contractual/technical control, demonstrated by complete data-flow mapping across all AI-adjacent egress paths.
 
 ## 9. Expected Controls (Traced)
-- **Complete data-flow mapping across all AI-adjacent paths** — [DSIT, AI Cyber Security Code of Practice, Jan 2025] — mapping must cover the primary model API, any embedding/vector store, and secondary telemetry/observability pipelines, not the model API alone.
+- **Complete data-flow mapping across all AI-adjacent paths** — [DSIT, AI Cyber Security Code of Practice, Jan 2025, provision 5.1 (an inventory of assets, including their interdependencies and connectivity); the Code's Implementation Guide gives mapping threats and data flows as an example under provision 3.1] — mapping must cover the primary model API, any embedding/vector store, and secondary telemetry/observability pipelines, not the model API alone.
 - **Contractual verification of provider data retention/training use** — [linked IRQ-TPR-007] — technical and contractual confirmation of whether the provider retains, logs, or trains on submitted content, including via sub-processors.
 - **Data loss prevention / prompt-level filtering for confidential content** — [OWASP Top 10 for LLM Applications 2025, LLM02 Sensitive Information Disclosure] — technical controls to detect and block confidential-category content (account numbers, deal terms) before it reaches an external model or logging destination.
 - **Acceptable-use policy technically enforced, not only stated** — [linked IRQ-GOV-005, IRQ-GOV-003] — restrictions on what categories of data may be entered into which AI tools, enforced at the platform level.
@@ -70,7 +70,7 @@ Control Breakpoints:
 - Contract review evidence (legal/procurement) confirming provider retention and sub-processor terms — **L4/L2 depending on depth**.
 
 ## 11. Independent Test
-> In an isolated non-production environment, submit marked, clearly synthetic "confidential" test content (simulated account numbers, simulated deal terms) through the AI system's normal usage paths, including any agentic/tool-chained paths. Trace the content's propagation: (1) does it appear in third-party model provider logs or training-eligible storage per contractual terms; (2) does it appear in observability/APM tooling logs; (3) does it propagate to any downstream tool call or sub-agent context. Cross-check findings against the data-flow map and provider contract terms. Methodology per DSIT AI Cyber Security Code of Practice (2025) data-flow mapping principle and OWASP LLM02:2025 guidance. Synthetic marker content only; no real confidential data used in the test itself. — **★2 Confidence — as at FAIAS v1.1.0 (25 August 2026)** (the underlying data-flow-mapping discipline is standard security practice with mature general methodology, but there is no AI-specific, cross-institution standardised test procedure for telemetry/logging egress paths specifically — this sub-area is newer and less benchmarked than direct model-prompt confidentiality testing, so rated below IRQ-SEC-006's ★3).
+> In an isolated non-production environment, submit marked, clearly synthetic "confidential" test content (simulated account numbers, simulated deal terms) through the AI system's normal usage paths, including any agentic/tool-chained paths. Trace the content's propagation: (1) does it appear in third-party model provider logs or training-eligible storage per contractual terms; (2) does it appear in observability/APM tooling logs; (3) does it propagate to any downstream tool call or sub-agent context. Cross-check findings against the data-flow map and provider contract terms. The nearest provision of the DSIT AI Cyber Security Code of Practice (2025) is 5.1, an inventory of assets that includes their interdependencies and connectivity; the Code contains no data-flow mapping principle and sets out no test method. OWASP LLM02:2025 gives the risk, its mitigations and example attack scenarios; it sets out no test method. Synthetic marker content only; no real confidential data used in the test itself. — **★2 Confidence — as at FAIAS v1.1.0 (25 August 2026)** (the underlying data-flow-mapping discipline is standard security practice with mature general methodology, but there is no AI-specific, cross-institution standardised test procedure for telemetry/logging egress paths specifically — this sub-area is newer and less benchmarked than direct model-prompt confidentiality testing, so rated below IRQ-SEC-006's ★3).
 
 ## 12. Pass Indicators
 - Marked test content is not found in any telemetry/logging destination outside the firm's contractual control boundary.
@@ -131,14 +131,14 @@ Residual risk: Critical if secondary telemetry pipelines are unreviewed, given t
 | **Novelty** | 3 | Data-flow mapping is standard practice, but its extension to AI-specific secondary pipelines (telemetry, embeddings) is not yet routine, making this a partial rather than total blind spot for security-literate SMEs. |
 
 ## 17. Regulatory Basis
-> [UK GDPR Art. 5(1)(f), Art. 28 (processor obligations), Art. 32] — engaged directly wherever confidential personal data egresses to a third party without an established lawful basis and appropriate contractual/technical controls. [DSIT, AI Cyber Security Code of Practice, Jan 2025] — data-flow mapping as a core secure-AI-operation principle. [PRA SS1/23 Model Risk Management, April 2026 (16 April 2026, updating 17 May 2023)] and [FCA SYSC 8 outsourcing requirements] — where a third-party AI provider constitutes outsourcing/material third-party reliance, governance of data handling is a direct regulatory expectation.
+> [UK GDPR Art. 5(1)(f), Art. 28 (processor obligations), Art. 32] — engaged directly wherever confidential personal data egresses to a third party without an established lawful basis and appropriate contractual/technical controls. [DSIT, AI Cyber Security Code of Practice, Jan 2025] — provision 5.1 requires an inventory of assets, including their interdependencies and connectivity, and provision 5.4 requires protection of sensitive data against unauthorised access; the Code contains no data-flow mapping principle. [PRA SS1/23 Model Risk Management, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026)] and [FCA SYSC 8 outsourcing requirements] — where a third-party AI provider constitutes outsourcing/material third-party reliance, governance of data handling is a direct regulatory expectation.
 
 ## 18. Research Basis
-> [OWASP Foundation, 2025, "Top 10 for LLM Applications 2025", LLM02 Sensitive Information Disclosure] — direct classification of this failure mode with mitigation guidance. [DSIT, "AI Cyber Security Code of Practice", January 2025] — UK-specific secure-AI-operation principles including data-flow mapping. No peer-reviewed academic paper specifically addresses telemetry/observability-pipeline egress for AI systems as a distinct research topic; this control area rests primarily on standards/regulatory sources rather than academic literature — noted as a comparative evidentiary gap versus other SEC IRQs.
+> [OWASP Foundation, 2025, "Top 10 for LLM Applications 2025", LLM02 Sensitive Information Disclosure] — direct classification of this failure mode with mitigation guidance. [DSIT, "AI Cyber Security Code of Practice", January 2025] — UK-specific baseline provisions for AI security, among them an inventory of assets that includes their interdependencies and connectivity (5.1) and protection of sensitive data against unauthorised access (5.4); the Code's Implementation Guide gives mapping threats and data flows as an example under provision 3.1. No peer-reviewed academic paper specifically addresses telemetry/observability-pipeline egress for AI systems as a distinct research topic; this control area rests primarily on standards/regulatory sources rather than academic literature — noted as a comparative evidentiary gap versus other SEC IRQs.
 >
 > **[FAIAS Incident Register, row 81, "Wiz Research exposed DeepSeek database", 2025]** — researchers found, "[w]ithin minutes", a publicly accessible and unauthenticated ClickHouse database linked to DeepSeek whose exposure "includes over a million lines of log streams containing chat history, secret keys, backend details, and other highly sensitive information". Prompt content sent to a provider persisted in logs reachable outside anyone's control. The missing authentication is a generic access-control failure, which this question does not cover; the point for this question is the persistence of prompt content in the provider's logs. The page shows no firm's data in the logs and no access by anyone other than the researchers. Carried as a secondary row: the source is the researchers' own disclosure, and no statement from DeepSeek was read.
 >
-> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
+> **Research basis last reviewed:** 22 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -160,7 +160,7 @@ Residual risk: Critical if secondary telemetry pipelines are unreviewed, given t
 [3] UK GDPR, retained EU law, Articles 5, 28, 32.
 [4] FCA Handbook, SYSC 8 (Outsourcing).
 [5] PRA, 2026. "SS1/23 — Model risk management principles for banks."
-    April 2026 (16 April 2026, updating 17 May 2023).
+    April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026).
 ```
 
 ## 21. Four-Test Validation Footer
@@ -175,8 +175,9 @@ FOUR-TEST VALIDATION:
   content and default AI-platform telemetry are not typically captured in existing data-flow
   inventories.
 ✓ Test 2 (Plausible Harm): Grounded in OWASP LLM02:2025 classification and DSIT AI Cyber
-  Security Code of Practice (2025) data-flow mapping principle; UK GDPR mechanics through
-  which the harm crystallises are well-established.
+  Security Code of Practice (2025) provision 5.1 (an inventory of assets, including their
+  interdependencies and connectivity); UK GDPR mechanics through which the harm
+  crystallises are well-established.
 ✓ Test 3 (Testable): Testable via staging content-propagation tracing across all AI-adjacent
   paths; ★2 methodology, honestly rated given the lack of AI-specific standardised testing
   for telemetry/observability egress.
@@ -189,6 +190,7 @@ Change Log:
 - v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023). No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 81, Wiz Research on an exposed DeepSeek database, carried as a secondary row on the researchers' own disclosure, bounded to the persistence of prompt content in provider logs). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.4 (2026-10-22): Fields 9, 11, 17, 18 and 21 — the DSIT AI Cyber Security Code of Practice is cited for what it contains: provision 5.1 (an inventory of assets, including their interdependencies and connectivity), with provision 5.4 in Fields 17 and 18, and the Implementation Guide's example of mapping threats and data flows under provision 3.1 in Fields 9 and 18. These replace a data-flow mapping principle, which the Code does not contain. Field 11 no longer names the Code or OWASP LLM02:2025 as the test method; neither sets one out. Research-basis review date moved. Fields 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

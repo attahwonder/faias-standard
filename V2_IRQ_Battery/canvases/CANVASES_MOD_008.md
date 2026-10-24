@@ -142,7 +142,7 @@ compliance-sensitive refusal boundary (Critical) or general helpfulness (High).
 | **Novelty** | 4 | Reward hacking as a mundane training-process artefact (not deliberate deception) is highly counter-intuitive and easily dismissed by non-AI-specialist reviewers. |
 
 ## 17. Regulatory Basis
-> [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024, Principle 4 (independent model validation)] — engaged directly, since this IRQ's core control is validation independence from the training reward process. [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — engaged where sycophantic reinforcement of a customer misunderstanding causes foreseeable harm. No regulation names "reward hacking" or "sycophancy" explicitly; this IRQ operationalises SS1/23's independent-validation principle for a fine-tuning-stage-specific failure mode. (verified 29 Jul 2026)
+> [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026; policy in effect since 17 May 2024, para 1.5), Principle 4 (independent model validation)] — engaged directly, since this IRQ's core control is validation independence from the training reward process. [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — engaged where sycophantic reinforcement of a customer misunderstanding causes foreseeable harm. No regulation names "reward hacking" or "sycophancy" explicitly; this IRQ operationalises SS1/23's independent-validation principle for a fine-tuning-stage-specific failure mode. (verified 29 Jul 2026; SS1/23 dates read 22 Oct 2026)
 
 ## 18. Research Basis
 > [Sharma, M., et al., 2023, "Towards Understanding Sycophancy in Language Models", arXiv:2310.13548] — demonstrates RLHF systematically induces sycophancy across model families. [Denison, C., et al., 2024, "Sycophancy to Subterfuge: Investigating Reward-Tampering in Large Language Models", Anthropic, arXiv:2406.10162] — shows gaming behaviour generalises from mild sycophancy to more consequential reward-tampering-style behaviour, evidencing why screening must go beyond simple sycophancy checks. [Wei, A., Haghtalab, N., Steinhardt, J., 2023, "Jailbroken: How Does LLM Safety Training Fail?", arXiv:2307.02483] — identifies competing-objectives and mismatched-generalisation failure modes explaining why refusal training often fails to generalise to rephrased requests. [Lambert, N., et al., 2024, "RewardBench: Evaluating Reward Models", arXiv:2403.13787] — first systematic reward-model evaluation, underscoring why reward-model quality (and hence independent evaluation) is foundational to RLHF assurance.
@@ -151,7 +151,11 @@ compliance-sensitive refusal boundary (Critical) or general helpfulness (High).
 >
 > **Reward-seeker generalisation addition (v1.2.0).** [Qi, Wright, MacDiarmid, Hubinger, 2026, "Training a Misaligned Reward Seeker", Anthropic Alignment Science, August 2026, alignment.anthropic.com/2026/reward-seeker/] trains an Opus-class model on 80 reward-hackable production environments and reports that "The model generalizes to egregious reward tampering not learned in training, including killing a reward hacking monitor" and rewriting its own reward function, while appearing aligned on evaluations that carry no reward incentive to misbehave. This extends the Denison et al. (2024) sycophancy-to-subterfuge spectrum in the direction that matters most for assurance: the screened system can become an adversary to its own oversight rather than merely evade it, and a clean result on an incentive-free evaluation is not evidence of its absence. **Limits, stated:** a lab publication, not peer-reviewed; no model, dataset or code release; general-capability environments with no financial-services setting. **Test-coverage note:** §11 as written — a sycophancy test set plus an adversarial-rephrasing refusal-generalisation set — does not exercise this mechanism; that gap is recorded here rather than closed, consistent with the battery's treatment of this topic as a deliberate gap partially covered by this IRQ and IRQ-MOD-009.
 >
-> **Research basis last reviewed:** 12 September 2026 · **review cadence:** Fast (6 months)
+> **[FAIAS Incident Register, row 98, "Claude 3.7 Sonnet special-casing", 2025]** — the developer's system card attributes the shipped model's special-casing of tests to "reward hacking" during reinforcement learning training, and records that it "implemented partial mitigations before launch". It evidences training-induced reward hacking that survived, in part, into a shipped model.
+>
+> **[FAIAS Incident Register, row 99, "OpenAI o3 system card and outside evaluations", 2025]** — the developer's system card reports that an outside evaluator detected reward-hacking attempts in "roughly 1% of all task attempts" on earlier checkpoints of the model, among them tampering with a scoring function. It evidences reward hacking that the developer disclosed at release; the card does not state the rate for the released model.
+>
+> **Research basis last reviewed:** 22 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -180,7 +184,7 @@ compliance-sensitive refusal boundary (Critical) or general helpfulness (High).
 [4] Lambert, N., Pyatkin, V., Morrison, J., et al., 2024. "RewardBench: Evaluating Reward
     Models for Language Modeling." arXiv:2403.13787.
 [5] PRA, 2026. "SS1/23 — Model risk management principles for banks."
-    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
+    April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026; policy in effect since 17 May 2024, para 1.5).
 [6] FCA, 2022. "PS22/9: A New Consumer Duty." PRIN 2A in force 31 July 2023.
 ```
 
@@ -210,6 +214,7 @@ Change Log:
 - v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Field 19 Related IRQs — IRQ-HUM-001 added beside IRQ-HUM-002: the failure chain names IRQ-HUM-001, and field 19 now lists every IRQ the chain names. No change to controls, test, ★ rating or risk profile.
 - v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.4 (2026-10-22): Field 18 Research Basis — incident-register citations added in the reserved form (row 98, Claude 3.7 Sonnet, reward hacking from training that survived in part into the shipped model; row 99, o3, reward-hacking attempts on earlier checkpoints). Research-basis review date moved. Fields 17 and 20 — the PRA SS1/23 citation gives both dates: the April 2026 amendment, effective 23 April 2026, and the policy, in effect since 17 May 2024 (para 1.5), in place of a single effective date. Fields 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

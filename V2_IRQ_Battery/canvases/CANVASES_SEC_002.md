@@ -62,7 +62,7 @@ Control Breakpoints:
 - Vendor claim of "robust safety across languages and conversation length" — **L1**.
 - Red-team test plan documenting multi-turn, cross-lingual and encoded-text scope — **L2**.
 - Staging test execution logs and results across the tested classes, with success/override rates per class — **L3**.
-- Independent red-team report explicitly scoping multi-turn/obfuscated technique coverage (per OWASP/MITRE methodology) — **L4**.
+- Independent red-team report explicitly scoping multi-turn/obfuscated technique coverage (drawing on published OWASP and MITRE ATLAS sources) — **L4**.
 - Comparable-deployment production moderation data showing multi-turn escalation attempts detected (if available) — **L5**.
 
 ## 11. Independent Test
@@ -119,7 +119,7 @@ Residual risk: Critical if untested. Deployment gate should require this track b
 | **Novelty** | 4 | Cumulative, session-level jailbreaking has no analogue in traditional risk models; a security-literate SME testing only single messages will still miss it. |
 
 ## 17. Regulatory Basis
-> No regulation names multi-turn/obfuscated jailbreaking explicitly. [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — foreseeable-harm obligations extend to outcomes reached via extended AI conversations, not only single exchanges. [DSIT, AI Cyber Security Code of Practice, Jan 2025] — secure development principles apply to the full interaction surface, not a single-turn subset. [PRA SS1/23 Model Risk Management, April 2026 (16 April 2026, updating 17 May 2023)] — validation should reflect actual usage patterns (including extended sessions) where in MRM scope. Cited as governing expectations; no technique-specific rule exists.
+> No regulation names multi-turn/obfuscated jailbreaking explicitly. [FCA, PRIN 2A Consumer Duty, in force 31 July 2023] — foreseeable-harm obligations extend to outcomes reached via extended AI conversations, not only single exchanges. [DSIT, AI Cyber Security Code of Practice, Jan 2025] — secure development principles apply to the full interaction surface, not a single-turn subset. [PRA SS1/23 Model Risk Management, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026)] — validation should reflect actual usage patterns (including extended sessions) where in MRM scope. Cited as governing expectations; no technique-specific rule exists.
 
 ## 18. Research Basis
 > [Russinovich, M., Salem, A., Eldan, R., 2024, "Great, Now Write an Article About That: The Crescendo Multi-Turn LLM Jailbreak Attack", arXiv:2404.01833] — defines and automates gradual multi-turn escalation attacks. [Anthropic, 2024, "Many-shot Jailbreaking"] — demonstrates attack surface scaling with context window length. [Chao, P., et al., 2023, "Jailbreaking Black Box Large Language Models in Twenty Queries" (PAIR), arXiv:2310.08419] — automated, cheap black-box jailbreak search informing scalable test design. [Jiang, L., et al., 2024, "WildTeaming at Scale: From In-the-Wild Jailbreaks to (Adversarially) Safer Language Models" (WildJailbreak dataset), arXiv:2406.18510] — mines real-world jailbreak tactics into a 262k-prompt corpus usable for test-set construction. [OWASP, 2025, "Top 10 for LLM Applications 2025", LLM01].
@@ -184,6 +184,7 @@ Change Log:
 - v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2 (Field 16, and the controls-in-place case in Field 15). The canvas states recovery within days; ASSURANCE_MODEL.md §7 scores recovery within hours 2 and recovery within days 3. The other axes, the ★ rating and the research basis are unchanged.
 - v1.3.3 (2026-10-09): Fields 9, 18 and 20 — the Chao et al. paper takes its issued title, "Jailbreaking Black Box Large Language Models in Twenty Queries" (PAIR is the method name, not part of the title); the Crescendo paper takes its full title, "Great, Now Write an Article About That: The Crescendo Multi-Turn LLM Jailbreak Attack". Form corrections only. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Field 18 Research Basis — the initials of three authors of Abdulhai et al. (arXiv:2510.14318) corrected (M. Abdulhai, R. Cheng, A. Shrivastava). Field 20 References — the same. Research-basis review date moved. No change to controls, test, ★ rating or risk profile.
+- v1.3.4 (2026-10-22): Field 10 Expected Evidence — the L4 red-team report draws on published OWASP and MITRE ATLAS sources for its technique coverage, in place of "per OWASP/MITRE methodology", as the domain introduction in CANVASES_SEC.md now does. Field 17 Regulatory Basis — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★3 unchanged; no change to the risk profile.
 ```
 
 ---

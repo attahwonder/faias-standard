@@ -2,7 +2,7 @@
 
 **IRQ:** IRQ-HUM-007 — Explanation Inadequacy Undermining Independent Judgement.
 **Assurance objective:** AO-HUM-007 — explanations provided to human decision-makers shall be demonstrated, through testing with the actual user population, to be sufficient in content, faithfulness and timeliness to support genuine independent judgement, not merely to be present or superficially comprehensible.
-**Confidence:** ★2 (carried unchanged). Method class: Emerging Practice — human-grounded interpretability evaluation per Doshi-Velez & Kim's framework is credible published methodology, but the specific application (comparing catch-rate impact of explanation presence and quality in an FS review context) is bespoke test design with no agreed FS benchmark, heavily dependent on case-set and explanation-variant design.
+**Confidence:** ★2 (carried unchanged). Method class: Emerging Practice — application-grounded interpretability evaluation per Doshi-Velez & Kim's framework is credible published methodology, but the specific application (comparing catch-rate impact of explanation presence and quality in an FS review context) is bespoke test design with no agreed FS benchmark, heavily dependent on case-set and explanation-variant design.
 
 ### Preconditions
 - **TP-HUM-001 completed**, with its seeded-error case set available for reuse. This procedure is a two-arm extension of that study; building a fresh case set is wasteful and makes the results non-comparable.

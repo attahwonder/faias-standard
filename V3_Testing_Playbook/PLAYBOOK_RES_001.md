@@ -16,7 +16,7 @@
 **Data handling:** Synthetic or anonymised case volumes only. Where realistic volume cannot be achieved with synthetic cases, use replayed historical case *shapes* with all customer identifiers removed, and record the substitution in the working paper.
 
 ## 3. Test Design
-The procedure tests two distinct trigger types, because the canvas identifies the second as the near-universal weak point:
+The procedure tests two distinct trigger types, because the canvas identifies the second as a weak point whose trigger is often left undefined:
 
 - **Trigger A — Unavailability:** the AI component is technically down. This is the trigger most firms have contemplated.
 - **Trigger B — Untrusted:** the AI component is technically available and returning fluent output, but a quality incident, detected drift or security concern means its output can no longer be relied upon. This requires a named human to make a judgement call and invoke the fallback.
@@ -52,7 +52,7 @@ Sampling: one exercise per in-scope IBS with a material AI dependency. Where mor
 
 **Fail** where: the fallback exists only as a policy statement with no rehearsal evidence; rehearsed throughput falls materially short of the tolerance; no "untrusted" trigger is defined (only technical outage is covered); or staff cannot execute the process to standard when tested.
 
-**Partial** (the most common outcome, per the canvas): Trigger A is rehearsed and adequate, Trigger B is undefined or unexercised. Report as: fallback rehearsed for outright AI unavailability but not for the untrusted-output trigger, which has no defined decision authority or rehearsed process; remediation should extend scenario testing to quality-degradation triggers.
+**Partial**: Trigger A is rehearsed and adequate, Trigger B is undefined or unexercised. Report as: fallback rehearsed for outright AI unavailability but not for the untrusted-output trigger, which has no defined decision authority or rehearsed process; remediation should extend scenario testing to quality-degradation triggers.
 
 ## 7. Evidence Outputs
 - Fallback process design document as obtained — **L2**

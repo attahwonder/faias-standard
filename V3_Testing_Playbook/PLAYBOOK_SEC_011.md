@@ -2,7 +2,7 @@
 
 **IRQ:** IRQ-SEC-011 (subdomain E.4).
 **Assurance objective:** AO-SEC-011 — every agent shall operate under an identity and credential distinct from any human user's, scoped to least privilege for its approved task set, issued with the shortest practicable lifetime, and revocable within a defined, tested time bound.
-**Confidence:** ★2 (carried unchanged). Method class: Adapted Industry Practice — general IAM/access-control testing (ISO/IEC 27001 Annex A control-testing analogues) and DSIT AI Cyber Security Code of Practice (2025) secure-by-design principles, applied to a subject for which no AI-agent-specific standardised benchmark exists. The identity and revocation testing itself is solid; the ★2 reflects that whether this is the *right* identity model for an autonomous agent remains professional judgement.
+**Confidence:** ★2 (carried unchanged). Method class: Adapted Industry Practice — general IAM/access-control testing (ISO/IEC 27001 Annex A control-testing analogues), applied to the scope rule of DSIT AI Cyber Security Code of Practice (2025) provision 2.6 and to a subject for which no AI-agent-specific standardised benchmark exists. The identity and revocation testing itself is solid; the ★2 reflects that whether this is the *right* identity model for an autonomous agent remains professional judgement.
 
 ### Preconditions
 - Isolated staging environment with the agent's identity and credential configuration reproduced as intended for production.

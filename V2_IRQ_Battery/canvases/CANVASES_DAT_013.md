@@ -159,7 +159,7 @@ the model" is the default institutional narrative.
     Terminology of Attacks and Mitigations." March 2025.
 [5] European Union, 2024. "Regulation (EU) 2024/1689 — Artificial Intelligence Act." Art. 10.
 [6] PRA, 2026. "SS1/23 — Model risk management principles for banks."
-    April 2026 (16 April 2026, updating 17 May 2023).
+    April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026).
 [7] Williams, M., Carroll, M., Narang, A., Weisser, C., Murphy, B., Dragan, A., 2025.
     "On Targeted Manipulation and Deception when Optimizing LLMs for User Feedback."
     ICLR 2025. arXiv:2411.02306.
@@ -196,6 +196,7 @@ Change Log:
   et al.) added as related work, each with its limits; the financial-services
   research-gap flag is unchanged. Field 20 — entries [7] to [9] added. Research-basis
   review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.4 (2026-10-22): Field 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

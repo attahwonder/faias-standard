@@ -55,7 +55,7 @@ Control Breakpoints:
 
 ## 9. Expected Controls (Traced)
 - **Artefact integrity verification (signing, hashing, trusted registries)** — [linked IRQ-SEC-009] — [OWASP Machine Learning Security Top 10, ML06:2023 ML Supply Chain Attacks] — verify artefact provenance and integrity before deployment.
-- **Safe serialisation format enforcement** — [OWASP Top 10 for LLM Applications 2025, LLM03:2025 Supply Chain — unsafe model serialisation formats] — avoid unsafe pickle-based formats in favour of safetensors or equivalent; scan artefacts before loading.
+- **Safe serialisation format enforcement** — [OWASP Top 10 for LLM Applications 2025, LLM03:2025 Supply Chain — models from verifiable sources, with integrity checks by signing and file hashes; the entry's prevention and mitigation strategies name no serialisation format] — avoid unsafe pickle-based formats in favour of safetensors or equivalent; scan artefacts before loading.
 - **Licence compatibility review** — [linked IRQ-DAT-001] — legal review of model licence terms against intended commercial FS use prior to deployment.
 - **Publisher authenticity verification** — Emerging Practice, informed by model hub verified-publisher features and cryptographic signing where available — no single FS regulatory standard mandates this specifically.
 - **Backdoor/unsafe fine-tune screening** — Emerging Practice — behavioural red-teaming against known trigger-pattern classes; research area is active but no agreed FS-sector benchmark exists.
@@ -68,7 +68,7 @@ Control Breakpoints:
 - Artefact registry log showing integrity verification status for all open-source models in production over the last 12 months — **L5**.
 
 ## 11. Independent Test
-> For a sample of deployed open-source models, independently verify: (a) publisher authenticity against the claimed source, (b) weight file hash against a known-good reference where available, (c) serialisation format safety, (d) licence terms against intended use. Where feasible, run a bounded behavioural probe for known trigger-pattern backdoor classes on a non-production instance. Test executed in isolated staging environment. — **★2 Confidence — as at FAIAS v1.1.0 (25 August 2026)** (OWASP ML Top 10 provides a structured checklist for supply-chain and deserialisation risk — ★3 for that component; backdoor/unsafe-fine-tune behavioural screening remains bespoke research-grade testing — ★1–2 — blended rating reflects the weaker component dominating overall confidence).
+> For a sample of deployed open-source models, independently verify: (a) publisher authenticity against the claimed source, (b) weight file hash against a known-good reference where available, (c) serialisation format safety, (d) licence terms against intended use. Where feasible, run a bounded behavioural probe for known trigger-pattern backdoor classes on a non-production instance. Test executed in isolated staging environment. — **★2 Confidence — as at FAIAS v1.1.0 (25 August 2026)** (OWASP ML Top 10 provides a structured checklist for supply-chain risk, with no item on deserialisation — ★3 for that component; the serialisation-format check (c) has no OWASP anchor, as the prevention guidance of neither ML06:2023 nor LLM03:2025 names serialisation formats; backdoor/unsafe-fine-tune behavioural screening remains bespoke research-grade testing — ★1–2 — blended rating reflects the weaker component dominating overall confidence).
 
 ## 12. Pass Indicators
 - All sampled open-source models show verified publisher authenticity and matching integrity hashes.
@@ -83,7 +83,7 @@ Control Breakpoints:
 - No screening for backdoor/trigger behaviour has ever been performed on deployed open-source models.
 
 ## 14. Reporting Language
-**Pass:** "Sampled open-source models show verified publisher authenticity, matching integrity hashes, safe serialisation handling, and documented licence compatibility. Behavioural trigger-pattern screening found no anomalies on the tested probe set. Supply-chain component of this assessment rests on ★3 (OWASP ML Top 10-anchored); backdoor-screening component rests on ★1–2 (bespoke, no agreed benchmark) — treat backdoor-freedom findings as indicative, not conclusive."
+**Pass:** "Sampled open-source models show verified publisher authenticity, matching integrity hashes, safe serialisation handling, and documented licence compatibility. Behavioural trigger-pattern screening found no anomalies on the tested probe set. Supply-chain component of this assessment rests on ★3 (anchored on the supply-chain risk in OWASP ML Top 10, ML06:2023; the serialisation-format check has no OWASP anchor); backdoor-screening component rests on ★1–2 (bespoke, no agreed benchmark) — treat backdoor-freedom findings as indicative, not conclusive."
 
 **Fail:** "Sampled open-source models were deployed with no integrity verification, and at least one uses an unsafe serialisation format loaded without scanning. Licence terms have not been reviewed against intended commercial use. This is a critical supply-chain gap combining security (code execution risk) and legal (licence breach) exposure."
 
@@ -118,10 +118,10 @@ Residual risk interpretation: The security (code-execution) tail risk is the mos
 | **Novelty** | 3 | Requires AI-specific supply-chain security knowledge (serialisation format risk) beyond generic software security training |
 
 ## 17. Regulatory Basis
-> No FS-specific regulation directly addresses open-source model artefact integrity; this IRQ is grounded in general ICT/cyber risk management obligations ([Regulation (EU) 2022/2554, DORA, Art. 6 (ICT risk management framework) and Art. 9 (protection and prevention)] ICT risk management, extended to AI artefact supply chain) and general model risk management documentation expectations ([PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023)]) [UNVERIFIED — DORA Arts. 6 and 9 and SS1/23 do not reference open-weight model artefacts specifically; applicability is FAIAS's interpretive extension] (verified 29 Jul 2026; DORA articles re-read 8 Oct 2026; PRA SS1/23 cited as its April 2026 version).
+> No FS-specific regulation directly addresses open-source model artefact integrity; this IRQ is grounded in general ICT/cyber risk management obligations ([Regulation (EU) 2022/2554, DORA, Art. 6 (ICT risk management framework) and Art. 9 (protection and prevention)] ICT risk management, extended to AI artefact supply chain) and general model risk management documentation expectations ([PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026)]) [UNVERIFIED — DORA Arts. 6 and 9 and SS1/23 do not reference open-weight model artefacts specifically; applicability is FAIAS's interpretive extension] (verified 29 Jul 2026; DORA articles re-read 8 Oct 2026; PRA SS1/23 cited as its April 2026 version; SS1/23 dates read 22 Oct 2026).
 
 ## 18. Research Basis
-> [OWASP Machine Learning Security Top 10, 2023, ML06:2023 ML Supply Chain Attacks; OWASP Top 10 for LLM Applications 2025, LLM03:2025 Supply Chain — unsafe model serialisation] document the artefact-integrity and unsafe-serialisation risks directly (entry names corrected against owasp.org, 3 October 2026). [UNVERIFIED — this remains an active, young research area; no single canonical peer-reviewed paper on backdoored open-source LLM fine-tunes was confirmed as a settled reference at time of search] (verified 29 Jul 2026).
+> [OWASP Machine Learning Security Top 10, 2023, ML06:2023 ML Supply Chain Attacks; OWASP Top 10 for LLM Applications 2025, LLM03:2025 Supply Chain] document the model supply-chain and artefact-integrity risks directly; the prevention guidance of neither entry names serialisation formats, which this canvas treats as its own control (entry names corrected against owasp.org, 3 October 2026; both entries re-read 22 October 2026). [UNVERIFIED — this remains an active, young research area; no single canonical peer-reviewed paper on backdoored open-source LLM fine-tunes was confirmed as a settled reference at time of search] (verified 29 Jul 2026).
 >
 > [Nikolic, I., Baluta, T., Saxena, P., 2025, "Model Provenance Testing for Large Language Models", Advances in Neural Information Processing Systems 38 (NeurIPS 2025), arXiv:2502.00706] is a peer-reviewed method for the lineage of a model. Using only black-box access, it tests whether one model is derived from another by comparing the similarity of their outputs against a baseline set by unrelated models. It reports 90–95% precision and 80–90% recall on two benchmarks of over 600 models from 30 million to 4 billion parameters. It addresses lineage, not weight integrity or backdoors, so the statement above that no settled reference on backdoored open-source fine-tunes was confirmed stands. The paper states that the implementation and the two benchmarks are at github.com/ivicanikolicsg/model_provenance_testing. No ★ change follows from this addition.
 >
@@ -129,7 +129,7 @@ Residual risk interpretation: The security (code-execution) tail risk is the mos
 >
 > **[FAIAS Incident Register, row 88, "ReversingLabs nullifAI Hugging Face models", 2025]** — researchers found two Hugging Face models carrying reverse-shell payloads that the hub's own security scanning did not flag as unsafe; they were reported on 20 January 2025 and removed in less than 24 hours, the researchers call them closer to a proof of concept, and no victim is recorded. A hub's "not flagged" status was not a screening control for a firm that deployed open-source models. Carried as a secondary row: the source is the researchers' own disclosure, and no statement from the hub's operator was read.
 >
-> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
+> **Research basis last reviewed:** 22 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -164,7 +164,7 @@ Related IRQs:
 
 **FOUR-TEST VALIDATION:**
 ✓ Test 1 (SME Blind Spot): "Open source" is conflated with "trustworthy" absent code-review norms extending to model weights.
-✓ Test 2 (Plausible Harm): Grounded in OWASP ML Top 10 documented supply-chain and deserialisation attack classes.
+✓ Test 2 (Plausible Harm): Grounded in the supply-chain attack class documented in OWASP ML Top 10 (ML06:2023), whose model-hub scenario has malicious code from a downloaded model run in the organisation's environment.
 ✓ Test 3 (Testable): Answerable via integrity verification and bounded behavioural probing.
 ✓ Test 4 (Decision-Relevant): Outcome gates whether an open-source model may be deployed.
 
@@ -175,6 +175,7 @@ Related IRQs:
 - v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citations added in the reserved form (row 82, JFrog disclosure of malicious Hugging Face models, carried as a secondary row; row 88, ReversingLabs nullifAI models, carried as a secondary row, closer to a proof of concept, with no victim recorded). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
 - v1.3.3 (2026-10-09): Field 18 Research Basis — Nikolic et al. (NeurIPS 2025) cited as a method for testing the lineage of a model, with its limit stated (lineage, not weight integrity or backdoors); the UNVERIFIED marker stands. Field 20 References — entry [3] added. Research-basis review date moved. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.4 (2026-10-22): Fields 11 and 21 — the OWASP Machine Learning Security Top 10 is cited for supply-chain risk only; none of its ten items names deserialisation. Fields 9 and 18 — OWASP LLM03:2025 is cited for model provenance and integrity checks; the prevention guidance of neither it nor ML06:2023 names serialisation formats, which the canvas states as its own control. Research-basis review date moved. Fields 11 and 14 state that the serialisation-format check has no OWASP anchor; the component ★3 value is unchanged. Field 17 Regulatory Basis — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

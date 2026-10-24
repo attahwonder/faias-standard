@@ -149,7 +149,7 @@ agentic assurance conclusion.
 | **Novelty** | 3 | Recognising that abandoned/intermediate steps form part of the required evidential record, not just the final output, is a non-obvious extension of traditional audit-trail thinking. |
 
 ## 17. Regulatory Basis
-> [FCA/PRA record-keeping expectations under SYSC and DISP] require firms to retain records sufficient to reconstruct decisions for audit, complaint and regulatory purposes; an incomplete agentic trace does not meet this standard where the AI system materially influenced the decision. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023)] requires governance and monitoring evidence for models within MRM scope, including agentic components. [EU AI Act, Regulation (EU) 2024/1689, Art. 12 (record-keeping/logging) and Art. 19 (log retention)] establishes explicit automatic-logging and retention obligations for high-risk AI systems, directly applicable where the agent supports credit or other Annex III high-risk activities (from 2 Dec 2027, per the Digital Omnibus postponement of Annex III deadlines agreed Jul 2026). (corrected & verified 29 Jul 2026)
+> [FCA/PRA record-keeping expectations under SYSC and DISP] require firms to retain records sufficient to reconstruct decisions for audit, complaint and regulatory purposes; an incomplete agentic trace does not meet this standard where the AI system materially influenced the decision. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026)] requires governance and monitoring evidence for models within MRM scope, including agentic components. [EU AI Act, Regulation (EU) 2024/1689, Art. 12 (record-keeping/logging) and Art. 19 (log retention)] establishes explicit automatic-logging and retention obligations for high-risk AI systems, directly applicable where the agent supports credit or other Annex III high-risk activities (from 2 Dec 2027, per the Digital Omnibus postponement of Annex III deadlines agreed Jul 2026). (corrected & verified 29 Jul 2026; SS1/23 dates read 22 Oct 2026)
 
 ## 18. Research Basis
 > [Chan, A., et al., 2024, "Visibility into AI Agents," FAccT 2024, arXiv:2401.13138] — establishes identifiers, real-time monitoring and activity logs as the core requirements for agent oversight, directly informing this IRQ's control set. [Microsoft AI Red Team, 2025, "Taxonomy of Failure Mode in Agentic AI Systems," April 2025] — its failure mode "Insufficient transparency and accountability" covers an action or decision of an agent whose accountability cannot be traced because the agent process was not logged well enough (printed p. 24). The taxonomy does not use the term "hidden chains", which is FAIAS's own. [Anthropic, 2024, "Sabotage Evaluations for Frontier Models"] — evaluation framework premised on the ability to observe and audit an agent's actual behaviour, underscoring why complete traces are a prerequisite for any downstream agentic assurance activity.
@@ -184,7 +184,7 @@ agentic assurance conclusion.
 [4] European Union, 2024. "Regulation (EU) 2024/1689 — Artificial Intelligence Act,"
     Articles 12 and 19. OJ L 12.7.2024.
 [5] PRA, 2026. "SS1/23 — Model risk management principles for banks."
-    April 2026 (16 April 2026, updating 17 May 2023).
+    April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026).
 ```
 
 ## 21. Four-Test Validation Footer
@@ -217,6 +217,7 @@ Change Log:
 - v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 55, Microsoft 365 Copilot audit-log gap, carried as a secondary row on the researcher's own disclosure). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
 - v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
+- v1.3.4 (2026-10-22): Fields 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

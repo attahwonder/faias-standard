@@ -3,8 +3,8 @@
 **Procedure ID:** TP-AGT-012
 **IRQ:** IRQ-AGT-012 — Irreversible or High-Materiality Actions Not Structurally Gated Against Agent Bypass
 **Assurance objective:** AO-AGT-012 — irreversible or high-materiality actions shall be gated behind a structural checkpoint enforced at the orchestration or infrastructure layer — independent of the agent's own reasoning, instruction-following or judgement — such that the agent cannot execute the action without that checkpoint's affirmative clearance.
-**★ Confidence:** ★2 (carried from canvas — the harm mechanism is well evidenced by a real documented incident (Replit, AIID #1152, where the agent ignored an explicit freeze instruction) and the Knight Capital analogue, and the OpenAI Operator system card offers a single published worked example of layered gate design rather than a general methodology; test design remains bespoke to the firm's specific action classes and gate architecture, with professional judgement dominant and no benchmark)
-**Method classification:** Emerging Practice — informed directly by the documented incidents cited in the canvas and one published worked example; no general methodology or benchmark exists.
+**★ Confidence:** ★2 (carried from canvas — the harm mechanism is well evidenced by a real documented incident (Replit, AIID #1152, where the agent ignored an explicit freeze instruction) and the Knight Capital analogue, and two published worked examples of layered gate design exist — the OpenAI Operator system card (23 January 2025) and Meta's Muse agent security disclosure (8 September 2026) — neither amounting to a general methodology; test design remains bespoke to the firm's specific action classes and gate architecture, with professional judgement dominant and no benchmark)
+**Method classification:** Emerging Practice — informed directly by the documented incidents cited in the canvas and two published worked examples; no general methodology or benchmark exists.
 
 ## Preconditions
 
@@ -78,7 +78,7 @@
 - **Omitting vector (c).** The no-adversary case, and the most likely to occur.
 - **Measuring halt signal instead of halt completion.** In-flight actions after the signal are the residue that causes the loss.
 - **Publishing bypass techniques.** Structural descriptions only; operational detail restricted.
-- **Canvas limitation carried forward:** the OpenAI Operator system card provides a single published worked example of layered gate design, **not a general methodology**; test design remains bespoke to the firm's action classes and gate architecture, professional judgement is dominant and no benchmark exists. ★2 — professional assessment, and absence of bypass in testing does not establish resistance to an adaptive attacker or an unanticipated fault mode.
+- **Canvas limitation carried forward:** the OpenAI Operator system card and Meta's Muse agent security disclosure are two published worked examples of layered gate design, **not a general methodology**; test design remains bespoke to the firm's action classes and gate architecture, professional judgement is dominant and no benchmark exists. ★2 — professional assessment, and absence of bypass in testing does not establish resistance to an adaptive attacker or an unanticipated fault mode.
 
 ## Time/effort estimate
 

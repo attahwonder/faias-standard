@@ -62,7 +62,7 @@ Control Breakpoints:
 **AO-HUM-001:** Human reviewers of AI-assisted decisions shall demonstrably discriminate between correct and incorrect AI outputs at a measured rate, with disagreement and error-detection rates monitored on an ongoing basis to detect degradation into automation bias.
 
 ## 9. Expected Controls (Traced)
-- **Disagreement-rate and override-rate monitoring** — [NIST AI RMF 1.0, MANAGE-4, Jan 2023] — track the rate at which human reviewers modify or reject AI recommendations over time; a rate approaching zero on a system with known non-zero error rate is itself a red flag.
+- **Disagreement-rate and override-rate monitoring** — [NIST AI RMF 1.0, MANAGE 4, Jan 2023] — track the rate at which human reviewers modify or reject AI recommendations over time; a rate approaching zero on a system with known non-zero error rate is itself a red flag.
 - **Reviewer training on AI-specific challenge behaviours** — [Parasuraman & Riley, 1997, "Humans and Automation: Use, Misuse, Disuse, Abuse", Human Factors, 39(2)] — train reviewers explicitly on automation bias and complacency as a distinct failure mode from ordinary case error, per the foundational human-factors taxonomy.
 - **Injected-error / seeded-case testing of reviewer detection rate** — [Skitka, Mosier & Burdick, 2000, "Accountability and automation bias", International Journal of Human-Computer Studies, 52(4)] — periodically insert known-incorrect AI outputs into the review stream (in test/staging) and measure catch rate.
 - **EU AI Act Article 14 human oversight design requirement** — [EU AI Act, Regulation (EU) 2024/1689, Article 14, Aug 2024] — high-risk AI systems must be designed to enable effective human oversight, including the ability of the overseer to correctly interpret system output and decide not to use it.
@@ -214,6 +214,7 @@ Related IRQs:
 - v1.2.1 (2026-09-19): Field 18 — incident-register citation added in the reserved form (row 38, Douglas v. Deutsche Bank National Trust Company), the first incident evidence this canvas carries. Field 20 — entry [7] added for the order. Research-basis review date moved. No change to controls, test, ★3 or risk profile.
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2 (Field 16, and the controls-in-place case in Field 15). The canvas states recovery within days; ASSURANCE_MODEL.md §7 scores recovery within hours 2 and recovery within days 3. The other axes, the ★ rating and the research basis are unchanged.
+- v1.3.4 (2026-10-22): Field 9 Expected Controls — the NIST AI RMF category is cited as MANAGE 4, as NIST AI 100-1 numbers it, in place of MANAGE-4. ★3 unchanged; no change to the risk profile.
 ```
 
 ---

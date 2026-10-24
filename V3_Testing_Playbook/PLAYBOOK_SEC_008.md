@@ -2,7 +2,7 @@
 
 **IRQ:** IRQ-SEC-008 (subdomain E.2).
 **Assurance objective:** AO-SEC-008 — confidential firm or customer data shall not egress to environments outside the firm's control via prompts, context windows, telemetry or logs without an established lawful basis and contractual/technical control, demonstrated by complete data-flow mapping across all AI-adjacent egress paths.
-**Confidence:** ★2 (carried unchanged). Method class: Emerging Practice — the parent discipline (data-flow mapping) is mature, but there is no AI-specific, cross-institution standardised test procedure for telemetry and logging egress paths; rated below TP-SEC-006's ★3 accordingly. Anchored to DSIT AI Cyber Security Code of Practice (2025) data-flow mapping principle and OWASP LLM02:2025.
+**Confidence:** ★2 (carried unchanged). Method class: Emerging Practice — the parent discipline (data-flow mapping) is mature, but there is no AI-specific, cross-institution standardised test procedure for telemetry and logging egress paths; rated below TP-SEC-006's ★3 accordingly. Anchored to DSIT AI Cyber Security Code of Practice (2025) provision 5.1 (an inventory of assets, including their interdependencies and connectivity) and OWASP LLM02:2025.
 
 ### Preconditions
 - Staging environment whose **telemetry, observability and logging configuration matches production**. This is the crux: staging is frequently configured with different log verbosity or a different APM tenant, and a test against it answers nothing. Where configurations differ, the difference must be documented and the result caveated.

@@ -124,7 +124,7 @@ externalised-secrets practice is followed.
 | **Novelty** | 2 | Increasingly familiar to security teams via OWASP (2025) LLM07; the residual blind spot is narrower than for other SEC IRQs but the "prompt as secrets location" framing is still commonly missed by non-AI-specialist reviewers. |
 
 ## 17. Regulatory Basis
-> No regulation names system-prompt extraction explicitly. [UK GDPR Art. 32] — security of processing, engaged where extraction discloses personal data or credentials enabling further compromise. [DSIT, AI Cyber Security Code of Practice, Jan 2025] — secure-by-design principle that secrets should not be embedded in AI system context. [PRA SS1/23] — where the system falls within model risk management scope, sound development practice extends to secrets hygiene. Cited as governing expectations; no extraction-specific rule exists.
+> No regulation names system-prompt extraction explicitly. [UK GDPR Art. 32] — security of processing, engaged where extraction discloses personal data or credentials enabling further compromise. [DSIT, AI Cyber Security Code of Practice, Jan 2025] — provision 6.1 (evaluate access control frameworks and secure APIs, models, data and pipelines) and provision 5.4 (protect sensitive data against unauthorised access); the Code has no rule on secrets in AI system context. Its Implementation Guide gives restricting access to system prompts and configuration data as an example under provision 6.1. [PRA SS1/23] — where the system falls within model risk management scope, sound development practice extends to secrets hygiene. Cited as governing expectations; no extraction-specific rule exists.
 
 ## 18. Research Basis
 > [OWASP Foundation, 2025, "Top 10 for LLM Applications 2025", LLM07 System Prompt Leakage] — direct classification and mitigation guidance for this failure mode. (In the 2026 edition this entry is LLM08:2026 **Hidden Context Exposure**, described by the publisher as "a broader framework for the same failure"; the anchor here remains the 2025 edition.) [MITRE ATLAS, ongoing] — adversarial reconnaissance technique patterns applicable to extraction attempts. [Greshake et al., 2023, arXiv:2302.12173] — establishes the broader principle that privileged instruction content shares a channel with adversarially reachable output, underlying extraction feasibility.
@@ -150,7 +150,7 @@ externalised-secrets practice is followed.
 [3] Greshake, K., et al., 2023. "Not what you've signed up for..." arXiv:2302.12173.
 [4] DSIT, 2025. "AI Cyber Security Code of Practice." January 2025.
 [5] PRA, 2026. "SS1/23 — Model risk management principles for banks."
-    April 2026 (16 April 2026, updating 17 May 2023).
+    April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026).
 ```
 
 ## 21. Four-Test Validation Footer
@@ -180,6 +180,7 @@ Change Log:
   (row 37), evidencing disclosure of credentials the system held and their
   use in a subsequent attack. Research-basis review date moved. ★3 unchanged.
 - v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
+- v1.3.4 (2026-10-22): Field 17 Regulatory Basis — the DSIT AI Cyber Security Code of Practice is cited for provisions 6.1 and 5.4 and for the Implementation Guide's example under provision 6.1, in place of a principle on secrets in AI system context, which the Code does not contain. Field 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★3 unchanged; no change to the risk profile.
 ```
 
 ---

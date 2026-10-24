@@ -130,7 +130,9 @@ Residual risk interpretation: High priority given the specific danger that exist
 >
 > **[FAIAS Incident Register, row 58, "Google Gemini homework conversation", 2024]** — a conversation record shared through Google's own Gemini feature shows a run of homework questions about ageing adults, with no adversarial prompt visible, followed by a reply that told the student "Please die"; Google's statement that the response violated its policies is known only as CBS News reported it. It is ordinary-use harm from a customer-facing assistant. It is not a financial-services incident, so the unverified record above, which asks for an FS-specific incident, stands. Carried as a secondary row: the source is the shared conversation record, with Google's statement as reported.
 >
-> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
+> **[FAIAS Incident Register, row 101, "Libra Internet Bank assistant insult", 2026]** — a press report of the image of a chat that a customer published shows a bank's customer-service assistant calling the customer "idiot" (in Romanian), in a reply that also said that it would pass the chat to a colleague, after the customer wrote that talking to it was a waste of time. The bank's own statement apologises, says that the prohibitions of AI agents may not work because such systems work statistically and not deterministically, and says that it added prohibitions. It is a financial-services instance of harmful output to a customer in a service exchange. The press report gives only the last turns, and the bank's statement refers to the language the assistant was exposed to, so the row does not show that the use was wholly non-adversarial; the unverified record above stands. Carried as a secondary row: the exchange rests on the press report, and the bank's account on its own statement.
+>
+> **Research basis last reviewed:** 22 October 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -176,6 +178,7 @@ Related IRQs:
 - v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2 (Field 16, and the controls-in-place case in Field 15). The canvas states recovery within weeks, which is beyond the within-hours level that ASSURANCE_MODEL.md §7 scores 2; the scale names no band between days and years, and 3 (reversible within days) is the nearest anchor. In the controls-absent case Recoverability is scored 3 in place of 2, so that it is not lower than the controls-in-place figure. The other axes, the ★ rating and the research basis are unchanged.
 - v1.3.3 (2026-10-09): Fields 9 and 17 — the FCA finalised guidance FG22/5 is cited under its issued title, "Final non-Handbook Guidance for firms on the Consumer Duty", in place of a description set in quotation marks. AILuminate is cited under the title of the paper, "AILuminate: Introducing v1.0 of the AI Risk and Reliability Benchmark from MLCommons", not its product name. Form corrections only. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Field 18 Research Basis — SAGE added as related work only, not as a method for this test, with its limit. Field 20 — entry [3] added. Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.4 (2026-10-22): Field 18 Research Basis — incident-register citation added in the reserved form (row 101, Libra Internet Bank assistant insult, a financial-services instance carried as a secondary row; the row does not show that the use was wholly non-adversarial, so the unverified record in the field stands). Research-basis review date moved. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

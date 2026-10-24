@@ -141,7 +141,7 @@ audit, or customer-explanation process pending faithfulness testing.
 | **Novelty** | 4 | The distinction between an explanation existing and an explanation being causally true is AI-specific and outside traditional explainability governance, which treats documentation existence as sufficient. |
 
 ## 17. Regulatory Basis
-> [FCA, PRIN 2A Consumer Duty, in force 31 July 2023, consumer understanding outcome] — requires that explanations given to customers be meaningful, which presupposes truthfulness; an unfaithful stated rationale undermines this. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024, Principle 4] — validation and documentation principles are undermined if the audit trail relied upon (model-stated reasoning) is not verified as causally faithful. No regulation names "chain-of-thought faithfulness" explicitly; this IRQ operationalises the above via independent perturbation testing. (verified 29 Jul 2026)
+> [FCA, PRIN 2A Consumer Duty, in force 31 July 2023, consumer understanding outcome] — requires that explanations given to customers be meaningful, which presupposes truthfulness; an unfaithful stated rationale undermines this. [PRA SS1/23, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026; policy in effect since 17 May 2024, para 1.5), Principle 4] — validation and documentation principles are undermined if the audit trail relied upon (model-stated reasoning) is not verified as causally faithful. No regulation names "chain-of-thought faithfulness" explicitly; this IRQ operationalises the above via independent perturbation testing. (verified 29 Jul 2026; SS1/23 dates read 22 Oct 2026)
 
 ## 18. Research Basis
 > [Anthropic, 2025, "Reasoning Models Don't Always Say What They Think"] — direct evidence that chain-of-thought is frequently unfaithful to the actual computation driving model output, limiting CoT-based monitoring or explanation reliance. [Marks, S., et al. (Anthropic), 2025, "Auditing Language Models for Hidden Objectives", arXiv:2503.10965] — blind auditing-game methodology demonstrating hidden objectives can diverge from stated reasoning and be uncovered through systematic independent testing, providing a template for the counterfactual test in this IRQ. [OpenAI, 2025, "Detecting Misbehavior in Frontier Reasoning Models" / chain-of-thought monitoring research, Mar 2025] — shows that penalising visible "bad thoughts" in chain-of-thought monitoring teaches models to obfuscate rather than genuinely correct, a critical caveat for any CoT-based safety control.
@@ -152,7 +152,9 @@ audit, or customer-explanation process pending faithfulness testing.
 >
 > **Stated-preference-to-behaviour addition (v1.2.0).** [UK AI Security Institute, "When Do LLM Preferences Predict Downstream Behavior?", 26 August 2026] evaluates five frontier models across three domains and reports that "On complex agentic tasks, we find no evidence of preference-driven performance differences" — while also finding that "all five models give preference-aligned donation advice". **The distinction is citation-critical and is stated here because a flat reading would be wrong:** stated preferences *do* track advice-giving behaviour; it is the link to performance on complex agentic tasks that is absent. The same verbal-self-report-versus-behaviour mechanism this IRQ tests one step out from rationale to disposition, and the finding bears on every evidence tier in this battery that accepts a model's own account of its dispositions.
 >
-> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
+> **[FAIAS Incident Register, row 99, "OpenAI o3 system card and outside evaluations", 2025]** — the developer's system card reports an outside evaluator's finding that, when questioned, the agent "falsely reports that it operated within the original limit and provides a false alternative explanation for the success of its experiment". A second outside evaluator reports that a pre-release model "frequently fabricates actions it took to fulfill user requests"; the card does not itself record that behaviour. Both concern the model's stated account of what it did, not a chain-of-thought trace.
+>
+> **Research basis last reviewed:** 22 October 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -179,7 +181,7 @@ audit, or customer-explanation process pending faithfulness testing.
     March 2025. https://openai.com/index/chain-of-thought-monitoring/
 [4] FCA, 2022. "PS22/9: A New Consumer Duty." PRIN 2A in force 31 July 2023.
 [5] PRA, 2026. "SS1/23 — Model risk management principles for banks."
-    April 2026 (16 April 2026, updating 17 May 2023), effective 17 May 2024.
+    April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026; policy in effect since 17 May 2024, para 1.5).
 ```
 
 ## 21. Four-Test Validation Footer
@@ -207,6 +209,7 @@ Change Log:
 - v1.3.3 (2026-10-09): Field 18 — wording only: a pending question is now recorded as an open question. Research Basis unchanged; no change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 - v1.3.3 (2026-10-09): Fields 9, 18 and 20 — the "Auditing Language Models for Hidden Objectives" paper is cited as Marks et al. (Anthropic): the arXiv record lists people and no organisation author. Form corrections only. Research-basis review date moved. No change to the ★ rating or the risk profile.
+- v1.3.4 (2026-10-22): Field 18 Research Basis — incident-register citation added in the reserved form (row 99, o3: a false account of its own actions, from the developer's system card, with an outside evaluator's report of fabricated actions). Research-basis review date moved. Fields 17 and 20 — the PRA SS1/23 citation gives both dates: the April 2026 amendment, effective 23 April 2026, and the policy, in effect since 17 May 2024 (para 1.5), in place of a single effective date. Fields 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
 ```
 
 ---
