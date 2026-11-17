@@ -84,14 +84,14 @@ Control Breakpoints:
 - Simulated replay at actual AI throughput shows no material backlog growth in the review queue.
 - Irreversible actions are technically blocked pending sign-off at the orchestration layer, confirmed by code/config review.
 - Trajectory traces reviewed in the sample are sufficient for reviewers to reconstruct the material path to the AI's recommendation.
-- Production data confirms sign-off precedes the irreversible action in the large majority of cases, with any exceptions investigated.
+- Production data confirms sign-off precedes every irreversible action. Any exception is a failure of the technical block pending sign-off, and is investigated.
 
 ## 13. Fail Indicators
 - Irreversibility-point mapping shows the human checkpoint sits after the point of no return for one or more in-scope workflows.
 - Simulated replay shows the review queue backlog growing without bound at actual AI throughput, indicating structural under-capacity.
 - Irreversible actions can proceed via a code path that bypasses the sign-off step (gating is procedural/prompt-level only).
 - Trajectory traces available to reviewers are materially incomplete, preventing genuine reconstruction of the AI's reasoning path.
-- Production data shows a material proportion of decisions where the irreversible action occurred before sign-off was recorded.
+- Production data shows any decision where the irreversible action occurred before sign-off was recorded.
 
 ## 14. Reporting Language
 **Pass:** "Irreversibility-point mapping and throughput-replay testing confirm the human checkpoint for [workflow] structurally precedes the point of practical irreversibility, reviewer capacity is dimensioned to actual AI throughput without backlog growth, and trajectory traces are sufficient for genuine reconstruction. This is a ★2 assessment — credible but bespoke methodology — and should be retested whenever workflow design or AI throughput materially changes."
@@ -219,6 +219,7 @@ Related IRQs:
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Field 18 Research Basis — ISO/IEC TS 8200:2024 cited for its published scope only, with the limit stated. Field 20 References — entry [6] added. Research-basis review date moved. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2 (Field 16, and the controls-in-place case in Field 15). The canvas states recovery within days; ASSURANCE_MODEL.md §7 scores recovery within hours 2 and recovery within days 3. The Field 16 justification now says that the irreversible cases pull toward 4, in place of 3. The controls-absent case, the other axes, the ★ rating and the research basis are unchanged.
+- v1.3.5 (2026-11-27): Fields 12 Pass Indicators and 13 Fail Indicators — production data must show sign-off before every irreversible action, as the technical block in field 12 requires; any exception is a failure of that block and is investigated. Stricter pass bar, in place of the large majority of cases; the fail is any such decision, in place of a material proportion. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

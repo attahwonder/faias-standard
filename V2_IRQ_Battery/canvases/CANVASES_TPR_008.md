@@ -19,7 +19,7 @@ Register question: "Does dependence on a small number of model, cloud or GPU pro
 > The firm's aggregate dependence on a small number of model, cloud or GPU providers exceeds its stated risk appetite for concentration, without the firm having measured this aggregate exposure or established credible, tested substitution options — so a single provider's failure, material change, or exit would affect multiple business activities simultaneously beyond the firm's tolerance.
 
 ## 5. Potential Consequences
-- **Institution:** Simultaneous, correlated failure or degradation across multiple AI-dependent business activities if a single dominant provider suffers an outage, security incident, commercial failure, or unilaterally changes terms.
+- **Institution:** Simultaneous, correlated failure or degradation across multiple AI-dependent business activities if a single dominant provider suffers an outage, security incident, commercial failure, or unilaterally changes terms, or if state action (a sanction, an export control or another government order) stops the firm's use of that provider. State action can reach any provider in any jurisdiction. EBA/GL/2019/02 para 68(d) asks firms to consider the political stability and security situation of the jurisdictions concerned, and DORA Art. 28(8) requires exit strategies, with exit plans that are tested, for ICT services that support critical or important functions. These two provisions name no sanction, export control or government order as a cause of the loss of a provider. This canvas cites no event of this cause at a financial-services firm.
 - **Market/systemic:** Aligns with the systemic concern flagged by the Bank of England's Financial Policy Committee — correlated AI/cloud provider concentration across the sector, not just within one firm, amplifying market-wide impact of a single provider event.
 - **Regulator:** DORA critical ICT third-party provider (CTP) oversight regime and concentration risk reporting obligations are not met if aggregate exposure is unmeasured.
 
@@ -35,7 +35,9 @@ the AI inventory
   ↓ (IRQ-TPR-008 — THIS IRQ: concentration risk is never measured
      against a stated appetite)
 A dominant provider experiences an outage, security incident,
-commercial failure, or exits the FS market / changes terms materially
+commercial failure, or exits the FS market / changes terms materially,
+or state action (a sanction, an export control or a government
+order) stops the firm's use of it
   ↓ (IRQ-RES-001: fallback modes, if any, were designed per-system,
      not for a simultaneous multi-system event)
 Multiple business activities are affected simultaneously; the firm's
@@ -158,6 +160,9 @@ Related IRQs:
 [3] Bank of England, Financial Policy Committee, 2025. "Financial Stability in Focus: Artificial intelligence in the financial system."
     Published: April 2025
     URL: https://www.bankofengland.co.uk/financial-stability-in-focus/2025/april-2025
+
+[4] European Banking Authority, 2019. "Guidelines on outsourcing arrangements." EBA/GL/2019/02, para 68(d).
+    URL: https://www.eba.europa.eu/sites/default/files/documents/10180/2551996/38c80601-f5d7-4855-8ba3-702423665479/EBA%20revised%20Guidelines%20on%20outsourcing%20arrangements.pdf
 ```
 
 ## 21. Four-Test Validation Footer
@@ -181,6 +186,7 @@ Related IRQs:
 - v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS2/21 cited as its November 2024 version (15 November 2024, updating 29 March 2021); the expectations cited are unchanged.
 - v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 87, Windsurf statement on a provider's withdrawal of model capacity, for substitute capacity that was not enough at that length of notice). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
 - v1.3.3 (2026-10-09): Fields 18 and 20 — the Financial Stability Report of July 2025 is no longer cited as a source on AI (the report has no section on AI, mentions AI only in passing, does not discuss cloud provider concentration, and points to the April 2025 Financial Stability in Focus), and its reference entry is removed. The April 2025 Financial Stability in Focus remains the evidentiary basis for AI and cloud provider concentration. Research-basis review date moved. No change to the ★ rating or the risk profile.
+- v1.3.5 (2026-11-27): Fields 5 Potential Consequences and 6 Failure Chain — state action (a sanction, an export control or another government order) named as a cause of the loss of a provider; it can reach any provider in any jurisdiction. EBA/GL/2019/02 para 68(d) and DORA Art. 28(8) are the basis; they name no sanction, export control or government order as a cause of the loss of a provider, and no event of this cause at a financial-services firm is cited. Field 20 References — entry [4] added for EBA/GL/2019/02. Field 11 untouched; ★2 unchanged; no change to the risk profile.
 ```
 
 ---

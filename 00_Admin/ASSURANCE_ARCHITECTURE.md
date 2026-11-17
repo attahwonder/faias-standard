@@ -79,7 +79,7 @@ EVIDENCE:
   - IRQ-MOD-004: Staging test flags high-confidence hallucinations before use (L4, ★3)
   - IRQ-HUM-004: Escalation workflow tested; 100% low-confidence outputs escalated (L3, ★2)
   - IRQ-HUM-001: Reviewer training logs; disagreement rate 12% (target >5%) (L5)
-  - IRQ-RES-005: 90-day production logs; no customer complaints traced to hallucination (L5)
+  - IRQ-RES-005: 90-day production logs; no customer complaints traced to hallucination, from a complaint log whose coverage is stated and in which known past hallucination cases were found (L5)
   (★ rates test methods only; operational records carry an evidence level and no ★ rating.)
 
 CONCLUSION: Claim is well-supported by multi-source evidence. Limited assurance: the material tests are rated ★2–★3, so reasonable assurance is not available under the assurance-level rule.
@@ -286,15 +286,15 @@ HAZARD: Model hallucinates customer data (e.g., "no recent account activity") wi
 CONTROLS (from IRQs):
   1. Hallucination Detection (IRQ-MOD-005, IRQ-MOD-004)
      Evidence: Staging test detects 95% of hallucinated facts; precision 90% (L3, ★3)
-     Evidence: Production logs show 0 undetected hallucinations in first 90 days (L5)
+     Evidence: Production logs show 0 hallucinations detected in first 90 days; the monitor's coverage is stated and seeded hallucination cases were detected (L5)
   
   2. Confidence Calibration (IRQ-MOD-006)
      Evidence: Confidence estimates within ±5% of actual accuracy (L4, ★3)
-     Evidence: Calibration is stable across customer cohorts; no distribution shift (L5)
+     Evidence: Calibration is stable across customer cohorts; no distribution shift detected, by a drift monitor whose coverage is stated and which detected replayed past shifts (L5)
   
   3. Escalation Workflow (IRQ-HUM-004)
      Evidence: 100% of low-confidence outputs routed to human review (L3, ★2)
-     Evidence: SLA met; no escalation backlog (L5)
+     Evidence: SLA met; no escalation backlog, from a queue record whose coverage is stated and which recorded past backlogs (L5)
   
   4. Human Reviewer Competence (IRQ-HUM-001, IRQ-HUM-003)
      Evidence: Training logs show all reviewers certified on bias and hallucination risks (L2)
@@ -303,7 +303,7 @@ CONTROLS (from IRQs):
   
   5. Monitoring & Incident Response (IRQ-RES-005, IRQ-GOV-010)
      Evidence: Monitoring dashboard tracks hallucination rate, escalation volume, customer complaints (L3, ★3)
-     Evidence: 90-day production logs: zero customer complaints traced to hallucination (L5)
+     Evidence: 90-day production logs: zero customer complaints traced to hallucination; the complaint log's coverage is stated and known past hallucination cases were found in it (L5)
      Evidence: Incident response plan exists; tested (L2, ★3)
   (★ rates test methods only; operational records carry an evidence level and no ★ rating.)
 

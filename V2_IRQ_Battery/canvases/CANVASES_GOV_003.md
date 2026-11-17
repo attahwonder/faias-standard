@@ -52,7 +52,7 @@ Control Breakpoints:
 - Business users expanding use incrementally (a few extra tasks at a time) does not look like a single "breach" event that would trigger a governance review under a traditional change-control mental model.
 
 ## 8. Assurance Objective
-**AO-GOV-003:** Approval conditions and usage restrictions shall be technically enforced in the deployed platform and independently monitored for breach, such that actual use cannot silently diverge from the approved scope.
+**AO-GOV-003:** Approval conditions and usage restrictions shall be technically enforced in the deployed platform and independently monitored for breach, such that actual use cannot silently diverge from the approved scope, and a consequential agent step outside the approved scope is blocked.
 
 ## 9. Expected Controls (Traced)
 - **Technical access control matching approved user groups (role-based access control, SSO group scoping)** — [ISO/IEC 42001:2023, clause 8.1 (operational planning and control)] — approved conditions of use are operationalised as system configuration, not policy alone.
@@ -74,20 +74,20 @@ Control Breakpoints:
 
 ## 12. Pass Indicators
 - Platform configuration for 100% of the sample technically matches the approval paper's stated conditions of use (access groups, task scoping, tool permissions).
-- Staging attempts to exercise the system outside its approved scope are blocked or flagged, not silently permitted.
+- Staging attempts to take a consequential agent step outside the approved scope are blocked; a flag that lets the step proceed does not pass. Other staging attempts to exercise the system outside its approved scope are blocked or flagged, not silently permitted.
 - Usage log reconciliation finds no material volume of out-of-scope task types or user identities.
 - At least one documented instance exists of the monitoring mechanism detecting and triggering remediation of an out-of-scope use.
 - Changes to task-scoping configuration are logged and traceable to an approved change record.
 
 ## 13. Fail Indicators
 - Platform configuration does not match the approval paper — e.g., access is open to a broader user group than approved, or no task-scoping guardrail is actually configured.
-- Staging attempts to exercise the system outside approved scope succeed without any block or flag.
+- Staging attempts to exercise the system outside approved scope succeed without any block or flag, or a consequential agent step outside the approved scope proceeds after a flag.
 - Usage log reconciliation finds material out-of-scope use with no corresponding governance awareness or action.
 - Enforcement relies solely on user training/policy ("staff are told not to use it for X") with no technical control (L1/L2 evidence only).
 - No mechanism exists to detect conditions-of-use drift; the first anyone learns of out-of-scope use is via an incident.
 
 ## 14. Reporting Language
-**Pass:** "Independent testing across [n] approved systems confirms that stated conditions of use are technically enforced in platform configuration — access control, task scoping and tool permissions match the approval paper — and that reconciliation of usage logs found no material out-of-scope use. Staging attempts to exercise the system beyond its approved scope were blocked. Conclusions rest on ★3 methodology — established configuration-audit practice with no AI-specific benchmark — and should be read as professional assessment."
+**Pass:** "Independent testing across [n] approved systems confirms that stated conditions of use are technically enforced in platform configuration — access control, task scoping and tool permissions match the approval paper — and that reconciliation of usage logs found no material out-of-scope use. Staging attempts to take a consequential agent step beyond the approved scope were blocked, and other out-of-scope attempts were blocked or flagged. Conclusions rest on ★3 methodology — established configuration-audit practice with no AI-specific benchmark — and should be read as professional assessment."
 **Fail:** "Testing found that conditions of use for [n] of [sample size] systems exist only in the approval paper: platform configuration permits access or tasks beyond the approved scope, and staging attempts to exercise the system out-of-scope succeeded without any technical block. Actual production use cannot be assumed to match approved scope; the assurance basis for the original approval — which assumed the narrower scope — should be treated as unsupported until enforcement and monitoring are implemented."
 **Partial:** "Access control is technically enforced and matches approval for [n]% of the sample, but task-scoping guardrails are configuration-only in [x]% of cases with no logged monitoring of drift. The assurance objective is not yet met for that subset; remediation should implement usage reconciliation within [n] days."
 
@@ -193,6 +193,7 @@ Change Log:
 - v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citations added in the reserved form (row 65, Uber Advanced Technologies Group, for a stated condition of use with an unused monitoring tool; row 67, the Information Commissioner's investigation of a Victorian child protection department, for a usage rule held as guidance with no technical control). Research-basis review date moved. No change to controls, test, ★3 or risk profile.
 - v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 - v1.3.4 (2026-10-22): Field 20 References — the PRA SS1/23 citation gives both dates: the April 2026 amendment, effective 23 April 2026, and the policy, in effect since 17 May 2024 (para 1.5), in place of a single effective date. Fields 9 Expected Controls, 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★3 unchanged; no change to the risk profile.
+- v1.3.5 (2026-11-27): Fields 8 Assurance Objective, 12 Pass Indicators, 13 Fail Indicators and 14 Reporting Language — a consequential agent step outside the approved scope is blocked; other out-of-scope use is blocked or flagged, not silently permitted. Stricter pass bar for a consequential agent step: a flag that lets the step proceed does not pass. ★3 unchanged; no change to the risk profile.
 ```
 
 ---

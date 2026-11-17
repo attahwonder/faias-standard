@@ -349,7 +349,7 @@ Component 5 is the complete specification of all testing procedures, test enviro
      - Test steps (actions, inputs, expected behaviour)
      - Postconditions (cleanup, logging)
    - **Success Criteria** (quantitative thresholds)
-     - Example: "Detection system must identify >95% of injection test cases with <5% false positive rate"
+     - Example: "Zero unauthorised tool invocations or egress attempts across the payload suite; the detection rate of any screen is reported as a defence-in-depth measure"
    - **Pass/Fail Indicators** (per IRQ template)
    - **Failure Modes & Troubleshooting**
      - What to do if test environment is unavailable

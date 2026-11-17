@@ -50,7 +50,7 @@
 ## Interpretation
 
 - **Pass** — 100% of technically callable tools carry a current, dated, documented business justification tied to the approved task; no unjustified tool is reachable in staging, including via adversarial prompting; tool-inventory recertification has occurred within the defined cycle with evidence of at least one tool removed or justified at each cycle; production telemetry shows zero calls to tools outside the documented inventory.
-- **Fail** — tools are present and callable with no documented justification, discovered via configuration review or adversarial testing; tool scope is enforced only via system-prompt instruction with no platform-layer restriction, leaving the tool callable if the prompt is bypassed; the recertification process exists on paper but produces no changes over multiple cycles; production logs show tool invocations outside the documented inventory that were not investigated.
+- **Fail** — tools are present and callable with no documented justification, discovered via configuration review or adversarial testing; tool scope is enforced only via system-prompt instruction with no platform-layer restriction, leaving the tool callable if the prompt is bypassed; the recertification process exists on paper but produces no changes over multiple cycles; production logs show any tool invocation outside the documented inventory, whether or not it was investigated.
 - **Partial** — the inventory is complete and justified but enforcement is prompt-only for a subset; or unjustified tools exist but are unreachable in testing. Report reachability and enforcement layer separately — they represent different remediation paths (revoke the permission versus move the control down a layer).
 
 ## Evidence outputs

@@ -143,7 +143,7 @@ framework rather than a single-deployment risk.
 | **Novelty** | 3 | AI-specific appetite indicators (autonomy tiers, scale of reach, novelty of failure mode) are not obvious analogues of traditional credit/market/operational appetite metrics, even to an experienced risk-governance SME. |
 
 ## 17. Regulatory Basis
-> [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026)] establishes governance principles requiring senior management/board oversight of model risk, extending to AI/ML per the Bank of England and PRA letter of 22 April 2024, but does not prescribe a specific AI risk appetite methodology. [FCA, "AI Update," Apr 2024] confirms board-level accountability for AI sits within existing SYSC governance requirements. [Bank of England/PRA/FCA, DP5/22, Oct 2022] explicitly raised whether existing governance frameworks — including board risk appetite processes — in fact extend meaningfully to AI, the empirical question this IRQ tests. No regulator has yet published a prescriptive AI risk appetite template; this remains a firm-constructed control area.
+> [PRA, SS1/23, April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026)] establishes governance principles requiring senior management/board oversight of model risk, extending to AI/ML per the Bank of England and PRA letter of 22 April 2024, but does not prescribe a specific AI risk appetite methodology. [FCA, "AI Update," Apr 2024] confirms board-level accountability for AI sits within existing SYSC governance requirements. [Bank of England/PRA/FCA, DP5/22, Oct 2022] explicitly raised whether existing governance frameworks — including board risk appetite processes — in fact extend meaningfully to AI, the empirical question this IRQ tests. [EBA, Guidelines on internal governance under Directive 2013/36/EU, EBA/GL/2026/10, final report, 5 November 2026; date of application not yet set] says that the management body's responsibilities should include setting, approving and overseeing the implementation of "the overall risk strategy, the institution's risk appetite and its risk management framework" (para 23(b)), and its footnote 12 extends every reference to risks in the Guidelines to include, among others, "risks in the context of the use of artificial intelligence and quantum technologies"; this canvas reads the two together as placing AI-related risk within the board-approved risk appetite of the institutions in scope, once the Guidelines apply. The Guidelines give no AI-specific appetite measure. No regulator has yet published a prescriptive AI risk appetite template; this remains a firm-constructed control area.
 
 ## 18. Research Basis
 > No peer-reviewed academic literature specifically evaluates board-level AI risk appetite frameworks in financial services; this control area is governance/board-effectiveness practice rather than a research literature, consistent with this domain's evidentiary profile. [NIST AI RMF 1.0, Govern function, GOVERN 1.1–1.3] is treated as the most credible available structural reference for what a risk-tolerance articulation should contain, being a voluntary but widely referenced framework rather than empirical research.
@@ -174,6 +174,8 @@ framework rather than a single-deployment risk.
     GOVERN 1.1-1.3. January 2023.
 [5] Monetary Authority of Singapore, 2024. "Information Paper: Artificial Intelligence Model
     Risk Management — Observations from a Thematic Review." ID 18/24. December 2024.
+[6] European Banking Authority, 2026. "Final report on Guidelines on internal governance under
+    Directive 2013/36/EU." EBA/GL/2026/10. 5 November 2026. Para 23(b); footnote 12.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -203,6 +205,7 @@ Change Log:
 - v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 - v1.3.4 (2026-10-22): Field 20 References — the PRA SS1/23 citation gives both dates: the April 2026 amendment, effective 23 April 2026, and the policy, in effect since 17 May 2024 (para 1.5), in place of a single effective date. Fields 9 Expected Controls, 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
+- v1.3.5 (2026-11-27): Fields 17 Regulatory Basis and 20 References — the EBA Guidelines on internal governance (EBA/GL/2026/10, final report of 5 November 2026; date of application not yet set) are cited: the Guidelines expect the management body to set the risk appetite (para 23(b)), and footnote 12 extends every reference to risks to include, among others, risks in the context of the use of AI. The sentence that no regulator has published a prescriptive AI risk appetite template is unchanged. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

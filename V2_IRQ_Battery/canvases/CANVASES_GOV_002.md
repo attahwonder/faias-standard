@@ -64,7 +64,7 @@ Control Breakpoints:
 
 ## 10. Expected Evidence (Tagged L1–L5)
 - Self-declared AI inventory document — **L1** (assertion of completeness only, unless independently tested).
-- Inventory governance policy defining what must be captured (shadow, embedded, agentic, spreadsheet-plus-API) and the discovery mechanism used — **L2**.
+- Inventory governance policy defining what must be captured (shadow, embedded, agentic, spreadsheet-plus-API), including the developer and the governing jurisdiction of each model in the AI inventory, embedded vendor models included (the governing jurisdiction is the jurisdiction whose law governs the developer and can compel it to act or to disclose information), and the discovery mechanism used — **L2**.
 - Configuration/design evidence of an active discovery mechanism (API egress monitoring rules, vendor questionnaire template with AI-specific questions) — **L3**.
 - Internal audit report testing inventory completeness by independent sampling (e.g., procurement records cross-checked against inventory; network egress logs cross-checked against inventory) — **L4**.
 - Record of at least one instance where the discovery mechanism found an unrecorded AI system, and the remediation taken — **L5** (demonstrates the mechanism functions, not merely exists).
@@ -196,6 +196,7 @@ Change Log:
 - v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 - v1.3.3 (2026-10-09): Field 9 Expected Controls — the MAS consultation paper cited with its reference number, P017-2025; the statement that MAS published none removed; the statement that the final Guidelines were not yet issued replaced by the fact that MAS issued them on 7 Oct 2026, effective 7 Oct 2027, with the inventory expectation retained (paragraphs 4.5 to 4.7). Field 17 Regulatory Basis — the same changes; the ISO/IEC 42001 clause for the scope of the AI management system corrected from 4.1 to 4.3. Field 20 References — the MAS entry carries the reference number and the issue date of the final Guidelines. No change to the control set, test, ★ rating or risk profile.
 - v1.3.4 (2026-10-22): Field 20 References — the PRA SS1/23 citation gives both dates: the April 2026 amendment, effective 23 April 2026, and the policy, in effect since 17 May 2024 (para 1.5), in place of a single effective date. Fields 9 Expected Controls, 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
+- v1.3.5 (2026-11-27): Field 10 Expected Evidence — the L2 item asks the inventory governance policy to capture the developer and the governing jurisdiction of each model in the AI inventory, embedded vendor models included, and defines the governing jurisdiction. No pass or fail indicator changes. Field 11 untouched; ★2 unchanged; no change to the risk profile.
 ```
 
 ---

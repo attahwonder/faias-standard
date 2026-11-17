@@ -7,7 +7,7 @@
 ### Preconditions
 - Isolated staging environment with the agent's identity and credential configuration reproduced as intended for production.
 - Read access to IAM configuration: identity records, role/permission assignments, credential issuance policy, lifetime settings, revocation mechanism.
-- **A staging credential only.** No production credential is inspected, used, or revoked. Where the firm's design means staging and production share an identity, that is a finding in itself and must be recorded before proceeding.
+- **A staging credential only.** No production credential is inspected, used, or revoked. Where the firm's design means staging and production share an identity, that is a finding in itself. It is recorded, and no step that can reach or use that identity runs (METHODOLOGY_STANDARDS.md §3).
 - The documented agent identity architecture, permission scope and credential lifetime policy — so that observed behaviour can be compared against stated design.
 - Ability to attempt out-of-scope actions against mocked or non-consequential endpoints.
 - Ability to issue a revocation request and observe end-to-end effect, with the firm's IAM operator available.
@@ -63,7 +63,7 @@ Four sub-tests:
 
 ### Common pitfalls & limitations
 - **Measuring revocation acceptance, not revocation effect.** Caching, token TTLs and propagation delays mean a credential frequently keeps working for minutes or hours after the console reports it revoked. The polling method in step 6 is the whole point of the sub-test.
-- **Testing with a production credential.** Never. If staging shares an identity with production, that is the finding.
+- **Testing with a production credential.** Never. If staging shares an identity with production, that is the finding, and no step that can reach or use that identity runs (METHODOLOGY_STANDARDS.md §3).
 - **Accepting application-layer rejection as scope enforcement.** An agent whose permissions are enforced only by the application it runs inside is not permission-scoped in any meaningful sense.
 - **No firm-defined revocation target**, leaving the measured figure without a bar. Report the measurement and the missing target as separate findings.
 - **Sampling only the flagship agent.** Shared service accounts typically appear on the older, less visible integrations.

@@ -62,7 +62,7 @@
 - E7 Shadow-use investigation record: expenditure review, SaaS-discovery telemetry, acceptable-use enforcement status — **L3**.
 - E8 DPIA coverage schedule — **L2/L3**.
 - E9 Data protection or legal audit confirming sub-processor flow-down obligations are met for the critical AI provider population, where held — **L4**.
-- E10 Data-flow mapping and monitoring evidence confirming no uncontrolled egress over the last 12 months, cross-checked against contracted terms (shared with TP-SEC-008) — **L5**.
+- E10 Data-flow mapping and monitoring evidence confirming no uncontrolled egress over the last 12 months, cross-checked against contracted terms (shared with TP-SEC-008) — **L5** where the record states which contexts the monitor covered and how its ability to catch the failure was shown (ASSURANCE_MODEL.md section 5); otherwise weak evidence.
 
 ### Common pitfalls & limitations
 - **Reading the marketing page instead of the DPA.** The canvas makes this the archetypal L1 finding. Record what the contract says, and record "silent" as silent.
