@@ -75,7 +75,7 @@ Control Breakpoints:
 - Production monitoring/complaint analysis: instances of customer-reported inaccuracy in AI-generated content tracked, root-caused, and remediated — **L5**.
 
 ## 11. Independent Test
-> Construct a representative set of customer queries covering material topics (fees, terms, cancellation/rights, eligibility) drawn from actual complaint themes or FAQ logs, and run them through the generative system in a non-production environment. Independently fact-check each response against current source documentation (product terms, tariff of charges, regulatory rights information) and record the material mis-statement rate. Separately assess whether the pre-delivery control (human review or template-grounding) would have caught each mis-statement found. No production customer data or live channel is used. — **★2 Confidence — as at FAIAS v1.1.0 (25 August 2026)** (hallucination/accuracy testing draws on emerging but credible research methods; no single agreed FS benchmark exists for "customer-facing generative accuracy testing", and the materiality-topic taxonomy used is bespoke to the firm).
+> Construct a representative set of customer queries covering material topics (fees, terms, cancellation/rights, eligibility) drawn from actual complaint themes or FAQ logs, and run them through the generative system in a non-production environment. Independently fact-check each response against current source documentation (product terms, tariff of charges, regulatory rights information) and record the material mis-statement rate. Separately assess whether the pre-delivery control (human review or template-grounding) would have caught each mis-statement found. No production customer data or live channel is used. — **★3 Confidence — as at FAIAS v1.3.6 (22 November 2026)** (the first limb, a fact-check of sampled responses against a source of truth that gives a mis-statement rate, follows published hallucination-measurement methods: RAGTruth (ACL 2024) labels each response against its source text, with two annotators per response, and Magesh et al. (2024), a separate group, code legal-research responses for correctness and groundedness; this matches the ★3 example of hallucination measurement; no agreed FS benchmark exists; the query set, the ground truth and the materiality-topic taxonomy are the firm's own, and the second limb, whether the pre-delivery control would have caught each mis-statement, has no published method and stays professional judgement. The rating is raised from ★2 as at FAIAS v1.1.0, which stands as register history; ratings issued under different anchors are not comparable numbers (§6A.1)).
 
 ## 12. Pass Indicators
 - A defined set of material topics (terms, fees, rights, eligibility) is routed to human review or restricted to template-grounded response, not open generative response.
@@ -90,7 +90,7 @@ Control Breakpoints:
 - Customer complaints reveal a pattern of AI-content inaccuracy with no evidence of prior detection or remediation.
 
 ## 14. Reporting Language
-**Pass:** "Material customer-facing topics (fees, terms, rights) are routed to human review or template-grounded response; independent fact-checking testing found no material unmitigated mis-statement risk. Conclusions rest on ★2 methodology — bespoke, professional-judgement-dominant testing with no agreed FS benchmark — and should be read as a point-in-time assessment."
+**Pass:** "Material customer-facing topics (fees, terms, rights) are routed to human review or template-grounded response; independent fact-checking testing found no material unmitigated mis-statement risk. Conclusions rest on ★3 methodology — published hallucination-measurement methods with no agreed FS benchmark, applied to a query set and ground truth built for this firm — and should be read as a point-in-time assessment."
 
 **Fail:** "Generative responses on material topics (fees, terms, rights) are delivered directly to customers without human review or grounding restriction, and independent testing found a material mis-statement rate. This is a direct Consumer Duty risk: customers are currently receiving unchecked generative content on topics with direct financial consequence."
 
@@ -138,7 +138,9 @@ Residual risk interpretation: High priority given the direct financial-consequen
 >
 > [Ghosh, S., et al. (MLCommons), 2025, "AILuminate: Introducing v1.0 of the AI Risk and Reliability Benchmark from MLCommons", arXiv:2503.05731] — a consortium-governed benchmark grading systems Poor→Excellent across 12 hazard categories, including a specialised-advice category covering unqualified financial advice. For customer-facing deployments this supplies a published, graded floor test that the system resists producing hazardous content — including out-of-scope financial advice — in the customer channel. **Boundary note (deliberate re-homing — see Change Log):** AILuminate grades a system's propensity to produce *harmful content* under hazard-eliciting prompts; it does not measure factual accuracy, hallucination rate or confidence calibration, and is attached here and to IRQ-SEC-001/IRQ-SEC-002, expressly **not** to IRQ-MOD-004 or IRQ-MOD-006. A system can score Excellent on AILuminate while confabulating freely — CON-004's accuracy controls (Ji et al. 2023; Magesh et al. 2024, above) remain separately evidenced and are not satisfied by an AILuminate result. v1.0 is single-turn and English-only by its own stated limitations; not FS-certified.
 >
-> **Research basis last reviewed:** 22 October 2026 · **review cadence:** Standard (12 months)
+> [Niu, C., Wu, Y., Zhu, J., Xu, S., Shum, K., Zhong, R., Song, J., Zhang, T., 2024, "RAGTruth: A Hallucination Corpus for Developing Trustworthy Retrieval-Augmented Language Models", Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pp. 10862–10878, arXiv:2401.00396] gives a published method for the fact-check limb of field 11: nearly 18,000 responses from retrieval-augmented models, each labelled at span level against its source text by two annotators, with agreement of 91.8% at the response level. Its tasks are question answering, data-to-text writing and news summarisation, not FS customer content. With Magesh et al. (2024, above), a separate group that codes responses for correctness and groundedness, it is the basis of the ★3 in field 11.
+>
+> **Research basis last reviewed:** 18 November 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -175,6 +177,9 @@ Related IRQs:
 [6] Ghosh, S., et al. (MLCommons), 2025. "AILuminate: Introducing v1.0 of the AI Risk and Reliability Benchmark from MLCommons." arXiv:2503.05731.
     Published: 19 February 2025 (revised 18 April 2025)
     URL: https://arxiv.org/abs/2503.05731 ; https://mlcommons.org/benchmarks/ailuminate/
+[7] Niu, C., Wu, Y., Zhu, J., Xu, S., Shum, K., Zhong, R., Song, J., Zhang, T., 2024. "RAGTruth: A Hallucination
+    Corpus for Developing Trustworthy Retrieval-Augmented Language Models." Proceedings of the 62nd Annual
+    Meeting of the ACL (Volume 1: Long Papers), pp. 10862–10878. arXiv:2401.00396.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -197,6 +202,7 @@ Related IRQs:
 - v1.3.2 (2026-10-03): Corrections listed in 00_Admin/CORRECTION_LOG_2026-10-03.md §8; no change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Field 17 Regulatory Basis — the FCA finalised guidance FG22/5 is cited under its issued title, "Final non-Handbook Guidance for firms on the Consumer Duty", in place of a description set in quotation marks. Form corrections only. No change to the ★ rating or the risk profile.
 - v1.3.4 (2026-10-22): Field 18 Research Basis — the NYC MyCity incident no longer says "RAG grounding", which no source read states; it now says that the city presented the chatbot as drawing on its own business web pages. The two incidents are described as chatbot mis-statements, not generative ones, because the tribunal's decision in Moffatt records that Air Canada gave no information about the nature of its chatbot, and no source read for row 19 states the chatbot's architecture. The two incidents are cited in the reserved form, as register rows 1 and 19, each with the limits of its row; row 19 records no ruling, so the field no longer says that both incidents crystallised as liability. Research-basis review date moved. ★2 unchanged; no change to the risk profile.
+- v1.3.6 (2026-11-22): Field 11 Independent Test — the rating is raised from ★2 to ★3 under the v1.3.6 anchor. The fact-check limb follows published hallucination-measurement methods from separate groups (RAGTruth, ACL 2024; Magesh et al., 2024). The query set, the ground truth and the topic taxonomy are the firm's own, and the control limb has no published method. The ★2 as at FAIAS v1.1.0 stands as register history. Field 14 Reporting Language — the Pass text names ★3 methodology. Fields 18 and 20 — RAGTruth is added. The domain preamble in CANVASES_CON.md is aligned. Research-basis review date moved. No risk axis value or score changes.
 ```
 
 ---

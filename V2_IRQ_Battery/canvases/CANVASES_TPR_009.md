@@ -125,7 +125,9 @@ Residual risk interpretation: Detectability is the dominant concern absent contr
 >
 > **[FAIAS Incident Register, row 91, "Synapse Financial Technologies failure", 2025]** — a non-AI analogue: the Chapter 11 trustee's report records that a banking-as-a-service vendor failed, that about USD 219 million of end-user funds were frozen in May 2024, that the ledger was held on MongoDB and AWS, that "the exact amounts and sources of the shortfall have not been clearly established" and that "no entity to date has agreed to view, investigate or take over the data". After the vendor that held the ledger failed, the reconciliation of end-user balances was difficult, and many end users had still not received their expected funds when the report was filed. Synapse is not an AI vendor, so the link to this question is by analogy, and the statement above that no verified incident of an AI vendor failure is cited stands.
 >
-> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
+> [National Institute of Standards and Technology, 2026, "NIST Cybersecurity Supply Chain Risk Management: Due Diligence Assessment Quick-Start Guide", NIST Special Publication 1326, July 2026, https://doi.org/10.6028/NIST.SP.1326] describes supplier due diligence as "the investigative process of researching and verifying all available, pertinent information about a given supplier or product", and lists financial distress (for example bankruptcies and credit insolvency) among the areas it covers. It informs the financial-standing limb of field 11. Three limits apply. It is scoped to information and communications technology suppliers. Levels of concern are set by "organization-defined risk tolerance". It gives a due-diligence structure, not a benchmark, so the statement in field 11 that no published testing methodology exists for this discipline stands.
+>
+> **Research basis last reviewed:** 18 November 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -152,6 +154,9 @@ Related IRQs:
 [4] Mobley v. Workday, Inc., United States District Court, Northern District of California, Case No. 3:23-cv-00770-RFL.
     Order (permitting agent-theory claim to proceed): 12 July 2024.
     Court docket: https://www.courtlistener.com/docket/66831340/mobley-v-workday-inc/
+[5] National Institute of Standards and Technology, 2026. "NIST Cybersecurity Supply Chain Risk Management:
+    Due Diligence Assessment Quick-Start Guide." NIST Special Publication 1326. July 2026.
+    URL: https://doi.org/10.6028/NIST.SP.1326
 ```
 
 ## 21. Four-Test Validation Footer
@@ -174,4 +179,5 @@ Related IRQs:
 - v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS2/21 cited as its November 2024 version (15 November 2024, updating 29 March 2021); the expectations cited are unchanged.
 - v1.3.3 (2026-10-09): Field 20 References — the URL of EBA/GL/2019/02 points to the Final Report PDF, in place of a page that now shows the EBA third-party risk management guidelines. No change to controls, test, ★ rating or risk profile.
 - v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 91, Synapse Financial Technologies failure, carried as a non-AI analogue). The statement in the field that no verified incident of an AI vendor failure is cited stands. Research-basis review date moved. No change to controls, test, ★1 or risk profile.
+- v1.3.6 (2026-11-22): Fields 18 and 20 — NIST SP 1326 is cited for the financial-standing limb, with three limits: ICT suppliers only; levels of concern set by the organisation; a due-diligence structure, not a benchmark. The statement in field 11 that no published testing methodology exists for this discipline stands. Research-basis review date moved. ★1 · P3 unchanged; no change to the risk profile.
 ```

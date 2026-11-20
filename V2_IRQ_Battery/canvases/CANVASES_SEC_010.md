@@ -143,7 +143,9 @@ integrations, particularly where any single tool server holds broad permission.
 >
 > **[FAIAS Incident Register, row 100, "LiteLLM 1.107.0 supply-chain compromise", 2026]** — CISA lists as exploited an improper-authentication flaw in the gateway's MCP Streamable HTTP endpoint "that could allow an unauthenticated attacker to establish an authenticated MCP session using an arbitrary Bearer token" (CVE-2026-59822, added 2 September 2026). It evidences an exploited weakness in the layer that gives agents access to tools; the catalogue does not describe what attackers did through such a session.
 >
-> **Research basis last reviewed:** 22 October 2026 · **review cadence:** Fast (6 months)
+> [Wang, Z., Gao, Y., Wang, Y., et al., 2026, "MCPTox: A Benchmark for Tool Poisoning Attack on Real-World MCP Servers," AAAI 2026] — a peer-reviewed benchmark, with released code, built on 45 live MCP servers and 353 tools, with 1,348 malicious test cases in which instructions are embedded in a tool's metadata. Its highest average attack success rate for one model is 72.8% (o1-mini). It poisons the description at registration, not mid-session, so it bears on limb (1) of §11 with the assessor's adaptation. [Yang, Y., Gao, C., Wu, D., et al., 2025, "MCPSecBench: A Systematic Security Benchmark and Playground for Testing Model Context Protocols," arXiv:2508.13220] — a technical report from Lingnan University, not peer-reviewed, with released code, that covers 17 attack types, among them tool poisoning and a rug-pull attack. It is the only cited source that tests limb (3), re-approval before an update takes effect (read 17 November 2026).
+>
+> **Research basis last reviewed:** 18 November 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -173,6 +175,11 @@ integrations, particularly where any single tool server holds broad permission.
 [3] Greshake, K., et al., 2023. "Not what you've signed up for..." arXiv:2302.12173.
 [4] DSIT, 2025. "AI Cyber Security Code of Practice." January 2025.
 [5] FCA Handbook, SYSC 8 (Outsourcing).
+[6] Wang, Z., Gao, Y., Wang, Y., et al., 2026. "MCPTox: A Benchmark for Tool Poisoning
+    Attack on Real-World MCP Servers." AAAI 2026. arXiv:2508.14925.
+[7] Yang, Y., Gao, C., Wu, D., et al., 2025. "MCPSecBench: A Systematic Security Benchmark
+    and Playground for Testing Model Context Protocols." Technical report, Lingnan
+    University. arXiv:2508.13220.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -212,6 +219,7 @@ Change Log:
 - v1.3.4 (2026-10-22): Field 18 Research Basis — incident-register citation added in the reserved form (row 100, LiteLLM: CISA lists an exploited authentication flaw in the gateway's MCP endpoint, CVE-2026-59822). Research-basis review date moved. ★2 unchanged; no change to the risk profile.
 - v1.3.4 (2026-10-22): Field 17 Regulatory Basis — the DSIT AI Cyber Security Code of Practice is cited for provision 2.6, which its Implementation Guide applies to agentic systems, in place of principles for agentic systems, which the Code does not state. Field 17 Regulatory Basis — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
 - v1.3.5 (2026-11-27): Fields 8 Assurance Objective, 12 Pass Indicators, 13 Fail Indicators and 14 Reporting Language — the agent cannot use an altered tool description until it is re-approved, as field 9 (re-review before use) and the field 12 version-pinning indicator require; the objective no longer says 'undetected' and names change monitoring as the backstop. Stricter pass bar: a flag alone does not pass; adoption with a flag is a fail. ★2 unchanged; no change to the risk profile.
+- v1.3.6 (2026-11-22): Fields 18 and 20 — MCPTox (AAAI 2026) added for limb (1), tool-description poisoning, and MCPSecBench (a technical report, not peer-reviewed) for limb (3), the rug pull, with their limits. Research-basis review date moved. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

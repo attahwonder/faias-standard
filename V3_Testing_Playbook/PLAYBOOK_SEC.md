@@ -26,10 +26,10 @@ Each Review Canvas in the SEC domain contains a field 11 *Independent Test* — 
 
 | Procedure | Subdomain | ★ (carried) | Method class (METHODOLOGY_STANDARDS §3) |
 |---|---|---|---|
-| TP-SEC-001 Direct prompt injection | E.1 | ★4 | Established Benchmark (OWASP LLM01:2025; MITRE ATLAS AML.T0051) — under review, URO-8 |
+| TP-SEC-001 Direct prompt injection | E.1 | ★3 | Adapted Industry Practice (published jailbreak and prompt-injection research methods; MITRE ATLAS AML.T0051) |
 | TP-SEC-002 Multi-turn / encoded / cross-lingual | E.1 | ★3 | Adapted Industry Practice |
-| TP-SEC-003 Indirect injection via retrieval | E.1 | ★4 | Established Benchmark (OWASP LLM01:2025) — under review, URO-7 |
-| TP-SEC-004 Untrusted content → agent action | E.1 | ★2 | Emerging Practice |
+| TP-SEC-003 Indirect injection via retrieval | E.1 | ★3 | Adapted Industry Practice (published indirect-injection benchmarks; MITRE ATLAS AML.T0051) |
+| TP-SEC-004 Untrusted content → agent action | E.1 | ★3 | Adapted Industry Practice (AgentDojo benchmark design, adapted to FS artefacts and ingestion paths) |
 | TP-SEC-005 Inference-time RAG poisoning | E.1 | ★3 | Adapted Industry Practice (PoisonedRAG) |
 | TP-SEC-006 System prompt / config extraction | E.2 | ★3 | Adapted Industry Practice (OWASP LLM07:2025) |
 | TP-SEC-007 Training-data extraction / MIA | E.2 | ★3 | Adapted Industry Practice |
@@ -38,8 +38,8 @@ Each Review Canvas in the SEC domain contains a field 11 *Independent Test* — 
 | TP-SEC-010 MCP / tool-server compromise | E.3 | ★2 | Emerging Practice |
 | TP-SEC-011 Non-human identity & credentials | E.4 | ★2 | Adapted Industry Practice (mature IAM testing, novel subject) |
 | TP-SEC-012 Third-party misuse register | **E.5** | ★1 | None established |
-| TP-SEC-013 AI-as-control adversarial evolution | **E.6** | ★2 | Adapted Industry Practice (NIST AI 100-2e2025; MITRE ATLAS) |
-| TP-SEC-014 Improper output handling | **E.7** | ★2 | Adapted Industry Practice (OWASP Top 10 for LLM Applications 2025, LLM05:2025) |
+| TP-SEC-013 AI-as-control adversarial evolution | **E.6** | ★3 | Adapted Industry Practice (NIST AI 100-2e2025; MITRE ATLAS) |
+| TP-SEC-014 Improper output handling | **E.7** | ★2 | Adapted Industry Practice (OWASP Web Security Testing Guide, per downstream boundary; LLM05:2025 names the risk) |
 
 ### Sequencing
 
@@ -88,10 +88,10 @@ The procedures, in order:
 
 | Procedure | ★ | Reviewer-days |
 |---|---|---|
-| TP-SEC-001 | ★4 | 4.0 |
+| TP-SEC-001 | ★3 | 4.0 |
 | TP-SEC-002 | ★3 | 5.5 |
-| TP-SEC-003 | ★4 | 5.0 |
-| TP-SEC-004 | ★2 | 6.0 |
+| TP-SEC-003 | ★3 | 5.0 |
+| TP-SEC-004 | ★3 | 6.0 |
 | TP-SEC-005 | ★3 | 4.0 |
 | TP-SEC-006 | ★3 | 3.0 |
 | TP-SEC-007 | ★3 | 5.0 |
@@ -100,7 +100,7 @@ The procedures, in order:
 | TP-SEC-010 | ★2 | 4.0 |
 | TP-SEC-011 | ★2 | 3.0 |
 | TP-SEC-012 | **★1** | 2.0 |
-| TP-SEC-013 | ★2 | 4.5 |
+| TP-SEC-013 | ★3 | 4.5 |
 | TP-SEC-014 | ★2 | 4.0 |
 | **Total** | | **57.5** |
 
@@ -123,3 +123,6 @@ Excludes report drafting, firm-side effort, environment build by the firm, and c
 - v1.3.5 (2026-11-27): TP-SEC-006 — step 8: the TP-SEC-001 baseline comes from the same build as the follow-on set. Staged placeholders can change a prompt or templated content. The baseline items then run again on that build, or the report states the limit. Common pitfalls: real credentials in staging are a reportable finding, and no test that can reach or use them runs (METHODOLOGY_STANDARDS.md §3). The ★3 rating and the reviewer-day estimate are unchanged.
 - v1.3.5 (2026-11-27): TP-SEC-010 — the assurance objective, the T1 threshold and the interpretation follow the canvas: the agent does not use an altered tool description until it is re-approved, and adoption with a flag is a fail. Stricter pass bar. The ★2 rating and the reviewer-day estimate are unchanged.
 - v1.3.5 (2026-11-27): TP-SEC-011 — Preconditions and Common pitfalls: a staging identity shared with production is a finding, and no step that can reach or use that identity runs (METHODOLOGY_STANDARDS.md §3). The ★2 rating and the reviewer-day estimate are unchanged.
+- v1.3.6 (2026-11-22): TP-SEC-005 and TP-SEC-008 — the observations, the interpretations and the affected steps follow their canvases, and each pass bar is stricter. TP-SEC-005: a planted passage must be withheld from the model context before assembly; a flag that lets it reach the model does not pass, and the interpretation (Fail) names that case. TP-SEC-008: DLP must block confidential-category content before transmission, and a flag that lets the transmission proceed does not pass; where an agent can transmit context, its outbound channel reaches only approved destinations, and a marker sent to an unlisted test destination must be blocked. In TP-SEC-008, the test design (G4) asks whether an agent's outbound channel reaches only approved destinations, and step 4 also asks whether DLP blocks or only flags, and inspects the destination allowlist of an agent's outbound channel; the evidence outputs add E12, the allowlist inspection and unlisted-destination test record. No star rating or reviewer-day estimate changes; the time/effort estimate says that the agent outbound-destination measure is not yet estimated.
+- v1.3.6 (2026-11-22): TP-SEC-001 and TP-SEC-003 — the ★ ratings move from ★4 to ★3, as in their canvases (URO-8 and URO-7 resolved). Their method class is Adapted Industry Practice and names the published research that each adapts; OWASP LLM01:2025 is named for the risk and its mitigations, not as a test method. In each, the interpretation (Pass) no longer carries a ★4 caveat, and the common pitfalls & limitations no longer state a ★4 meaning. TP-SEC-004 and TP-SEC-013 — the ★ ratings move from ★2 to ★3, as in their canvases, with the published methods named; the method class of TP-SEC-004 moves from Emerging Practice to Adapted Industry Practice; the interpretation (Pass) of TP-SEC-004 and the common pitfalls & limitations of both name ★3. TP-SEC-014 — the method class and the ★2 honesty pitfall name the OWASP Web Security Testing Guide test for each boundary; LLM05:2025 names the risk; ★2 unchanged. TP-SEC-009 — the backdoor clause of the confidence line names NIST TrojAI and states that no cited procedure is validated on an externally sourced checkpoint, and sub-test S5 of the test design says that it has no benchmark for the checkpoint under test. TP-SEC-002, TP-SEC-005 and TP-SEC-006 no longer compare themselves with a ★4: the interpretation (Pass) of TP-SEC-002 names the ★3 TP-SEC-001 findings, and the confidence lines of TP-SEC-005 and TP-SEC-006 drop the comparison. In this playbook, the confidence and method-class distribution table and the effort table follow. No SEC procedure is rated ★4. No reviewer-day estimate changes.
+- v1.3.6 (2026-11-22): TP-SEC-009 — Test design: the count reads five sub-tests, as S1 to S5 are listed, in place of four. The confidence line names S1 to S3, S4 and S5, and gives S4, bypass-path testing, as the same enforcement check applied to load routes outside the pipeline. The pitfall on averaging names S1 to S3 as the three solid sub-tests. The ★2 rating and the reviewer-day estimate are unchanged.

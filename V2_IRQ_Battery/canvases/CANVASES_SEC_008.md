@@ -60,11 +60,13 @@ Control Breakpoints:
 - **Data loss prevention / prompt-level filtering for confidential content** — [OWASP Top 10 for LLM Applications 2025, LLM02 Sensitive Information Disclosure] — technical controls to detect and block confidential-category content (account numbers, deal terms) before it reaches an external model or logging destination.
 - **Acceptable-use policy technically enforced, not only stated** — [linked IRQ-GOV-005, IRQ-GOV-003] — restrictions on what categories of data may be entered into which AI tools, enforced at the platform level.
 - **Logging/telemetry configuration review as part of AI vendor onboarding** — [Emerging Practice] — no FS-sector-standard checklist yet exists specifically for AI observability-pipeline data capture; review should be added explicitly to vendor due diligence rather than assumed covered by the primary model API contract review.
+- **Deny-by-default destinations for an agent's outbound channel** — [linked IRQ-AGT-003; NCSC, "Managing the cyber risk of agentic AI", blog post, 20 August 2026 (page metadata: modified 24 August 2026), item 4, sub-item c "Restrict network access": "Where possible, deny all inbound and outbound network traffic to the AI agent's environment by default"] — where an agent's tool call or sub-agent can pass context onward (field 3), transmission goes only to approved destinations. DLP filtering is a defence-in-depth layer.
 
 ## 10. Expected Evidence (Tagged L1–L5)
 - Vendor assertion that "your data is not used for training" with no supporting contractual detail — **L1**.
 - Data-flow diagram covering model API, embedding store, and telemetry/observability pipelines — **L2**.
 - Technical inspection confirming DLP/filtering is actually applied pre-transmission and that logging configuration does not capture full prompt/response content by default (or that such capture is contractually and technically controlled) — **L3**.
+- Configuration inspection confirming that an agent's outbound channel allows only approved destinations — **L3**.
 - Staging test: submission of marked confidential test content, verification of whether and where it appears in logs/telemetry outside the firm's control boundary — **L3**.
 - Independent data-flow/security assessment covering AI-adjacent egress paths specifically — **L4**.
 - Contract review evidence (legal/procurement) confirming provider retention and sub-processor terms — **L4/L2 depending on depth**.
@@ -75,7 +77,8 @@ Control Breakpoints:
 ## 12. Pass Indicators
 - Marked test content is not found in any telemetry/logging destination outside the firm's contractual control boundary.
 - Provider contract terms confirmed (not merely asserted) to exclude training/retention use of submitted content, or such use is explicitly consented to and risk-accepted.
-- DLP/filtering demonstrably blocks or flags confidential-category content before transmission.
+- DLP/filtering demonstrably blocks confidential-category content before transmission. A flag that lets the transmission proceed does not pass.
+- Where an agent's tool call or sub-agent can transmit context, an attempt to send marked test content to a destination outside the approved list is blocked.
 - Data-flow map is current, covers all AI-adjacent paths including telemetry, and was independently verified (not self-declared by the platform team).
 
 ## 13. Fail Indicators
@@ -83,9 +86,10 @@ Control Breakpoints:
 - Provider contract is silent or ambiguous on training/retention use, with no compensating technical control.
 - DLP/filtering does not exist or does not cover the categories of confidential data actually in use.
 - Acceptable-use policy exists but is not technically enforced — staff can and do paste confidential content with no system-level prevention.
+- An agent's tool call or sub-agent can transmit context to a destination outside the approved list, or DLP flags confidential-category content and the transmission proceeds.
 
 ## 14. Reporting Language
-**Pass:** "Data-flow mapping across all AI-adjacent paths — model API, embedding store, and telemetry/observability pipelines — confirms no confidential test content egresses to environments outside the firm's contractual control. Provider retention/training terms are contractually verified, and DLP filtering is technically confirmed. Testing rated ★2, reflecting the newer, less-benchmarked nature of telemetry-egress-specific testing; recommend this control area's evidence be refreshed at each material platform or vendor change."
+**Pass:** "Data-flow mapping across all AI-adjacent paths — model API, embedding store, and telemetry/observability pipelines — confirms no confidential test content egresses to environments outside the firm's contractual control. Provider retention/training terms are contractually verified, and DLP filtering is technically confirmed to block confidential-category content before transmission. Where an agent can transmit context, its outbound channel reaches only approved destinations. Testing rated ★2, reflecting the newer, less-benchmarked nature of telemetry-egress-specific testing; recommend this control area's evidence be refreshed at each material platform or vendor change."
 
 **Fail:** "Testing found that submitted content, including simulated confidential markers, appears in [an observability vendor's logs / a telemetry pipeline] not covered by the current data-flow map or vendor contract review. This is an active, uncontrolled confidentiality egress path affecting all users of the platform, not a single incident, and requires immediate remediation of logging configuration and vendor contract terms."
 
@@ -138,7 +142,9 @@ Residual risk: Critical if secondary telemetry pipelines are unreviewed, given t
 >
 > **[FAIAS Incident Register, row 81, "Wiz Research exposed DeepSeek database", 2025]** — researchers found, "[w]ithin minutes", a publicly accessible and unauthenticated ClickHouse database linked to DeepSeek whose exposure "includes over a million lines of log streams containing chat history, secret keys, backend details, and other highly sensitive information". Prompt content sent to a provider persisted in logs reachable outside anyone's control. The missing authentication is a generic access-control failure, which this question does not cover; the point for this question is the persistence of prompt content in the provider's logs. The page shows no firm's data in the logs and no access by anyone other than the researchers. Carried as a secondary row: the source is the researchers' own disclosure, and no statement from DeepSeek was read.
 >
-> **Research basis last reviewed:** 22 October 2026 · **review cadence:** Fast (6 months)
+> [Shao, Y., Li, T., Shi, W., Liu, Y., Yang, D., 2024, "PrivacyLens: Evaluating Privacy Norm Awareness of Language Models in Action," NeurIPS 2024 Datasets and Benchmarks Track] — a peer-reviewed benchmark, with released data and code, that extends privacy-sensitive seeds into agent trajectories and tests whether an agent's final action, such as a sent email, leaks sensitive information. GPT-4 and Llama-3-70B leak it in 25.68% and 38.69% of cases, even with privacy-enhancing instructions. It bears on limb (3) of §11, propagation into a downstream tool call. It does not test provider logs or observability pipelines, limbs (1) and (2), so the absence statement above stands for telemetry egress (read 17 November 2026).
+>
+> **Research basis last reviewed:** 18 November 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -161,6 +167,9 @@ Residual risk: Critical if secondary telemetry pipelines are unreviewed, given t
 [4] FCA Handbook, SYSC 8 (Outsourcing).
 [5] PRA, 2026. "SS1/23 — Model risk management principles for banks."
     April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026).
+[6] Shao, Y., Li, T., Shi, W., Liu, Y., Yang, D., 2024. "PrivacyLens: Evaluating Privacy
+    Norm Awareness of Language Models in Action." NeurIPS 2024 Datasets and Benchmarks
+    Track. arXiv:2409.00138.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -191,6 +200,8 @@ Change Log:
 - v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 81, Wiz Research on an exposed DeepSeek database, carried as a secondary row on the researchers' own disclosure, bounded to the persistence of prompt content in provider logs). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
 - v1.3.4 (2026-10-22): Fields 9, 11, 17, 18 and 21 — the DSIT AI Cyber Security Code of Practice is cited for what it contains: provision 5.1 (an inventory of assets, including their interdependencies and connectivity), with provision 5.4 in Fields 17 and 18, and the Implementation Guide's example of mapping threats and data flows under provision 3.1 in Fields 9 and 18. These replace a data-flow mapping principle, which the Code does not contain. Field 11 no longer names the Code or OWASP LLM02:2025 as the test method; neither sets one out. Research-basis review date moved. Fields 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
+- v1.3.6 (2026-11-22): Fields 9 Expected Controls (Traced), 10 Expected Evidence, 12 Pass Indicators, 13 Fail Indicators and 14 Reporting Language — a new expected control: an agent's outbound channel transmits only to approved destinations (deny by default), as NCSC advises for an agent's environment; DLP filtering is a defence-in-depth layer. Stricter pass bar: DLP must block confidential-category content before transmission, as field 9 already expects; a flag that lets the transmission proceed does not pass. Field 11 untouched; no change to the star rating or the risk profile.
+- v1.3.6 (2026-11-22): Fields 18 and 20 — PrivacyLens (NeurIPS 2024) added for limb (3), propagation into a downstream tool call, with its limit: it tests leakage by an agent's action, not provider logs or observability pipelines. Research-basis review date moved. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

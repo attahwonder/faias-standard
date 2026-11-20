@@ -141,7 +141,7 @@ Residual risk interpretation: This is a severity-and-novelty-dominant IRQ — in
 Related IRQs:
   - IRQ-RES-001 (G.1 Fallback & Degradation: fallback modes should account for shared dependency)
   - IRQ-RES-007 (G.4 Resilience Mapping: AI dependencies mapped into IBS scenario testing, incl. correlated provider failure)
-  - IRQ-GOV-011 (I.4 Documentation, Records & Regulatory: regulatory obligation mapping incl. DORA CTP oversight regime)
+  - IRQ-GOV-011 (I.4 Documentation, Records & Regulatory: regulatory obligation mapping per AI system, incl. its outsourcing and Critical Third Party register status)
   - IRQ-GOV-006 (I.2 Approval, Tiering & Policy: board-approved risk appetite with measurable indicators)
   - IRQ-TPR-001 (F.1 Due Diligence: procurement channel as a concentration input — an intermediary may resolve two nominally distinct providers to one)
   - IRQ-SEC-011 (E.4 Non-human identity and credentials: compromised keys are the mechanism by which a recorded dependency and the actual one diverge)
@@ -187,6 +187,7 @@ Related IRQs:
 - v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 87, Windsurf statement on a provider's withdrawal of model capacity, for substitute capacity that was not enough at that length of notice). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
 - v1.3.3 (2026-10-09): Fields 18 and 20 — the Financial Stability Report of July 2025 is no longer cited as a source on AI (the report has no section on AI, mentions AI only in passing, does not discuss cloud provider concentration, and points to the April 2025 Financial Stability in Focus), and its reference entry is removed. The April 2025 Financial Stability in Focus remains the evidentiary basis for AI and cloud provider concentration. Research-basis review date moved. No change to the ★ rating or the risk profile.
 - v1.3.5 (2026-11-27): Fields 5 Potential Consequences and 6 Failure Chain — state action (a sanction, an export control or another government order) named as a cause of the loss of a provider; it can reach any provider in any jurisdiction. EBA/GL/2019/02 para 68(d) and DORA Art. 28(8) are the basis; they name no sanction, export control or government order as a cause of the loss of a provider, and no event of this cause at a financial-services firm is cited. Field 20 References — entry [4] added for EBA/GL/2019/02. Field 11 untouched; ★2 unchanged; no change to the risk profile.
+- v1.3.6 (2026-11-22): Field 19 Related IRQs — the IRQ-GOV-011 entry names what that canvas maps, in place of a DORA CTP oversight regime. The IRQ-GOV-011 canvas does not name DORA. Field 11 untouched; ★2 unchanged; no change to the risk profile.
 ```
 
 ---

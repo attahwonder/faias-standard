@@ -438,6 +438,7 @@ Component 6 presents the structured safety argument (an assurance case, ISO/IEC 
 3. "Failure modes are detectable before customer impact"
 4. "Escalation and override mechanisms prevent escalation failures"
 5. "Monitoring alerts will detect operating envelope drift"
+6. "Consequential agent actions are gated before they execute (CLM-12); failure detection is the backstop"
 
 **Per claim: Argument chain**
 ```

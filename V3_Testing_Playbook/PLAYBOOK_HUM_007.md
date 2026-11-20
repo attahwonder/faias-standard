@@ -2,7 +2,7 @@
 
 **IRQ:** IRQ-HUM-007 — Explanation Inadequacy Undermining Independent Judgement.
 **Assurance objective:** AO-HUM-007 — explanations provided to human decision-makers shall be demonstrated, through testing with the actual user population, to be sufficient in content, faithfulness and timeliness to support genuine independent judgement, not merely to be present or superficially comprehensible.
-**Confidence:** ★2 (carried unchanged). Method class: Emerging Practice — application-grounded interpretability evaluation per Doshi-Velez & Kim's framework is credible published methodology, but the specific application (comparing catch-rate impact of explanation presence and quality in an FS review context) is bespoke test design with no agreed FS benchmark, heavily dependent on case-set and explanation-variant design.
+**Confidence:** ★3 (carried from canvas; raised from ★2 at v1.3.6). Method class: Adapted Industry Practice / Emerging Practice — the two-arm seeded-error test adapts a published design to the firm's own reviewers and cases (Adapted Industry Practice), and the comprehension interview has no published method (Emerging Practice); application-grounded interpretability evaluation per Doshi-Velez & Kim's framework, with the two-arm seeded-error design published and used by independent research groups (Buçinca et al., CSCW 2021; Bansal et al., CHI 2021) on crowd workers and low-stakes tasks; its application in an FS review context has no agreed FS benchmark and depends heavily on case-set and explanation-variant design.
 
 ### Preconditions
 - **TP-HUM-001 completed**, with its seeded-error case set available for reuse. This procedure is a two-arm extension of that study; building a fresh case set is wasteful and makes the results non-comparable.
@@ -87,7 +87,7 @@ This distinction is the analytical heart of the interview limb and the rubric mu
 - **Comprehension interviews scored by one reviewer** against an unstated rubric — the same weakness as TP-HUM-006's attribution scoring, and the same fix.
 - **Generic usability participants.** The canvas is explicit; they do not satisfy the objective.
 - **Assuming faithfulness.** Where the faithfulness limb cannot run technically, say so and assess caveats instead; do not silently treat the explanation as accurate.
-- **★2 honesty.** Bespoke design on a credible framework. Report as professional assessment.
+- **★3 honesty.** A published design, applied to the firm's own reviewers and cases. Report as professional assessment.
 
 ### Time/effort estimate
 **6.0 reviewer-days** — 0.5 design pre-registration and ethics; 0.5 case-set adaptation from TP-HUM-001 (reuse saves approximately 1.5 days); 0.5 variant configuration and verification; 1.5 session facilitation across arms; 1.0 comprehension interviews and dual scoring; 0.75 faithfulness limb; 0.25 timeliness analysis; 1.0 analysis and write-up. Firm-side participant time additional and substantial (12–20 participants).

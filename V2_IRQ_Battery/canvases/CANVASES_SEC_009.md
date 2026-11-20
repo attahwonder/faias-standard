@@ -75,7 +75,7 @@ Control Breakpoints:
 - Operational evidence (comparable deployment) of intake-scanning rejections or any confirmed incident — **L5**.
 
 ## 11. Independent Test
-> In an isolated non-production environment: (1) attempt to load a benign, clearly-marked test artefact packaged in an unsafe serialisation format, and confirm the pipeline rejects or safely handles it without code execution; (2) attempt to load an artefact with a tampered or missing signature, and confirm rejection; (3) attempt to source an artefact from outside the approved trusted-registry list, and confirm the intake process blocks it. Where feasible, run a basic backdoor-probing test on a sample externally-sourced checkpoint (targeted adversarial input search for anomalous trigger-conditioned behaviour), acknowledging this sub-test is Emerging Practice. Methodology per OWASP LLM03:2025 (Supply Chain) and general software-supply-chain-security testing analogues (NIST SP 800-53 SR control family). No production infrastructure or real malicious payloads used; benign test artefacts only. — **★2 Confidence — as at FAIAS v1.1.0 (25 August 2026)** (the format/signing/registry-enforcement sub-tests draw on mature general software-supply-chain security practice, giving reasonable confidence, but the backdoor-detection sub-test has no established methodology or benchmark specific to AI model artefacts — overall rating reflects this weaker element, per the instruction to rate honestly rather than average optimistically).
+> In an isolated non-production environment: (1) attempt to load a benign, clearly-marked test artefact packaged in an unsafe serialisation format, and confirm the pipeline rejects or safely handles it without code execution; (2) attempt to load an artefact with a tampered or missing signature, and confirm rejection; (3) attempt to source an artefact from outside the approved trusted-registry list, and confirm the intake process blocks it. Where feasible, run a basic backdoor-probing test on a sample externally-sourced checkpoint (targeted adversarial input search for anomalous trigger-conditioned behaviour), acknowledging this sub-test is Emerging Practice. Methodology per OWASP LLM03:2025 (Supply Chain) and general software-supply-chain-security testing analogues (NIST SP 800-53 SR control family). No production infrastructure or real malicious payloads used; benign test artefacts only. — **★2 Confidence — as at FAIAS v1.1.0 (25 August 2026)** (the format/signing/registry-enforcement sub-tests draw on mature general software-supply-chain security practice, giving reasonable confidence, but the backdoor-detection sub-test has no cited procedure that is validated on an externally sourced checkpoint (NIST's TrojAI benchmark scores trojan detectors on its own reference models, mostly not large language models; field 18) — overall rating reflects this weaker element, per the instruction to rate honestly rather than average optimistically).
 
 ## 12. Pass Indicators
 - Unsafe-format, unsigned, and untrusted-registry artefacts are all demonstrably rejected by the intake pipeline in staging.
@@ -90,7 +90,7 @@ Control Breakpoints:
 - Backdoor-probing capability does not exist at all, and no compensating control (e.g. behavioural monitoring in production) is in place for externally-sourced checkpoints.
 
 ## 14. Reporting Language
-**Pass:** "Artefact intake pipeline testing confirms rejection of unsafe-format, unsigned, and untrusted-source model artefacts, with enforcement verified to apply to all load paths. All currently deployed artefacts are confirmed sourced from the approved trusted registry with valid provenance. Testing rated ★2 overall — the format/signing/registry controls are well-evidenced against mature supply-chain-security practice, but the backdoor-probing sub-test remains Emerging Practice with no established benchmark; this caveat should accompany any pass conclusion."
+**Pass:** "Artefact intake pipeline testing confirms rejection of unsafe-format, unsigned, and untrusted-source model artefacts, with enforcement verified to apply to all load paths. All currently deployed artefacts are confirmed sourced from the approved trusted registry with valid provenance. Testing rated ★2 overall — the format/signing/registry controls are well-evidenced against mature supply-chain-security practice, but the backdoor-probing sub-test remains Emerging Practice with no benchmark for the checkpoint under test; this caveat should accompany any pass conclusion."
 
 **Fail:** "Testing found that [an unsafe-format / unsigned / untrusted-source] artefact was successfully loaded without rejection via [the identified path]. This represents an active model-supply-chain compromise vector requiring immediate remediation of the intake pipeline before further model deployment."
 
@@ -149,7 +149,9 @@ silent-by-construction nature of a successful backdoor.
 >
 > **[FAIAS Incident Register, row 100, "LiteLLM 1.107.0 supply-chain compromise", 2026]** — the developer records that an attacker ran its release workflow against a look-alike repository, "which signed and published the poisoned artifacts", although the pipeline used Trusted GitHub Publishers, immutable tags and signed images. It evidences a poisoned dependency that carried the pipeline's own signature because the pipeline itself was compromised; the artefact was a Python package, not a model file.
 >
-> **Research basis last reviewed:** 22 October 2026 · **review cadence:** Fast (6 months)
+> [NIST, "TrojAI," pages.nist.gov/trojai, accessed 17 November 2026] — a NIST programme that scores submitted trojan detectors on reference AI models, a known share of which carry a hidden trigger. Detectors are scored by log score (cross-entropy) on sequestered test and holdout data, and the metric code is released in its test harness. Three rounds (llm-pretrain-apr2024, llm-instruct-oct2024 and mitigation-llm-instruct-oct2024) use large language models; the other rounds use image, smaller text, reinforcement-learning or cyber models. It scores detector software on its own reference models. The pages read (Overview and Data, 17 November 2026) show no detector validated on an externally sourced checkpoint, which is the object of the backdoor sub-test in §11.
+>
+> **Research basis last reviewed:** 18 November 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -179,6 +181,8 @@ silent-by-construction nature of a successful backdoor.
     github.com/security-pride/MalHug.
 [7] NCSC, 2024. "Machine learning principles," 2.1 "Secure your supply chain." Version 2.0, 22 May 2024.
     https://www.ncsc.gov.uk/collection/machine-learning-principles/secure-development/secure-supply-chain
+[8] NIST. "TrojAI." https://pages.nist.gov/trojai/. Test harness:
+    https://github.com/usnistgov/trojai-test-harness. Accessed 17 November 2026.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -214,6 +218,7 @@ Change Log:
 - v1.3.3 (2026-10-09): Field 17 Regulatory Basis — the NCSC absence marker narrowed: NCSC Machine learning principles 2.1, Secure your supply chain (Version 2.0, published 22 May 2024), is cited as NCSC guidance on the machine learning model supply chain, and the absence claim is limited to a standalone NCSC publication on model-artefact supply-chain integrity. Field 20 References — entry [7] added. No change to controls, test, ★ rating or risk profile.
 - v1.3.4 (2026-10-22): Field 18 Research Basis — incident-register citation added in the reserved form (row 100, LiteLLM 1.107.0: a poisoned package that a compromised release pipeline signed and published). Research-basis review date moved. Field 9 Expected Controls — OWASP LLM03:2025 is cited for model provenance and integrity checks; its prevention and mitigation strategies name no serialisation format, which the canvas states as its own control. Fields 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
 - v1.3.5 (2026-11-27): Field 9 Expected Controls (Traced) — a publisher-stated control added from a vendor threat report (Google Threat Intelligence Group and Mandiant, 2 November 2026): vulnerability management extended to model proxy and routing gateways, with a pointer to incident-register row 100, which field 18 already cites. Field 11 untouched; ★2 unchanged; no change to the risk profile.
+- v1.3.6 (2026-11-22): Field 11 Independent Test — the ★ rationale no longer says that the backdoor sub-test has no established methodology or benchmark for AI model artefacts: NIST's TrojAI benchmark scores trojan detectors on its own reference models. No cited source validates a procedure on an externally sourced checkpoint, so the weaker element and the ★2 stand. Field 14 Reporting Language — the Pass text says that the backdoor-probing sub-test has no benchmark for the checkpoint under test, not that it has no established benchmark. Fields 18 and 20 — TrojAI added, with its limits. Research-basis review date moved. No change to the risk profile.
 ```
 
 ---

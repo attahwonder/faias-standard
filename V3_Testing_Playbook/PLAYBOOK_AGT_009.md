@@ -36,6 +36,7 @@
 10. Inspect version control for the current production prompt/scaffold set: is there a documented, approved change history? **Record:** the history, or its absence.
 11. Determine whether regression testing runs automatically before a prompt change reaches production, and whether results are retained and linked to the version. **Record:** the evidence.
 12. Test attribution: simulate a behavioural drift signal and determine whether monitoring can distinguish a prompt-driven shift from genuine model drift. **Record:** the monitoring output and the determination.
+13. Inspect the runtime configuration: before each run, are the prompt, template and scaffold in use checked against the digest of the approved version, and does a mismatch stop the run? Can the agent, or content it processes, write to these artefacts? **Record:** the check, where it runs, and any write path found.
 
 ## Observations & measures
 
@@ -46,11 +47,12 @@
 | Per-edit behavioural magnitude | Report against the noise floor; **reviewer judgement — no established threshold** | Canvas: no external benchmark |
 | Routes bypassing version control and regression testing | **Zero** — no edit deployable via a bypass path (canvas pass indicator) | Canvas |
 | Monitoring can attribute drift to a specific prompt-version change | Attribution possible (canvas pass indicator) | Canvas |
+| Run-time check of the prompt, template and scaffold against the approved digest | Present before each run; a mismatch stops the run (canvas pass indicator) | Canvas |
 
 ## Interpretation
 
-- **Pass** — every prompt and scaffold artefact is under version control with a documented, approved change history; regression testing runs automatically before any prompt change reaches production, with results retained and linked to the version; monitoring can attribute a behavioural drift signal to a specific prompt-version change; no prompt change in the test set could be deployed via a path bypassing version control and regression testing.
-- **Fail** — any prompt or scaffold change can be deployed to production without version control, approval or regression testing (a "content" path bypassing governance); behavioural regression testing is not run, or runs only for code and model releases and misses prompt-only changes; monitoring cannot distinguish a prompt-driven behavioural shift from genuine model drift, misattributing the cause during incident investigation; no documented change history exists for the current production prompt/scaffold set.
+- **Pass** — every prompt and scaffold artefact is under version control with a documented, approved change history; regression testing runs automatically before any prompt change reaches production, with results retained and linked to the version; monitoring can attribute a behavioural drift signal to a specific prompt-version change; no prompt change in the test set could be deployed via a path bypassing version control and regression testing; configuration inspection shows that the runtime checks the prompt, template and scaffold in use against the approved digest before each run and stops the run on a mismatch.
+- **Fail** — any prompt or scaffold change can be deployed to production without version control, approval or regression testing (a "content" path bypassing governance); behavioural regression testing is not run, or runs only for code and model releases and misses prompt-only changes; monitoring cannot distinguish a prompt-driven behavioural shift from genuine model drift, misattributing the cause during incident investigation; no documented change history exists for the current production prompt/scaffold set; no run-time check compares the prompt, template and scaffold in use with the approved version.
 - **Partial** — the system prompt is version-controlled while tool-use instructions or reasoning scaffolds are not; or version control exists but regression testing is manual and inconsistently applied. Report by artefact type and by route — a single ungoverned route defeats the control regardless of how well the others are managed.
 
 ## Evidence outputs
@@ -67,6 +69,7 @@
 | Per-edit, per-route governance determination | L4 |
 | Version-control change history for the production set | L2–L3 |
 | Drift-attribution test record | L4 |
+| Run-time integrity check configuration finding | L3 |
 
 ## Common pitfalls & limitations
 
@@ -79,7 +82,7 @@
 
 ## Time/effort estimate
 
-**3 reviewer-days** (0.5 interviews and route enumeration; 0.5 noise-floor establishment; 1 per-edit regression execution and magnitude analysis; 0.5 governance determination and version-control review; 0.5 attribution test and reporting).
+**3 reviewer-days** (0.5 interviews and route enumeration; 0.5 noise-floor establishment; 1 per-edit regression execution and magnitude analysis; 0.5 governance determination and version-control review, with the step 13 run-time digest check not yet estimated; 0.5 attribution test and reporting).
 
 ---
 ---

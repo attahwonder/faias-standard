@@ -195,10 +195,10 @@ We applied the FAIAS independent assurance standard, which comprises 7 interlink
 
 | # | Core Claim | Material? | Test Status | Evidence Level | Confidence (★) | Residual Risk | Opinion Impact |
 |---|---|---|---|---|---|---|---|
-| 1 | [Claim text; e.g., "System accesses only authorised data sources"] | Yes | Passed | L4–L5 | ★4 | Low | Supports Proceed |
-| 2 | [Claim text] | Yes | Passed | L4 | ★4 | Low | Supports Proceed |
+| 1 | [Claim text; e.g., "System accesses only authorised data sources"] | Yes | Passed | L4–L5 | ★3 | Low | Supports Proceed |
+| 2 | [Claim text] | Yes | Passed | L4 | ★3 | Low | Supports Proceed |
 | 3 | [Claim text] | Yes | Inconclusive | L2–L3 | ★2 | Medium | Condition required |
-| 4 | [Claim text] | Yes | Passed | L3–L4 | ★4 | Low–Med | Supports Proceed |
+| 4 | [Claim text] | Yes | Passed | L3–L4 | ★3 | Low–Med | Supports Proceed |
 | 5 | [Claim text] | No | [Minor finding] | L2 | ★2 | Low | Lifecycle monitoring |
 
 **Interpretation:**
@@ -206,7 +206,7 @@ We applied the FAIAS independent assurance standard, which comprises 7 interlink
 - **Passed w/ Conditions:** IRQs supporting this claim passed with caveats; condition specified in Section E (e.g., "confirm threshold tuning")
 - **Inconclusive:** Insufficient evidence or emerging practice; no published benchmark; condition specified or escalated to lifecycle monitoring
 - **Evidence Level:** L1 = assertion; L2 = documentation; L3 = demonstration, such as a design walkthrough or a staging test; L4 = independent evidence; L5 = operational evidence (ASSURANCE_MODEL.md §5)
-- **Confidence (★):** maturity of the test method (ASSURANCE_MODEL.md §6). ★5 = published, widely adopted methodology with a settled financial-services benchmark (no FAIAS test is rated ★5); ★3 = credible research methods, no agreed benchmark; ★1 = expert judgment only. The ★ values in the table are illustrative and are not the register's: at this version the two tests rated ★4 (IRQ-SEC-001 and IRQ-SEC-003) support CLM-09 only, so no other claim can show ★4. On what the register's ratings support at this version, see ASSURANCE_ARCHITECTURE.md, the assurance-level rule
+- **Confidence (★):** maturity of the test method (ASSURANCE_MODEL.md §6). ★5 = published, widely adopted methodology with a settled financial-services benchmark (no FAIAS test is rated ★5); ★3 = credible research methods, no agreed benchmark; ★1 = expert judgment only. The ★ values in the table are illustrative and are not the register's: at this version no test is rated ★4 (REGISTER_STATS.md), so no claim in an issued opinion can show ★4. On what the register's ratings support at this version, see ASSURANCE_ARCHITECTURE.md, the assurance-level rule
 - **Residual Risk:** After control implementation, what risk remains? Scale: Low / Medium / High
 
 ---
@@ -351,7 +351,7 @@ State the assurance level obtained in the conclusion. Reasonable assurance is av
 
 *The three paragraphs below are working notes for the engagement file. They are not reproduced in the issued report, which carries the statement on the basis of the review in form (A) or (B), set out below.*
 
-> [High] We have high confidence that we have identified all material AI risks in this deployment. Assessment methodology is mature (published benchmarks, established standards), evidence base is primarily L4–L5 (independent testing, operational data), testing confidence is in the High band (at this version no tier-prescribed scope reaches it), and coverage spans all material IRQs. Residual uncertainty is low and attributable to inherent frontier risks without published defences.
+> [High] We have high confidence that we have identified all material AI risks in this deployment. Assessment methodology is mature (published benchmarks, established standards), evidence base is primarily L4–L5 (independent testing, operational data), testing confidence is in the High band (at this version no engagement can reach it), and coverage spans all material IRQs. Residual uncertainty is low and attributable to inherent frontier risks without published defences.
 >
 > [Medium] We have medium confidence in our risk identification. Assessment includes some emerging-practice controls (no published gold standard), evidence is mixed (L2–L3 design review plus L4 testing), testing methodology is partially novel (mean ★ in the Medium band), and time constraints prevented comprehensive coverage of lower-priority IRQs. Residual risk may exist in untested areas.
 >
@@ -518,10 +518,10 @@ For each material finding:
 | Confidence Level | # Tests | Method | Benchmark Used? | Pass Rate | Notes |
 |---|---|---|---|---|---|
 | ★5 (Settled financial-services benchmark) | 0 | — | — | — | No FAIAS test is rated ★5 |
-| ★4 (Published, partially standardised) | 2 | Published methodology, partially standardised | Partial | 100% (2 of 2) | Rating stated without a maturity caveat; each canvas's own caveat still stated |
-| ★3 (Credible research, no agreed benchmark) | 36 | Research-grounded method; reviewer-designed metrics and thresholds | No | 97% (35 of 36) | Professional-assessment caveat at each conclusion |
-| ★2 (Bespoke method) | 46 | Institution-specific design; professional judgment dominant | No | 91% (42 of 46) | Caveat at each conclusion; conditions specified |
-| ★1 (Very early research) | 6 | Expert review only; novel or unvalidated method | No | 83% (5 of 6) | Expert opinion, not evidence; escalation flags recommended |
+| ★4 (Published, partially standardised) | 0 | — | — | — | No FAIAS test is rated ★4 at this version |
+| ★3 (Credible research, no agreed benchmark) | 38 | Research-grounded method; reviewer-designed metrics and thresholds | No | 97% (37 of 38) | Professional-assessment caveat at each conclusion |
+| ★2 (Bespoke method) | 47 | Institution-specific design; professional judgment dominant | No | 91% (43 of 47) | Caveat at each conclusion; conditions specified |
+| ★1 (Very early research) | 5 | Expert review only; novel or unvalidated method | No | 80% (4 of 5) | Expert opinion, not evidence; escalation flags recommended |
 
 #### J.5 Regulatory Documents Cited
 

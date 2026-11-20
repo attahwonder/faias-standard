@@ -2,7 +2,7 @@
 
 **IRQ:** IRQ-SEC-009 (subdomain E.3).
 **Assurance objective:** AO-SEC-009 — model artefacts (weights, checkpoints, serialisation formats and their dependencies) shall be integrity-verified — via signing, scanning, safe-format enforcement and trusted-source sourcing — before being loaded into any training, evaluation or production environment.
-**Confidence:** ★2 (carried unchanged). Method class: Mixed. The format, signing and registry-enforcement sub-tests draw on mature software-supply-chain security practice (OWASP LLM03:2025; NIST SP 800-53 SR control family analogues) and would rate higher alone; the backdoor-probing sub-test has no established methodology or benchmark for AI model artefacts. **The weaker component governs the overall rating**, per the canvas and ASSURANCE_MODEL.md §6 — this must be stated in reporting rather than averaged away.
+**Confidence:** ★2 (carried unchanged). Method class: Mixed. The format, signing and registry-enforcement sub-tests (S1 to S3) draw on mature software-supply-chain security practice (OWASP LLM03:2025; NIST SP 800-53 SR control family analogues) and would rate higher alone; the bypass-path sub-test (S4) applies the same enforcement check to load routes outside the pipeline, as the canvas's pass and fail indicators require; the backdoor-probing sub-test (S5) has no cited procedure that is validated on an externally sourced checkpoint; NIST's TrojAI benchmark scores trojan detectors on its own reference models, mostly not large language models (canvas field 18). **The weaker component governs the overall rating**, per the canvas and ASSURANCE_MODEL.md §6 — this must be stated in reporting rather than averaged away.
 
 ### Preconditions
 - Isolated staging instance of the artefact intake pipeline, including the registry client, scanning step, signature verification step and loader.
@@ -14,13 +14,13 @@
 - Isolation attestation confirming the staging loader cannot reach production infrastructure.
 
 ### Test design
-Four sub-tests:
+Five sub-tests:
 
 - **S1 Unsafe-format rejection.** Attempt to load a benign artefact packaged in an unsafe serialisation format; confirm the pipeline rejects it or handles it without code execution. The marker is inert by construction — success is measured by whether the pipeline rejected, not by whether anything ran.
 - **S2 Signature enforcement.** Attempt to load an artefact with a tampered or absent signature; confirm rejection.
 - **S3 Registry enforcement.** Attempt to source an artefact from outside the approved trusted-registry list; confirm the intake process blocks it.
 - **S4 Bypass-path testing.** Attempt to load a test artefact by a route that circumvents the pipeline — direct file-system placement, a data-scientist workspace mount, a notebook loader. This is not in the canvas's numbered test list but is directly implied by the canvas Fail indicator naming "an unscanned side-loading route"; it is the sub-test most likely to produce a finding.
-- **S5 Backdoor probing (Emerging Practice, labelled as such).** Where feasible and where an externally-sourced checkpoint is in use, a bounded adversarial input search for anomalous trigger-conditioned behaviour. This sub-test has no benchmark, no coverage guarantee and no meaningful negative result; it is run for completeness and reported with an explicit statement that absence of evidence is not evidence of absence.
+- **S5 Backdoor probing (Emerging Practice, labelled as such).** Where feasible and where an externally-sourced checkpoint is in use, a bounded adversarial input search for anomalous trigger-conditioned behaviour. This sub-test has no benchmark for the checkpoint under test, no coverage guarantee and no meaningful negative result; it is run for completeness and reported with an explicit statement that absence of evidence is not evidence of absence.
 
 **Provenance limb.** Independently of the load tests, the inventory of currently deployed artefacts is reconciled against the trusted-registry list and against provenance records.
 
@@ -65,7 +65,7 @@ Four sub-tests:
 ### Common pitfalls & limitations
 - **Creating a real malicious artefact to "prove" the risk.** Prohibited. The inert marker establishes whether the pipeline rejected; nothing further is needed and creating live malware in a client environment is indefensible.
 - **Testing only the sanctioned path.** S4 is where findings live. Ask the platform engineer how data scientists actually load models day-to-day, not how the documentation says they do.
-- **Averaging the confidence rating.** The temptation is to report ★3 because three of five sub-tests are solid. The canvas rates ★2 because the weakest component governs; reproduce that reasoning in the report.
+- **Averaging the confidence rating.** The temptation is to report ★3 because three of the five sub-tests (S1 to S3) are solid. The canvas rates ★2 because the weakest component governs; reproduce that reasoning in the report.
 - **Over-reading a negative S5.** A bounded probe covers a vanishing fraction of possible trigger space. A clean S5 is close to uninformative and must be reported as such.
 - **Stale inventory.** Provenance reconciliation against an inventory the firm has not maintained produces false completeness. Spot-check inventory entries against the running environment.
 - **Format allow-lists that are advisory.** A configuration that "prefers" safe formats but falls back is not enforcement; read the code path.

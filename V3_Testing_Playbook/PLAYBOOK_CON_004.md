@@ -4,8 +4,8 @@
 **Procedure ID:** TP-CON-004
 **IRQ:** IRQ-CON-004 — Uncontrolled Generative Mis-Statement in Customer-Facing Content
 **Assurance objective:** AO-CON-004 — Customer-facing generative content shall be subject to a pre-delivery accuracy control proportionate to the materiality of the content, such that mis-statements about products, terms, fees or rights are detected before customer delivery.
-**★ Confidence (carried from canvas, unchanged):** ★2 — hallucination/accuracy testing draws on emerging but credible research methods; no single agreed FS benchmark exists for customer-facing generative accuracy testing, and the materiality-topic taxonomy used is bespoke to the firm.
-**Method classification:** Emerging Practice (No Established Benchmark), informed by published hallucination-measurement research.
+**★ Confidence (carried from canvas; raised from ★2 at v1.3.6):** ★3 — the fact-check of sampled responses follows published hallucination-measurement methods used by separate groups (RAGTruth, ACL 2024; Magesh et al., 2024); no single agreed FS benchmark exists for customer-facing generative accuracy testing; the query set, the ground truth and the materiality-topic taxonomy are the firm's, and whether the pre-delivery control would have caught each mis-statement is professional judgement.
+**Method classification:** Adapted Industry Practice / Emerging Practice — the fact-check adapts published hallucination-measurement methods (Adapted Industry Practice); the control limb has no published method (Emerging Practice).
 
 ## 2. Preconditions
 **Environment:** Non-production instance of the generative customer-facing system at the production model version, prompt version and retrieval configuration. Configuration parity must be verified and recorded — a staging instance pointed at a different index produces a meaningless accuracy figure.

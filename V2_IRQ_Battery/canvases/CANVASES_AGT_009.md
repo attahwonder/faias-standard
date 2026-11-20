@@ -68,11 +68,13 @@ Control Breakpoints:
 - **Monitoring capable of attributing behavioural drift to its source (model, code, or prompt/config)** — [linked IRQ-GOV-008, IRQ-RES-005/006; PRA SS1/23 ongoing monitoring principle] — drift-detection tooling distinguishes which layer changed, rather than assuming model version stability implies behavioural stability.
 - **Explicit caveat on reliance on model-stated reasoning as an oversight control** — [Anthropic, "Reasoning Models Don't Always Say What They Think," Apr 2025; OpenAI, "Detecting Misbehavior in Frontier Reasoning Models," Mar 2025] — no control in front of a consequential agent step rests on chain-of-thought inspection alone (IRQ-MOD-009). Stated reasoning may serve as evidence, with the documented caveat that it may not faithfully reflect actual drivers of behaviour.
 - **Change-log linkage between prompt versions and observed behavioural test results** — [linked IRQ-GOV-009 documentation standard] — each prompt version is traceable to the regression evidence that supported its approval.
+- **Run-time integrity check of behaviour-bearing artefacts** — [OWASP, AI Security Verification Standard (AISVS) v1.01, 2026, requirement 9.2.5: a self-modification capability such as prompt rewriting is "restricted by boundaries that are enforced by the runtime and cannot be changed or bypassed by the agent"] — before each run, the runtime checks the prompt, template and scaffold in use against the digest (a cryptographic hash) of the approved version. A mismatch stops the run. Neither the agent nor content it processes can write to these artefacts. Each artefact is an approved, change-controlled record (first bullet above), so a write outside that path changes the record outside the run, as the worked example in field 10 shows.
 
 ## 10. Expected Evidence (Tagged L1–L5)
 - Assertion that "prompts are just configuration, low risk" — **L1** (flag: materiality not assessed).
 - Documentation of the prompt/scaffold inventory, version history and change-approval process — **L2**.
 - Repository/config inspection confirming prompts are actually stored under version control with access-controlled change history (not edited ad hoc in a live console) — **L3**.
+- Configuration inspection confirming that the runtime checks each prompt, template and scaffold against the digest of its approved version before each run, and stops the run on a mismatch — **L3**.
 - Staging regression test results comparing behaviour before/after a representative prompt change, across the defined test suite — **L3**.
 - Independent audit confirming change-control discipline is applied consistently across all agents, not only flagship deployments — **L4**.
 - Production monitoring data: behavioural drift signals correlated with prompt-version change timestamps, demonstrating attribution capability — **L5**.
@@ -80,19 +82,21 @@ Control Breakpoints:
 **Dated worked example, added at the September 2026 refresh — behaviour-altering content changed outside any configuration-control path.** A disclosed vulnerability in a locally deployed agent stack (CVE-2026-65105, reported 25 August 2026) let a remote page rewrite the Go template that renders the structured message array into the raw text the model actually receives: the rewrite "survives client-supplied system prompts" and "is invisible to the user: the model's name, size, metadata, and capabilities appear unchanged", persisting across all subsequent conversations. The entry path was an inference server bound to a non-loopback address, where "the Host header validation is skipped entirely", combined with DNS rebinding [Cyera, "Drive-By Agent Hijacking", 25 August 2026]. Two things a reviewer should take from it: behaviour-altering content is not only the system prompt a firm wrote — it includes the rendering layer beneath it, which this canvas's inventory (§10, L2) will not list unless it is asked to; and a change of this kind produces no prompt-version timestamp for the L5 attribution evidence to correlate against. The rewritten template also persists across every subsequent conversation, so the poisoned artefact behaves as retained state between sessions — which is IRQ-AGT-008's subject, cross-referenced there rather than re-tested here.
 
 ## 11. Independent Test
-> In a non-production environment, apply a set of representative, individually plausible prompt edits (e.g. rewording a risk-triage instruction, adjusting a disclosure template, modifying a tool-use instruction) one at a time to a staging copy of the agent. Run the firm's standard behavioural regression suite before and after each edit and measure the magnitude of behavioural change per edit. Separately, confirm whether the change-management system in use for prompts would have required version control, testing and approval for each edit, or whether it could have been deployed through a lighter-weight content path. Methodology informed by Chen et al.'s empirical demonstration that LLM behaviour drifts materially with configuration change over time. No production customers or live traffic used. — **★2 Confidence — as at FAIAS v1.1.0 (25 August 2026)** (Chen et al. provides credible empirical grounding for prompt/config sensitivity; the specific test of "would this change have bypassed governance" is bespoke to the firm's own change-management tooling, with no external benchmark).
+> In a non-production environment, apply a set of representative, individually plausible prompt edits (e.g. rewording a risk-triage instruction, adjusting a disclosure template, modifying a tool-use instruction) one at a time to a staging copy of the agent. Run the firm's standard behavioural regression suite before and after each edit and measure the magnitude of behavioural change per edit. Separately, confirm whether the change-management system in use for prompts would have required version control, testing and approval for each edit, or whether it could have been deployed through a lighter-weight content path. Methodology informed by Chen et al.'s empirical demonstration that LLM behaviour drifts materially with configuration change over time. No production customers or live traffic used. — **★2 Confidence — as at FAIAS v1.3.6 (22 November 2026)** (Chen et al. provides credible empirical grounding for prompt/config sensitivity; the specific test of "would this change have bypassed governance" is bespoke to the firm's own change-management tooling, with no external benchmark; the ★2 as at FAIAS v1.1.0 stands as register history; ratings issued under different anchors are not comparable numbers (§6A.1)).
 
 ## 12. Pass Indicators
 - Every prompt/scaffold artefact is under version control with a documented, approved change history.
 - Regression testing runs automatically before any prompt change reaches production, with results retained and linked to the version.
 - Monitoring can attribute a behavioural drift signal to a specific prompt-version change when one occurs.
 - No prompt change in the test set could be deployed via a path that bypasses version control and regression testing.
+- Configuration inspection shows the run-time check: before each run, the prompt, template and scaffold in use are checked against the digest of the approved version, and a mismatch stops the run.
 
 ## 13. Fail Indicators
 - Any prompt/scaffold change can be deployed to production without version control, approval or regression testing (a "content" path bypassing governance).
 - Behavioural regression testing is not run, or is run only for code/model releases, missing prompt-only changes.
 - Monitoring cannot distinguish a prompt-driven behavioural shift from genuine model drift, misattributing the cause during incident investigation.
 - No documented change history exists for the current production prompt/scaffold set.
+- No run-time check compares the prompt, template and scaffold in use with the approved version, so a change made outside the change-control path reaches a run.
 
 ## 14. Reporting Language
 **Pass:** "All system prompts, tool-use instructions and reasoning scaffolds are managed under version control with documented change approval and automated behavioural regression testing before deployment. Testing of [n] representative prompt edits confirms no path exists to bypass this governance. This is a ★2 assessment — credible empirical grounding, bespoke governance-bypass testing — and should be re-verified whenever the prompt deployment tooling changes."
@@ -150,7 +154,11 @@ testing should be a standard deployment-governance requirement, not optional.
 >
 > **[FAIAS Incident Register, row 54, "xAI Grok unauthorised prompt change", 2025]** — xAI states that on 14 May 2025 an unauthorised modification was made to the Grok response bot's prompt on X, and that its "existing code review process for prompt changes was circumvented"; its remedies were to publish its prompts on GitHub, add checks so that employees cannot change the prompt without review, and monitor round the clock. A prompt change reached users outside xAI's code review process for prompt changes, and it directed the bot's replies on a political topic. This is a different event from the July 2025 episode that the register carries at row 24.
 >
-> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
+> [Sclar, M., Choi, Y., Tsvetkov, Y., Suhr, A., 2024, "Quantifying Language Models' Sensitivity to Spurious Features in Prompt Design or: How I learned to start worrying about prompt formatting," ICLR 2024] — a peer-reviewed method, with released code (FormatSpread), that samples prompt formats which keep the meaning and reports the range of model performance across them. It reports a spread of up to 76 accuracy points for LLaMA-2-13B. It measures format changes that keep the meaning. It does not measure edits that change the content of an instruction, which §11 applies, or whether change control would catch them (read 17 November 2026).
+>
+> **Research basis last reviewed:** 18 November 2026 · **review cadence:** Fast (6 months)
+>
+> **Capability-envelope note CEN-1 (resolved at v1.3.6; REGISTER_STATS.md):** this canvas was one of the seven that the note re-baselines. The note is resolved as a whole by §6A.2 resolution form 1, and the ★2 is affirmed and published under the v1.3.6 anchor. The event changes the capability environment, not the published testing method. The test in §11 measures the change in behaviour per prompt edit and whether change control would catch the edit. It uses no reasoning trace, and field 9 already states that no control in front of a consequential agent step rests on chain-of-thought inspection alone.
 
 ## 19. Related IRQs
 ```
@@ -185,6 +193,9 @@ testing should be a standard deployment-governance requirement, not optional.
     "POSIX: A Prompt Sensitivity Index For Large Language Models." Findings of the
     Association for Computational Linguistics: EMNLP 2024, pp. 14550-14565.
     arXiv:2410.02185.
+[8] Sclar, M., Choi, Y., Tsvetkov, Y., Suhr, A., 2024. "Quantifying Language Models'
+    Sensitivity to Spurious Features in Prompt Design or: How I learned to start worrying
+    about prompt formatting." ICLR 2024. arXiv:2310.11324.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -225,6 +236,8 @@ Change Log:
 - v1.3.4 (2026-10-22): Field 17 Regulatory Basis — the EU AI Act dates give both postponed dates, 2 Dec 2027 for Annex III systems and 2 Aug 2028 for Annex I systems, and the Art. 111(2) limb for systems placed on the market before them, in place of a clause that left non-Annex-III uses in scope. ★2 unchanged; no change to the risk profile.
 - v1.3.4 (2026-10-22): Field 17 Regulatory Basis — the FCA AI Update limb states what the Update says, that SYSC 4.1.1R requires robust governance arrangements (para 3.39); control of changes that affect regulated activities is stated as this canvas's reading, since the Update states no change-control expectation. Fields 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
 - v1.3.5 (2026-11-27): Field 9 Expected Controls (Traced) — the caveat control states that no control in front of a consequential agent step rests on chain-of-thought inspection alone (IRQ-MOD-009); stated reasoning may serve as evidence, with the caveat, as field 18 already says. ★2 unchanged; no change to the risk profile.
+- v1.3.6 (2026-11-22): Fields 9 Expected Controls (Traced), 10 Expected Evidence, 12 Pass Indicators and 13 Fail Indicators — a new expected control: before each run, the runtime checks the prompt, template and scaffold in use against the digest of the approved version and stops the run on a mismatch; neither the agent nor content it processes can write to these artefacts. The new pass indicator is met by configuration inspection. Drift attribution stays as evidence. Field 11 untouched by this entry; no change to the risk profile.
+- v1.3.6 (2026-11-22): Field 11 Independent Test — the ★2 is affirmed and published under the v1.3.6 anchor, as CEN-1 is resolved as a whole by §6A.2 resolution form 1; the ★2 as at FAIAS v1.1.0 stands as register history, not as a comparable number; the test uses no reasoning trace. Field 18 Research Basis — a note records the resolution. Fields 18 and 20 — FormatSpread (Sclar et al., ICLR 2024) added for the sensitivity measurement, with its limit: it measures format changes that keep the meaning, not content edits or change control. Research-basis review date moved. No change to the risk profile.
 ```
 
 ---

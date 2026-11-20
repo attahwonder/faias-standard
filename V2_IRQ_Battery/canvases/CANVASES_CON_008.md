@@ -60,7 +60,7 @@ Control Breakpoints:
 
 ## 9. Expected Controls (Traced)
 - **Point-of-interaction AI-use disclosure** — [FCA, FG22/5, July 2022, Consumer Duty consumer-understanding outcome] — disclosure is delivered at the point of the material interaction, not only in generic terms and conditions.
-- **Comprehension testing of disclosure content** — [FCA, FG22/5, July 2022, requiring communications to be tested for understanding with the actual target audience, not merely reviewed for legal accuracy] — Emerging Practice specifically for AI-use disclosure; comprehension testing methodology for this specific disclosure type is less standardised than for general product communications.
+- **Comprehension testing of disclosure content** — [FCA, FG22/5, July 2022, paras 8.40 and 8.42: firms test communications where appropriate, so that the customers they are targeted at can understand them, not only those involved in their development] — Emerging Practice specifically for AI-use disclosure; comprehension testing methodology for this specific disclosure type is less standardised than for general product communications.
 - **Substantive-influence disclosure distinct from interface-level disclosure** — Emerging Practice; explicitly distinguishing "you are talking to a chatbot" from "AI materially shaped this decision", and testing whether the latter — the one that matters for contestability — is actually delivered.
 - **Human-sign-off transparency** — [linked IRQ-HUM-007/IRQ-HUM-008] — where a human formally signs off an AI-recommended decision, the degree of AI influence on that judgement is itself assessed and, where material, disclosed.
 - **Contest-route signposting alongside disclosure** — [linked IRQ-HUM-008] — AI-use disclosure is paired with clear signposting of the available contest/human-re-decision route, not delivered as a standalone notice.
@@ -123,7 +123,7 @@ Residual risk interpretation: Moderate-to-high priority; while individual severi
 | **Novelty** | 4 | Domain expert very likely to treat generic legal/T&Cs disclosure as sufficient, missing the comprehension and point-of-interaction requirements |
 
 ## 17. Regulatory Basis
-> [FCA, PS22/9, July 2022, and FG22/5, July 2022, "Final non-Handbook Guidance for firms on the Consumer Duty"] establishes the consumer-understanding outcome, requiring communications to be tested for comprehension with the actual target audience, and requires customers to have the information they need, when they need it. [UNVERIFIED — no FCA-specific AI transparency/disclosure guidance beyond the general Consumer Duty communications requirement and the general "AI and the FCA: our approach" position was located] (verified 29 Jul 2026).
+> [FCA, PS22/9, July 2022, and FG22/5, July 2022, "Final non-Handbook Guidance for firms on the Consumer Duty"] establishes the consumer-understanding outcome, under whose rules firms test communications for comprehension where appropriate (FG22/5 paras 8.40 and 8.42), and requires customers to have the information they need, when they need it. [UNVERIFIED — no FCA-specific AI transparency/disclosure guidance beyond the general Consumer Duty communications requirement and the general "AI and the FCA: our approach" position was located] (verified 29 Jul 2026; FG22/5 paras 8.40 and 8.42 read 17 Nov 2026).
 
 ## 18. Research Basis
 > [Belton, C., Bogiatzis-Gibbons, D., Keeley, I., Spang, J., Turkay, C. & Pi, Y., "Credit where credit is due: How can we explain AI's role in credit decisions for consumers?" FCA Research Note, 24 February 2025] is FS-specific, empirical and directly on point. In a UK regulator experimental study, participants tried to identify errors (bad input data versus flawed algorithm logic) in AI-assisted credit decisions under different explanation designs; the explanation method significantly affected — and in the data-error condition, impaired — participants' ability to detect errors, and participants' self-reported confidence rose even as actual error-detection performance fell. This is the mechanism this claim is concerned with directly: disclosure and explanation can raise a customer's confidence in an AI-influenced decision while lowering their actual ability to identify when it is wrong, so disclosure that is merely present is not evidence that it is comprehended or that it functions as a check.
@@ -175,7 +175,7 @@ Related IRQs:
 
 **FOUR-TEST VALIDATION:**
 ✓ Test 1 (SME Blind Spot): Compliance SMEs commonly equate generic T&Cs disclosure with tested, point-of-interaction, substantive AI-influence disclosure — these are materially different bars.
-✓ Test 2 (Plausible Harm): Grounded directly in the FCA's Consumer Duty consumer-understanding outcome and its comprehension-testing requirement.
+✓ Test 2 (Plausible Harm): Grounded directly in the FCA's Consumer Duty consumer-understanding outcome and its rule that firms test communications where appropriate.
 ✓ Test 3 (Testable): Answerable via structured comprehension testing of disclosure content with a representative customer sample.
 ✓ Test 4 (Decision-Relevant): Outcome gates whether the firm's contestability framework (HUM-007/008) can function as intended, since customers must first know AI was involved.
 
@@ -187,6 +187,7 @@ Related IRQs:
 - v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2 (Field 16, and the controls-in-place case in Field 15). The canvas states recovery within weeks to months, which is beyond the within-hours level that ASSURANCE_MODEL.md §7 scores 2; the scale names no band between days and years, and 3 (reversible within days) is the nearest anchor. In the controls-absent case Recoverability is scored 3 in place of 2, so that it is not lower than the controls-in-place figure. The other axes, the ★ rating and the research basis are unchanged.
 - v1.3.3 (2026-10-09): Field 17 Regulatory Basis — the FCA finalised guidance FG22/5 is cited under its issued title, "Final non-Handbook Guidance for firms on the Consumer Duty", in place of a description set in quotation marks. Form corrections only. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Field 18 Research Basis — the FCA's consumer-understanding good-practice publication of 13 March 2026 added as a regulator source for the general comprehension-testing method, with its limits. Field 20 — entry [3] added. Research-basis review date moved. No change to controls, test, ★2 or risk profile.
+- v1.3.6 (2026-11-22): Fields 9 Expected Controls (Traced), 17 Regulatory Basis and 21 Four-Test Validation Footer — the FCA's testing of communications is stated with its condition: firms test communications where appropriate (FG22/5 paras 8.40 and 8.42). The text no longer states a duty to test every communication with the actual target audience, or a duty about review for legal accuracy, which FG22/5 does not state. Field 11 untouched; ★2 unchanged; no change to the risk profile.
 ```
 
 ---

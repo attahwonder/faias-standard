@@ -2,7 +2,7 @@
 
 **IRQ:** IRQ-TPR-004 — Undetected Silent Provider-Side Model Change.
 **Assurance objective:** AO-TPR-004 — the firm shall detect material provider-side changes to model weights, safety filters or defaults before they affect customers or controls, through version pinning and behavioural canary testing, and shall have a tested rollback and re-approval path available on detection.
-**Confidence:** ★2 (carried unchanged). Method class: Emerging Practice — research and industry practice recognise vendor-side drift, but no standardised, benchmarked FS methodology exists for silent-drift detection; canary design and threshold-setting are bespoke professional judgement.
+**Confidence:** ★3 (carried from canvas; raised from ★2 at v1.3.6). Method class: Adapted Industry Practice — the test adapts published methods to the firm's own endpoint; published, peer-reviewed methods exist for comparing a fixed prompt set across versions and for testing a change in an API's output distribution, but no standardised, benchmarked FS methodology exists for silent-drift detection; canary design and threshold-setting are professional judgement.
 
 ### Preconditions
 - Isolated non-production environment able to call the current model endpoint. Note the boundary: this procedure legitimately calls the provider's live endpoint from a staging environment, using synthetic prompts only. No production customer data is used at any point, and the calls are ordinary API usage, within the provider's published usage terms and under the firm's existing contract — not probing of provider infrastructure.
@@ -75,7 +75,7 @@ The benchmark set must be **fixed** — the same prompts as the baseline. A rege
 - **Tone assessed without a rubric**, which produces an unrepeatable judgement. Agree the rubric before running.
 - **Thresholds without basis.** Where the firm's alert thresholds were set arbitrarily, record that; do not substitute a FAIAS threshold, since none exists in any cited source.
 - **Provider endpoint calls treated as production testing.** They are staging calls under existing contract with synthetic prompts, and that framing should be documented so the non-production rule is visibly respected.
-- **★2 honesty.** Canary design is bespoke. A pass evidences that the firm's own bespoke process detected drift on the occasions tested.
+- **★3 honesty.** The comparison and test methods are published; the canary design and thresholds are the firm's. A pass evidences that the firm's own process detected drift on the occasions tested, not that no change went undetected.
 
 ### Time/effort estimate
 **3.5 reviewer-days** — 0.5 documentation and baseline validity review; 0.5 endpoint configuration inspection; 0.75 benchmark execution and comparison; 0.5 detection-efficacy investigation; 0.5 cadence and rollback review; 0.25 threshold-basis enquiry; 0.5 write-up. Add 0.5 day per additional model dependency beyond two.

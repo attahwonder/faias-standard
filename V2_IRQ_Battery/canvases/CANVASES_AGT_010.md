@@ -67,11 +67,13 @@ Control Breakpoints:
 - **Complete, structured action traces enabling reconciliation** — [linked IRQ-AGT-011; Chan et al., "Visibility into AI Agents," FAccT 2024] — every run's actual step sequence is logged in a form comparable against the process definition.
 - **Reconciliation sampling as an ongoing control** — [linked IRQ-GOV-010; FCA/PRA record-keeping expectations] — a defined proportion of runs are reconciled against the documented process on an ongoing basis, not only at initial validation.
 - **Escalation on detected divergence** — [linked IRQ-HUM-004] — any run where conformance checking flags a divergence is routed to human review before the outcome is finalised.
+- **Tools bounded by stage of the approved process** — [linked IRQ-AGT-003; OWASP, Top 10 for Agentic Applications 2026, ASI10 Rogue Agents, Prevention and Mitigation Guidelines, item 5: signed manifests that declare an agent's expected capabilities, tools and goals are "validated by orchestration services before each action"] — at each stage of the approved process map, the orchestration layer lets the agent call only the tools that the map allows at that stage. A step outside the approved map cannot call a tool that the map does not allow at that stage. IRQ-AGT-003 holds the tool inventory; this control bounds its use by stage.
 
 ## 10. Expected Evidence (Tagged L1–L5)
 - Assertion that "the agent was designed to follow our process" — **L1** (flag: design intent, not structural enforcement or verification).
 - Documentation of the approved process map and the conformance-checking mechanism's design — **L2**.
 - Configuration/code inspection confirming mandatory steps are hard-gated at the orchestration layer and conformance checking actually runs on every execution — **L3**.
+- Configuration inspection confirming that the orchestration layer limits the tools the agent can call at each stage of the approved process map — **L3**.
 - Staging test results: representative cases (including edge cases) run through the agent, with executed step sequences compared against the documented process and divergence rate measured — **L3**.
 - Independent audit report assessing process-conformance controls against the documented, approved process — **L4**.
 - Production reconciliation sampling data: divergence rate, categorised by omission/reordering/invention, over the review period — **L5**.
@@ -84,12 +86,14 @@ Control Breakpoints:
 - Hard-gated mandatory steps cannot be bypassed in any test case, including deliberately engineered edge cases.
 - Reconciliation sampling in production shows a divergence rate within the firm's defined tolerance, with all flagged divergences escalated and reviewed.
 - Action traces are structured and complete enough to support reconciliation for 100% of runs.
+- No test run calls a tool that the approved process map does not allow at that stage.
 
 ## 13. Fail Indicators
 - Any edge-case test produces a divergent workflow (a skipped affordability check, an invented resolution step) that completes and releases its outcome with no hold.
 - Mandatory steps are enforced only through prompt instruction, not orchestration-layer gating, and are bypassable under edge-case pressure in testing.
 - Action traces are incomplete or unstructured, preventing systematic reconciliation against the process map.
 - No ongoing reconciliation sampling exists in production; conformance was checked only at initial validation, if at all.
+- A test run calls a tool that the approved process map does not allow at that stage.
 
 ## 14. Reporting Language
 **Pass:** "Reconciliation testing across [n] standard and edge-case scenarios confirms the agent's executed workflow matches the documented, approved business process, with mandatory steps hard-gated at the orchestration layer and every divergent run held before release. Ongoing production reconciliation sampling shows a divergence rate within tolerance, with all flagged cases escalated. This is a ★2 assessment — credible practitioner taxonomy, bespoke conformance testing — and should be revisited whenever the documented process changes."
@@ -217,6 +221,7 @@ Change Log:
   Research-basis review date moved. No change to controls, test, ★2 or risk profile.
 - v1.3.4 (2026-10-22): Field 18 Research Basis — incident-register citation added in the reserved form (row 47, Project Vend phase one, invented steps: a hallucinated payment account and a restocking contact who did not exist), beside the report already cited. Research-basis review date moved. Fields 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
 - v1.3.5 (2026-11-27): Fields 8 Assurance Objective, 9 Expected Controls (Traced), 12 Pass Indicators, 13 Fail Indicators and 14 Reporting Language — the conformance check runs in line on every run and holds the outcome before release, as fields 9 and 10 already expected (human review before the outcome is finalised; conformance checking on every execution). Stricter pass bar: no divergent run may release an outcome; a flag that does not hold the outcome does not pass. Field 11 measure (3) stays as an observation. The title and the register question are unchanged. ★2 unchanged; no change to the risk profile.
+- v1.3.6 (2026-11-22): Fields 9 Expected Controls (Traced), 10 Expected Evidence, 12 Pass Indicators and 13 Fail Indicators — a new expected control: at each stage of the approved process map, the orchestration layer lets the agent call only the tools that the map allows at that stage. IRQ-AGT-003 still holds the tool inventory. No recognised test method covers this control; the existing bespoke test records it. Field 11 untouched; no change to the star rating or the risk profile.
 ```
 
 ---

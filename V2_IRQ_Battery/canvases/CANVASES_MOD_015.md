@@ -159,9 +159,9 @@ monitored on the strength of the unvalidated judge's output.
 >
 > **Scope note (v1.2.0), stated not implied.** This IRQ is **not** broadened to deterministic-grader gaming. Its register question and its §11 procedure address a *language model used as judge or evaluator* and the bias classes documented for that case. A system under test reasoning about, and metagaming, a deterministic code-based grader is a different failure mode that §11 does not exercise; it is routed to IRQ-MOD-008 ("evaluator exploitation"). Inference-time metagaming of a deterministic grader is recorded as an **absence** in this battery rather than folded into this IRQ.
 >
-> **Research basis last reviewed:** 12 September 2026 · **review cadence:** Fast (6 months)
+> **Research basis last reviewed:** 18 November 2026 · **review cadence:** Fast (6 months)
 >
-> **URO-5: Chen et al., "A Judge Should Know What Changed", arXiv:2608.24419v1, 25 August 2026 — whether §11's judge/human agreement limb is sufficient, given judges averaging S = 0.945 at R = 0.319, a direct challenge to Zheng et al. (2023), this canvas's sole anchor — resolve by 2027-03-11.** The ★3 above stands untouched while this observation is open (§6A.2).
+> **URO-5 (resolved 22 November 2026): Chen et al., "A Judge Should Know What Changed", arXiv:2608.24419v1, 25 August 2026 — flagged 11 September 2026; examined and resolved under §6A.2 resolution form 2 (observation removed, with the reason recorded) for the rating question. The paper contests agreement as a measure of a judge's validity: it states that "A high agreement number is not evidence of valid evaluation", and it reports that published work has measured invariance under surface edits thoroughly and has not measured construct sensitivity. That bears on what field 11 tests. The paper is a single v1 preprint with no peer-review statement, so it cannot move a rating. The ★3 stands under its v1.1.0 anchor.** The design question — whether field 11 should add a construct-sensitivity probe — is a question about the test, not about the rating. It is not decided in this release and stays open for the next review of this canvas.
 
 ## 19. Related IRQs
 ```
@@ -213,6 +213,7 @@ Change Log:
 - v1.3.3 (2026-10-09): Field 18 — wording only: a pending question is now recorded as an open question. Research Basis unchanged; no change to the ★ rating, §11 or the risk profile.
 - v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 - v1.3.4 (2026-10-22): Fields 17 and 20 — the PRA SS1/23 citation gives both dates: the April 2026 amendment, effective 23 April 2026, and the policy, in effect since 17 May 2024 (para 1.5), in place of a single effective date. Fields 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★3 unchanged; no change to the risk profile.
+- v1.3.6 (2026-11-22): Field 18 — the URO-5 observation is resolved by form 2 (observation removed, with the reason recorded): Chen et al. contest agreement as a measure of a judge's validity and report a gap in what field 11 tests; the paper is a single v1 preprint, so it cannot move the rating. The design question, whether field 11 should add a construct-sensitivity probe, is recorded as open for the next review. Research-basis review date moved. ★3 unchanged under its v1.1.0 anchor; no change to the risk profile.
 ```
 
 ---

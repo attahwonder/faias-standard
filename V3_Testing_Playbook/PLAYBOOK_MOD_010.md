@@ -3,8 +3,8 @@
 **Procedure ID:** TP-MOD-010
 **IRQ:** IRQ-MOD-010 — Unassessed Robustness Across Population, Covariate, Concept, Label, Temporal and Policy Shift
 **Assurance objective:** AO-MOD-010 — model robustness shall be separately assessed against population, covariate, concept, label, temporal and policy shift, with defined revalidation triggers specific to each shift type, so that degradation from any one shift mechanism is detectable and actionable.
-**★ Confidence:** ★3 (carried from canvas — credible, peer-reviewed shift-detection methods with reasonable consensus for statistical shift types (Koh et al., 2021 WILDS; Rabanser et al., 2019); concept/label/policy shift testing is more bespoke and professional-judgement-led, pulling the overall rating toward the middle of the ★3 band rather than ★4)
-**Method classification:** Established for statistical shift types; **Emerging/bespoke for concept, label and policy shift** — labelled distinctly in reporting, since the confidence is not uniform across the six.
+**★ Confidence:** ★3 (carried from canvas — credible, peer-reviewed shift-detection methods with reasonable consensus for statistical shift types, label shift included (Koh et al., 2021 WILDS; Rabanser et al., 2019); concept and policy shift testing is more bespoke and professional-judgement-led, pulling the overall rating toward the middle of the ★3 band rather than ★4)
+**Method classification:** Established for statistical shift types, label shift included; **Emerging/bespoke for concept and policy shift** — labelled distinctly in reporting, since the confidence is not uniform across the six.
 
 ## Preconditions
 
@@ -22,7 +22,7 @@ Six scenarios (per canvas), each applied to a representative dataset, with the m
 | **(a) Population** | Resample to change subgroup proportions | Established statistical method |
 | **(b) Covariate** | Alter the input-feature distribution, holding the true relationship constant | Established statistical method |
 | **(c) Concept** | Alter the true input–output relationship (re-label a subset consistent with a changed real-world relationship), holding inputs constant | **Bespoke** — requires SME definition of a realistic relationship change |
-| **(d) Label** | Alter the base rate of outcomes | Established |
+| **(d) Label** | Alter the base rate of outcomes by resampling by class, so that the inputs within each outcome class keep their distribution (as in the knock-out shift of Rabanser et al., 2019) | Established, but whether a pure base-rate change is realistic for the use case is judgement |
 | **(e) Temporal** | Use data from a materially different time period | Established, but period selection is judgement |
 | **(f) Policy** | Simulate a rule change removing or altering a previously-used feature or threshold | **Bespoke** — requires the SME to select a realistic rule change |
 
@@ -61,7 +61,7 @@ Six scenarios (per canvas), each applied to a representative dataset, with the m
 
 - **Pass** — detection mechanisms exist and function for all six shift types in the staging test, each with a defined revalidation trigger; at least one shift type has been detected and acted upon in actual production history; policy-shift mapping demonstrably links regulatory or internal rule changes to a mandatory revalidation step; governance escalation is calibrated to shift-specific signals.
 - **Fail** — monitoring exists only for input-side statistical shift (population/covariate) with no mechanism for concept, label or policy shift; no shift type has ever triggered a documented revalidation in production history despite known economic-cycle or typology change over the review period; policy or regulatory changes affecting model-relevant rules occur with no corresponding revalidation trigger or record; "drift monitoring" is described only in general terms with no shift-type-specific design evidence.
-- **Partial** — the near-universal shape: statistical shifts well covered, concept and policy shift uncovered. Report by shift type; do not aggregate. Note explicitly that concept shift is undetectable by input-side monitoring by construction, so its absence from the monitoring design is a structural gap rather than a tuning issue.
+- **Partial** — the near-universal shape: population, covariate and temporal shift well covered; concept, label and policy shift uncovered. Report by shift type; do not aggregate. Note explicitly that concept shift is undetectable by input-side monitoring by construction, so its absence from the monitoring design is a structural gap rather than a tuning issue.
 
 ## Evidence outputs
 
@@ -82,7 +82,7 @@ Six scenarios (per canvas), each applied to a representative dataset, with the m
 - **Testing only statistical shifts.** They are the easy four; the canvas's finding is usually in concept and policy shift.
 - **Confusing performance degradation with detection.** Measure both (step 8) — they are different controls.
 - **An unrealistic concept shift.** If the SME cannot describe a plausible real-world relationship change, the scenario proves nothing. Do not invent one.
-- **Canvas limitation carried forward:** confidence is **not uniform across the six**. Statistical shift detection rests on published, consensus methods; concept, label and policy shift testing is bespoke and judgement-led, which is exactly why the canvas places the combined rating in the middle of ★3 rather than at ★4. Report the six results with that distinction visible.
+- **Canvas limitation carried forward:** confidence is **not uniform across the six**. Statistical shift detection, label shift included, rests on published, consensus methods; concept and policy shift testing is bespoke and judgement-led, which is exactly why the canvas places the combined rating in the middle of ★3 rather than at ★4. For label shift, two parts stay judgement. The first is whether a pure base-rate change is realistic for the use case. The second is the size of change that is material. Report the six results with that distinction visible.
 - **Temporal shift confounds everything.** A different period differs in population, covariates, concepts and policy simultaneously; treat the temporal result as an aggregate indicator, not an isolated mechanism.
 - **Historical data availability** frequently constrains the temporal scenario; record the periods used and their comparability.
 

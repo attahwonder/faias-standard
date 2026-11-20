@@ -6,7 +6,7 @@
 Register question: "Are all agent actions — including intermediate tool calls and abandoned branches — captured in reviewable traces, or can consequential actions occur in hidden chains?"
 
 ## 2. Business Activities Affected
-- **All agent-automated decisions and transactions:** Every business activity elsewhere in this domain (AML investigation, payments, claims, lending) depends on this control as a prerequisite: none of the drift-detection, conformance-checking or attribution controls described in other AGT canvases can function without complete traces.
+- **All agent-automated decisions and transactions:** Every business activity elsewhere in this domain (AML investigation, payments, claims, lending) depends on this control as a prerequisite: none of the drift-detection, conformance-checking or attribution controls described in other AGT canvases can function without complete traces. The gates and limits in front of each step (IRQ-AGT-003, IRQ-AGT-004, IRQ-AGT-005, IRQ-AGT-006 and IRQ-AGT-012) act without the trace; the trace is the evidence that they held, and the base for detection after the act.
 - **Incident investigation and complaint response:** When a customer disputes an AI-influenced outcome, the firm's ability to reconstruct exactly what the agent did — including abandoned reasoning branches and intermediate tool calls that did not make it into the final output — determines whether the dispute can be resolved with evidence rather than assertion.
 - **Regulatory examination:** Supervisors reviewing an agentic system's conduct require a complete, tamper-evident record of what the system actually did, not merely its final output.
 
@@ -20,7 +20,7 @@ Register question: "Are all agent actions — including intermediate tool calls 
 
 ## 5. Potential Consequences
 - **Customer:** A dispute over an AI-influenced decision cannot be resolved with evidence because the trace is incomplete; the customer's contest right (per IRQ-HUM-008) becomes hollow without a reconstructable record.
-- **Institution:** Every other agentic control in this domain — drift detection (AGT-001/002), conformance checking (AGT-010), multi-agent attribution (AGT-007), memory validation (AGT-008) — depends on trace completeness; its absence is a single point of failure for the whole domain's assurance case.
+- **Institution:** Every other agentic control in this domain — drift detection (AGT-001/002), conformance checking (AGT-010), multi-agent attribution (AGT-007), memory validation (AGT-008) — depends on trace completeness; its absence is a single point of failure for the whole domain's assurance case. The gates and limits that field 2 names act without the trace, but the evidence that they held depends on it.
 - **Regulator/market:** Inability to reconstruct a consequential AI-influenced decision on request is itself a supervisory finding, independent of whether the underlying decision was correct.
 
 ## 6. Failure Chain
@@ -66,14 +66,19 @@ Control Breakpoints:
 ## 9. Expected Controls (Traced)
 - **Complete action logging including abandoned/retried branches, not only final output** — [Chan et al., "Visibility into AI Agents," FAccT 2024, arXiv:2401.13138, identifiers/real-time monitoring/activity-log recommendations] — logging configuration explicitly captures intermediate steps that did not survive to the final result.
 - **Tamper-evident log design** — [ISO/IEC 27001 logging and monitoring controls, applied by analogy; FCA/PRA record-keeping expectations] — logs are protected against retrospective alteration, supporting their evidential value in disputes and examinations.
+- **No write path from the agent to its own record or its oversight** — [linked IRQ-AGT-003, IRQ-AGT-012; NCSC, "Managing the cyber risk of agentic AI", blog post, 20 August 2026 (page metadata: modified 24 August 2026), item 5, "Observability: log, audit and monitor agentic AI activity as part of security operations": logs should be "protected from modification or deletion"] — the identity or role under which the agent runs holds no right to write, change or delete its own trace store, the monitor that reads it, or the configuration of the gates in front of its actions. A component outside the agent writes the trace. Tamper-evidence detects what that misses.
+- **No consequential step while the monitor is stopped** — [Emerging Practice] — no consequential step executes while the monitor is stopped. The source is OpenAI, "Towards safety cases for frontier AI training", 28 September 2026, "Technical controls": "Safety features such as monitoring and auto-pausing should fail closed", written for the lab's own training runs, evaluations and internal deployment. The application of that text to a firm's deployed agents is FAIAS's own.
 - **Unified trace across multi-agent/multi-system components** — [linked IRQ-AGT-006, IRQ-AGT-007; NIST AI 600-1, Jul 2024] — logging is designed and tested to reconstruct a coherent end-to-end record even where multiple agents or systems were involved.
 - **Retention periods meeting regulatory record-keeping requirements** — [linked IRQ-GOV-010; FCA SYSC/DISP record-keeping rules] — traces are retained for the period required to support audit, complaint and regulatory response.
 - **Periodic reconstruction testing** — [PRA SS1/23 ongoing monitoring/validation principle] — the firm periodically exercises full reconstruction of a real or representative case from the trace alone, to confirm the control functions in practice, not only on paper.
+- **The outside agent and its mandate in the trace** — [Emerging Practice] — where an AI agent that acts for a customer or a third party sends requests to the firm's own AI system (the scope exclusion stated in TAXONOMY.md), the trace records, for each action, the agent's identifier, the customer for whom it acts, the mandate reference, the action and the decision, and each revocation of the mandate with its cause. The source is IETF, draft-ietf-wimse-aims-01, 2 November 2026, §11, a standards-body draft and work in progress: audit records "MUST be tamper-evident", and each audit event records at least the "authenticated agent identifier", the "delegated subject (user or system), when present", the action requested and the authorisation decision, and "remediation or revocation events and their cause". The application of that text to a firm's AI system that receives an outside agent's requests is FAIAS's own. IRQ-AGT-012 field 9 sets what clears the agent's action; this limb records it.
 
 ## 10. Expected Evidence (Tagged L1–L5)
 - Assertion that "we log everything" with no specification of what "everything" includes — **L1**.
 - Logging architecture documentation specifying exactly which events (including abandoned branches, retries, sub-agent steps) are captured and retained — **L2**.
 - Configuration inspection confirming the logging pipeline actually captures the documented event set across all components, including secondary/fallback paths — **L3**.
+- Configuration inspection confirming that the identity or role under which the agent runs has no write or delete right on the trace store, the monitor or the gate configuration, and that no consequential step executes while the monitor is stopped — **L3**.
+- Where an outside agent's requests reach the firm's AI system: log schema inspection, and a staging run with an emulated outside agent under a synthetic mandate, confirming that each action's record holds the agent's identifier, the customer, the mandate reference, the action and the decision, and that a revocation is recorded with its cause — **L3**.
 - Staging test results: a deliberately constructed multi-step task with an abandoned branch and a retried tool call, followed by an attempted full reconstruction from the logs alone — **L3**.
 - Independent audit confirming tamper-evidence, retention compliance and reconstruction capability — **L4**.
 - Production reconstruction exercise: a real or representative case fully reconstructed from logs alone, with time-to-reconstruct and completeness assessed — **L5**.
@@ -85,18 +90,22 @@ Control Breakpoints:
 - Full reconstruction of the abandoned branch and retried tool call succeeds using logs alone, with no gap.
 - Sub-agent/multi-system logs are correctly correlated into a single coherent trace.
 - Logs are demonstrably tamper-evident (e.g. cryptographic integrity checks, write-once storage, or equivalent).
+- The identity or role under which the agent runs has no write or delete right on the trace store, the monitor or the gate configuration, confirmed in configuration; no consequential step executes while the monitor is stopped.
 - Retention periods meet or exceed the firm's regulatory record-keeping requirement for the relevant business activity.
+- Where an outside agent's requests reach the firm's AI system, each action's record holds the agent's identifier, the customer, the mandate reference, the action and the decision, and each revocation of the mandate is recorded with its cause, recovered from the logs alone.
 - A production reconstruction exercise on a real case succeeds within a reasonable time.
 
 ## 13. Fail Indicators
 - The abandoned branch or retried tool call cannot be reconstructed; only the final successful path is recoverable from logs.
 - Sub-agent or secondary-system logs exist but cannot be correlated into a unified trace (fragmented record).
 - Logs are mutable with no tamper-evidence mechanism.
+- The identity or role under which the agent runs can change or delete its own trace records, the monitor or the gate configuration, or a consequential step executes while the monitor is stopped.
 - Retention period is shorter than the regulatory requirement for the business activity in question.
+- Where an outside agent's requests reach the firm's AI system, the logs cannot show which agent acted, for which customer, under which mandate, which action it took and what was decided, or when and why the mandate was revoked.
 - A production reconstruction exercise fails or takes materially longer than an acceptable investigation timeline.
 
 ## 14. Reporting Language
-**Pass:** "Testing on a deliberately engineered multi-step task with an abandoned branch, a retried tool call and a sub-agent delegation confirms full end-to-end reconstruction is possible from retained logs alone, correctly correlated across components, with tamper-evident storage and retention meeting regulatory requirements. This is a ★2 assessment — credible published visibility research, bespoke reconstruction testing — and should be re-verified whenever the logging architecture or agent topology changes."
+**Pass:** "Testing on a deliberately engineered multi-step task with an abandoned branch, a retried tool call and a sub-agent delegation confirms full end-to-end reconstruction is possible from retained logs alone, correctly correlated across components, with tamper-evident storage, no write or delete right for the agent's identity or role on its trace, its monitor or its gate configuration, no consequential step executed while the monitor was stopped, and retention meeting regulatory requirements. This is a ★2 assessment — credible published visibility research, bespoke reconstruction testing — and should be re-verified whenever the logging architecture or agent topology changes."
 
 **Fail:** "Testing demonstrates that an abandoned reasoning branch and a retried tool call — despite the retry having had a side effect — are not recoverable from the retained logs, which capture only the final successful output. This means the firm cannot currently reconstruct the actual path to a consequential decision for audit, complaint-handling or regulatory purposes, which is itself a supervisory finding independent of whether any individual decision was correct. This should be remediated as a foundational control before further reliance is placed on any other agentic assurance control in this domain."
 
@@ -156,7 +165,9 @@ agentic assurance conclusion.
 >
 > **[FAIAS Incident Register, row 55, "Microsoft 365 Copilot audit-log gap", 2025]** — a security researcher reports that Microsoft 365 Copilot read a file and left no audit-log entry when the user asked it not to link the file it summarised: "in that case, the audit log is empty". A consequential AI action left no entry in the record a firm would use to reconstruct what its AI accessed. On the researcher's account Microsoft fixed the flaw, rated it "important", issued no CVE and planned no customer notice. Carried as a secondary row: the source is the researcher's own disclosure, and the dates and Microsoft's decisions are as he reports them.
 >
-> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
+> [NIST, 2022, "SP 800-53A Rev. 5: Assessing Security and Privacy Controls in Information Systems and Organizations," January 2022, assessment procedures AU-09 Protection of Audit Information, AU-12 Audit Record Generation and AU-12(01) System-Wide and Time-Correlated Audit Trail] — standards-body procedures that assess whether audit records are generated, compiled into a trail that is time-correlated across components, and protected from unauthorised access, change and deletion. Each gives Examine, Interview and Test objects, and the organisation chooses the methods. They are cited as analogues for the correlation measure of §11 and the tamper-evidence indicator of field 12. They have no step for the core measure, the reconstruction of an abandoned branch and a failed retry from the logs alone (read 17 November 2026).
+>
+> **Research basis last reviewed:** 18 November 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -185,6 +196,12 @@ agentic assurance conclusion.
     Articles 12 and 19. OJ L 12.7.2024.
 [5] PRA, 2026. "SS1/23 — Model risk management principles for banks."
     April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026).
+[6] NIST, 2022. "SP 800-53A Rev. 5: Assessing Security and Privacy Controls in
+    Information Systems and Organizations." January 2022. Assessment procedures AU-09,
+    AU-12 and AU-12(01). doi:10.6028/NIST.SP.800-53Ar5.
+[7] IETF, Kasselman, P., et al., 2026. "AI Identity Management System."
+    draft-ietf-wimse-aims-01, 2 November 2026. Informational; work in
+    progress.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -218,6 +235,9 @@ Change Log:
 - v1.3.3 (2026-10-09): Field 18 Research Basis — incident-register citation added in the reserved form (row 55, Microsoft 365 Copilot audit-log gap, carried as a secondary row on the researcher's own disclosure). Research-basis review date moved. No change to controls, test, ★2 or risk profile.
 - v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 - v1.3.4 (2026-10-22): Fields 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
+- v1.3.6 (2026-11-22): Fields 2 Business Activities Affected and 5 Potential Consequences — the gates and limits in front of each step (IRQ-AGT-003, IRQ-AGT-004, IRQ-AGT-005, IRQ-AGT-006 and IRQ-AGT-012) act without the trace; the evidence that they held depends on it. Fields 9 Expected Controls (Traced), 10 Expected Evidence, 12 Pass Indicators, 13 Fail Indicators and 14 Reporting Language — a new expected control: the identity or role under which the agent runs has no right to write, change or delete its own trace store, the monitor or the gate configuration; and, marked Emerging Practice, no consequential step executes while the monitor is stopped. Stricter pass bar: tamper-evident logs do not pass alone where the agent's identity or role can change its own records. Field 11 untouched; no change to the star rating or the risk profile.
+- v1.3.6 (2026-11-22): Fields 18 and 20 — the NIST SP 800-53A Rev. 5 assessment procedures AU-09, AU-12 and AU-12(01) added as analogues for the correlation measure and the tamper-evidence indicator, with their limit: no step reconstructs an abandoned branch or a failed retry from the logs. Research-basis review date moved. ★2 unchanged; no change to the risk profile.
+- v1.3.6 (2026-11-22): Fields 9 Expected Controls (Traced), 10 Expected Evidence, 12 Pass Indicators and 13 Fail Indicators — a limb, marked Emerging Practice, for an AI agent that acts for a customer or a third party on the firm's own AI systems: for each action, the trace records the agent's identifier, the customer, the mandate reference, the action and the decision, and each revocation of the mandate with its cause. Stricter pass bar where an outside agent's requests reach the firm's AI systems. Field 20 — entry [7] added. Field 11 untouched; no change to the star rating or the risk profile.
 ```
 
 ---

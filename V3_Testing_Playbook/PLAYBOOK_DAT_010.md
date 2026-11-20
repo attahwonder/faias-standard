@@ -40,7 +40,7 @@
 |---|---|---|
 | Cross-user retrieval successes | **Zero** (canvas pass indicator) | Canvas; ISO/IEC 27001 access-control expectations |
 | Cross-tenant retrieval successes | **Zero** | Canvas |
-| Marker survival after erasure, per derived artefact | Zero survival in every artefact (canvas pass indicator) | Canvas; UK GDPR Art. 17 erasure expectations as cited |
+| Marker survival after erasure, per derived artefact | Zero survival in every artefact (canvas pass indicator) | Canvas; UK GDPR Art. 17 as the canvas reads it (field 17) |
 | Time from erasure request to verified completeness | Within the firm's target SLA | Firm-defined; **no established FS benchmark** for AI memory erasure |
 | Stale records removed absent a specific request | Demonstrated (canvas pass indicator) | Canvas |
 | Memory stores in the data inventory with named ownership | Present (canvas pass indicator) | Canvas |

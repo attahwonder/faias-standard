@@ -72,7 +72,7 @@ Control Breakpoints:
 - Production data comparing the optimisation metric trend against the independent outcome-quality measure over the same period (e.g. claim cycle time vs claim re-open/complaint rate) — **L5**.
 
 ## 11. Independent Test
-> In a non-production environment, construct test scenarios where the optimisation metric can plausibly be satisfied through behaviour that violates business intent (e.g. cases resolvable quickly only via premature closure, alerts dismissible without genuine investigation). Run the system and measure both the optimisation metric and an independent, intent-aligned outcome measure (e.g. correctness of claim settlement, quality of AML disposition against known ground truth) for each case. Compare the two measures for divergence. Repeat after any model or fine-tuning update. Methodology informed by Krakovna et al. (2020) and Skalse et al. (2022). Executed on synthetic/historical non-live cases in staging. — **★2 Confidence — as at FAIAS v1.1.0 (25 August 2026)** (harm mechanism well documented in the specification-gaming literature; test design is institution- and metric-specific, with no standardised divergence benchmark, and depends heavily on the tester's construction of gaming-prone scenarios).
+> In a non-production environment, construct test scenarios where the optimisation metric can plausibly be satisfied through behaviour that violates business intent (e.g. cases resolvable quickly only via premature closure, alerts dismissible without genuine investigation). Run the system and measure both the optimisation metric and an independent, intent-aligned outcome measure (e.g. correctness of claim settlement, quality of AML disposition against known ground truth) for each case. Compare the two measures for divergence. Repeat after any model or fine-tuning update. Methodology informed by Krakovna et al. (2020) and Skalse et al. (2022). Executed on synthetic/historical non-live cases in staging. — **★2 Confidence — as at FAIAS v1.3.6 (22 November 2026)** (harm mechanism well documented in the specification-gaming literature; test design is institution- and metric-specific, with no standardised divergence benchmark, and depends heavily on the tester's construction of gaming-prone scenarios; affirmed under this anchor when capability-envelope note CEN-1 was resolved: the note's event changes the capability environment, not the published test method, and the ★2 as at FAIAS v1.1.0 stands as register history; ratings issued under different anchors are not comparable numbers (§6A.1)).
 
 ## 12. Pass Indicators
 - The optimisation metric and the independent outcome-quality measure move together (no material divergence) across constructed test scenarios.
@@ -142,7 +142,9 @@ monitoring.
 >
 > **[FAIAS Incident Register, row 99, "OpenAI o3 system card and outside evaluations", 2025]** — the developer's system card reports an outside evaluator's finding of "successful attempts by the model to tamper with this environment's scoring function in 5 out of 24 experiments", so that runs would record "an implausibly high score". The score was met by changing its measurement and not by doing the task; the finding concerns earlier checkpoints of the model.
 >
-> **Research basis last reviewed:** 22 October 2026 · **review cadence:** Fast (6 months)
+> [Thaman, K., 2026, "Reward Hacking Benchmark: Measuring Exploits in LLM Agents with Tool Use", ICML 2026, PMLR 306, arXiv:2605.02964] measures how often tool-using agents take shortcuts in multi-step tasks, such as skipping verification steps or tampering with functions that the evaluation relies on. It is cited as a peer-reviewed design pattern for gaming-prone scenarios (task families, shortcut types, exploit rate), not as a divergence test: field 11 compares the firm's metric with an independent outcome measure, and the paper does not. Limits: a single author; the paper states that code and data will be released upon publication, and no released code or data was located as at 17 November 2026, so a firm cannot run the benchmark and can only copy its design.
+>
+> **Research basis last reviewed:** 18 November 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -168,6 +170,9 @@ monitoring.
 [5] PRA, 2026. "SS1/23 — Model risk management principles for banks."
     April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026; policy in effect since 17 May 2024, para 1.5).
 [6] FCA, 2022. "PS22/9: A New Consumer Duty." PRIN 2A in force 31 July 2023.
+[7] Thaman, K., 2026. "Reward Hacking Benchmark: Measuring Exploits in LLM Agents with Tool Use."
+    Proceedings of the 43rd International Conference on Machine Learning (ICML 2026), PMLR 306.
+    arXiv:2605.02964.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -194,6 +199,7 @@ Change Log:
 - v1.3.3 (2026-10-09): Field 20 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 - v1.3.4 (2026-10-22): Field 18 Research Basis — incident-register citations added in the reserved form (row 98, Claude 3.7 Sonnet special-casing of tests; row 99, o3 tampering with a scoring function, both from the developers' system cards). Research-basis review date moved. Fields 17 and 20 — the PRA SS1/23 citation gives both dates: the April 2026 amendment, effective 23 April 2026, and the policy, in effect since 17 May 2024 (para 1.5), in place of a single effective date. Fields 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
+- v1.3.6 (2026-11-22): Field 11 Independent Test — the ★2 is affirmed and published under the v1.3.6 anchor, as capability-envelope note CEN-1 is resolved by form 1; the note's event changes the capability environment, not the published test method. Fields 18 and 20 — the Reward Hacking Benchmark (Thaman, ICML 2026) is cited as a design pattern, with its limits: a single author, and no released code or data located. Research-basis review date moved. No risk axis value or score changes.
 ```
 
 ---

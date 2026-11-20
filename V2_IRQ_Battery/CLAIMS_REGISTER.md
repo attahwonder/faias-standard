@@ -64,7 +64,7 @@ Materiality lenses: CO customer outcomes · PS prudential safety · CD Consumer 
 *Lenses:* DP, RE, MI, PS. **Criticality: Critical.**
 *Criticality derivation:* Extraction or leakage of confidential information is a breach of confidence and of data-protection law (**illegal**).
 
-**CLM-11 · Component integrity.** Models, weights, tools, plugins and serving components are authentic, untampered and monitored for malicious change.
+**CLM-11 · Component integrity.** Models, weights, tools, plugins and serving components are authentic, untampered, pinned and verified before load, and monitored for malicious change.
 *Rationale:* AI supply chains (checkpoints, MCP/tool servers, plugins) admit compromise classes that conventional software controls do not cover.
 *Lenses:* OR, DP, TP, RE. **Criticality: High.**
 *Criticality derivation:* Component compromise is adversary-conditional and its blast radius is bounded by the deployment's permission envelope (CLM-12); detection failure routes to CLM-09/12 pathways. No limb met independently — High. *Borderline: recorded for review.*
@@ -77,18 +77,18 @@ Materiality lenses: CO customer outcomes · PS prudential safety · CD Consumer 
 *Criticality derivation:* Unbounded agency executes real-world actions — payments, trades, communications — with no structural limit on scale (**unbounded**); unauthorised transactions can be **illegal**.
 
 **CLM-13 · Observable agency.** All agent activity is observable and attributable — no consequential action occurs in hidden chains.
-*Rationale:* Oversight, accountability and reconstruction all fail if actions can occur unrecorded.
+*Rationale:* Oversight, accountability and reconstruction all fail if actions can occur unrecorded. CLM-13 is the evidence claim. The control in front of each agent action is CLM-12.
 *Lenses:* PS, OR, FC, FS. **Criticality: Critical.**
 *Criticality derivation:* Hidden consequential actions defeat reconstruction: harms cannot be identified, attributed or remediated afterwards (**uncompensated**) — the same pathway that makes CLM-25 Critical. Reclassified High → Critical at the criticality re-derivation decided on 31 July 2026.
 
-**CLM-14 · Controlled delegation.** Delegation across sub-agents, multi-agent workflows and recursive spawning is bounded, reconcilable to the designed process, and free of unmanaged emergent behaviour.
+**CLM-14 · Controlled delegation.** Delegation across sub-agents, multi-agent workflows and recursive spawning is bounded, gated under CLM-12 wherever one agent's output drives a consequential action, reconcilable to the designed process as evidence, and free of unmanaged emergent behaviour.
 *Rationale:* Coordination failures (error reinforcement, false consensus, unbounded recursion) arise only at the system-of-agents level and evade single-agent testing.
 *Lenses:* OR, PS, CO. **Criticality: High.**
 *Criticality derivation:* Delegation failures remain inside the permission boundary CLM-12 enforces and are observable where CLM-13 holds; bounded and remediable — no limb met. High.
 
 ## Theme 5 — Human Oversight
 
-**CLM-15 · Genuine human oversight.** Human oversight is genuinely accountable and effective: reviewers detect errors, approvals are substantive, intervention occurs before irreversible actions, and named individuals hold rehearsed suspension authority.
+**CLM-15 · Genuine human oversight.** Human oversight is genuinely accountable and effective: reviewers detect errors, approvals are substantive, approvals show the complete action parameters as the system will execute them and a plain risk summary, not the model's rationale, and bind to those parameters, intervention occurs before irreversible actions, and named individuals hold rehearsed suspension authority.
 *Rationale:* Nominal oversight (rubber-stamping, post-hoc notification) satisfies the org chart while providing zero control effect.
 *Lenses:* CO, CD, PS, OR. **Criticality: Critical.**
 *Criticality derivation:* Nominal oversight silently removes the control layer across everything it covers while appearing present (**unbounded**, and the appearance defeats detection).
@@ -122,7 +122,7 @@ Materiality lenses: CO customer outcomes · PS prudential safety · CD Consumer 
 
 ## Theme 7 — Third Party
 
-**CLM-21 · No silent vendor alteration.** No third party can silently alter the system's production behaviour — model, filters, defaults or tools — without the firm detecting it and re-approving.
+**CLM-21 · No silent vendor alteration.** No third party can alter the system's production behaviour — model, filters, defaults or tools — without the firm detecting the change and re-approving it before it relies on the changed behaviour. Versions are pinned where the provider allows it. Where it does not, the firm detects the change and re-approves it before relying on the changed behaviour.
 *Rationale:* Provider-side change is continuous and undisclosed by default; it invalidates validation without any internal change signal.
 *Lenses:* TP, PS, OR, CO. **Criticality: Critical.**
 *Criticality derivation:* A silent provider change invalidates the approval basis with no internal change signal — the invalidation is undetectable by design (**unbounded**).

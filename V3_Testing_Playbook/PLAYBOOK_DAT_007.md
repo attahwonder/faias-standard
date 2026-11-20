@@ -3,8 +3,8 @@
 **Procedure ID:** TP-DAT-007
 **IRQ:** IRQ-DAT-007 — Uncurated RAG Ingestion Allowing Stale Content to Override Current Policy
 **Assurance objective:** AO-DAT-007 — all content entering the RAG knowledge store shall pass curation controls (currency verification, deduplication, assigned content owner) before being retrievable, such that stale or superseded content cannot be presented as current.
-**★ Confidence:** ★3 (carried from canvas — RAG failure-point taxonomies and faithfulness-evaluation tooling are published and used by multiple independent groups; no canonical "currency-check adequacy" benchmark exists for FS knowledge stores, keeping this short of ★4)
-**Method classification:** Adapted Industry Practice — RAGAS-style faithfulness evaluation (Es et al., 2023) and, for RAG failure in general, Barnett et al. (2024), whose seven failure points do not include superseded or stale documents; the seeded-supersession design is the canvas's own. Both sources as cited in the canvas.
+**★ Confidence:** ★3 (carried from canvas — knowledge-conflict benchmarks from three independent groups (NeurIPS 2024) test whether the answer follows stale or conflicting content placed in context; none uses a retriever or tests currency metadata; no canonical "currency-check adequacy" benchmark exists for FS knowledge stores, keeping this short of ★4)
+**Method classification:** Adapted Industry Practice — RAGAS-style faithfulness evaluation (Es et al., 2023) and, for RAG failure in general, Barnett et al. (2024), whose seven failure points do not include superseded or stale documents; the supersession framing and the currency-metadata measure are the canvas's own, and the answer measure follows published knowledge-conflict benchmarks (ClashEval, WikiContradict, ConflictBank). All sources as cited in the canvas.
 
 ## Preconditions
 

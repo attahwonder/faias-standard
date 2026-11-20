@@ -1,6 +1,6 @@
 # Verification Log A — Batch [TO VERIFY] Clearance (July 2026)
 
-**A note on file names (added 3 October 2026).** The file names in this record refer to the layout before FAIAS v1.3.1, in which each domain's Review Canvases, and each domain's test procedures, were held in one file. From v1.3.1 each canvas and each procedure is held in its own file. 00_Admin/MIGRATION_2026-10-03.md maps each line of the earlier files to its new file and line, so the file and line references below still resolve.
+**A note on file names (added 3 October 2026).** The file names in this record refer to the layout before FAIAS v1.3.1, in which each domain's Review Canvases, and each domain's test procedures, were held in one file. From v1.3.1 each canvas and each procedure is held in its own file. 00_Admin/MIGRATION_2026-10-03.md maps each line of the earlier files to its new file and line, so the file and line references below still resolve. **Correction (added 17 November 2026).** The last clause above is wrong. The line numbers in this log are those of July 2026, before later edits moved the text. The map gives the lines of each earlier file as it stood at v1.3.0. Most of the line numbers below do not reach the cited text through the map. To find a cited text, search the named file for its words. Or use the method under "Recovering a line's history" in the map.
 
 Method: each flag web-verified against primary sources (legislation.gov.uk, FCA Handbook,
 Bank of England / PRA, EBA/ECB/EU AI Act official text, ICO, NIST, OWASP, arXiv/DOI). CONFIRMED =

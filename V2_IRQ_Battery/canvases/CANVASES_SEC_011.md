@@ -154,9 +154,9 @@ the consequence of several other SEC IRQs, not only its own standalone likelihoo
 >
 > **[FAIAS Incident Register, row 94, "Railway volume deletion by an agent", 2026]** — the platform provider's own account records that an agent used an API token that "was provisioned with account scoped access, the maximum access possible", and that it found on the developer's machine, to delete a production volume; the provider calls it a "long-lived account-scoped token". It evidences an agent credential that was neither scoped to the task nor short-lived; the account names neither the customer nor the agent.
 >
-> **[FAIAS Incident Register, row 100, "LiteLLM 1.107.0 supply-chain compromise", 2026]** — the developer of an open-source AI gateway tells users of a poisoned release to rotate "every provider key stored in the LiteLLM proxy DB, plus the master and virtual keys", and a security firm reports that the stealer queried that table for all configured provider keys. CISA lists an exploited SQL injection in the same gateway that can lead to "unauthorized access to the proxy and the credentials it manages". It evidences one service that holds standing keys to every model provider that a firm uses, so that one compromise grants broad access; the developer has not confirmed the root cause.
+> **[FAIAS Incident Register, row 100, "LiteLLM 1.107.0 supply-chain compromise", 2026]** — the developer of an open-source AI gateway tells users of a poisoned release to rotate "every provider key stored in the LiteLLM proxy DB, plus the master and virtual keys", and a security firm reports that the stealer queried that table for all configured provider keys. CISA lists an exploited SQL injection in the same gateway that can lead to "unauthorized access to the proxy and the credentials it manages". It evidences one service that holds standing keys to every model provider that a firm uses, so that one compromise grants broad access. The developer's root-cause record of 23 October 2026 gives the start of the attack. An administrative key to an internal agent platform was committed to a public repository on 27 May 2026 and was not revoked. The attacker used the key and took from that platform the GitHub token of an organisation owner.
 >
-> **Research basis last reviewed:** 22 October 2026 · **review cadence:** Fast (6 months)
+> **Research basis last reviewed:** 18 November 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -235,6 +235,7 @@ Change Log:
   Field 11 cites the Code for the scope rule tested, not for the method. Research-basis
   review date moved. ★2 unchanged; no change to the risk profile.
 - v1.3.5 (2026-11-27): Field 9 Expected Controls (Traced) — a publisher-stated control added from a vendor threat report (Google Threat Intelligence Group and Mandiant, 2 November 2026) on abuse of the firm's own model-provider keys: spending caps, quotas, keys restricted and segmented by endpoint and environment, central rotation, and alerts on calls that disable logging. The bullet states that this IRQ applies to agentic systems only. Field 11 untouched; ★2 unchanged; no change to the risk profile.
+- v1.3.6 (2026-11-22): Field 18 Research Basis — the row 100 citation gives the developer's root-cause record of 23 October 2026, in place of the statement that the developer had not confirmed the root cause. The v1.3.4 entry above records that statement as it stood on 22 October 2026. Research-basis review date moved. Field 11 untouched; ★2 unchanged; no change to the risk profile.
 ```
 
 ---

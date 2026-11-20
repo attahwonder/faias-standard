@@ -3,8 +3,8 @@
 **Procedure ID:** TP-MOD-009
 **IRQ:** IRQ-MOD-009 — Unfaithful Chain-of-Thought Misrepresenting the True Drivers of a Decision
 **Assurance objective:** AO-MOD-009 — no control, customer explanation or audit record shall rely on the model's stated reasoning as a truthful causal account of its decision unless that faithfulness has been independently tested and documented; where untested, reliance shall carry an explicit faithfulness caveat.
-**★ Confidence:** ★2 (carried from canvas — harm mechanism well evidenced by frontier-lab research; counterfactual perturbation methodology is credible but not standardised for FS decision explanations specifically, and requires careful, professional-judgement-led test design per use case)
-**Method classification:** Adapted Industry Practice / Emerging — counterfactual perturbation informed by the frontier-lab reasoning-faithfulness research cited in the canvas.
+**★ Confidence:** ★3 (carried from canvas; raised from ★2 at v1.3.6 — the two counterfactual tests are published and peer-reviewed (Turpin et al., NeurIPS 2023), and a second, independent group uses a similar approach (Arcuschin et al., ICML 2026); no agreed benchmark exists, the tests ran on public question sets and not on financial decision records, and the choice of the factors to perturb in the firm's decision cases is professional judgement; a pass does not prove that the stated reasoning is faithful)
+**Method classification:** Adapted Industry Practice / Emerging — the two perturbation arms adapt the two counterfactual tests of Turpin et al. (NeurIPS 2023) to the firm's decision cases (Adapted Industry Practice); the design is also informed by the frontier-lab reasoning-faithfulness research cited in the canvas.
 
 ## Preconditions
 
@@ -75,7 +75,7 @@
 - **Perturbing multiple factors at once.** Destroys attribution.
 - **Omitting Arm B.** Arm A alone measures over-claiming; Arm B is what detects concealment, and concealment is the more serious finding.
 - **Perturbations that are not realistic.** Altering a factor to an impossible value produces an output change that says nothing about normal operation. Keep perturbations within the plausible range.
-- **Canvas limitation carried forward:** counterfactual perturbation is credible but not standardised for FS decision explanations, and requires professional-judgement-led design per use case. ★2 — professional assessment.
+- **Canvas limitation carried forward:** the published counterfactual tests ran on public question sets, not on FS decision records, and the design per use case is professional judgement. The tests detect unfaithful reasoning; a pass does not prove that the stated reasoning is faithful. ★3 — professional assessment.
 - **Faithfulness is not explanation adequacy.** A faithful rationale can still be incomprehensible to a customer; that is IRQ-HUM-007's question, and this procedure does not answer it.
 
 ## Time/effort estimate

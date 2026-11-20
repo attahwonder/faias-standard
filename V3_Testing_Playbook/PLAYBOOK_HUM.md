@@ -23,7 +23,7 @@ HUM procedures are **behavioural studies**, not technical tests. The object unde
 3. **Blinding where the design requires it.** Seeded-error studies (TP-HUM-001, -007, -008) are invalid if participants know which cases are seeded. Blinding arrangements are agreed with the firm in writing and the reviewer holds the key. **TP-HUM-009 requires no blinding.**
 4. **Deception is bounded and debriefed.** Several designs require participants not to know the full purpose in advance (seeded errors; the unannounced scenario in TP-HUM-005). This is standard behavioural-research practice and is bounded: participants are told a study is happening, are debriefed fully afterwards, and the debrief is a required step in each procedure, not an optional courtesy. **TP-HUM-009 involves no deception and therefore carries no debrief obligation arising from one.**
 5. **Realism is the whole game.** A seeded-error study run without time pressure, or a competency assessment run with generous deadlines, measures a workflow that does not exist. Each design specifies the realism conditions that must hold.
-6. **Honest confidence.** ★ ratings are carried from the canvases. Five of the nine HUM procedures are ★2 — bespoke designs on established foundations — and one is ★1. Results must be reported as professional assessment, not standardised evidence, per METHODOLOGY_STANDARDS.md §3c. **The ★1 is the domain's first** (TP-HUM-009), and any conclusion resting on it carries the ★1 form of words required by PLAYBOOK_OVERVIEW.md §8: "This conclusion rests on ★1 methodology — the harm mechanism is theoretically plausible and the testing approach is novel and unvalidated. Result quality depends entirely on assessor expertise. This is expert opinion, not evidence."
+6. **Honest confidence.** ★ ratings are carried from the canvases. Four of the nine HUM procedures are ★2 — bespoke designs on established foundations — and one is ★1. Results must be reported as professional assessment, not standardised evidence, per METHODOLOGY_STANDARDS.md §3c. **The ★1 is the domain's first** (TP-HUM-009), and any conclusion resting on it carries the ★1 form of words required by PLAYBOOK_OVERVIEW.md §8: "This conclusion rests on ★1 methodology — the harm mechanism is theoretically plausible and the testing approach is novel and unvalidated. Result quality depends entirely on assessor expertise. This is expert opinion, not evidence."
 
 ### Confidence and method-class distribution
 
@@ -35,7 +35,7 @@ HUM procedures are **behavioural studies**, not technical tests. The object unde
 | TP-HUM-004 Intervention point position | D.3 | ★2 | Emerging Practice (process-engineering/queuing concepts, bespoke application) |
 | TP-HUM-005 Suspension authority | D.3 | ★2 | Emerging Practice (crisis-simulation / safety-culture assessment) |
 | TP-HUM-006 Accountability tracing | D.4 | ★2 | Emerging Practice (internal-audit trace sampling, extended) |
-| TP-HUM-007 Explanation adequacy | D.4 | ★2 | Emerging Practice (Doshi-Velez & Kim application-grounded evaluation) |
+| TP-HUM-007 Explanation adequacy | D.4 | ★3 | Adapted Industry Practice / Emerging Practice (published seeded-error design; comprehension interview) |
 | TP-HUM-008 Contest route | D.4 | ★2 | Emerging Practice (seeded-error paradigm adapted to appeals) |
 | TP-HUM-009 Evidential standard for AI-triggered allegations | D.4 | ★1 | None established |
 
@@ -91,7 +91,7 @@ The procedures, in order:
 | TP-HUM-004 | ★2 | 5.0 |
 | TP-HUM-005 | ★2 | 3.0 |
 | TP-HUM-006 | ★2 | 4.0 |
-| TP-HUM-007 | ★2 | 6.0 |
+| TP-HUM-007 | ★3 | 6.0 |
 | TP-HUM-008 | ★2 | 4.0 |
 | TP-HUM-009 | **★1** | 4.0 |
 | **Total** | | **42.0** |
@@ -110,3 +110,4 @@ Scaling notes: TP-HUM-004 and TP-HUM-006 scale with the number of in-scope workf
 - v1.3.4 (2026-10-22): Domain overview — the playbook no longer states that assurance objectives and pass/fail/partial indicators are carried across unchanged; objectives and pass and fail indicators are restated from the canvases, some in the canvas's words and the rest reworded, and ★ ratings are carried unchanged. TP-HUM-009 confidence line — two of the six expected controls are marked Emerging Practice, in place of two of five; the canvas added the EU AI Act Article 86 control at v1.3.3. No ★ rating or reviewer-day figure changes.
 - v1.3.4 (2026-10-22): TP-HUM-007 — the method class and the domain table name the Doshi-Velez and Kim evaluation level as application-grounded (§3.1), in place of the paper's simplified-task level (§3.2). No ★ rating or reviewer-day figure changes.
 - v1.3.5 (2026-11-27): TP-HUM-004 — production sign-off ordering: the canvas threshold is sign-off before every irreversible action, in place of the large majority of cases, and the fail condition is any decision where the action preceded sign-off. Stricter pass bar. No ★ rating or reviewer-day figure changes.
+- v1.3.6 (2026-11-22): TP-HUM-007 — the ★ rating moves from ★2 to ★3, as in the canvas. Its confidence line names the published two-arm seeded-error design, its method class becomes Adapted Industry Practice / Emerging Practice (the seeded-error test adapts a published design; the comprehension interview has no published method), and the ★ honesty bullet under common pitfalls & limitations reads ★3. In this playbook, the confidence and method-class distribution table gives TP-HUM-007 ★3 and the new class, the effort table reads ★3 for it, and rule 6 of the non-negotiable operating rules counts four procedures at ★2. No reviewer-day figure changes.

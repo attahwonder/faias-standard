@@ -79,7 +79,7 @@ Control Breakpoints:
 - Production loss or incident data (where available) cross-referenced against the adversarial-evolution test findings to confirm predictive value of the test — **L5**.
 
 ## 11. Independent Test
-> In an isolated non-production environment, construct a test set of adversarially evolved inputs mapped to NIST AI 100-2e2025 evasion-attack categories and, where applicable, MITRE ATLAS case-study techniques relevant to the control's domain (fraud, AML, surveillance, screening). Run the deployed control against both this adversarial-evolution test set and its existing historical case library, and report detection rate and miss rate separately for each. Measure whether the miss rate against the adversarial-evolution set is materially higher than against the historical set — the signal that historical validation has been overstating real-world efficacy. Benign, procedurally constructed test inputs only; no production data, live systems, or actual customers accessed. **No FAIAS-standard acceptance threshold exists for residual miss rate; the taxonomies structure the test, they do not set a pass/fail bar.** — **★2 Confidence — as at FAIAS v1.1.0 (25 August 2026)** (two mature, current, actively maintained public taxonomies — NIST AI 100-2e2025 and MITRE ATLAS — exist and are directly applicable to test-set construction; no financial-services-specific quantitative benchmark or acceptance threshold exists on top of them, so the tolerance for an acceptable miss-rate uplift rests on the assessor's own risk-based judgement, not a published standard).
+> In an isolated non-production environment, construct a test set of adversarially evolved inputs mapped to NIST AI 100-2e2025 evasion-attack categories and, where applicable, MITRE ATLAS case-study techniques relevant to the control's domain (fraud, AML, surveillance, screening). For a tabular scoring control, build the evolved inputs with a published constrained-evasion method, such as the CAA attack of TabularBench (Simonetto et al., NeurIPS 2024) or the cost-bounded search of Kireev et al. (NDSS 2023), so that each input stays within the feasible domain. Run the deployed control against both this adversarial-evolution test set and its existing historical case library, and report detection rate and miss rate separately for each. Measure whether the miss rate against the adversarial-evolution set is materially higher than against the historical set — the signal that historical validation has been overstating real-world efficacy. Benign, procedurally constructed test inputs only; no production data, live systems, or actual customers accessed. **No FAIAS-standard acceptance threshold exists for residual miss rate; the taxonomies structure the test, they do not set a pass/fail bar.** — **★3 Confidence — as at FAIAS v1.3.6 (22 November 2026)** (methods from independent groups, in two peer-reviewed papers and one workshop paper, attack tabular fraud and credit-scoring models with constrained adversarial examples, with no canonical version: TabularBench (University of Luxembourg; NeurIPS 2024 Datasets and Benchmarks), Kireev et al. (EPFL; NDSS 2023) and Cartella et al. (Sony; a SafeAI 2021 workshop paper); the methods cover tabular scoring models, not text screening or promotion approval, and they test evasion at one point in time, not the re-test cadence; NIST AI 100-2e2025 and MITRE ATLAS stay the frame for mapping the test set; no financial-services-specific quantitative acceptance threshold exists, so the tolerance for an acceptable miss-rate uplift rests on the assessor's own risk-based judgement, which the ★3 anchor allows. The rating is raised from ★2 as at FAIAS v1.1.0, which stands as register history; ratings issued under different anchors are not comparable numbers (§6A.1)).
 
 ## 12. Pass Indicators
 - Adversarial-evolution test set constructed with documented mapping to NIST AI 100-2e2025 and/or MITRE ATLAS, not an ad hoc or undocumented sample.
@@ -95,7 +95,7 @@ Control Breakpoints:
 - Adversarial-evolution testing exists but its findings are held only by the technical team that ran it, with no evidence they reached governance.
 
 ## 14. Reporting Language
-**Pass:** "Detection efficacy of this AI-based control has been tested against adversarially evolved inputs mapped to NIST AI 100-2e2025 and MITRE ATLAS in addition to historical case-library testing. The miss rate against the adversarial-evolution test set is not materially higher than the historical detection rate, and a defined re-test cadence is in place. No FAIAS-standard acceptance threshold exists for residual miss rate (★2); this finding reflects that the test was performed and its result was not adverse, not that a pass/fail bar has been formally met."
+**Pass:** "Detection efficacy of this AI-based control has been tested against adversarially evolved inputs mapped to NIST AI 100-2e2025 and MITRE ATLAS in addition to historical case-library testing. The miss rate against the adversarial-evolution test set is not materially higher than the historical detection rate, and a defined re-test cadence is in place. No FAIAS-standard acceptance threshold exists for residual miss rate (★3); this finding reflects that the test was performed and its result was not adverse, not that a pass/fail bar has been formally met."
 
 **Fail:** "This AI-based control has been validated only against a historical or static case library; no testing against adversarially evolved inputs has been performed. Given that detection controls of this type are a documented target for adversary adaptation, the reported detection rate should not be relied upon as representative of real-world efficacy until adversarial-evolution testing, mapped to a recognised taxonomy, is completed."
 
@@ -122,7 +122,7 @@ Assuming controls are well-implemented and monitored:
 Interpretation: acceptable residual risk where adversarial-evolution testing
 is genuinely embedded and re-tested on a defined cadence. Highest concern:
 Novelty combined with the immaturity of the testing discipline itself
-(★2) — this control area depends more on the assessor's own test-design
+(★3) — this control area depends more on the assessor's own test-design
 judgement than on a benchmarked pass/fail standard.
 
 If controls are absent or degraded:
@@ -154,7 +154,9 @@ materially important detection control.
 ## 18. Research Basis
 > [NIST, 2025, "Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations", NIST AI 100-2e2025, March 2025] — a 400-plus-reference taxonomy distinguishing predictive-AI attacks (evasion, poisoning, privacy) from generative-AI attacks (supply chain, direct/indirect injection, misuse, agent security); the evasion-attack category is the direct anchor for this IRQ's control-evasion failure mode. [MITRE ATLAS (Adversarial Threat Landscape for AI Systems), atlas.mitre.org, accessed 2026] — 16 tactics, 84 techniques and 42 real-world case studies as of the November 2025 release, modelled on the MITRE ATT&CK framework, providing case-study grounding for test-scenario design. [FTC v. Rite Aid Corporation, E.D. Pa., Docket 2:23-cv-05023, complaint and proposed stipulated order filed 19 December 2023; stipulated order for permanent injunction and other relief signed 23 February 2024 and filed 26 February 2024] — as the Commission's complaint alleges, which Rite Aid neither admitted nor denied in consenting to the stipulated order (ECF No. 19, ¶5): an AI-based surveillance/screening control (facial-recognition matching) generating false-positive identifications acted on as ground truth, deployed without any testing of its accuracy before or after deployment, both vendors having disclaimed the technology's accuracy (complaint ¶¶50–51, 56, 74); cited as the closest documented precedent of an AI-as-control failing in a way that harmed the people it was meant to protect, illustrating why an untested residual miss rate is a live and consequential risk rather than a theoretical one. This is a facial-recognition matching failure, not a fraud/AML adversarial-evasion incident specifically, and is cited for the general principle — an AI security/screening control deployed and acted on without any measured real-world error rate — rather than as a direct adversarial-evolution precedent.
 >
-> **Research basis last reviewed:** 19 September 2026 · **review cadence:** Fast (6 months)
+> [Simonetto, T., Ghamizi, S., Cordy, M., 2024, "TabularBench: Benchmarking Adversarial Robustness for Tabular Deep Learning in Real-world Use-cases," NeurIPS 2024 Datasets and Benchmarks Track] — a peer-reviewed benchmark, with released code, that evaluates the robustness of tabular classifiers with CAA, an ensemble of gradient and search attacks that respects the constraints of the domain, across five use cases, one of them credit scoring (LCLD). [Kireev, K., Kulynych, B., Troncoso, C., 2023, "Adversarial Robustness for Tabular Data through Cost and Utility Awareness," NDSS 2023] — a peer-reviewed black-box attack by graph search under a cost bound, tested on transaction-fraud (IEEE-CIS) and loan-default (HomeCredit) data against logistic regression, gradient-boosted trees and TabNet. [Cartella, F., Anunciação, O., Funabiki, Y., Yamaguchi, D., Akishita, T., Elshocht, O., 2021, "Adversarial Attacks for Tabular Data: Application to Fraud Detection and Imbalanced Data," Workshop on Artificial Intelligence Safety (SafeAI 2021) at AAAI 2021, a workshop paper] — black-box attacks adapted to fraud detection, with a 13.6% success rate against a deployed production system. The three groups use one approach, constrained adversarial examples against tabular fraud and credit models, and they ground the ★3 in §11. They cover tabular scoring models, not text screening or promotion approval, and they test evasion at one point in time, not the re-test cadence (read 17 November 2026).
+>
+> **Research basis last reviewed:** 18 November 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -187,6 +189,14 @@ materially important detection control.
 [4] PRA, 2026. "SS1/23 — Model risk management principles for banks."
     April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026).
 [5] FCA, 2022. "PS22/9: A New Consumer Duty"; PRIN 2A in force 31 July 2023.
+[6] Simonetto, T., Ghamizi, S., Cordy, M., 2024. "TabularBench: Benchmarking Adversarial
+    Robustness for Tabular Deep Learning in Real-world Use-cases." NeurIPS 2024 Datasets
+    and Benchmarks Track. arXiv:2408.07579.
+[7] Kireev, K., Kulynych, B., Troncoso, C., 2023. "Adversarial Robustness for Tabular Data
+    through Cost and Utility Awareness." Proc. NDSS 2023. arXiv:2208.13058.
+[8] Cartella, F., Anunciação, O., Funabiki, Y., Yamaguchi, D., Akishita, T., Elshocht, O.,
+    2021. "Adversarial Attacks for Tabular Data: Application to Fraud Detection and
+    Imbalanced Data." SafeAI 2021 workshop at AAAI 2021. arXiv:2101.08030.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -210,8 +220,9 @@ FOUR-TEST VALIDATION:
   real-world error rate.
 ✓ Test 3 (Testable): Testable in a non-production environment via
   adversarially constructed test sets mapped to a recognised taxonomy;
-  ★2 methodology, honestly rated given the absence of a financial-services
-  quantitative acceptance threshold.
+  ★3 methodology: published constrained-evasion methods exist for
+  tabular scoring models; no financial-services quantitative acceptance
+  threshold exists.
 ✓ Test 4 (Decision-Relevant): Outcome determines whether a detection
   control's reported efficacy can be relied upon for the risk appetite it
   was approved against, and sets the re-test cadence condition of use.
@@ -240,6 +251,7 @@ Change Log:
   days) is the nearest anchor. The other axes, the ★ rating and the research basis are
   unchanged.
 - v1.3.4 (2026-10-22): Fields 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
+- v1.3.6 (2026-11-22): Field 11 Independent Test — ★ raised from ★2 to ★3 under the v1.3.6 anchor; the ★2 as at FAIAS v1.1.0 stands as register history, not as a comparable number. Methods from independent groups, in two peer-reviewed papers and one workshop paper, attack tabular fraud and credit models with constrained adversarial examples (TabularBench, NeurIPS 2024; Kireev et al., NDSS 2023; Cartella et al., a SafeAI 2021 workshop paper), and the test now names them for tabular scoring controls. The old ground, that no FS-specific benchmark exists, is the ★5 condition and does not separate ★2 from ★3. The rationale states the limits: tabular models only, and one point in time. Fields 14 Reporting Language, 15 Residual Judgement and the field 21 footer — the ★ wording follows. Fields 18 and 20 — the three sources added. Research-basis review date moved. No change to the risk profile.
 ```
 
 ---

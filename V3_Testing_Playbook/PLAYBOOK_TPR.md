@@ -22,7 +22,7 @@ Written as audit programmes, these procedures follow a common shape: **define th
 2. **The register is the population, and the register is also under test.** Every TPR procedure samples from the firm's AI inventory, outsourcing register or contract register. Those registers are themselves evidence, and their completeness is a finding in its own right — most of the real findings in this domain come from what the register omits rather than from what a sampled item fails on. Each procedure therefore includes an **independent completeness challenge** to the population, not merely a sample from it.
 3. **Documentary evidence, not assurance-by-conversation.** A statement in a meeting that a control operates is L1. The procedures below specify what document, configuration or register entry constitutes the evidence, and at what level.
 4. **Confidentiality.** Contracts, DPAs and provider due-diligence files are commercially sensitive. Extracts are referenced by clause and stored in the controlled evidence store; the report cites clause references, never reproduced commercial terms.
-5. **Honest confidence.** Five of the nine procedures are ★2 — the underlying disciplines (vendor risk, contract review, concentration analysis) are mature, but their AI-specific application is emerging practice with no standardised methodology — and one is ★1. That distinction is stated in reporting rather than smoothed over. **The ★1 is the domain's first** (TP-TPR-009), and any conclusion resting on it carries the ★1 form of words required by PLAYBOOK_OVERVIEW.md §8: "This conclusion rests on ★1 methodology — the harm mechanism is theoretically plausible and the testing approach is novel and unvalidated. Result quality depends entirely on assessor expertise. This is expert opinion, not evidence."
+5. **Honest confidence.** Four of the nine procedures are ★2 — the underlying disciplines (vendor risk, contract review, concentration analysis) are mature, but their AI-specific application is emerging practice with no standardised methodology — and one is ★1. That distinction is stated in reporting rather than smoothed over. **The ★1 is the domain's first** (TP-TPR-009), and any conclusion resting on it carries the ★1 form of words required by PLAYBOOK_OVERVIEW.md §8: "This conclusion rests on ★1 methodology — the harm mechanism is theoretically plausible and the testing approach is novel and unvalidated. Result quality depends entirely on assessor expertise. This is expert opinion, not evidence."
 
 ### Confidence and method-class distribution
 
@@ -31,7 +31,7 @@ Written as audit programmes, these procedures follow a common shape: **define th
 | TP-TPR-001 Provider due diligence | F.1 | ★3 | Adapted Industry Practice (standards-anchored; no agreed FS proportionality benchmark) |
 | TP-TPR-002 Contract rights | F.1 | ★3 | Adapted Industry Practice (DORA Art. 30 anchored; AI clause content emerging) |
 | TP-TPR-003 Embedded AI discovery | F.1 | ★2 | Emerging Practice (no standardised discovery methodology) |
-| TP-TPR-004 Silent provider-side change | F.2 | ★2 | Emerging Practice (bespoke canary design) |
+| TP-TPR-004 Silent provider-side change | F.2 | ★3 | Adapted Industry Practice (published comparison and test methods; canary design and thresholds by professional judgement) |
 | TP-TPR-005 Open-source provenance | F.3 | ★2 | Adapted Industry Practice / Emerging Practice; weakest component (backdoor screening) governs |
 | TP-TPR-006 Embedding/vector lock-in | F.3 | ★2 | Mixed; IR metrics mature, mismatch/export scenarios bespoke |
 | TP-TPR-007 Retention, logging, training use | F.3 | ★3 | Adapted Industry Practice (GDPR Art. 28 anchored) |
@@ -85,7 +85,7 @@ The procedures, in order:
 | TP-TPR-001 | ★3 | 3.0 |
 | TP-TPR-002 | ★3 | 3.0 |
 | TP-TPR-003 | ★2 | 4.0 |
-| TP-TPR-004 | ★2 | 3.5 |
+| TP-TPR-004 | ★3 | 3.5 |
 | TP-TPR-005 | ★2 | 3.0 |
 | TP-TPR-006 | ★2 | 3.5 |
 | TP-TPR-007 | ★3 | 3.0 |
@@ -105,3 +105,4 @@ Excludes report drafting, firm-side effort, and vendor response turnaround for T
 - v1.3.4 (2026-10-22): TP-TPR-005 and the domain overview — the OWASP Machine Learning Security Top 10 is cited as a criterion for supply-chain risk only; none of its ten items names deserialisation. Its method class names its two classes, Adapted Industry Practice / Emerging Practice, in the procedure and in the domain table. No ★ rating or reviewer-day figure changes.
 - v1.3.4 (2026-10-22): Domain overview and operating rule 1 — TP-TPR-005 is named with TP-TPR-004 and TP-TPR-006 as a procedure with a technical limb run in isolated staging (its bounded behavioural probe); the overview no longer states that assurance objectives and pass/fail/partial indicators are carried across unchanged: objectives and pass and fail indicators are restated from the canvases, some in the canvas's words and the rest reworded. No ★ rating or reviewer-day figure changes.
 - v1.3.5 (2026-11-27): TP-TPR-007 — Evidence outputs: E10, the monitoring evidence that confirms no uncontrolled egress, is tagged L5 only where the record states which contexts the monitor covered and how its ability to catch the failure was shown; otherwise it is weak evidence. The ★3 rating and the reviewer-day estimate are unchanged.
+- v1.3.6 (2026-11-22): TP-TPR-004 — the ★ rating moves from ★2 to ★3, as in the canvas. Its confidence line names the published comparison and test methods, its method class becomes Adapted Industry Practice, and the ★ honesty bullet under common pitfalls & limitations reads ★3. In this playbook, the confidence and method-class distribution table gives TP-TPR-004 ★3 and the new class, the effort table reads ★3 for it, and rule 5 of the non-negotiable operating rules counts four procedures at ★2. No reviewer-day figure changes.

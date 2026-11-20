@@ -131,7 +131,9 @@ Residual risk: Critical. Deployment gate should not be passed without envelope t
 >
 > **[FAIAS Incident Register, row 72, "Williston Tesla Autopilot crash", 2017]** — the National Transportation Safety Board found that "the driver could use the Autopilot system on roads for which it was not intended to be used", and names operational design domains for Level 2 vehicle automation as a safety issue: the owner's manual said that Autopilot should be used only in preferred road environments, but Tesla "did not automatically restrict the availability of Autopilot based on road classification". It evidences an envelope stated in guidance and not enforced by the system, not the way the envelope was defined. The setting is automotive driver assistance, not financial services.
 >
-> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
+> [Kirichenko, P., Ibrahim, M., Chaudhuri, K., Bell, S.J., 2025, "AbstentionBench: Reasoning LLMs Fail on Unanswerable Questions", NeurIPS 2025, Datasets and Benchmarks Track, arXiv:2506.09038; code at github.com/facebookresearch/AbstentionBench] is a published benchmark of whether a model abstains, across 20 datasets. Two limits apply. It measures the refusal signal only. Its questions have no single correct answer (unknown answers, underspecification, false premises, subjective interpretations and outdated information), whereas strata (b) and (c) of field 11 hold cases that have answers but fall outside the validated scope. The venue and the track are those of the conference's own record (NeurIPS 2025 proceedings, DOI 10.52202/085713-5729).
+>
+> **Research basis last reviewed:** 18 November 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -159,6 +161,9 @@ Residual risk: Critical. Deployment gate should not be passed without envelope t
 [6] FCA, 2022. "PS22/9: A New Consumer Duty." PRIN 2A in force 31 July 2023.
 [7] Financial Services and Markets Act 2000, s.19 (the general prohibition).
     https://www.legislation.gov.uk/ukpga/2000/8/section/19
+[8] Kirichenko, P., Ibrahim, M., Chaudhuri, K., Bell, S.J., 2025. "AbstentionBench: Reasoning LLMs Fail
+    on Unanswerable Questions." NeurIPS 2025, Datasets and Benchmarks Track. DOI 10.52202/085713-5729.
+    arXiv:2506.09038.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -188,6 +193,7 @@ Change Log:
 - v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 - v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2 (Field 16, and the controls-in-place case in Field 15). The canvas states recovery within days; ASSURANCE_MODEL.md §7 scores recovery within hours 2 and recovery within days 3. The other axes, the ★ rating and the research basis are unchanged.
 - v1.3.4 (2026-10-22): Fields 17 and 20 — the PRA SS1/23 citation gives both dates: the April 2026 amendment, effective 23 April 2026, and the policy, in effect since 17 May 2024 (para 1.5), in place of a single effective date. Fields 9 Expected Controls, 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
+- v1.3.6 (2026-11-22): Fields 18 and 20 — AbstentionBench (Kirichenko et al., NeurIPS 2025, Datasets and Benchmarks Track) is cited, with two limits: it measures the refusal signal only; its questions have no single correct answer, unlike strata (b) and (c) of field 11. The venue and the track are those of the conference's own record. Research-basis review date moved. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

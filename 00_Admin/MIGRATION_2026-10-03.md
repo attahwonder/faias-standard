@@ -6,6 +6,8 @@
 
 **How to read the tables.** For each earlier file, each row gives a range of its lines, the file that now holds them and the lines there. The new line number is the earlier line number minus the offset. A reference to an earlier file and line in a retained record resolves through these tables.
 
+**Correction (added 17 November 2026).** A line reference resolves through these tables only when it gives a line of an earlier file at v1.3.0. The verification logs `V2_IRQ_Battery/canvases/VERIFICATION_LOG_A.md` and `VERIFICATION_LOG_B.md` give line numbers of July 2026. Most of them do not resolve here. The notes of 17 November 2026 in those logs say how to find the cited text.
+
 **Recovering a line's history.** Use `git log -S"<string>"` with no path, which finds the commit that wrote the string in the earlier file. Or use `git blame -C -C -C <new path>`, which names the earlier file and the last commit before this release, and then `git blame <that commit> -- <earlier path>`.
 
 ## V2_IRQ_Battery/canvases/CANVASES_AGT.md

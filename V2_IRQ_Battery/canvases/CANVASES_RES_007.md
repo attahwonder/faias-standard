@@ -141,7 +141,7 @@ Residual risk interpretation: This IRQ is the resilience domain's equivalent of 
 >
 > [Grance, T., Nolan, T., Burke, K., Dudley, R., White, G., Good, T., 2006, "Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities", NIST Special Publication 800-84, September 2006] is the published method for designing, conducting and evaluating exercise events, and the field 11 review of the design and results of a scenario exercise can use its structure. Its chapters 4, 5 and 6 cover tabletop exercises, functional exercises and tests, each with a section on evaluating the event, and its Appendices A and B give sample after action reports. It is written for IT plans and capabilities. It has no AI scenario content, and it does not test whether the mapping of important business services is complete, so it informs the review of exercise design and results only. No ★ change follows from this addition.
 >
-> **Research basis last reviewed:** 27 November 2026 · **review cadence:** Standard (12 months)
+> **Research basis last reviewed:** 15 November 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -200,4 +200,5 @@ Related IRQs:
 - v1.3.3 (2026-10-09): Fields 9 and 18 — the CMORG AI Baseline Guidance Review cited by its cover date, Version 1.0, January 2025, with its publication date, 15 May 2025, in place of a May 2025 cover date. The ★ rating and the risk profile are unchanged.
 - v1.3.3 (2026-10-09): Field 18 Research Basis — NIST SP 800-84 cited for exercise design and evaluation, with its scope limit stated. Field 20 References — entry [5] added. Research-basis review date moved. ★3 · P3 unchanged.
 - v1.3.5 (2026-11-27): Field 18 Research Basis — the TIBER-EU Framework cited by its January 2025 edition, in place of a 2024 update; TIBER-EU and CBEST are called supervisory threat-led testing regimes, in place of regulator-mandated; the boundary statement says that institutions are directed to the threat-led testing regimes for the excluded risk, in place of saying that the regimes serve it, as TAXONOMY.md now says. Research-basis review date moved. Field 11 untouched; ★3 unchanged; no change to the risk profile.
+- v1.3.6 (2026-11-22): Review stamp — the "Research basis last reviewed" line gives 15 November 2026, the day of the v1.3.5 review. It replaces 27 November 2026, the release label. No other text changes. Field 11 untouched; ★3 unchanged; no change to the risk profile.
 ```

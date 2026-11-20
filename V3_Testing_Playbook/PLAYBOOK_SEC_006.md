@@ -2,7 +2,7 @@
 
 **IRQ:** IRQ-SEC-006 (subdomain E.2).
 **Assurance objective:** AO-SEC-006 — no secrets shall reside in extractable model context, and system-prompt/configuration extraction attempts shall be tested and, where they succeed, shall not disclose information materially aiding a subsequent attack.
-**Confidence:** ★3 (carried unchanged). Method class: Adapted Industry Practice — OWASP LLM07:2025 (System Prompt Leakage) guidance; MITRE ATLAS reconnaissance technique patterns. Less cross-institution standardisation than direct jailbreak testing, hence below TP-SEC-001's ★4.
+**Confidence:** ★3 (carried unchanged). Method class: Adapted Industry Practice — OWASP LLM07:2025 (System Prompt Leakage) guidance; MITRE ATLAS reconnaissance technique patterns. Less cross-institution standardisation than direct jailbreak testing.
 
 ### Preconditions
 - Staging instance on the deployed model and prompt build, as TP-SEC-001.

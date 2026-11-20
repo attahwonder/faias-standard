@@ -133,7 +133,9 @@ Residual risk interpretation: This IRQ is foundational — nearly every other de
 >
 > **[FAIAS Incident Register, row 77, "Anthropic postmortem of three infrastructure bugs", 2025]** — the provider's own postmortem records that detection depended on people reading user reports: "These initial reports were difficult to distinguish from normal variation in user feedback", and the provider states that "we relied too heavily on noisy evaluations". A provider-side serving fault ran for weeks before it was found. The postmortem does not say whether the provider had automatic alert thresholds linked to a response. The provider is not a financial-services firm.
 >
-> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Standard (12 months)
+> [Breck, E., Cai, S., Nielsen, E., Salib, M., Sculley, D., 2017, "The ML Test Score: A Rubric for ML Production Readiness and Technical Debt Reduction", Proceedings of IEEE Big Data 2017] gives a published rubric with seven monitoring tests (Monitor 1 to Monitor 7). A test scores half a point when it is run manually with the results documented and distributed, and a full point when it is automated. It supports the threshold and alert review in field 11. Two limits apply. It checks that monitoring and alerts exist; it does not inject a breach to show that an alert fires, which field 11 asks for where feasible. It was scored with teams in one firm (36 teams at Google).
+>
+> **Research basis last reviewed:** 18 November 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -165,6 +167,8 @@ Related IRQs:
 [5] Rabanser, S., Günnemann, S., Lipton, Z., 2019. "Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift." Advances in Neural Information Processing Systems 32 (NeurIPS 2019). Preprint: arXiv:1810.11953. Code stated in the paper: github.com/steverab/failing-loudly.
     Published: 2019
     URL: https://proceedings.neurips.cc/paper/2019/hash/846c260d715e5b854ffad5f70a516c88-Abstract.html
+[6] Breck, E., Cai, S., Nielsen, E., Salib, M., Sculley, D., 2017. "The ML Test Score: A Rubric for ML Production
+    Readiness and Technical Debt Reduction." Proceedings of IEEE Big Data 2017.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -192,6 +196,7 @@ Related IRQs:
 - v1.3.3 (2026-10-09): Field 18 Research Basis — Rabanser, Günnemann and Lipton (NeurIPS 2019) cited as the peer-reviewed method study for dataset-shift detection, with its limits stated. Field 20 References — entry [5] added. Research-basis review date moved. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Fields 9 and 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 - v1.3.4 (2026-10-22): Fields 5 and 7 — the quoted monitoring expectation, which no source states in those words, is replaced by the PRA SS1/23 expectations it rests on (Principles 4.4(a) and 5.3(a)(ii)); PRA SS1/21 states no monitoring expectation, and threshold-triggered response is stated as this canvas's reading of para 4.16, as fields 9, 17 and 21 state. Fields 9 Expected Controls, 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★3 unchanged; no change to the risk profile.
+- v1.3.6 (2026-11-22): Fields 18 and 20 — The ML Test Score (Breck et al., IEEE Big Data 2017) is cited, with two limits: it checks that monitoring and alerts exist, not that an injected breach fires an alert, and it was scored in one firm. Research-basis review date moved. ★3 · P3 unchanged; no change to the risk profile.
 ```
 
 ---

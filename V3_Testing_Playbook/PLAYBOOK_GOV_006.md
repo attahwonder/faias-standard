@@ -4,7 +4,7 @@
 **Procedure ID:** TP-GOV-006
 **IRQ:** IRQ-GOV-006 — Absent or Unmeasurable Board-Approved AI Risk Appetite
 **Assurance objective:** AO-GOV-006 — The board shall approve an AI-specific risk appetite statement with measurable indicators, and individual deployment decisions shall be demonstrably assessed against it.
-**★ Confidence (carried from canvas, unchanged):** ★2 — regulatory expectation that board-level AI accountability exists is well-established, but no published methodology or benchmark defines what a "measurable" AI risk appetite statement must contain; the rubric and adequacy judgement are bespoke and rely heavily on reviewer professional judgement, informed by comparison to the firm's own traditional risk-appetite frameworks.
+**★ Confidence (carried from canvas, unchanged):** ★2 — regulatory expectation that board-level AI accountability exists is well-established, but, although the FSB Principles for an Effective Risk Appetite Framework (2013) say in general terms what a risk appetite statement must contain, no published methodology or benchmark defines what a "measurable" AI risk appetite statement must contain; the rubric and adequacy judgement are bespoke and rely heavily on reviewer professional judgement, informed by comparison to the firm's own traditional risk-appetite frameworks.
 **Method classification:** Adapted Industry Practice (board-effectiveness and risk-appetite-framework review) extended by an Emerging Practice rubric.
 
 ## 2. Preconditions
@@ -40,7 +40,7 @@ The rubric is fixed and recorded before assessment. Dimensions drawn from the co
 | Measure | Threshold | Basis |
 |---|---|---|
 | Statement exists with measurable indicators | Present; a generic "responsible AI" values statement with no measurable indicators is a fail indicator | Categorical per canvas |
-| Rubric dimensions met | Reviewer judgement against the firm's own comparator statements — no established threshold. No published methodology defines what a measurable AI appetite must contain | Explicitly bespoke; the reason for ★2 |
+| Rubric dimensions met | Reviewer judgement against the firm's own comparator statements — no established threshold. The FSB Principles (2013) say in general terms what a risk appetite statement must contain; no published methodology defines what a measurable AI appetite must contain | Explicitly bespoke; the reason for ★2 |
 | Approval papers referencing and testing against appetite | All sampled papers across tiers | Categorical per canvas pass indicator |
 | Deployment decisions shaped by an appetite threshold | ≥1 evidenced instance | Categorical per canvas pass indicator |
 | Board member consistency on current exposure vs appetite | Broadly consistent accounts across interviewees | Categorical per canvas — materially inconsistent answers are a fail indicator |

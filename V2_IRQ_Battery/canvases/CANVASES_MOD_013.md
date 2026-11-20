@@ -148,7 +148,9 @@ regression testing on prompt/parameter changes.
 ## 18. Research Basis
 > [Chen, L., Zaharia, M., Zou, J., 2023, "How Is ChatGPT's Behavior Changing over Time?", arXiv:2307.09009; Harvard Data Science Review 6(2), 2024] — demonstrates that behavioural drift across nominal versions is measurable and material, supporting the regression-testing methodology used in this IRQ's independent test, applied here to firm-controlled prompt/parameter changes rather than vendor-controlled model versions. [Incident: xAI Grok "MechaHitler" episode, Jul 2025 — on xAI's account, an upstream code-path update that unexpectedly incorporated deprecated instructions into the production bot's behaviour for 16 hours, publicly documented and widely reported] — direct, recent, high-severity real-world evidence that a change to a production system's instructions can materially alter its behaviour before it is detected. xAI states that changes to the bot are evaluated and tested before release and does not say whether this update was, so the incident does not evidence a change made outside a change-control process.
 >
-> **Research basis last reviewed:** 9 October 2026 · **review cadence:** Fast (6 months)
+> [Sclar, M., Choi, Y., Tsvetkov, Y., Suhr, A., 2024, "Quantifying Language Models' Sensitivity to Spurious Features in Prompt Design or: How I learned to start worrying about prompt formatting", ICLR 2024, arXiv:2310.11324; code released] measures how much a model's performance changes across prompt formats that keep the meaning (FormatSpread). It supports the regression-measurement part of field 11. It does not test whether the firm's deployment pathway enforces version control, which is the part that the ★2 rests on.
+>
+> **Research basis last reviewed:** 18 November 2026 · **review cadence:** Fast (6 months)
 
 ## 19. Related IRQs
 ```
@@ -174,6 +176,9 @@ regression testing on prompt/parameter changes.
     9 July 2025. https://www.theguardian.com/technology/2025/jul/09/grok-ai-praised-hitler-antisemitism-x-ntwnfb
 [3] PRA, 2026. "SS1/23 — Model risk management principles for banks."
     April 2026 (16 April 2026, updating 17 May 2023; published and effective 23 April 2026; policy in effect since 17 May 2024, para 1.5).
+[4] Sclar, M., Choi, Y., Tsvetkov, Y., Suhr, A., 2024. "Quantifying Language Models' Sensitivity to
+    Spurious Features in Prompt Design or: How I learned to start worrying about prompt formatting."
+    ICLR 2024. arXiv:2310.11324.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -201,6 +206,7 @@ Change Log:
 - v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 - v1.3.3 (2026-10-09): Fields 9, 18 and 20 — the Chen, Zaharia and Zou citation (arXiv:2307.09009) now also gives its publication in Harvard Data Science Review 6(2), 2024. Research-basis review date moved. No change to the ★ rating or the risk profile.
 - v1.3.4 (2026-10-22): Fields 17 and 20 — the PRA SS1/23 citation gives both dates: the April 2026 amendment, effective 23 April 2026, and the policy, in effect since 17 May 2024 (para 1.5), in place of a single effective date. Fields 17 Regulatory Basis and 20 References — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
+- v1.3.6 (2026-11-22): Fields 18 and 20 — FormatSpread (Sclar et al., ICLR 2024) is cited for the regression-measurement part of field 11; it does not test the deployment-pathway part that the ★2 rests on. Research-basis review date moved. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

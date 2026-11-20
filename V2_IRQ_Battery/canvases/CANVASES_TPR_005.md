@@ -129,7 +129,9 @@ Residual risk interpretation: The security (code-execution) tail risk is the mos
 >
 > **[FAIAS Incident Register, row 88, "ReversingLabs nullifAI Hugging Face models", 2025]** — researchers found two Hugging Face models carrying reverse-shell payloads that the hub's own security scanning did not flag as unsafe; they were reported on 20 January 2025 and removed in less than 24 hours, the researchers call them closer to a proof of concept, and no victim is recorded. A hub's "not flagged" status was not a screening control for a firm that deployed open-source models. Carried as a secondary row: the source is the researchers' own disclosure, and no statement from the hub's operator was read.
 >
-> **Research basis last reviewed:** 22 October 2026 · **review cadence:** Standard (12 months)
+> [Li, Y., Huang, H., Zhao, Y., Ma, X., Sun, J., 2025, "BackdoorLLM: A Comprehensive Benchmark for Backdoor Attacks and Defenses on Large Language Models", NeurIPS 2025 Datasets and Benchmarks Track, arXiv:2408.12798] is a peer-reviewed benchmark that plants its own backdoors in models and measures attack success with and without the trigger. Its own finding is that "Existing defense techniques remain largely ineffective at detecting or mitigating backdoor behaviors". It does not screen an unknown checkpoint, so it does not supply the behavioural screening limb of field 11, and the unverified record above stands.
+>
+> **Research basis last reviewed:** 18 November 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -153,6 +155,9 @@ Related IRQs:
 [3] Nikolic, I., Baluta, T., Saxena, P., 2025. "Model Provenance Testing for Large Language Models." Advances in Neural Information Processing Systems 38 (NeurIPS 2025). arXiv:2502.00706. Code and benchmarks stated in the paper: github.com/ivicanikolicsg/model_provenance_testing.
     Published: 2025
     URL: https://arxiv.org/abs/2502.00706
+[4] Li, Y., Huang, H., Zhao, Y., Ma, X., Sun, J., 2025. "BackdoorLLM: A Comprehensive Benchmark for
+    Backdoor Attacks and Defenses on Large Language Models." NeurIPS 2025 Datasets and Benchmarks
+    Track. arXiv:2408.12798.
 ```
 
 ## 21. Four-Test Validation Footer
@@ -176,6 +181,7 @@ Related IRQs:
 - v1.3.3 (2026-10-09): Field 18 Research Basis — Nikolic et al. (NeurIPS 2025) cited as a method for testing the lineage of a model, with its limit stated (lineage, not weight integrity or backdoors); the UNVERIFIED marker stands. Field 20 References — entry [3] added. Research-basis review date moved. No change to the ★ rating or the risk profile.
 - v1.3.3 (2026-10-09): Field 17 — PRA SS1/23 cited as its April 2026 version (16 April 2026, updating 17 May 2023); the principles cited are unchanged.
 - v1.3.4 (2026-10-22): Fields 11 and 21 — the OWASP Machine Learning Security Top 10 is cited for supply-chain risk only; none of its ten items names deserialisation. Fields 9 and 18 — OWASP LLM03:2025 is cited for model provenance and integrity checks; the prevention guidance of neither it nor ML06:2023 names serialisation formats, which the canvas states as its own control. Research-basis review date moved. Fields 11 and 14 state that the serialisation-format check has no OWASP anchor; the component ★3 value is unchanged. Field 17 Regulatory Basis — the PRA SS1/23 citation gives 23 April 2026 as the date on which the April 2026 version was published and took effect. ★2 unchanged; no change to the risk profile.
+- v1.3.6 (2026-11-22): Fields 18 and 20 — BackdoorLLM (NeurIPS 2025) is cited as a peer-reviewed benchmark whose own finding is that existing defences are largely ineffective; it does not screen an unknown checkpoint, so the unverified record stands. Research-basis review date moved. ★2 unchanged; no change to the risk profile.
 ```
 
 ---

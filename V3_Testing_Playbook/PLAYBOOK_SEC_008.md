@@ -19,7 +19,7 @@
 - **G1 Model provider** — does marker content appear in provider-side logs or training-eligible storage per the contractual terms and per any provider-side data-access console the firm holds?
 - **G2 Observability / APM** — does marker content appear in traces, spans, error payloads or performance logs?
 - **G3 Log aggregation** — does marker content appear in application logs, and at what verbosity level; does default configuration capture full prompt/response content?
-- **G4 Downstream propagation** — does marker content propagate into tool calls, sub-agent contexts, caches, or the embedding store?
+- **G4 Downstream propagation** — does marker content propagate into tool calls, sub-agent contexts, caches, or the embedding store? Where an agent can transmit context, does its outbound channel reach only approved destinations?
 
 **Sampling.** Every path in the firm's data-flow map plus every path the reviewer independently identifies, each exercised with at least 3 distinct markers across at least 3 usage patterns (simple chat, retrieval-grounded query, agentic/tool-chained task where applicable) — a reviewer-set design minimum, disclosed at scoping.
 
@@ -29,7 +29,7 @@
 1. Record environment metadata and, critically, a **diff of staging versus production telemetry/logging configuration**. Any material difference is recorded and caveated.
 2. Obtain the firm's AI data-flow map. Then independently enumerate egress paths from configuration — model client, APM agent, log shippers, cache layers, embedding store, tool endpoints. Record every path the map omitted; this finding stands regardless of the marker results.
 3. Review provider contracts/DPAs for retention, logging, training-use and sub-processor terms. Record what is contractually permitted, prohibited, or silent. Share evidence with TP-TPR-007.
-4. Inspect DLP/filtering configuration: what categories does it cover, is it applied pre-transmission, and can it be bypassed? Record.
+4. Inspect DLP/filtering configuration: what categories does it cover, is it applied pre-transmission, does it block or only flag, and can it be bypassed? Record. Where an agent's tool call or sub-agent can transmit context, inspect the destination allowlist of its outbound channel, and in the agentic usage pattern direct one marker to a test destination outside the list that the reviewer controls. Record whether the channel blocks it.
 5. Inspect default logging configuration: does it capture full prompt and response content by default? Record the verbosity setting and what it captures.
 6. Generate and register markers. Confirm with the firm in writing that only these synthetic markers will be transmitted.
 7. Submit markers through each usage pattern.
@@ -42,13 +42,14 @@
 - **Marker-by-destination matrix** — for each marker, every destination in which it was found. Canvas threshold: **marker content not found in any telemetry/logging destination outside the firm's contractual control boundary.**
 - **Map completeness** — paths independently identified ÷ paths in the firm's map. Threshold: the map must cover all AI-adjacent paths including telemetry, and must have been independently verified rather than self-declared by the platform team.
 - **Contract position per provider** — confirmed exclusion of training/retention use / explicit consented use with risk acceptance / silent or ambiguous. Canvas Fail: silent or ambiguous with no compensating technical control.
-- **DLP coverage** — does filtering demonstrably block or flag the confidential categories actually in use? Binary per category. No numeric threshold — reviewer judgement on category coverage adequacy.
+- **DLP coverage** — does filtering demonstrably block the confidential categories actually in use before transmission? A flag that lets the transmission proceed does not meet the canvas pass indicator. Binary per category. No numeric threshold — reviewer judgement on category coverage adequacy.
 - **Default log capture** (binary): full prompt/response content captured by default / not captured, or captured under documented contractual and technical control.
 - **Policy enforcement** (binary): acceptable-use policy technically enforced / policy exists but staff can paste confidential content with no system-level prevention.
+- **Agent outbound destinations** (binary, where an agent can transmit context): only approved destinations reachable, and the marker sent to an unlisted test destination blocked / not blocked (canvas pass indicator).
 
 ### Interpretation
-- **Pass** — no marker found outside the contractual control boundary; provider terms confirmed (not merely asserted) to exclude training/retention use, or such use explicitly consented to and risk-accepted; DLP demonstrably blocks or flags confidential-category content pre-transmission; the data-flow map is current, covers all AI-adjacent paths including telemetry, and was independently verified. Report with the ★2 caveat that no standardised AI-specific egress test procedure exists and that coverage is bounded by the paths identified.
-- **Fail** — a marker appears in an observability/logging destination not covered by the map or the contract review; **or** provider contract is silent or ambiguous on training/retention with no compensating technical control; **or** DLP does not exist or does not cover the confidential categories actually in use; **or** an acceptable-use policy exists but is not technically enforced.
+- **Pass** — no marker found outside the contractual control boundary; provider terms confirmed (not merely asserted) to exclude training/retention use, or such use explicitly consented to and risk-accepted; DLP demonstrably blocks confidential-category content pre-transmission; where an agent can transmit context, its outbound channel reaches only approved destinations; the data-flow map is current, covers all AI-adjacent paths including telemetry, and was independently verified. Report with the ★2 caveat that no standardised AI-specific egress test procedure exists and that coverage is bounded by the paths identified.
+- **Fail** — a marker appears in an observability/logging destination not covered by the map or the contract review; **or** provider contract is silent or ambiguous on training/retention with no compensating technical control; **or** DLP does not exist or does not cover the confidential categories actually in use; **or** an acceptable-use policy exists but is not technically enforced; **or** DLP flags confidential-category content and the transmission proceeds; **or** an agent's outbound channel can reach a destination outside the approved list.
 - **Partial** — technical tracing clean on the identified paths but the data-flow map was found materially incomplete (paths added by the reviewer), or staging telemetry configuration differs from production such that G2/G3 results do not transfer. State precisely what remains unassessed.
 
 ### Evidence outputs
@@ -63,6 +64,7 @@
 - E9 Technical-versus-contractual reconciliation note — **L3**.
 - E10 Marker purge record including any destination where purge was not possible — **L3**.
 - E11 Independent data-flow/security assessment covering AI-adjacent egress paths, where held — **L4**.
+- E12 Agent outbound-destination allowlist inspection and unlisted-destination test record — **L3**.
 
 ### Common pitfalls & limitations
 - **Staging telemetry ≠ production telemetry.** The most common invalidator. Diff it in step 1 and caveat honestly.
@@ -74,7 +76,7 @@
 - **★2 honesty.** The result covers the paths found on the test date under the staging configuration observed. It is not a guarantee of no egress.
 
 ### Time/effort estimate
-**4.0 reviewer-days** — 0.5 configuration diff and environment verification; 1.0 independent path enumeration; 0.5 contract review (reduced where TP-TPR-007 runs jointly); 0.5 DLP and logging inspection; 0.5 marker generation and transmission; 0.5 destination searching; 0.5 reconciliation and write-up.
+**4.0 reviewer-days** — 0.5 configuration diff and environment verification; 1.0 independent path enumeration; 0.5 contract review (reduced where TP-TPR-007 runs jointly); 0.5 DLP and logging inspection; 0.5 marker generation and transmission, with the agent outbound-destination measure not yet estimated; 0.5 destination searching; 0.5 reconciliation and write-up.
 
 ---
 ---

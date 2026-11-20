@@ -78,7 +78,7 @@ Control Breakpoints:
 - Production data: reviewer feedback or override patterns correlated with explanation quality/type across a sustained period — **L5**.
 
 ## 11. Independent Test
-> In a non-production environment, using the same seeded-error case-set methodology as IRQ-HUM-001, run two arms with a representative sample of the actual reviewing population (underwriters, claims handlers or AML investigators, as applicable): one arm receives the AI's current explanation alongside the recommendation, the other receives the recommendation with a deliberately minimal or absent explanation (or, where feasible, a third arm with a redesigned explanation). Measure the difference in seeded-error catch rate, decision confidence, and time-to-decision across arms. Where feasible, supplement with a structured comprehension interview on a subsample to assess whether reviewers can correctly restate the actual basis for the AI's recommendation. Executed on de-identified dev/test case files with real reviewing staff in a staging exercise; no live decisions are affected. — **★2 Confidence — as at FAIAS v1.1.0 (25 August 2026)** (application-grounded interpretability evaluation, per Doshi-Velez & Kim's framework, is credible published methodology, but its specific application — comparing catch-rate impact of explanation presence/quality in an FS review context — is bespoke test design with no agreed FS benchmark; heavily dependent on case-set and explanation-variant design).
+> In a non-production environment, using the same seeded-error case-set methodology as IRQ-HUM-001, run two arms with a representative sample of the actual reviewing population (underwriters, claims handlers or AML investigators, as applicable): one arm receives the AI's current explanation alongside the recommendation, the other receives the recommendation with a deliberately minimal or absent explanation (or, where feasible, a third arm with a redesigned explanation). Measure the difference in seeded-error catch rate, decision confidence, and time-to-decision across arms. Where feasible, supplement with a structured comprehension interview on a subsample to assess whether reviewers can correctly restate the actual basis for the AI's recommendation. Executed on de-identified dev/test case files with real reviewing staff in a staging exercise; no live decisions are affected. — **★3 Confidence — as at FAIAS v1.3.6 (22 November 2026)** (the two-arm seeded-error design is grounded in peer-reviewed research, and two independent groups use a similar approach: Buçinca et al. (Harvard; CSCW 2021) and Bansal et al. (University of Washington and Microsoft Research; CHI 2021) give AI advice that is wrong on known items, vary the explanation across arms and measure acceptance of the wrong advice; IRQ-HUM-001 holds ★3 for the seeded-error method that this test reuses; both studies used crowd workers on low-stakes tasks, so their results do not transfer to FS reviewers, which is why this test uses the firm's own reviewers; the case set and the explanation variants are professional judgement, and the comprehension interview has no published method. The rating is raised from ★2 as at FAIAS v1.1.0, which stands as register history; ratings issued under different anchors are not comparable numbers (§6A.1)).
 
 ## 12. Pass Indicators
 - Seeded-error catch rate is measurably higher in the arm with the current explanation than in the minimal/no-explanation arm, demonstrating the explanation adds genuine verification value.
@@ -95,7 +95,7 @@ Control Breakpoints:
 - No testing has ever been conducted with actual reviewing staff; explanation adequacy is asserted by the development team.
 
 ## 14. Reporting Language
-**Pass:** "Explanation-adequacy testing with a representative sample of [reviewing population] shows seeded-error catch rate is measurably higher with the current explanation than without it, and comprehension interviews confirm reviewers can substantively restate the actual basis for recommendations. This is a ★2 assessment — credible application-grounded evaluation methodology, bespoke test design — and should be re-tested whenever explanation design or the underlying model changes materially."
+**Pass:** "Explanation-adequacy testing with a representative sample of [reviewing population] shows seeded-error catch rate is measurably higher with the current explanation than without it, and comprehension interviews confirm reviewers can substantively restate the actual basis for recommendations. This is a ★3 assessment — a published seeded-error design used by independent research groups, with a case set and explanation variants designed for this firm — and should be re-tested whenever explanation design or the underlying model changes materially."
 
 **Fail:** "Explanation-adequacy testing shows no measurable difference in seeded-error catch rate between reviewers given the current explanation and reviewers given no explanation at all, indicating the explanation does not currently support genuine independent judgement despite its fluent presentation. This undermines the human-oversight defence the firm relies on for this workflow and should be remediated with a redesigned, tested explanation before continued reliance on the current format."
 
@@ -160,7 +160,9 @@ share test infrastructure with IRQ-HUM-001's seeded-error programme.
 >
 > **[FAIAS Incident Register, row 69, "State v. Loomis COMPAS", 2016]** — the Wisconsin Supreme Court required a written advisement of the tool's limitations in every presentence report that contains a COMPAS assessment, because the information "will enable courts to better assess the accuracy of the assessment and the appropriate weight to be given to the risk score" (para 66); a court must also explain the factors, other than the score, that support the sentence (para 99). It evidences the content limb of this question, for a judge who relies on a score; the Court found no due-process violation, and no test with the decision-makers is recorded.
 >
-> **Research basis last reviewed:** 22 October 2026 · **review cadence:** Standard (12 months)
+> [Buçinca, Z., Malaya, M.B., Gajos, K.Z., 2021, "To Trust or to Think: Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making", Proc. ACM Hum.-Comput. Interact. 5, CSCW1, Article 188, https://doi.org/10.1145/3449287] tests explanation designs against AI advice that is wrong on set items, with a no-AI baseline, two explanation designs and three cognitive forcing designs, and measures over-reliance as acceptance of the wrong advice. With Bansal et al. (2021, above), a separate group, it is the basis of the ★3 in field 11. Limits: 199 crowd workers on Amazon Mechanical Turk, on a nutrition task; FS reviewers were not tested; the paper names no released study materials.
+>
+> **Research basis last reviewed:** 18 November 2026 · **review cadence:** Standard (12 months)
 
 ## 19. Related IRQs
 ```
@@ -196,6 +198,9 @@ Related IRQs:
 [5] Financial Conduct Authority, 2023. "Handbook PRIN 2A: The Consumer Duty."
     Published: 2023-07-31
     URL: https://www.fca.org.uk/firms/consumer-duty
+[6] Buçinca, Z., Malaya, M.B., Gajos, K.Z., 2021. "To Trust or to Think: Cognitive Forcing Functions Can
+    Reduce Overreliance on AI in AI-assisted Decision-making." Proc. ACM Hum.-Comput. Interact. 5, CSCW1,
+    Article 188. https://doi.org/10.1145/3449287
 ```
 
 ## 21. Four-Test Validation Footer
@@ -218,6 +223,7 @@ Related IRQs:
 - v1.3.3 (2026-10-09): Fields 15 and 16 — Recoverability scored 3 in place of 2 (Field 16, and the controls-in-place case in Field 15). The canvas states recovery typically within weeks, which is beyond the within-hours level that ASSURANCE_MODEL.md §7 scores 2; the scale names no band between days and years, and 3 (reversible within days) is the nearest anchor. The other axes, the ★ rating and the research basis are unchanged.
 - v1.3.4 (2026-10-22): Field 18 Research Basis — incident-register citation added in the reserved form (row 69, State v. Loomis, paras 66 and 99: the advisement of a score's limitations given to the judge). Research-basis review date moved. ★2 unchanged; no change to the risk profile.
 - v1.3.4 (2026-10-22): Fields 9, 11, 14 and 18 — the Doshi-Velez and Kim evaluation level this test adapts is named application-grounded (real humans, real tasks, §3.1), in place of the paper's simplified-task level (§3.2). Research-basis review date moved. ★2 unchanged; no change to the risk profile.
+- v1.3.6 (2026-11-22): Field 11 Independent Test — the rating is raised from ★2 to ★3 under the v1.3.6 anchor. Two independent groups use the seeded-error design with explanation arms (Buçinca et al., CSCW 2021; Bansal et al., CHI 2021). Their participants were crowd workers on low-stakes tasks, and the comprehension interview has no published method. The ★2 as at FAIAS v1.1.0 stands as register history. Field 14 Reporting Language — the Pass text names ★3. Fields 18 and 20 — Buçinca et al. is added with its limits. Research-basis review date moved. No risk axis value or score changes.
 ```
 
 ---

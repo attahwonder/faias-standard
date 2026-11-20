@@ -75,7 +75,7 @@ Where an AI component performs identity verification, liveness checking, voice a
 - **Missing labels for some characteristics.** Firms typically hold ethnicity and age but not disability or religion. Record which characteristics could not be tested at all — an untested characteristic is a coverage gap, not a pass.
 
 ## 9. Time / Effort Estimate
-**6 reviewer-days**: 1 day data-protection clearance and dataset acquisition, 1 day representativeness assessment and metric selection, 1.5 days scoring and computation, 1 day intersectional analysis and divergence work, 0.5 day documentation review, 1 day working papers. Add 1 day where a synthetic proxy dataset must be constructed. The estimate does not include step 13; where a perception component is in scope, the reviewer estimates that step's manual-equivalent effort at scoping, discloses it, and adds it to the six days as the procedure's upper bound for that engagement.
+**6 reviewer-days**: 1 day data-protection clearance and dataset acquisition, 1 day representativeness assessment and metric selection, 1.5 days scoring and computation, 1 day intersectional analysis and divergence work, 0.5 day documentation review, 1 day working papers. Add 1 day where a synthetic proxy dataset must be constructed. The estimate does not include step 13; where a perception component is in scope, the reviewer estimates that step's manual-equivalent effort at scoping, discloses it, and adds it to the six days as the procedure's estimate for that engagement.
 
 ---
 ---
